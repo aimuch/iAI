@@ -17,6 +17,8 @@
 4. [安装cuDNN](#id4)   
 5. [安装Caffe 1.0](#id5)   
 
+- [参考](#reference)
+
 
 
 ## 1. <span id="id1">安装Ubuntu和Windows双系统</span>    
@@ -319,3 +321,13 @@ make pycaffe -j $(($(nproc) + 1))
 sudo gedit ~/.bashrc
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
+
+
+
+
+
+
+##  <span id="reference">参考</span>   
+1. https://blog.csdn.net/s717597589/article/details/79117112/
+2. https://blog.csdn.net/balixiaxuetian/article/details/79154013
+3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
