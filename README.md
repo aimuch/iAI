@@ -17,13 +17,13 @@
 5. [安装cuDNN](#id4)  
 6. [安装OpenCV](#id5) 
 7. [安装Caffe 1.0](#id6)   
-
+---
 ##  1. <span id="reference">参考</span>   
 1. https://blog.csdn.net/s717597589/article/details/79117112/
 2. https://blog.csdn.net/balixiaxuetian/article/details/79154013
 3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
 
-
+---
 ## 2. <span id="id1">安装Ubuntu和Windows双系统</span>    
 详细的安装双系统就不过多介绍了，可以参考[这篇文章](https://blog.csdn.net/s717597589/article/details/79117112/)，但是在安装过程中有几个问题需要说明：      
 - 安装Ubuntu之前首先要把BIOS的`security boot`关闭，否则会出现NVIDIA驱动安装完以后重启电脑会反复进入登录界面。
@@ -32,10 +32,10 @@
  
 - 重装Ubuntu系统时请早Windows下用EasyUEFI软件将Ubuntu的引导项删除。
 
-
+---
 ## 3. <span id="id2">安装NVIDIA驱动</span>    
 
-### a. **在终端里依次输入以下命令安装驱动所需的依赖包**：   
+### 3.1. **在终端里依次输入以下命令安装驱动所需的依赖包**：   
 ```python
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 
@@ -51,7 +51,7 @@ sudo apt-get install git cmake build-essential
 ```
 sudo apt-get update 
 ```
-### b. **禁用Ubuntu自带的显卡驱动**：  
+### 3.2. **禁用Ubuntu自带的显卡驱动**：  
 Ubuntu 16.04 自带 nouveau显卡驱动，这个自带的驱动是不能用于CUDA的，需要卸载重装。假如重装过显卡驱动则可跳过这一步。没有重装过的就跟着我的步骤往下走。
 
 首先得禁用Ubuntu自带的显卡驱动nouveau，只有在禁用掉 nouveau 后才能顺利安装 NVIDIA 显卡驱动，禁用方法就是在 `/etc/modprobe.d/blacklist-nouveau.conf`文件中添加一条禁用命令，首先需要打开该文件，通过以下命令打开：   
@@ -71,7 +71,7 @@ sudo update-initramfs -u
 ```
 lsmod | grep nouveau
 ```
-### c. **安装NVIDIA官方显卡驱动**：
+### 3.3. **安装NVIDIA官方显卡驱动**：
 通过`Ctrl + Alt + F1`进入文本模式，输入帐号密码登录，通过`Ctrl + Alt + F7`可返回图形化模式，在文本模式登录后首先关闭桌面服务：
 ```
 sudo service lightdm stop
@@ -95,7 +95,7 @@ sudo apt-get install nvidia-390 nvidia-settings nvidia-prime  #大部分NVIDIA�
 nvidia-settings
 ···
 
-### d. **配置环境变量**：
+### 3.4. **配置环境变量**：
 使用 gedit 命令打开配置文件：
 ```
 sudo gedit ~/.bashrc
@@ -110,7 +110,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ```
 source  ~./bashrc
 ```
-
+---
 ## 4. <span id="id3">安装CUDA 9.0</span>    
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```
@@ -153,7 +153,7 @@ sudo ./uninstall_cuda_9.0.pl
 ```
 sudo rm -r cuda-9.0
 ```
-
+---
 ## 5. <span id="id4">安装cuDNN</span>   
 
 解压cuNDD v7.zip到当前文件夹，得到一个cudn 文件夹，该文件夹下有include 和 lib64 两个文件夹，命令行进入其中的include 文件夹路径下，然后进行以下操作：
@@ -194,8 +194,8 @@ Cuda compilation tools, release 9.0, V9.0.85
 ```
 
 
-
-## 5. <span id="id5">安装 OpenCV</span>   
+---
+## 6. <span id="id5">安装 OpenCV</span>   
 进入官网 : http://opencv.org/releases.html , 选择 3.4.0 版本的 sources , 下载 opencv-3.4.0.zip 。随后解压到你要安装的位置，命令行进入已解压的文件夹 opencv-3.4.0 目录下，执行：
 ```
 mkdir build # 创建编译的文件目录
@@ -226,6 +226,28 @@ sudo make install #安装
 ```
 pkg-config --modversion opencv
 ```
+接下来要给系统加入opencv库的环境变量:    
+用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
+```
+sudo gedit /etc/ld.so.conf
+```
+在文件中加上一行:
+```
+/usr/loacal/lib
+```
+`/user/loacal`是opencv安装路径 就是makefile中指定的安装路径.
+
+再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
+```
+sudo gedit /etc/bash.bashrc
+```
+在文件末尾加入： 
+```
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
+export PKG_CONFIG_PATH 
+```
+运行`/etc/bash.bashrc`使其生效。
+
 卸载OpenCV的方法：进入OpenCV解压文件夹中的buid 文件夹：   
 ```
 cd /home/ccem/opencv-3.4.0/build
@@ -240,8 +262,9 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv /usr/include/ope
 ```
 把一些残余的动态链接文件和空文件夹删掉。有些文件夹已经被删掉了所以会找不到路径。
 
-## 6. <span id="id6">安装Caffe 1.0</span>    
-### a.安装依赖库   
+---
+## 7. <span id="id6">安装Caffe 1.0</span>    
+### 7.1.安装依赖库   
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -254,7 +277,7 @@ sudo apt-get install -y --no-install-recommends libboost-all-dev
 sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev
 sudo apt-get -y install build-essential cmake git libgtk2.0-dev pkg-config python-dev python-numpy libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip
 ```
-### b. 配置CUDA 及 CUDNN   
+### 7.2. 配置CUDA 及 CUDNN   
 添加 CUDA 环境变量   
 ```
 sudo gedit ~/.bashrc
