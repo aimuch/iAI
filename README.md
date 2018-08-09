@@ -1,6 +1,6 @@
 # Inatall AI envirnment on Ubuntu platform
-*本文总结于网络，后面有参考链接*    
-    
+
+   
 **安装环境**  
 *其他环境类似* 
 ```
@@ -9,19 +9,22 @@
 软件环境：CUDA9.0 / caffe1.0/
 ````
 
-
 ### 目录
-1. [安装Ubuntu和Windows双系统](#id1)   
-2. [安装NVIDIA驱动](#id2)   
-3. [安装CUDA 9.0](#id3)   
-4. [安装cuDNN](#id4)   
-5. [安装Caffe 1.0](#id5)   
+1. [参考](#reference)
+2. [安装Ubuntu和Windows双系统](#id1)   
+3. [安装NVIDIA驱动](#id2)   
+4. [安装CUDA 9.0](#id3)   
+5. [安装cuDNN](#id4)  
+6. [安装OpenCV](#id5) 
+7. [安装Caffe 1.0](#id6)   
 
-- [参考](#reference)
+##  1. <span id="reference">参考</span>   
+1. https://blog.csdn.net/s717597589/article/details/79117112/
+2. https://blog.csdn.net/balixiaxuetian/article/details/79154013
+3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
 
 
-
-## 1. <span id="id1">安装Ubuntu和Windows双系统</span>    
+## 2. <span id="id1">安装Ubuntu和Windows双系统</span>    
 详细的安装双系统就不过多介绍了，可以参考[这篇文章](https://blog.csdn.net/s717597589/article/details/79117112/)，但是在安装过程中有几个问题需要说明：      
 - 安装Ubuntu之前首先要把BIOS的`security boot`关闭，否则会出现NVIDIA驱动安装完以后重启电脑会反复进入登录界面。
  
@@ -30,7 +33,7 @@
 - 重装Ubuntu系统时请早Windows下用EasyUEFI软件将Ubuntu的引导项删除。
 
 
-## 2. <span id="id2">安装NVIDIA驱动</span>    
+## 3. <span id="id2">安装NVIDIA驱动</span>    
 
 ### a. **在终端里依次输入以下命令安装驱动所需的依赖包**：   
 ```python
@@ -108,7 +111,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 source  ~./bashrc
 ```
 
-## 3. <span id="id3">安装CUDA 9.0</span>    
+## 4. <span id="id3">安装CUDA 9.0</span>    
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
@@ -151,7 +154,7 @@ sudo ./uninstall_cuda_9.0.pl
 sudo rm -r cuda-9.0
 ```
 
-## 4. <span id="id4">安装cuDNN</span>   
+## 5. <span id="id4">安装cuDNN</span>   
 
 解压cuNDD v7.zip到当前文件夹，得到一个cudn 文件夹，该文件夹下有include 和 lib64 两个文件夹，命令行进入其中的include 文件夹路径下，然后进行以下操作：
 ```
@@ -191,7 +194,53 @@ Cuda compilation tools, release 9.0, V9.0.85
 ```
 
 
-## 5. <span id="id5">安装Caffe 1.0</span>    
+
+## 5. <span id="id5">安装 OpenCV</span>   
+进入官网 : http://opencv.org/releases.html , 选择 3.4.0 版本的 sources , 下载 opencv-3.4.0.zip 。随后解压到你要安装的位置，命令行进入已解压的文件夹 opencv-3.4.0 目录下，执行：
+```
+mkdir build # 创建编译的文件目录
+ 
+cd build
+ 
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+ 
+make -j8  #编译
+```
+**遇到一下报错信息有两种可能：**
+![编译报错](img/img1.png)
+- 在编译opencv3.4.0源码的时候，会下载诸如ippicv_2017u3_lnx_intel64_20170822.tgz的东西，如果下载失败，请下载离线包（source文件夹中），解压该文件，会得到.cache文件夹，用此文件夹覆盖opencv源码文件夹下的.cache文件夹，再重新编译即可。.cahce文件夹为隐藏文件，可用ctrl+h查看。
+
+- 若本机里安装了anaconda，则需要在环境变量(`sudo gedit ~/.bashrc`)中加入：
+```
+# added by Anaconda3 installer
+export PATH="/home/andy/anaconda3/bin:$PATH"
+export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
+export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
+export PATH="$PATH:$HOME/bin"
+```
+在98%的时候会等很久很久，属于正常现象。编译过程很顺利，编译成功后安装：   
+```
+sudo make install #安装
+```
+安装完成后通过查看 opencv 版本验证是否安装成功：   
+```
+pkg-config --modversion opencv
+```
+卸载OpenCV的方法：进入OpenCV解压文件夹中的buid 文件夹：   
+```
+cd /home/ccem/opencv-3.4.0/build
+```
+运行：   
+```
+sudo make uninstall
+```
+然后把整个opencv-3.4.0文件夹都删掉。随后再运行：   
+```
+sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv /usr/include/opencv /usr/include/opencv2 /usr/local/share/opencv /usr/local/share/OpenCV /usr/share/opencv /usr/share/OpenCV /usr/local/bin/opencv* /usr/local/lib/libopencv
+```
+把一些残余的动态链接文件和空文件夹删掉。有些文件夹已经被删掉了所以会找不到路径。
+
+## 6. <span id="id6">安装Caffe 1.0</span>    
 ### a.安装依赖库   
 ```
 sudo apt-get update
@@ -283,7 +332,6 @@ PYTHON_LIBRARIES := boost_python3 python3.6m
 #PYTHON_LIB := /usr/lib
 PYTHON_LIB := $(ANACONDA_HOME)/lib
 
-
 # Uncomment to support layers written in Python (will link against Python libs)
 WITH_PYTHON_LAYER := 1
 
@@ -322,12 +370,3 @@ sudo gedit ~/.bashrc
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
 
-
-
-
-
-
-##  <span id="reference">参考</span>   
-1. https://blog.csdn.net/s717597589/article/details/79117112/
-2. https://blog.csdn.net/balixiaxuetian/article/details/79154013
-3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
