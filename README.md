@@ -17,6 +17,7 @@
 5. [安装cuDNN](#id4)  
 6. [安装OpenCV](#id5) 
 7. [安装Caffe 1.0](#id6)   
+8. [安装YOLO V3](#id7)
 ---
 ##  1. <span id="reference">参考</span>   
 1. https://blog.csdn.net/s717597589/article/details/79117112/
@@ -393,3 +394,33 @@ sudo gedit ~/.bashrc
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
 
+---
+##  8. <span id="id8">安装 YOLO V3 </span>  
+
+```
+git clone http://github.com/pjreddie/darknet.git
+cd darknet
+```
+根据YOLO[官方](https://pjreddie.com/darknet/install/)安装指导安装即可，其中若编译的时候用到opencv库的时候，遇到以下报错：
+![编译报错](img/img2.png)
+**原因是opencv没有加入到环境变量中，解决方式**
+用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
+```
+sudo gedit /etc/ld.so.conf
+```
+在文件中加上一行:
+```
+/usr/loacal/lib
+```
+`/user/loacal`是opencv安装路径 就是makefile中指定的安装路径.
+
+再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
+```
+sudo gedit /etc/bash.bashrc
+```
+在文件末尾加入： 
+```
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
+export PKG_CONFIG_PATH 
+```
+运行`/etc/bash.bashrc`使其生效。
