@@ -234,9 +234,9 @@ sudo gedit /etc/ld.so.conf
 ```
 在文件中加上一行:
 ```
-/usr/loacal/lib
+/usr/local/lib
 ```
-`/user/loacal`是opencv安装路径 就是makefile中指定的安装路径.
+`/user/local`是opencv安装路径 就是makefile中指定的安装路径.
 
 再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
 ```
@@ -247,7 +247,7 @@ sudo gedit /etc/bash.bashrc
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
 export PKG_CONFIG_PATH 
 ```
-运行`/etc/bash.bashrc`使其生效。
+运行`source /etc/bash.bashrc`使其生效。
 
 卸载OpenCV的方法：进入OpenCV解压文件夹中的buid 文件夹：   
 ```
@@ -410,9 +410,9 @@ sudo gedit /etc/ld.so.conf
 ```
 在文件中加上一行:
 ```
-/usr/loacal/lib
+/usr/local/lib
 ```
-`/user/loacal`是opencv安装路径 就是makefile中指定的安装路径.
+`/user/local`是opencv安装路径 就是makefile中指定的安装路径.
 
 再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
 ```
@@ -423,4 +423,4 @@ sudo gedit /etc/bash.bashrc
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
 export PKG_CONFIG_PATH 
 ```
-运行`/etc/bash.bashrc`使其生效。
+运行`source /etc/bash.bashrc`使其生效。
