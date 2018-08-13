@@ -18,11 +18,15 @@
 6. [安装OpenCV](#id5) 
 7. [安装Caffe 1.0](#id6)   
 8. [安装YOLO V3](#id7)
+9. [安装Protobuf](#id8)
+10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#id9)
 ---
 ##  1. <span id="reference">参考</span>   
 1. https://blog.csdn.net/s717597589/article/details/79117112/
 2. https://blog.csdn.net/balixiaxuetian/article/details/79154013
 3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
+4. https://blog.csdn.net/m0_37407756/article/details/70789271
+5. https://blog.csdn.net/ouening/article/details/79751393
 
 ---
 ## 2. <span id="id1">安装Ubuntu和Windows双系统</span>    
@@ -394,6 +398,103 @@ sudo gedit ~/.bashrc
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
 
+### 7.3. <font color=red>caffe编译遇到的问题 </font>
+
+<table><tr><td bgcolor=Violet>错误：protoc: error while loading shared libraries: libprotoc.so.10: cannot open shared object file: No such file or directory</td></tr></table>
+
+**解决：**
+
+```
+export LD_LIBRARY_PATH=/usr/local/lib
+```
+
+<table><tr><td bgcolor=Violet>错误：/sbin/ldconfig.real: /usr/local/cuda-8.0/lib64/libcudnn.so.5 不是符号连接</td></tr></table>
+
+**解决：**
+
+在sudo ldconfig时遇到`usr/local/cuda-8.0/lib64/libcudnn.so.5 `不是符号连接的问题，解决办法也很简单，重新建立链接并删除原链接
+
+首先找到`usr/local/cuda-8.0/lib64/`目录，搜索` libcudnn `然后发现两个文件`libcudnn.so.5`和`libcudnn.so.5.0.5 `理论上只有一个`libcudnn.so.5.0.5`
+
+终端执行:
+```
+ln -sf /usr/local/cuda-8.0/lib64/libcudnn.so.5.0.5 /usr/local/cuda-8.0/lib64/libcudnn.so.5 
+```
+再`sudo ldconfig`时就可以了，这时候会发现usr/local/cuda-8.0/lib64/目录下只有`libcudnn.so.5.0.5`文件了，`libcudnn.so.5`消失了。
+
+<table><tr><td bgcolor=Violet>错误：.build_release/tools/caffe: error while loading shared libraries: libhdf5.so.10: cannot open shared object file: No such file    or directory</td></tr></table>
+
+**解决：**
+```
+echo "export LD_LIBRARY_PATH=/home/abc/anaconda2/lib:$LD_LIBRARY_PATH" >>~/.bashrc
+```
+<table><tr><td bgcolor=Violet>/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFOpen@LIBTIFF_4.0’未定义的引用
+/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFReadEncodedStrip@LIBTIFF_4.0’未定义的引用
+/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFSetField@LIBTIFF_4.0’未定义的引用
+/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFSetWarningHandler@LIBTIFF_4.0’未定义的引用
+/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFSetErrorHandler@LIBTIFF_4.0’未定义的引用
+collect2:错误：ld返回1
+make:*** [.build_release/tools/extract_features.bin]错误1</td></tr></table>
+
+**解决：**
+
+这个可能是权限问题，采用以下指令：
+```
+sudo su； 
+make all ； 
+make test ； 
+make runtest ； 
+make pycaffe； 
+```
+一切都能顺利解决
+
+<table><tr><td bgcolor=Violet>错误：python/caffe/_caffe.cpp:1:52:致命错误：Python.h：没有那个文件或目录
+编译中断。
+make:***    
+[python/caffe/_caffe.so]错误1</td></tr></table>
+
+**解决：**
+
+执行：`sudofind / -name 'Python.h'`找到他的路径，
+在`Makefile.config`的PYTHON_INCLUDE加上`/home/abc/anaconda2/include/python2.7`（路径是自己的）
+
+<table><tr><td bgcolor=Violet>错误：import caffe时：ImportError:No module named skimage.io</td></tr></table>
+
+**解决：**
+可能是我们没有安装所谓的skimage.io模块，所以可以用以下的命令来安装：
+```
+pip install scikit-image
+```
+关掉终端，重新进入再编译，或者：
+```
+sudo pip install scikit-image
+```
+另一种方法：
+```
+sudo apt-get install python-skimage
+```
+<table><tr><td bgcolor=Violet>错误：  
+
+import caffe 
+
+Traceback(most recent call last):   
+
+File"<stdin>", line 1, in <module>     
+
+ImportError:No module named caffe</td></tr></table>
+
+**解决：**
+```
+echo'export PATH="/home/abc/caffe-master/python:$PATH"' >>~/.bashrc
+
+source~/.bashrc
+```
+关掉终端，重新进入再编译
+
+
+
+
+
 ---
 ##  8. <span id="id8">安装 YOLO V3 </span>  
 
@@ -424,3 +525,251 @@ PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 export PKG_CONFIG_PATH 
 ```
 运行`source /etc/bash.bashrc`使其生效。
+
+---
+##  9. <span id="#id8">安装Protobuf</span>
+### protobuf是什么？
+protobuf（Protocol Buffer）它是google提供的一个开源库，是一种语言无关、平台无关、扩展性好的用于通信协议、数据存储的结构化数据串行化方法。有如XML，不过它更小、更快、也更简单。你可以定义自己的数据结构，然后使用代码生成器生成的代码来读写这个数据结构。
+
+
+### protobuf-c 是什么？
+由于Protocol Buffer原生没有对C的支持，只能使用protobuf-c这个第三方库，它提供了支持C语言的API接口。
+
+下面先安装protobuf，然后安装protobuf-c 。
+
+### 9.1. 安装protocbuf
+#### 9.1.1. 下载源码安装包
+https://developers.google.com/protocol-buffers/
+![下载界面](img/img3.png)
+![GitHub界面](img/img4.png)
+在release下可以找到所有的版本，我这里用的是2.4.1版本，复制protobuf-2.4.1.tar.gz的链接然后用wget命令下载。
+```
+wget https://github.com/google/protobuf/releases/download/v2.4.1/protobuf-2.4.1.tar.gz
+```
+#### 9.1.2. 解压
+```
+tar -zxvf protobuf-2.4.1.tar.gz
+```
+#### 9.1.3.  编译/安装
+```
+cd protobuf-2.4.1
+```
+（可以参考README思路来做。）
+```
+./configure
+make
+make check  #(check结果可能会有错误，但不用管她，因为暂时那些功能用不到)
+make install
+```
+（完了之后会在 /usr/local/bin 目录下生成一个可执行文件 protoc）
+
+#### 9.1.4. 检查安装是否成功
+```
+protoc --version
+```
+如果成功，则会输出版本号信息。如果有问题，则会输出错误内容。
+
+#### 9.1.5.  错误及解决方法
+```
+protoc: error while loading shared libraries: libprotoc.so.8: cannot open shared
+```
+**错误原因**：
+protobuf的默认安装路径是/usr/local/lib，而/usr/local/lib 不在Ubuntu体系默认的 LD_LIBRARY_PATH 里，所以就找不到该lib
+解决方法：
+1). 创建文件`sudo gedit /etc/ld.so.conf.d/libprotobuf.conf`，在该文件中输入如下内容：
+```
+/usr/local/lib
+```
+2). 执行命令
+```
+sudo ldconfig 
+```
+这时，再运行protoc --version 就可以正常看到版本号了
+
+
+### 9.2. 安装protobuf-c
+（这里使用的是protobuf-c-0.15版本，较高版本的安装类似）
+
+进入下面的链接
+https://code.google.com/p/protobuf-c/
+进入Downloads界面
+![下载界面](img/img5.png)
+![下载界面](img/img6.png)
+![下载界面](img/img7.png)
+
+不知怎地，wget无法下载途中的`protobuf-c-0.15.tar.gz`文件。
+
+怎么办呢，我们可以点击上图中的Export to GitHub，将代码导入到GitHub（当然你得有并登录自己的github账号），不过只有源码，没有release版。我们先wget下载源码，解包。由于是源码，所以没有configure文件，但是可以通过执行`autogen.sh`来生成configure文件，之后的操作就和安装protobuf类似了，这里就不细说了。
+安装完成后会在` /usr/local/bin `目录下便会生成一个可执行文件 protoc-c
+
+在安装完protobuf-c后，我们来检验一下protobuf-c是否安装成功。到 protobuf-c-0.15/src/test 目录下，执行如下命令：
+```
+protoc-c --c_out=. test.proto
+```
+（c_out 标志是用来指定编译后所生成文件的输出路径，这里c_out指定的是当前目录。）
+如果在c_out指定目录下能够生成 test.pb-c.c 和 test.pb-c.h 这两个文件则说明安装成功了。
+
+### 9.3. Protobuf的使用示例
+```
+touch person.proto
+```
+输入如下内容：
+```
+message Person {
+  required string name = 1;
+  required int32 id = 2;
+}
+```
+编译.proto文件
+```
+protoc-c --c_out=. person.proto
+```
+```
+touch main.c
+```
+输入如下代码：
+```
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "person.pb-c.h"
+ 
+void main()
+{
+        // 定义一个Person元素，并往其中存入数据
+        Person person = PERSON__INIT;
+        person.id = 1314;
+        person.name = "lily";  // 字符串 lily 位于常量区
+ 
+        printf("id = %d\n", person.id);
+        printf("name = %s\n", person.name);
+ 
+        // 打包
+        int len = person__get_packed_size(&person);
+        //printf("len = %d\n", len);
+        void *sendpack = malloc(len);
+        person__pack(&person, sendpack);
+         // sendpack是打好的包，可以通过socket通讯将其发送出去。
+        //（这里主要讲protobuf，就不发送了）
+ 
+        // 接收端解包
+        Person *recvbuf = person__unpack(NULL, len, sendpack);
+        printf("id = %d\n", recvbuf->id);
+        printf("name = %s\n", recvbuf->name);
+        // 包用完了要释放
+        person__free_unpacked(recvbuf, NULL);
+        free(sendpack);
+}
+ 
+ ```
+编译
+```
+gcc person.pb-c.c main.c -lprotobuf-c
+ ```
+执行` ./a.out`，输出结果如下：
+id = 1314
+name = lily
+id = 1314
+name = lily
+
+
+---
+##  10. <span id="id9">Linux MATLAB 2018a 安装教程及启动失败解决办法</span>   
+
+matlab2018a 文件在下面吾爱破解给出：https://www.52pojie.cn/thread-713093-1-1.html
+
+最好在百度网盘下载，文件太大容易挂掉，下载完成后有3个文件 
+![下载界面](img/img8.png)
+
+crack文件里面有密钥、许可证文件和需要替换的文件，和win版本是一样的。
+
+（1）在安装包目录下打开Linux终端，执行下列命令：
+```
+sudo mkdir /mnt/matlab
+sudo mount -o loop R2018a_glnxa64_dvd1.iso /mnt/matlab
+cd /mnt/
+sudo ./mnt/matlab/install
+```
+经过上面步骤就能看到安装界面了，默认安装路径在/usr/local/MATLAB/R2018a/ ，
+
+（2）注意，上面只是挂载了第一个安装包，等安装到60%左右的时候会提示插入第二张CD，此时在刚才安装包目录下再次打开一个终端，执行
+```
+sudo mount -o loop R2018a_glnxa64_dvd2.iso /mnt/matlab
+```
+挂载第二张CD。 
+（3）安装完成后，将crack里面的R2018a/bin 文件复制替换到安装目录下/usr/local/MATLAB/R2018a/ 
+![下载界面](img/img9.png)
+```
+sudo cp -rvf R2018a/bin /usr/local/MATLAB/R2018a/
+```
+（4）接下来在/usr/local/MATLAB/R2018a/bin 目录下打开matlab
+```
+sudo ./matlab
+```
+指向许可证文件，激活，等下再次启动MATLAB，之后我自己的就出错了，转达下面部分讨论的内容。
+
+全部安装完matlab2018a之后启动报错，将crash报给了MathWorks Support，很快回复了，按照里面提供的方法解决了，真是佩服MathWorks的服务（惭愧为了使用simulink使用db，平时数值计算还是用octave或者Python）
+
+（1）首先贴出我的错误代码提示:
+```
+--------------------------------------------------------------------------------
+       Segmentation violation detected at 五 3月 30 00:05:20 2018 +0800
+--------------------------------------------------------------------------------
+Configuration:
+  Crash Decoding           : Disabled - No sandbox or build area path
+  Crash Mode               : continue (default)
+  Default Encoding         : UTF-8
+  Deployed                 : false
+  Desktop Environment      : XFCE
+  GNU C Library            : 2.26 stable
+  Java Version             : Java 1.8.0_144-b01 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+  MATLAB Architecture      : glnxa64
+  MATLAB Entitlement ID    : 6257193
+  MATLAB Root              : /usr/local/MATLAB/R2018a
+  MATLAB Version           : 9.4.0.813654 (R2018a)
+  Operating System         : "Manjaro Linux"
+  Process ID               : 1155
+  Processor ID             : x86 Family 6 Model 69 Stepping 1, GenuineIntel
+  Session Key              : 44bbb319-da74-462f-b0e8-79d2dd5ab281
+  Static TLS mitigation    : Disabled: Unnecessary 1
+  Window System            : The X.Org Foundation (11906000), display :0.0
+
+Fault Count: 1
+
+
+Abnormal termination
+
+Register State (from fault):
+  RAX = 0000000000000000  RBX = 00007f3007ff7cf0
+  RCX = 000000000097b3c0  RDX = 000000000097b3c0
+  RSP = 00007f30836ed6b8  RBP = 0000000000000002
+  RSI = 00007fff62861f48  RDI = 0000000000000002
+
+   R8 = 00007f30287a2820   R9 = 000000000000002f
+  R10 = 00007f302879c640  R11 = 0000000000000206
+  R12 = 00007fff62861f48  R13 = 000000000097b3c0
+  R14 = 00007f3007ff7cf8  R15 = 0000000000000000
+
+  RIP = 000000000000b4c0  EFL = 0000000000010246
+
+   CS = 0033   FS = 0000   GS = 0000
+
+Stack Trace (from fault):
+[  0] 0x000000000000b4c0                                   <unknown-module>+00000000
+```
+原因是
+```
+This error occurs when your computer cannot load a certain font display library through MATLAB.
+```
+官方给出的解决办法：
+
+https://cn.mathworks.com/matlabcentral/answers/364727-why-does-matlab-crash-on-linux-fedora-26-with-a-segmentation-violation-r2017b-or-later
+
+就是下面的方法
+```
+cd  /usr/local/MATLAB/R2018b   (or wherever you may have installed MATLAB)
+cd bin/glnxa64
+mkdir exclude
+mv libfreetype* exclude/
+```
+当然，我遇到的情况是这样，网上还有一些说`linstdc.so`库和Linux系统自带的版本区别造成的，我也按照方法改成系统的了，但这个不是我遇到的问题解决办法，如果大家遇到了一些crash，发送报给给support也是个不错的选择。
