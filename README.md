@@ -17,9 +17,11 @@
 5. [安装cuDNN](#id4)  
 6. [安装OpenCV](#id5) 
 7. [安装Caffe 1.0](#id6)   
-8. [安装YOLO V3](#id7)
-9. [安装Protobuf](#id8)
-10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#id9)
+    7.1 Python2 下安装
+    7.2 Python3下安装
+1. [安装YOLO V3](#id7)
+2.  [安装Protobuf](#id8)
+3.  [Linux MATLAB 2018a 安装教程及启动失败解决办法](#id9)
 ---
 ##  1. <span id="reference">参考</span>   
 1. https://blog.csdn.net/s717597589/article/details/79117112/
