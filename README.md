@@ -5,8 +5,8 @@
 *其他环境类似* 
 ```
 硬件环境: CPU i7 / NVIDIA TITAN V
-系统环境：Windows 10 64bit / Ubuntu 16.04 64bit
-软件环境：CUDA9.0 / caffe1.0/
+系统环境：Ubuntu 16.04 64bit
+安装软件：CUDA9.0 / caffe / YOLO V3 / Protobuf / Matlab
 ````
 
 ### 目录
