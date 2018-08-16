@@ -13,12 +13,12 @@
 1. [参考](#参考)
 2. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
 3. [安装NVIDIA驱动](#安装nvidia驱动)   
-4. [安装CUDA 9.0](#安装cuda9.0)   
+4. [安装CUDA 9.0](#安装cuda9)   
 5. [安装cuDNN](#安装cudnn)  
 6. [安装OpenCV](#安装opencv) 
-7. [安装Caffe](#安装Caffe)   
-    7.1 Python2 下安装    
-    7.2 Python3下安装    
+7. [安装Caffe](#安装caffe)   
+    - [Python2 下安装caffe](python2下安装cafe)    
+    - [Python3下安装caffe](python3下安装cafe) 
 8. [安装YOLO V3](#安装yolov3)
 9. [安装Protobuf](#安装protobuf)
 10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
@@ -116,7 +116,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 source  ~./bashrc
 ```
 ---
-## 安装cuda9.0  
+## 安装cuda
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```python
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
@@ -266,7 +266,8 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 
 ---
 ## 安装caffe  
-### Python2.7下安装caffe（推荐） <font color=red>需要Python2.7下安装OpenCV</font>
+### python2下安装cafe
+### *（推荐） <font color=red>需要Python2.7下安装OpenCV</font>*
 #### 装依赖库   
 ```python
 sudo apt-get update
@@ -423,7 +424,7 @@ Q ?= @
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
 
-### Python3下安装Caffe
+### python3下安装cafe
 #### 装依赖库   
 `同Python2.7`
 #### 配置CUDA 及 CUDNN   
