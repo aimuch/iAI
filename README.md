@@ -17,8 +17,8 @@
 5. [安装cuDNN](#安装cudnn)  
 6. [安装OpenCV](#安装opencv) 
 7. [安装Caffe](#安装caffe)   
-    - [Python2 下安装caffe](python2下安装cafe)    
-    - [Python3下安装caffe](python3下安装cafe) 
+    - Python2 下安装caffe  
+    - Python3下安装caffe
 8. [安装YOLO V3](#安装yolov3)
 9. [安装Protobuf](#安装protobuf)
 10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
@@ -266,8 +266,8 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 
 ---
 ## 安装caffe  
-### python2下安装cafe
-### *（推荐） <font color=red>需要Python2.7下安装OpenCV</font>*
+
+### python2下安装cafe（推荐） <font color=red>需要Python2.7下安装OpenCV</font>
 #### 装依赖库   
 ```python
 sudo apt-get update
