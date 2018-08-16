@@ -10,22 +10,22 @@
 ````
 
 ### 目录
-1. [参考](#reference)
-2. [安装Ubuntu和Windows双系统](#id1)   
-3. [安装NVIDIA驱动](#id2)   
-4. [安装CUDA 9.0](#id3)   
+1. [参考](#1.-参考)
+2. [安装Ubuntu和Windows双系统](#2.-安装Ubuntu和Windows双系统)   
+3. [安装NVIDIA驱动](#3.-安装NVIDIA驱动])   
+4. [安装CUDA 9.0](#4.-安装CUDA-9.0)   
 5. [安装cuDNN](#id4)  
 6. [安装OpenCV](#id5) 
 7. [安装Caffe 1.0](#id6)   
 8. [安装YOLO V3](#id7)
 ---
-##  1. <span id="reference">参考</span>   
+##  1. 参考  
 1. https://blog.csdn.net/s717597589/article/details/79117112/
 2. https://blog.csdn.net/balixiaxuetian/article/details/79154013
 3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
 
 ---
-## 2. <span id="id1">安装Ubuntu和Windows双系统</span>    
+## 2.安装Ubuntu和Windows双系统  
 详细的安装双系统就不过多介绍了，可以参考[这篇文章](https://blog.csdn.net/s717597589/article/details/79117112/)，但是在安装过程中有几个问题需要说明：      
 - 安装Ubuntu之前首先要把BIOS的`security boot`关闭，否则会出现NVIDIA驱动安装完以后重启电脑会反复进入登录界面。
  
@@ -34,7 +34,7 @@
 - 重装Ubuntu系统时请早Windows下用EasyUEFI软件将Ubuntu的引导项删除。
 
 ---
-## 3. <span id="id2">安装NVIDIA驱动</span>    
+## 3. 安装NVIDIA驱动   
 
 ### 3.1. **在终端里依次输入以下命令安装驱动所需的依赖包**：   
 ```python
@@ -112,7 +112,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 source  ~./bashrc
 ```
 ---
-## 4. <span id="id3">安装CUDA 9.0</span>    
+## 4. 安装CUDA 9.0  
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
