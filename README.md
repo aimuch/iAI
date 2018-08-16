@@ -423,6 +423,17 @@ Q ?= @
 ```
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
+在python中导入caffe库的时候会提示以下信息：
+```python
+/usr/local/lib/python2.7/dist-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+```
+**解决方法**
+将numpy降版本：
+```python
+pip uninstall numpy
+pip install numpy==1.14.5
+```
+
 
 ### python3下安装cafe
 #### 装依赖库   
