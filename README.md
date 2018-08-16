@@ -419,10 +419,15 @@ TEST_GPUID := 0
 # enable pretty build (comment to see full commands)
 Q ?= @
 ```
+
 #### 在caffe源码目录中修改`Makefile`文件中这一行如下：
-```
+```python
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
+上述中`Makefile.config`和`Makefile`文件都要添加`hdf5`相关选项，否则会提示以下错误：
+![hdf5报错](img/img10.png)
+
+
 在python中导入caffe库的时候会提示以下信息：
 ```python
 /usr/local/lib/python2.7/dist-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
