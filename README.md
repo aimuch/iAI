@@ -116,7 +116,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 source  ~./bashrc
 ```
 ---
-## 安装cuda
+## 安装cuda9
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```python
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
