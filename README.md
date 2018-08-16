@@ -11,9 +11,9 @@
 
 ### 目录
 1. [参考](#1.-参考)
-2. [安装Ubuntu和Windows双系统](#2.-安装ubuntu和windows双系统)   
-3. [安装NVIDIA驱动](#3.-安装nvidia驱动)   
-4. [安装CUDA 9.0](#4.-安装cuda-9.0)   
+2. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
+3. [安装NVIDIA驱动](#安装nvidia驱动)   
+4. [安装CUDA 9.0](#安装cuda9.0)   
 5. [安装cuDNN](#id4)  
 6. [安装OpenCV](#id5) 
 7. [安装Caffe 1.0](#id6)   
