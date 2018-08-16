@@ -10,7 +10,7 @@
 ````
 
 ### 目录
-1. [参考](#1.-参考)
+1. [参考](#参考)
 2. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
 3. [安装NVIDIA驱动](#安装nvidia驱动)   
 4. [安装CUDA 9.0](#安装cuda9.0)   
@@ -31,7 +31,7 @@
 5. https://blog.csdn.net/ouening/article/details/79751393
 
 ---
-## 2. 安装Ubuntu和Windows双系统  
+## 安装Ubuntu和Windows双系统  
 详细的安装双系统就不过多介绍了，可以参考[这篇文章](https://blog.csdn.net/s717597589/article/details/79117112/)，但是在安装过程中有几个问题需要说明：      
 - 安装Ubuntu之前首先要把BIOS的`security boot`关闭，否则会出现NVIDIA驱动安装完以后重启电脑会反复进入登录界面。
  
@@ -40,7 +40,7 @@
 - 重装Ubuntu系统时请早Windows下用EasyUEFI软件将Ubuntu的引导项删除。
 
 ---
-## 3. 安装NVIDIA驱动   
+## 安装NVIDIA驱动   
 
 ### 3.1. **在终端里依次输入以下命令安装驱动所需的依赖包**：   
 ```python
@@ -118,7 +118,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 source  ~./bashrc
 ```
 ---
-## 4. 安装CUDA 9.0  
+## 安装CUDA9.0  
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
