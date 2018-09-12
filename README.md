@@ -23,6 +23,7 @@
 9. [安装YOLO V3](#安装yolov3)
 10. [安装Protobuf](#安装protobuf)
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
+12. [关于Ubuntu 16.04LTS下安装Spyder3的问题](#关于ubuntu-16下安装spyder3的问题)
 ---
 ##  参考  
 1. https://blog.csdn.net/s717597589/article/details/79117112/
@@ -30,6 +31,7 @@
 3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
 4. https://blog.csdn.net/m0_37407756/article/details/70789271
 5. https://blog.csdn.net/ouening/article/details/79751393
+6. https://www.zhihu.com/question/51248022/answer/142596984
 
 ---
 ## 安装Ubuntu和Windows双系统  
@@ -964,3 +966,23 @@ mkdir exclude
 mv libfreetype* exclude/
 ```
 当然，我遇到的情况是这样，网上还有一些说`linstdc.so`库和Linux系统自带的版本区别造成的，我也按照方法改成系统的了，但这个不是我遇到的问题解决办法，如果大家遇到了一些crash，发送报给给support也是个不错的选择。
+
+---
+## 关于ubuntu 16下安装spyder3的问题
+安装pip3：
+```python
+sudo apt install python3-pip
+```
+安装 Spyder 最新版本，目前即为 Spyder 3：
+```python
+pip3 install -U spyder
+```
+命令行下运行即可：
+```python
+spyder3
+```
+若运行时发现报错：`qtpy.PythonQtError: No Qt bindings could be found`
+那就安装 pyqt5（目前最新为5）……：$ 
+```python
+pip3 install -U pyqt5
+```
