@@ -325,8 +325,8 @@ sudo apt-get -y install build-essential cmake git libgtk2.0-dev pkg-config pytho
 添加 CUDA 环境变量   
 ```python
 sudo gedit ~/.bashrc
-export PATH=/usr/local/cuda-8.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda-9.0/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 ```
 Conda 安装依赖模块: 
 ```python
