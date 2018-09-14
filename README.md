@@ -48,13 +48,9 @@
 ### **在终端里依次输入以下命令安装驱动所需的依赖包**：   
 ```python
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
-
 sudo apt-get install --no-install-recommends libboost-all-dev
- 
 sudo apt-get install libopenblas-dev liblapack-dev libatlas-base-dev
- 
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
- 
 sudo apt-get install git cmake build-essential
 ```
 假如有安装包一直下载失败，可以使用：
@@ -116,7 +112,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ```
 保存并退出，运行以下内容使环境变量生效：   
 ```python
-source  ~./bashrc
+source  ~/.bashrc
 ```
 ---
 ## 安装cuda9
@@ -145,7 +141,7 @@ source  ~/.bashrc
 ```
 检验CUDA 是否安装成功，输入：   
 ```python
-cd /usr/local/cuda-9.1/samples/1_Utilities/deviceQuery
+cd /usr/local/cuda-9.0/samples/1_Utilities/deviceQuery
 sudo make
 ./deviceQuery
 ```
