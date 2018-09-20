@@ -23,7 +23,9 @@
 9. [安装YOLO V3](#安装yolov3)
 10. [安装Protobuf](#安装protobuf)
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
-12. [关于Ubuntu 16.04LTS下安装Spyder3的问题](#关于ubuntu-16下安装spyder3的问题)
+12. [Ubuntu系统环境设置问题](./set.md)
+     - [pip/pip3安装报错问题](./set.md#pip和pip3安装报错)
+     - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./set.md#ubuntu-16下安装spyder3)
 ---
 ##  参考  
 1. https://blog.csdn.net/s717597589/article/details/79117112/
@@ -46,7 +48,7 @@
 ## 安装NVIDIA驱动   
 
 ### **在终端里依次输入以下命令安装驱动所需的依赖包**：   
-```python
+```shell
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 sudo apt-get install --no-install-recommends libboost-all-dev
 sudo apt-get install libopenblas-dev liblapack-dev libatlas-base-dev
@@ -54,115 +56,115 @@ sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev
 sudo apt-get install git cmake build-essential
 ```
 假如有安装包一直下载失败，可以使用：
-```python
+```shell
 sudo apt-get update 
 ```
 ### **禁用Ubuntu自带的显卡驱动**：  
 Ubuntu 16.04 自带 nouveau显卡驱动，这个自带的驱动是不能用于CUDA的，需要卸载重装。假如重装过显卡驱动则可跳过这一步。没有重装过的就跟着我的步骤往下走。
 
 首先得禁用Ubuntu自带的显卡驱动nouveau，只有在禁用掉 nouveau 后才能顺利安装 NVIDIA 显卡驱动，禁用方法就是在 `/etc/modprobe.d/blacklist-nouveau.conf`文件中添加一条禁用命令，首先需要打开该文件，通过以下命令打开：   
-```
+```shell
 sudo gedit /etc/modprobe.d/blacklist-nouveau.conf
 ```
 打开后发现该文件中没有任何内容，**写入**：
-```python
+```shell
 blacklist nouveau  
 options nouveau modeset=0
 ```
 保存后关闭文件，注意此时还需执行以下命令使禁用 nouveau 真正生效：
-```python
+```shell
 sudo update-initramfs -u
 ```
 **重启电脑**，然后输入以下命令，若什么都没有显示则禁用nouveau生效了：
-```python
+```shell
 lsmod | grep nouveau
 ```
 ### **安装NVIDIA官方显卡驱动**：
 通过`Ctrl + Alt + F1`进入文本模式，输入帐号密码登录，通过`Ctrl + Alt + F7`可返回图形化模式，在文本模式登录后首先关闭桌面服务：
-```python
+```shell
 sudo service lightdm stop
 ```
 这里会要求你输入账户的密码。然后通过`Ctrl + Alt + F7`发现已无法成功返回图形化模式，说明桌面服务已成功关闭，注意此步对接下来的 nvidia 驱动安装尤为重要，必需确保桌面服务已关闭。按`Ctrl + Alt + F1`再次进入python文本模式，先卸载之前的显卡驱动：    
-```python
+```shell
 sudo apt-get purge nvidia*
 ```
 加入官方ppa源：   
-```python
+```shell
 sudo add-apt-repository ppa:graphics-drivers/ppa
 ```
 之后刷新软件库并安装显卡驱动：   
-```python
+```shell
 sudo apt-get update
 sudo apt-get install nvidia-390 nvidia-settings nvidia-prime  #大部分NVIDIA驱动可以安装390
 ```
 **重启电脑**，通过下面命令查看显卡信息：   
-```python
+```shell
 nvidia-settings
 ```
 
 ### **配置环境变量**：
 使用 gedit 命令打开配置文件：
-```python
+```shell
 sudo gedit ~/.bashrc
 ```
 打开后在**文件最后加入**以下两行内容：   
-```python
+```shell
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ```
 保存并退出，运行以下内容使环境变量生效：   
-```python
+```shell
 source  ~/.bashrc
 ```
 ---
 ## 安装cuda9
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
-```python
+```shell
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
 ```
 执行此命令约1分钟后会出现安装协议要你看，刚开始是0%，此时长按回车键让此百分比增长，直到100%，然后按照提示操作即可，先输入 accept ，是否安装显卡驱动选择no:   
-```python
+```shell
 Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
 (y)es/(n)o/(q)uit: n
 ```
 其余的一律按默认或者y进行安装即可。    
 安装完成后配置CUDA环境变量，使用 gedit 命令打开配置文件：   
-```python
+```shell
 sudo gedit ~/.bashrc
 ```
 在该文件最后加入以下两行并保存：   
-```python
+```shell
 export PATH=/usr/local/cuda/bin:$PATH    #/usr/local/cuda和/usr/local/cuda-9.0是同一个文件夹，两者通过软连接相连
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```
 使该配置生效：   
-```python
+```shell
 source  ~/.bashrc
 ```
 检验CUDA 是否安装成功，输入：   
-```python
+```shell
 cd /usr/local/cuda-9.0/samples/1_Utilities/deviceQuery
 sudo make
 ./deviceQuery
 ```
 卸载CUDA 9.1 的方法：   
-```python
+```shell
 cd /usr/local/cuda/bin
 sudo ./uninstall_cuda_9.0.pl
 ```
 卸载完成后如果显示：`Not removing directory, it is not empty: /usr/local/cuda-9.0` ，假如需要重装CUDA 9.0的话就把这个文件夹删除。在/usr/local/路劲下输入：
-```python
+```shell
 sudo rm -r cuda-9.0
 ```
 ---
 ## 安装cudnn   
 
 解压cuNDD v7.zip到当前文件夹，得到一个cudn 文件夹，该文件夹下有include 和 lib64 两个文件夹，命令行进入其中的include 文件夹路径下，然后进行以下操作：
-```python
+```shell
 sudo cp cudnn.h /usr/local/cuda/include/ #复制头文件
 ```
 然后命令行进入 cudn/lib64 文件夹路径下，运行以下命令：
-```python
+```shell
 sudo cp lib* /usr/local/cuda/lib64/ #复制动态链接库
 cd /usr/local/cuda/lib64/ 
 sudo rm -rf libcudnn.so libcudnn.so.7  #删除原有动态文件
@@ -171,19 +173,19 @@ sudo ln -s libcudnn.so.7 libcudnn.so  #生成软链接
 ```
 随后需要将路径/usr/local/cuda/lib64 添加到动态库，分两步：
 1）安装vim。输入： 
-```python
+```shell
 sudo apt-get install vim-gtk
 ```
 2）输入：
-```python
+```shell
 sudo vim /etc/ld.so.conf.d/cuda.conf
 ```
 编辑状态下，输入：   
-```python
+```shell
 /usr/local/cuda/lib64
 ```
 保存退出，输入下面代码使其生效：
-```python
+```shell
 sudo ldconfig
 ```
 安装完成后可用`nvcc -V`命令验证是否安装成功，若出现以下信息则表示安装成功：
@@ -196,20 +198,20 @@ Cuda compilation tools, release 9.0, V9.0.85
 ---
 ## 安装anaconda
 下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
-```
+```shell
 chmod a+x ./Anaconda3-5.2.0-Linux-x86_64.sh
 ```
 或者
-```
+```shell
 sudo ./Anaconda3-5.2.0-Linux-x86_64.sh
 ```
 **conda install -c menpo opencv3命令有时候会显示权限不够permission issue。这是因为你安装anaconda时用的是sudo，这时候需要修改anaconda3文件夹权限**:
-```python
+```shell
 sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
 ```
 
 **若需要将anaconda屏蔽**
-```
+```shell
 sudo gedit ~/.bashrc
 ```
 然后屏蔽后的结果如下：    
@@ -217,7 +219,7 @@ sudo gedit ~/.bashrc
 `#export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH`
 `#export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m`
 最后命令行输入以下命令：
-```
+```shell
 source ~/.bashrc
 ```
 **必须重启电脑**
@@ -232,14 +234,14 @@ ln -s /home/andy/anaconda3/bin/deactivate /usr/local/bin/deactivate
 - `/usr/bin`下面的都是系统预装的可执行程序，会随着系统升级而改变    
 - `/usr/local/bin`目录是给用户放置自己的可执行程序的地方，推荐放在这里，不会被系统升级而覆盖同名文件    
 
-使用时，是需要用`source deactivate`
+使用时，是需要用`source deactivate`。
 
 
 
 ---
 ## 安装opencv   
 进入官网 : http://opencv.org/releases.html , 选择 3.4.0 版本的 sources , 下载 opencv-3.4.0.zip 。随后解压到你要安装的位置，命令行进入已解压的文件夹 opencv-3.4.0 目录下，执行：
-```python
+```shell
 mkdir build # 创建编译的文件目录
 cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
@@ -250,7 +252,7 @@ make -j8  #编译
 - 在编译opencv3.4.0源码的时候，会下载诸如ippicv_2017u3_lnx_intel64_20170822.tgz的东西，如果下载失败，请下载离线包（source文件夹中），解压该文件，会得到.cache文件夹，用此文件夹覆盖opencv源码文件夹下的.cache文件夹，再重新编译即可。.cahce文件夹为隐藏文件，可用ctrl+h查看。
 
 - 若本机里安装了anaconda，则需要在环境变量(`sudo gedit ~/.bashrc`)中加入：
-```python
+```shell
 # added by Anaconda3 installer
 export PATH="/home/andy/anaconda3/bin:$PATH"
 export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
@@ -258,45 +260,45 @@ export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
 export PATH="$PATH:$HOME/bin"
 ```
 在98%的时候会等很久很久，属于正常现象。编译过程很顺利，编译成功后安装：   
-```python
+```shell
 sudo make install #安装
 ```
 安装完成后通过查看 opencv 版本验证是否安装成功：   
-```python
+```shell
 pkg-config --modversion opencv
 ```
 接下来要给系统加入opencv库的环境变量:    
 用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
-```python
+```shell
 sudo gedit /etc/ld.so.conf
 ```
 在文件中加上一行:
-```python
+```shell
 /usr/local/lib
 ```
 `/user/local`是opencv安装路径 就是makefile中指定的安装路径.
 
 再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
-```python
+```shell
 sudo gedit /etc/bash.bashrc
 ```
 在文件末尾加入： 
-```python
+```shell
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
 export PKG_CONFIG_PATH 
 ```
 运行`source /etc/bash.bashrc`使其生效。
 
 卸载OpenCV的方法：进入OpenCV解压文件夹中的buid 文件夹：   
-```python
+```shell
 cd /home/ccem/opencv-3.4.0/build
 ```
 运行：   
-```python
+```shell
 sudo make uninstall
 ```
 然后把整个opencv-3.4.0文件夹都删掉。随后再运行：   
-```python
+```shell
 sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 /usr/include/opencv /usr/include/opencv2 /usr/local/share/opencv \
 /usr/local/share/OpenCV /usr/share/opencv /usr/share/OpenCV \
@@ -309,7 +311,7 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 
 ### python2下安装cafe（推荐） <font color=red>需要Python2.7下安装OpenCV</font>
 #### 装依赖库   
-```python
+```shell
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y build-essential cmake git pkg-config
@@ -323,13 +325,13 @@ sudo apt-get -y install build-essential cmake git libgtk2.0-dev pkg-config pytho
 ```
 #### 配置CUDA 及 CUDNN   
 添加 CUDA 环境变量   
-```python
+```shell
 sudo gedit ~/.bashrc
 export PATH=/usr/local/cuda-9.0/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 ```
 Conda 安装依赖模块: 
-```python
+```shell
 conda install -c menpo opencv3
 conda install libgcc
 conda install protobuf
@@ -338,7 +340,7 @@ conda install protobuf
 方法同: [安装OpenCV](#安装opencv) 
 
 #### 在caffe源码目录中新建`Makefile.config`文件，添加内容如下：
-```python
+```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
 
@@ -461,7 +463,7 @@ Q ?= @
 ```
 
 #### 在caffe源码目录中修改`Makefile`文件中这一行如下：
-```python
+```shell
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
 上述中`Makefile.config`和`Makefile`文件都要添加`hdf5`相关选项，否则会提示以下错误：
@@ -469,12 +471,12 @@ LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl
 
 
 在python中导入caffe库的时候会提示以下信息：
-```python
+```shell
 /usr/local/lib/python2.7/dist-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
 ```
 **解决方法**
 将numpy降版本：
-```python
+```shell
 pip uninstall numpy
 pip install numpy==1.14.5
 ```
@@ -487,19 +489,19 @@ pip install numpy==1.14.5
 `同Python2.7`da install protobuf
 
 **conda install -c menpo opencv3命令有时候会显示权限不够permission issue。这是因为你安装anaconda时用的是sudo，这时候需要修改anaconda3文件夹权限**:
-```python
+```shell
 sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
 ```
 添加Anaconda CPLUS路径:   
-```python
+```shell
 export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
 ```
 配置 boost_python   
-```python
+```shell
 cd /usr/lib/x86_64-linux-gnu && sudo ln -s libboost_python-py35.so libboost_python3.so
 ```
 在caffe源码目录中修改Makefile.config文件如下：
-```python
+```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
 
@@ -574,7 +576,7 @@ Q ?= @
 ```
 
 保存后,开始编译:   
-```python
+```shell
 make all -j $(($(nproc) + 1))
 make test -j $(($(nproc) + 1))
 make runtest -j $(($(nproc) + 1))
@@ -584,7 +586,7 @@ make pycaffe -j $(($(nproc) + 1))
 <font color=red>在编译的时候有可能会提示错误，可能是因为anaconda环境的原因，需要在~/.bashrc中将anaconda的环境变量屏蔽掉,</font> **<font color=red>然后重启电脑</font>** 
 
 添加环境变量
-```python
+```shell
 sudo gedit ~/.bashrc
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
@@ -595,7 +597,7 @@ export PYTHONPATH=~/caffe/python:$PYTHONPATH
 
 **解决：**
 
-```
+```shell
 export LD_LIBRARY_PATH=/usr/local/lib
 ```
 
@@ -608,7 +610,7 @@ export LD_LIBRARY_PATH=/usr/local/lib
 首先找到`usr/local/cuda-8.0/lib64/`目录，搜索` libcudnn `然后发现两个文件`libcudnn.so.5`和`libcudnn.so.5.0.5 `理论上只有一个`libcudnn.so.5.0.5`
 
 终端执行:
-```
+```shell
 ln -sf /usr/local/cuda-8.0/lib64/libcudnn.so.5.0.5 /usr/local/cuda-8.0/lib64/libcudnn.so.5 
 ```
 再`sudo ldconfig`时就可以了，这时候会发现usr/local/cuda-8.0/lib64/目录下只有`libcudnn.so.5.0.5`文件了，`libcudnn.so.5`消失了。
@@ -616,7 +618,7 @@ ln -sf /usr/local/cuda-8.0/lib64/libcudnn.so.5.0.5 /usr/local/cuda-8.0/lib64/lib
 <table><tr><td bgcolor=Violet>错误：.build_release/tools/caffe: error while loading shared libraries: libhdf5.so.10: cannot open shared object file: No such file    or directory</td></tr></table>
 
 **解决：**
-```
+```shell
 echo "export LD_LIBRARY_PATH=/home/abc/anaconda2/lib:$LD_LIBRARY_PATH" >>~/.bashrc
 ```
 <table><tr><td bgcolor=Violet>/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFOpen@LIBTIFF_4.0’未定义的引用
@@ -630,7 +632,7 @@ make:*** [.build_release/tools/extract_features.bin]错误1</td></tr></table>
 **解决：**
 
 这个可能是权限问题，采用以下指令：
-```python
+```shell
 sudo su； 
 make all ； 
 make test ； 
@@ -653,29 +655,26 @@ make:***
 
 **解决：**
 可能是我们没有安装所谓的skimage.io模块，所以可以用以下的命令来安装：
-```python
+```shell
 pip install scikit-image
 ```
 关掉终端，重新进入再编译，或者：
-```python
+```shell
 sudo pip install scikit-image
 ```
 另一种方法：
-```python
+```shell
 sudo apt-get install python-skimage
 ```
 <table><tr><td bgcolor=Violet>错误：  
 
 import caffe 
-
 Traceback(most recent call last):   
-
 File"<stdin>", line 1, in <module>     
-
 ImportError:No module named caffe</td></tr></table>
 
 **解决：**
-```python
+```shell
 echo'export PATH="/home/abc/caffe-master/python:$PATH"' >>~/.bashrc
 source~/.bashrc
 ```
@@ -688,7 +687,7 @@ source~/.bashrc
 ---
 ##  安装yolov3  
 
-```python
+```shell
 git clone http://github.com/pjreddie/darknet.git
 cd darknet
 ```
@@ -696,21 +695,21 @@ cd darknet
 ![编译报错](img/img2.png)
 **原因是opencv没有加入到环境变量中，解决方式**
 用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
-```python
+```shell
 sudo gedit /etc/ld.so.conf
 ```
 在文件中加上一行:
-```python
+```shell
 /usr/local/lib
 ```
 `/user/local`是opencv安装路径 就是makefile中指定的安装路径.
 
 再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
-```python
+```shell
 sudo gedit /etc/bash.bashrc
 ```
 在文件末尾加入： 
-```python
+```shell
 PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
 export PKG_CONFIG_PATH 
 ```
@@ -733,19 +732,19 @@ https://developers.google.com/protocol-buffers/
 ![下载界面](img/img3.png)
 ![GitHub界面](img/img4.png)
 在release下可以找到所有的版本，我这里用的是2.4.1版本，复制protobuf-2.4.1.tar.gz的链接然后用wget命令下载。
-```python
+```shell
 wget https://github.com/google/protobuf/releases/download/v2.4.1/protobuf-2.4.1.tar.gz
 ```
 #### 解压
-```python
+```shell
 tar -zxvf protobuf-2.4.1.tar.gz
 ```
 #### 编译/安装
-```python
+```shell
 cd protobuf-2.4.1
 ```
 （可以参考README思路来做。）
-```python
+```shell
 ./configure
 make
 make check  #(check结果可能会有错误，但不用管她，因为暂时那些功能用不到)
@@ -754,24 +753,24 @@ make install
 （完了之后会在 /usr/local/bin 目录下生成一个可执行文件 protoc）
 
 #### 检查安装是否成功
-```python
+```shell
 protoc --version
 ```
 如果成功，则会输出版本号信息。如果有问题，则会输出错误内容。
 
 #### 错误及解决方法
-```python
+```shell
 protoc: error while loading shared libraries: libprotoc.so.8: cannot open shared
 ```
 **错误原因**：
 protobuf的默认安装路径是/usr/local/lib，而/usr/local/lib 不在Ubuntu体系默认的 LD_LIBRARY_PATH 里，所以就找不到该lib
 解决方法：
 1). 创建文件`sudo gedit /etc/ld.so.conf.d/libprotobuf.conf`，在该文件中输入如下内容：
-```python
+```shell
 /usr/local/lib
 ```
 2). 执行命令
-```python
+```shell
 sudo ldconfig 
 ```
 这时，再运行protoc --version 就可以正常看到版本号了
@@ -800,21 +799,21 @@ protoc-c --c_out=. test.proto
 如果在c_out指定目录下能够生成 test.pb-c.c 和 test.pb-c.h 这两个文件则说明安装成功了。
 
 ### Protobuf的使用示例
-```python
+```shell
 touch person.proto
 ```
 输入如下内容：
-```python
+```vim
 message Person {
   required string name = 1;
   required int32 id = 2;
 }
 ```
 编译.proto文件
-```python
+```shell
 protoc-c --c_out=. person.proto
 ```
-```python
+```shell
 touch main.c
 ```
 输入如下代码：
@@ -852,14 +851,14 @@ void main()
  
  ```
 编译
-```python
+```shell
 gcc person.pb-c.c main.c -lprotobuf-c
  ```
 执行` ./a.out`，输出结果如下：
-id = 1314
-name = lily
-id = 1314
-name = lily
+`id = 1314`
+`name = lily`
+`id = 1314`
+`name = lily`
 
 
 ---
@@ -873,7 +872,7 @@ matlab2018a 文件在下面吾爱破解给出：https://www.52pojie.cn/thread-71
 crack文件里面有密钥、许可证文件和需要替换的文件，和win版本是一样的。
 
 （1）在安装包目录下打开Linux终端，执行下列命令：
-```python
+```shell
 sudo mkdir /mnt/matlab
 sudo mount -o loop R2018a_glnxa64_dvd1.iso /mnt/matlab
 cd /mnt/
@@ -882,17 +881,17 @@ sudo ./mnt/matlab/install
 经过上面步骤就能看到安装界面了，默认安装路径在/usr/local/MATLAB/R2018a/ ，
 
 （2）注意，上面只是挂载了第一个安装包，等安装到60%左右的时候会提示插入第二张CD，此时在刚才安装包目录下再次打开一个终端，执行
-```python
+```shell
 sudo mount -o loop R2018a_glnxa64_dvd2.iso /mnt/matlab
 ```
 挂载第二张CD。 
 （3）安装完成后，将crack里面的R2018a/bin 文件复制替换到安装目录下/usr/local/MATLAB/R2018a/ 
 ![下载界面](img/img9.png)
-```python
+```shell
 sudo cp -rvf R2018a/bin /usr/local/MATLAB/R2018a/
 ```
 （4）接下来在/usr/local/MATLAB/R2018a/bin 目录下打开matlab
-```python
+```shell
 sudo ./matlab
 ```
 指向许可证文件，激活，等下再次启动MATLAB，之后我自己的就出错了，转达下面部分讨论的内容。
@@ -947,7 +946,7 @@ Stack Trace (from fault):
 [  0] 0x000000000000b4c0     <unknown-module>+00000000
 ```
 原因是
-```python
+```shell
 This error occurs when your computer cannot load a certain font display library through MATLAB.
 ```
 官方给出的解决办法：
@@ -955,30 +954,10 @@ This error occurs when your computer cannot load a certain font display library 
 https://cn.mathworks.com/matlabcentral/answers/364727-why-does-matlab-crash-on-linux-fedora-26-with-a-segmentation-violation-r2017b-or-later
 
 就是下面的方法
-```python
+```shell
 cd  /usr/local/MATLAB/R2018b   (or wherever you may have installed MATLAB)
 cd bin/glnxa64
 mkdir exclude
 mv libfreetype* exclude/
 ```
 当然，我遇到的情况是这样，网上还有一些说`linstdc.so`库和Linux系统自带的版本区别造成的，我也按照方法改成系统的了，但这个不是我遇到的问题解决办法，如果大家遇到了一些crash，发送报给给support也是个不错的选择。
-
----
-## 关于ubuntu 16下安装spyder3的问题
-安装pip3：
-```python
-sudo apt install python3-pip
-```
-安装 Spyder 最新版本，目前即为 Spyder 3：
-```python
-pip3 install -U spyder
-```
-命令行下运行即可：
-```python
-spyder3
-```
-若运行时发现报错：`qtpy.PythonQtError: No Qt bindings could be found`
-那就安装 pyqt5（目前最新为5）……：$ 
-```python
-pip3 install -U pyqt5
-```
