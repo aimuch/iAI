@@ -225,10 +225,10 @@ source ~/.bashrc
 **必须重启电脑**
 
 当需要**重新使用anaconda的时候**，只需要将anaconda的执行文件**软连接**到`/usr/local/bin`里，注意**这里要用绝对路径，否则不起作用**，如：
-```
-ln  -s  /home/andy/anaconda3/bin/conda  /usr/local/bin/conda
-ln  -s  /home/andy/anaconda3/bin/activate  /usr/local/bin/activate
-ln  -s  /home/andy/anaconda3/bin/deactivate  /usr/local/bin/deactivate
+```shell
+sudo ln  -s  /home/andy/anaconda3/bin/conda  /usr/local/bin/conda
+sudo ln  -s  /home/andy/anaconda3/bin/activate  /usr/local/bin/activate
+sudo ln  -s  /home/andy/anaconda3/bin/deactivate  /usr/local/bin/deactivate
 ```
 首先注意usr 指 Unix System Resource，而不是User,    
 - `/usr/bin`下面的都是系统预装的可执行程序，会随着系统升级而改变    
