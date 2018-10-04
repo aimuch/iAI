@@ -215,9 +215,9 @@ sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
 sudo gedit ~/.bashrc
 ```
 然后屏蔽后的结果如下：    
-`#export PATH="/home/andy/anaconda3/bin:$PATH"`
-`#export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH`
-`#export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m`
+`#export PATH="/home/andy/anaconda3/bin:$PATH"`     
+`#export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH`     
+`#export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m`     
 最后命令行输入以下命令：
 ```shell
 source ~/.bashrc
