@@ -224,17 +224,17 @@ source ~/.bashrc
 ```
 **必须重启电脑**
 
-当需要**重新使用anaconda的时候**，只需要将anaconda的执行文件**软连接**到`/usr/bin`里，如：
+当需要**重新使用anaconda的时候**，只需要将anaconda的执行文件**软连接**到`/usr/local/bin`里，注意**这里要用绝对路径，否则不起作用**，如：
 ```
-ln -s /home/andy/anaconda3/bin/conda /usr/local/bin/conda
-ln -s /home/andy/anaconda3/bin/activate /usr/local/bin/activate
-ln -s /home/andy/anaconda3/bin/deactivate /usr/local/bin/deactivate
+ln  -s  /home/andy/anaconda3/bin/conda  /usr/local/bin/conda
+ln  -s  /home/andy/anaconda3/bin/activate  /usr/local/bin/activate
+ln  -s  /home/andy/anaconda3/bin/deactivate  /usr/local/bin/deactivate
 ```
 首先注意usr 指 Unix System Resource，而不是User,    
 - `/usr/bin`下面的都是系统预装的可执行程序，会随着系统升级而改变    
 - `/usr/local/bin`目录是给用户放置自己的可执行程序的地方，推荐放在这里，不会被系统升级而覆盖同名文件    
 
-使用时，是需要用`source deactivate`。
+**使用**时，是需要用`source conda`、`source activate`、`source deactivate`。
 
 
 
