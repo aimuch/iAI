@@ -422,7 +422,7 @@ make test -j $(($(nproc) + 1))
 make runtest -j $(($(nproc) + 1))
 make pycaffe -j $(($(nproc) + 1))
 ```
-runtest之后成功成功的界面如下：
+runtest之后成功成功的界面如下:    
 ![png](./img/caffe_install.png)
 
 这时如果之前的配置或安装出错，那么编译就会出现各种各样的问题，所以前面的步骤一定要细心。假如编译失败可对照出现的问题Google解决方案，再次编译之前使用`make clean`命令清除之前的编译，报错：`nothing
