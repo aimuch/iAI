@@ -430,7 +430,7 @@ PYTHON_LIB := /usr/lib
 # PYTHON_LIB += $(shell brew --prefix numpy)/lib
 
 # Uncomment to support layers written in Python (will link against Python libs)
-# WITH_PYTHON_LAYER := 1
+WITH_PYTHON_LAYER := 1
 
 # Whatever else you find you need goes here.
 INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
