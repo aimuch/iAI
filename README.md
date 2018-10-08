@@ -339,6 +339,95 @@ conda install protobuf
 #### <font color=red>需要Python2.7下安装OpenCV</font>
 方法同: [安装OpenCV](#安装opencv) 
 
+**首先cd 到你要安装的路径下运行**：
+```shell
+git clone https://github.com/BVLC/caffe.git
+```
+这时候会出现一个caffe文件夹。命令行进入此文件夹，运行：
+```shell
+sudo cp Makefile.config.example Makefile.config
+```    
+此命令是将 Makefile.config.example 文件复制一份并更名为 Makefile.config ，复制一份的原因是编译 caffe 时需要的是 Makefile.config 文件，而Makefile.config.example 只是caffe 给出的配置文件例子，不能用来编译 caffe。   
+
+**然后修改 Makefile.config 文件**，在 caffe 目录下打开该文件：
+```shell
+sudo gedit Makefile.config
+```
+修改 Makefile.config 文件内容：   
+**应用 cudnn**   
+将：`#USE_CUDNN := 1`修改为：`USE_CUDNN := 1`   
+
+**应用 opencv 3 版本**   
+将：`#OPENCV_VERSION := 3 `修改为：`OPENCV_VERSION := 3`   
+**使用 python 接口**
+将： `#WITH_PYTHON_LAYER := 1`修改为`WITH_PYTHON_LAYER := 1`   
+**修改 python 路径**
+将：   
+`INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include`   
+`LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib `   
+修改为： 
+`INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial`
+`LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial  `
+
+此python路径为系统自带python的路径，假如想使用Anaconda的python的话需要在其他地方修改。
+
+**去掉compute_20**
+找到
+```shell
+# CUDA architecture setting: going with all of them.
+# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+# For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+            -gencode arch=compute_20,code=sm_21 \
+            -gencode arch=compute_30,code=sm_30 \
+            -gencode arch=compute_35,code=sm_35 \
+            -gencode arch=compute_50,code=sm_50 \
+            -gencode arch=compute_52,code=sm_52 \
+            -gencode arch=compute_60,code=sm_60 \
+            -gencode arch=compute_61,code=sm_61 \
+            -gencode arch=compute_61,code=compute_61
+```
+改为：
+```shell
+# CUDA architecture setting: going with all of them.
+# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+# For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
+            -gencode arch=compute_35,code=sm_35 \
+            -gencode arch=compute_50,code=sm_50 \
+            -gencode arch=compute_52,code=sm_52 \
+            -gencode arch=compute_60,code=sm_60 \
+            -gencode arch=compute_61,code=sm_61 \
+            -gencode arch=compute_61,code=compute_61
+```
+由于CUDA 9.x +并不支持compute_20，此处不修改的话编译caffe时会报错：
+`nvcc fatal   : Unsupported gpu architecture 'compute_20'`
+然后修改 caffe 目录下的 Makefile 文件（修改的地方找起来比较困难的话可以复制到word里查找）：
+将：`NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)`
+替换为：`NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)`
+   
+将：`LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5`
+改为：`LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial`
+
+   至此caffe配置文件修改完毕，可以开始编译了。假如显卡不是feimi架构的可以输入如下命令防止出现Unsupported gpu architecture 'compute_20'的问题：
+```shell
+cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CUDA_GENERATION=Kepler ..
+```
+**在 caffe 目录**下执行 ：
+```shell
+make all -j $(($(nproc) + 1))
+make test -j $(($(nproc) + 1))
+make runtest -j $(($(nproc) + 1))
+make pycaffe -j $(($(nproc) + 1))
+```
+   这时如果之前的配置或安装出错，那么编译就会出现各种各样的问题，所以前面的步骤一定要细心。假如编译失败可对照出现的问题Google解决方案，再次编译之前使用`make clean`命令清除之前的编译，报错：`nothing
+ to be done for all`就说明没有清除之前的编译。编译成功后可运行测试：
+```shell
+make runtest -j8
+```
+
 #### 在caffe源码目录中新建`Makefile.config`文件，添加内容如下：
 ```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
