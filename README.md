@@ -365,7 +365,7 @@ sudo gedit Makefile.config
 将：   
 `INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include`   
 `LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib `   
-修改为： 
+修改为：          
 `INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial`    
 `LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial`
 
