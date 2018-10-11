@@ -27,7 +27,7 @@
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
 13. [深度学习算法程序安装](./source/algorithm_install.md)
-     - [Fast R-CNN编译问题](./source/algorithm_install.md##fast-r-cnn编译问题)
+     - [Faster R-CNN编译问题](./source/algorithm_install.md##faster-r-cnn编译问题)
 ---
 ##  参考  
 1. https://blog.csdn.net/s717597589/article/details/79117112/

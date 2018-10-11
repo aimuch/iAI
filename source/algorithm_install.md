@@ -1,11 +1,11 @@
 # 深度学习算法程序安装
 
-1. [Fast R-CNN编译问题](#fast-r-cnn编译问题)
+1. [Faster R-CNN编译问题](#faster-r-cnn编译问题)
 
 
 ---
-### Fast R-CNN编译问题
-1. Clone the Fast R-CNN repository
+### Faster R-CNN编译问题
+1. Clone the Faster R-CNN repository
 ```shell
 # Make sure to clone with --recursive
 git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
