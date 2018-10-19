@@ -130,6 +130,9 @@ Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
 (y)es/(n)o/(q)uit: n
 ```
 其余的一律按默认或者y进行安装即可。    
+
+![CUDA安装完成](img/cuda_finished.png)
+
 安装完成后配置CUDA环境变量，使用 gedit 命令打开配置文件：   
 ```shell
 sudo gedit ~/.bashrc
