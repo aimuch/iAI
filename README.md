@@ -249,7 +249,7 @@ sudo ln  -s  /home/andy/anaconda3/bin/deactivate  /usr/local/bin/deactivate
 ```shell
 mkdir build # 创建编译的文件目录
 cd build
-cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_JPEG=ON -DBUILD_TIFF=ON -DBUILD_PNG=ON ..
 make -j8  #编译
 ```
 **遇到一下报错信息有两种可能：**
