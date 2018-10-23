@@ -1,8 +1,26 @@
 # Ubuntu 系统环境设置问题
 
 - [Ubuntu 系统环境设置问题](#ubuntu-系统环境设置问题)
+  - [安装python依赖库](#安装python依赖库)
   - [pip和pip3安装报错](#pip和pip3安装报错)
   - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
+
+---
+## 安装python依赖库
+`注意：Python2 的话用pip安装，Python3用pip3安装（总之要知道安装在哪里，有的系统将python软连接到Python3上了）`
+```shell
+pip install scipy numpy scikit-image scikit-learn jupyter notebook matplotlib pandas
+```
+DGX-ONE服务器下安装：
+```shell
+apt-get install scipy
+apt-get install numpy
+apt-get install python-skimage(install skimage)
+(pspnet): install matio
+```
+
+
+
 
 ---
 ## pip和pip3安装报错

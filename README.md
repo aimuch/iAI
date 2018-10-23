@@ -24,6 +24,7 @@
 10. [安装Protobuf](#安装protobuf)
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 12. [Ubuntu系统环境设置问题](./source/env_set.md)
+     - [安装python依赖库](./source/env_set.md#安装python依赖库)
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
 13. [深度学习算法程序安装](./source/algorithm_install.md)
@@ -992,6 +993,11 @@ sudo cp -rvf R2018a/bin /usr/local/MATLAB/R2018a/
 sudo ./matlab
 ```
 指向许可证文件，激活，等下再次启动MATLAB，之后我自己的就出错了，转达下面部分讨论的内容。
+
+```shell
+sudo ln -s /usr/local/MATLAB/R2018a/bin/matlab /usr/local/bin/matlab(start matlab anywhere)    
+cp -r /home/adas2/Linux_matlab2018a/Matlab2018aLinux64Crack/R2018a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so /usr/local/MATLAB/R2018a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so
+```
 
 全部安装完matlab2018a之后启动报错，将crash报给了MathWorks Support，很快回复了，按照里面提供的方法解决了，真是佩服MathWorks的服务（惭愧为了使用simulink使用db，平时数值计算还是用octave或者Python）
 
