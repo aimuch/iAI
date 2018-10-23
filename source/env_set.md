@@ -11,7 +11,7 @@
 ```shell
 pip install scipy numpy scikit-image scikit-learn jupyter notebook matplotlib pandas
 ```
-DGX-ONE服务器下安装：
+**DGX-ONE**服务器下安装：
 ```shell
 apt-get install scipy
 apt-get install numpy

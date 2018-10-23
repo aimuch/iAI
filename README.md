@@ -985,26 +985,26 @@ sudo ./mnt/matlab/install
 ```shell
 sudo mount -o loop R2018a_glnxa64_dvd2.iso /mnt/matlab
 ```
-挂载第二张CD。 
+挂载第二张CD。    
+
 （3）安装完成后，将crack里面的R2018a/bin 文件复制替换到安装目录下/usr/local/MATLAB/R2018a/ 
 ![下载界面](img/img9.png)
 ```shell
-sudo cp -rvf R2018a/bin /usr/local/MATLAB/R2018a/
+sudo cp -rvf R2018a/bin/* /usr/local/MATLAB/R2018a/bin
 ```
+
+```shell
+sudo ln -s /usr/local/MATLAB/R2018a/bin/matlab /usr/local/bin/matlab    
+```
+
 （4）接下来在/usr/local/MATLAB/R2018a/bin 目录下打开matlab
 ```shell
 sudo ./matlab
 ```
-指向许可证文件，激活，等下再次启动MATLAB，之后我自己的就出错了，转达下面部分讨论的内容。
-
-```shell
-sudo ln -s /usr/local/MATLAB/R2018a/bin/matlab /usr/local/bin/matlab(start matlab anywhere)    
-cp -r /home/adas2/Linux_matlab2018a/Matlab2018aLinux64Crack/R2018a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so /usr/local/MATLAB/R2018a/bin/glnxa64/matlab_startup_plugins/lmgrimpl/libmwlmgrimpl.so
-```
-
+指向许可证文件，激活，等下再次启动MATLAB，之后我自己的就出错了，转达下面部分讨论的内容。    
 全部安装完matlab2018a之后启动报错，将crash报给了MathWorks Support，很快回复了，按照里面提供的方法解决了，真是佩服MathWorks的服务（惭愧为了使用simulink使用db，平时数值计算还是用octave或者Python）
 
-（1）首先贴出我的错误代码提示:
+首先贴出我的错误代码提示:
 ```markdown
 --------------------------------------------------------------------------------
        Segmentation violation detected at 五 3月 30 00:05:20 2018 +0800
