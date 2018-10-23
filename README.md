@@ -828,6 +828,7 @@ protobuf（Protocol Buffer）它是google提供的一个开源库，是一种语
 #### 下载源码安装包
 https://developers.google.com/protocol-buffers/
 ![下载界面](img/img3.png)
+
 ![GitHub界面](img/img4.png)
 在release下可以找到所有的版本，我这里用的是2.4.1版本，复制protobuf-2.4.1.tar.gz的链接然后用wget命令下载。
 ```shell
@@ -881,7 +882,9 @@ sudo ldconfig
 https://code.google.com/p/protobuf-c/
 进入Downloads界面
 ![下载界面](img/img5.png)
+
 ![下载界面](img/img6.png)
+
 ![下载界面](img/img7.png)
 
 不知怎地，wget无法下载途中的`protobuf-c-0.15.tar.gz`文件。
