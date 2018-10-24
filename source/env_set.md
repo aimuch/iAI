@@ -2,6 +2,7 @@
 
 - [Ubuntu 系统环境设置问题](#ubuntu-系统环境设置问题)
   - [安装python依赖库](#安装python依赖库)
+  - [安装chrome浏览器](#安装chrome浏览器)
   - [pip和pip3安装报错](#pip和pip3安装报错)
   - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
 
@@ -19,8 +20,26 @@ apt-get install python-skimage(install skimage)
 (pspnet): install matio
 ```
 
+---
+## 安装chrome浏览器
+***[参考地址](https://blog.csdn.net/qq_30164225/article/details/54632634)***
 
-
+将下载源加入系统源列表:    
+```shell
+sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
+```
+导入谷歌软件公钥:   
+```shell
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+```
+更新源:   
+```shell
+sudo apt-get update
+```
+安装chrome
+```shell
+sudo apt-get install google-chrome-stable
+```
 
 ---
 ## pip和pip3安装报错

@@ -25,10 +25,15 @@
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 12. [Ubuntu系统环境设置问题](./source/env_set.md)
      - [安装python依赖库](./source/env_set.md#安装python依赖库)
+     - [安装chrome浏览器](./source/env_set.md#安装chrome浏览器)
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
 13. [深度学习算法程序安装](./source/algorithm_install.md)
-     - [Faster R-CNN编译问题](./source/algorithm_install.md##faster-r-cnn编译问题)
+     - [Shadowsocks 安装](./source/ss.md#shadowsocks安装)
+       - [说明](./source/ss.md##说明)
+       - [安装shadowsocks-qt5](./source/ss.md##安装shadowsocks-qt5)
+       - [配置chrome浏览器](./source/ss.md##配置chrome浏览器)
+     - [Faster R-CNN编译问题](./source/algorithm_install.md#faster-r-cnn编译问题)
 ---
 ##  参考  
 1. https://blog.csdn.net/s717597589/article/details/79117112/
