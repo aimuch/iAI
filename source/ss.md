@@ -27,7 +27,7 @@ shadowsocks-qt5是ubuntu上一个可视化的界面，操作起来比较方便�
     sudo apt-get install shadowsocks-qt5
     ```
 2. **配置客户端**
-根据自己搭建的服务器或者购买的账号配置客户端，但是注意`Local Address`、`Local Port`和`Local Server Type`要跟下面讲的chrome插件地址和端口一致。
+根据自己搭建的服务器或者购买的账号配置客户端，但是注意`Local Address`、`Local Port`和`Local Server Type`要跟下面讲的chrome插件地址和端口一致。    
 ![ss配置界面](../img/ss.png)
 
 3. **给AppImage方式安装的添加启动图标**
@@ -53,8 +53,8 @@ shadowsocks-qt5是ubuntu上一个可视化的界面，操作起来比较方便�
     Encoding=UTF-8
     StartupNotify=true
     ```
-    其中`icon.png`需要从网上下载也可以从`../source/ss/icon.png`找到，放入ss文件夹中：     
-    ![icon](../source/ss/icon.png)
+    其中`icon.png`需要从网上下载也可以从`../source/ss/icon.png`找到，放入ss文件夹中：        
+    ![icon](../source/ss/icon.png)    
     然后保存退出即可。
 
 
