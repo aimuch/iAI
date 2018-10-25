@@ -15,7 +15,7 @@ $ docker run --runtime=nvidia -e NVIDIA_VISIBLE_DEVICES=0,1 --restart=always --n
 -e NVIDIA_VISIBLE_DEVICES=0,1   ##指定该容器使用的GPU ID，不加该参数默认为all
 --restart=always    ##使容器一直运行，除非手动stop
 --net=host          ##使容器桥接主机的网络
--v /home/inspur/data/:/data	##挂载本地目录，/home/inspur/data/为物理机目录，/data为容器内目录
+-v /home/inspur/data/:/data	##挂载本地目录，/home/inspur/data/为物理机绝对路径，/data为容器内目录(进docker为root权限，所以/data挂在为根目录下)
 -it                 ##交互
 -d                  ##后台运行
 --name caffe-test   ##给该容器命名
