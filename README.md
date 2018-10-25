@@ -8,7 +8,7 @@
 系统环境：Ubuntu 16.04 64bit
 安装软件：CUDA9.0 / caffe / YOLO V3 / Protobuf / Matlab
 ````
-
+---
 ### 目录
 1. [参考](#参考)
 2. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
@@ -29,6 +29,9 @@
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
 13. [深度学习算法程序安装](./source/algorithm_install.md)
+     - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
+       - [docker常用命令](./source/dlFAQ.md#docker常用命令) 
+       - [多显卡训练问题](./source/dlFAQ.md#多显卡训练问题) 
      - [Shadowsocks 安装](./source/ss.md#shadowsocks安装)
        - [说明](./source/ss.md##说明)
        - [安装shadowsocks-qt5](./source/ss.md##安装shadowsocks-qt5)
