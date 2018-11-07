@@ -28,6 +28,8 @@
      - [安装chrome浏览器](./source/env_set.md#安装chrome浏览器)
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
+     - [安装搜狗输入法](./source/env_set.md#ubuntu-16下安装搜狗输入法)
+     - [WPS无法输入中文](./source/env_set.md#wps无法输入中文)
 13. [深度学习算法程序安装](./source/algorithm_install.md)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
        - [docker常用命令](./source/dlFAQ.md#docker常用命令) 

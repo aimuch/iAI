@@ -5,6 +5,8 @@
   - [安装chrome浏览器](#安装chrome浏览器)
   - [pip和pip3安装报错](#pip和pip3安装报错)
   - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
+  - [安装搜狗输入法](#安装搜狗输入法)
+  - [WPS无法输入中文](#wps无法输入中文)
 
 ---
 ## 安装python依赖库
@@ -83,3 +85,54 @@ spyder3
 ```shell
 pip3 install -U pyqt5
 ```
+
+---
+## 安装搜狗输入法
+
+1. [下载linux版搜狗输入法](https://pinyin.sogou.com/linux/?r=pinyin)    
+2. 命令行运行：    
+   ```shell
+    sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
+   ```
+3. System Setting -> Language Support -> Keyboard input method system:`fcitx`    
+4. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
+5. 有可能重启后会出现两个输入法图标，解决方法：    
+   ```shell
+   sudo apt-get remove fcitx-ui-qimpanel
+   ```
+---
+## WPS无法输入中文    
+**问题**：Ubuntu16.04自带的libre对于office的格式兼容性太差，只好安装了WPS。但是WPS文字、表格、演示均不能输入中文。   
+**原因**：环境变量未正确设置。 
+**解决办法**:    
+#### WPS文字
+打开终端输入：
+```shell
+sudo vim /usr/bin/wps
+```    
+添加一下文字到打开的文本中（添加到“#!/bin/bash”下面）：   
+```shell
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE="fcitx"    
+```    
+#### WPS表格
+打开终端输入：
+```shell
+sudo vim /usr/bin/et
+```    
+添加一下文字到打开的文本中（添加到“#!/bin/bash”下面）：
+```shell
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE="fcitx"
+```
+####  WPS演示
+打开终端输入：
+```shell
+sudo vim /usr/bin/wpp
+``` 
+添加一下文字到打开的文本中（添加到“#!/bin/bash”下面）：
+```shell
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE="fcitx"
+```
+修改完后保存，打开相应的程序切换输入法就可以输入中文了。
