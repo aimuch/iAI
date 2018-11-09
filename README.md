@@ -790,16 +790,24 @@ source~/.bashrc
 
 
 
-
-
 ---
 ##  安装yolov3  
 
 ```shell
 git clone http://github.com/pjreddie/darknet.git
 cd darknet
+```    
+修改`Makefile`编译配置文件：    
+```vim
+  GPU=1
+  CUDNN=1
+  OPENCV=1
 ```
-根据YOLO[官方](https://pjreddie.com/darknet/install/)安装指导安装即可，其中若编译的时候用到opencv库的时候，遇到以下报错：
+然后运行一下命令：    
+```bash
+make -j8
+```   
+也可以根据YOLO[官方](https://pjreddie.com/darknet/install/)安装指导安装即可，其中若编译的时候用到opencv库的时候，遇到以下报错：
 ![编译报错](img/img2.png)
 **原因是opencv没有加入到环境变量中，解决方式**
 用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
