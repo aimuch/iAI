@@ -390,13 +390,14 @@ In file included from src/cpp/cuda.cpp:1:0:
     compilation terminated.
     error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
 ```
+![TensorRT报错](img/tensorrt_error.png)
 **原因**   
 显示是找不到cuda.h，根据网上分析是因为用了sudo之后环境变量用的是root的环境变量。    
    
 **解决方案**   
 将cuda的安装路径添加到root的环境变量中，在root角色下安装Python的TensorRT包:   
 ```shell
-sudo vim /etc/profile.d/cuda.sh
+sudo gedit /etc/profile.d/cuda.sh
 ``` 
 添加：  
 
