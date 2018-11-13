@@ -334,7 +334,7 @@ tar -xzvf TensorRT-XXX.tar.gz
 ```
 解压好添加环境变量：    
 ```shell
-vim ~/.bashrc # 打开环境变量文件
+gedit ~/.bashrc # 打开环境变量文件
 ```
 ```shell
 # 将下面三个环境变量写入环境变量文件并保存
