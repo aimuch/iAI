@@ -346,7 +346,7 @@ export CUDNN_INSTALL_DIR=/usr/local/cuda-9.0
 source ~/.bashrc   # 使刚刚修改的环境变量文件生效
 ```
 下面是安装Python的TensorRT包：   
-进到解压的TensorRT目录下的Python目录：   
+进到解压的TensorRT目录下的**Python**目录：   
 ```shell
 # 对于python2
 sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
@@ -354,12 +354,17 @@ sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
 sudo pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```
 **如安装失败请参考文章末尾的解决方案。**   
+
 测试TensorRT是否安装成功：   
 ```shell
 which tensorrt
 ```
-会输出TensorRT的安装路径。   
-然后转到uff目录下安装uff包：   
+会输出TensorRT的安装路径:    
+```shell
+/usr/local/bin/tensorrt
+```
+
+然后转到**uff**目录下安装uff包：   
 ```shell
 # 对于python2
 sudo pip2 install uff-0.1.0rc0-py2.py3-none-any.whl
@@ -370,8 +375,12 @@ sudo pip3 install uff-0.1.0rc0-py2.py3-none-any.whl
 ```shell
 which convert-to-uff
 ```
-会输出uff的安装路径。    
-拷贝lenet5.uff到python相关目录进行验证：   
+会输出uff的安装路径:    
+```shell
+/usr/local/bin/convert-to-uff
+```
+
+拷贝`lenet5.uff`到python相关目录进行验证：   
 ```shell
 sudo cp TensorRT-XXX/data/mnist/lenet5.uff TensorRT-XXX/python/data/mnist/lenet5.uff
 cd TensorRT-XXX/samples/sampleMNIST
