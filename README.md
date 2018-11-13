@@ -17,20 +17,21 @@
 5. [安装cuDNN](#安装cudnn)  
 6. [安装anaconda](#安装anaconda)
 7. [安装OpenCV](#安装opencv) 
-8. [安装Caffe](#安装caffe)   
+8. [安装TensorRT](#安装tensorrt) 
+9. [安装Caffe](#安装caffe)   
     - Python2 下安装caffe  
     - Python3下安装caffe
-9. [安装YOLO V3](#安装yolov3)
-10. [安装Protobuf](#安装protobuf)
-11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
-12. [Ubuntu系统环境设置问题](./source/env_set.md)
+10. [安装YOLO V3](#安装yolov3)
+11. [安装Protobuf](#安装protobuf)
+12. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
+13. [Ubuntu系统环境设置问题](./source/env_set.md)
      - [安装python依赖库](./source/env_set.md#安装python依赖库)
      - [安装chrome浏览器](./source/env_set.md#安装chrome浏览器)
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
      - [安装搜狗输入法](./source/env_set.md#ubuntu-16下安装搜狗输入法)
      - [WPS无法输入中文](./source/env_set.md#wps无法输入中文)
-13. [深度学习算法程序安装](./source/algorithm_install.md)
+14. [深度学习算法程序安装](./source/algorithm_install.md)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
        - [docker常用命令](./source/dlFAQ.md#docker常用命令) 
        - [多显卡训练问题](./source/dlFAQ.md#多显卡训练问题) 
@@ -320,7 +321,94 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 /usr/local/share/OpenCV /usr/share/opencv /usr/share/OpenCV \
 /usr/local/bin/opencv* /usr/local/lib/libopencv
 ```
-把一些残余的动态链接文件和空文件夹删掉。有些文件夹已经被删掉了所以会找不到路径。
+把一些残余的动态链接文件和空文件夹删掉。有些文件夹已经被删掉了所以会找不到路径。    
+
+---
+## 安装TensorRT
+#### 安装步骤
+首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
+安装TensorRT前需要安装Cuda和cudnn，安装步骤可以参考上方。   
+打开下载的TensorRT所在路径，解压下载的tar文件：   
+```shell
+tar -xzvf TensorRT-XXX.tar.gz
+```
+解压好添加环境变量：    
+```shell
+vim ~/.bashrc # 打开环境变量文件
+```
+```shell
+# 将下面三个环境变量写入环境变量文件并保存
+export LD_LIBRARY_PATH=TensorRT解压路径/lib:$LD_LIBRARY_PATH
+export CUDA_INSTALL_DIR=/usr/local/cuda-9.0
+export CUDNN_INSTALL_DIR=/usr/local/cuda-9.0
+```
+```shell
+source ~/.bashrc   # 使刚刚修改的环境变量文件生效
+```
+下面是安装Python的TensorRT包：   
+进到解压的TensorRT目录下的Python目录：   
+```shell
+# 对于python2
+sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
+# 对于python3
+sudo pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
+```
+**如安装失败请参考文章末尾的解决方案。**   
+测试TensorRT是否安装成功：   
+```shell
+which tensorrt
+```
+会输出TensorRT的安装路径。   
+然后转到uff目录下安装uff包：   
+```shell
+# 对于python2
+sudo pip2 install uff-0.1.0rc0-py2.py3-none-any.whl
+# 对于python3
+sudo pip3 install uff-0.1.0rc0-py2.py3-none-any.whl
+```
+测试：   
+```shell
+which convert-to-uff
+```
+会输出uff的安装路径。    
+拷贝lenet5.uff到python相关目录进行验证：   
+```shell
+sudo cp TensorRT-XXX/data/mnist/lenet5.uff TensorRT-XXX/python/data/mnist/lenet5.uff
+cd TensorRT-XXX/samples/sampleMNIST
+make clean
+make
+cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此目录下）
+./sample_mnist
+```
+命令执行顺利即安装成功。   
+   
+**错误**
+在安装`Python`的`TensorRT`包时可能出现的错误：
+```shell
+In file included from src/cpp/cuda.cpp:1:0:
+    src/cpp/cuda.hpp:14:18: fatal error: cuda.h: No such file or directory
+    compilation terminated.
+    error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+```
+**原因**   
+显示是找不到cuda.h，根据网上分析是因为用了sudo之后环境变量用的是root的环境变量。    
+   
+**解决方案**   
+将cuda的安装路径添加到root的环境变量中，在root角色下安装Python的TensorRT包:   
+```shell
+sudo vim /etc/profile.d/cuda.sh
+``` 
+添加：  
+
+```shell
+export PATH=/usr/local/cuda-9.0/bin:$PATH
+```
+
+```shell
+sudo su -
+pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl 
+exit
+```
 
 ---
 ## 安装caffe  
