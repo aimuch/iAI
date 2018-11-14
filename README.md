@@ -345,7 +345,7 @@ export CUDNN_INSTALL_DIR=/usr/local/cuda-9.0
 ```shell
 source ~/.bashrc   # 使刚刚修改的环境变量文件生效
 ```
-下面是安装Python的TensorRT包：   
+**下面是安装Python的TensorRT包：**   
 进到解压的TensorRT目录下的**Python**目录：   
 ```shell
 # 对于python2
@@ -353,7 +353,14 @@ sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
 # 对于python3
 sudo pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```
-**如安装失败请参考文章末尾的解决方案。**   
+或者：
+```shell
+# 对于python2
+pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl --user
+# 对于python3
+pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl --user
+```
+**如安装失败请参考`安装过程中遇到的问题以及解决方法`。**   
 
 测试TensorRT是否安装成功：   
 ```shell
@@ -391,7 +398,7 @@ cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此�
 ```
 命令执行顺利即安装成功。   
    
-**错误**
+#### **安装过程中遇到的问题以及解决方法**
 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```shell
 In file included from src/cpp/cuda.cpp:1:0:
