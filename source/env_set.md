@@ -7,6 +7,7 @@
   - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS无法输入中文](#wps无法输入中文)
+  - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
 
 ---
 ## 安装python依赖库
@@ -136,3 +137,14 @@ export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE="fcitx"
 ```
 修改完后保存，打开相应的程序切换输入法就可以输入中文了。
+
+---
+## 安装赛睿霜冻之蓝v2驱动
+先安装依赖项：   
+```shell
+sudo apt-get install build-essential python-dev libusb-1.0-0-dev libudev-dev
+```
+接着安装驱动：   
+```shell
+sudo pip install rivalcfg
+```
