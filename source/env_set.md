@@ -7,6 +7,7 @@
   - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS无法输入中文](#wps无法输入中文)
+  - [zsh+oh-my-zsh默认shell的最佳替代品](#zsh+oh-my-zsh默认shell的最佳替代品)
 
 ---
 ## 安装python依赖库
@@ -136,3 +137,57 @@ export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE="fcitx"
 ```
 修改完后保存，打开相应的程序切换输入法就可以输入中文了。
+
+---
+## zsh+oh-my-zsh默认shell的最佳替代品   
+### 项目地址   
+**zsh** -----> http://www.zsh.org   
+**oh-my-zsh** ----> http://ohmyz.sh   
+
+### 安装zsh   
+```shell   
+sudo apt-get install zsh
+```
+### 安装oh-my-zsh   
+**via curl**   
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+**via wget**   
+```shell
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
+
+### 设置zsh为系统默认shell   
+**为root用户修改默认shell为zsh**   
+```shell
+chsh -s /bin/zsh root
+```
+**为当前用户修改默认shell为zsh**   
+```shell
+chsh -s /bin/zsh
+# or
+chsh -s `which zsh`
+```
+**恢复命令**   
+```shell
+chsh -s /bin/bash
+```
+
+**add to ~/.zshrc**   
+```shell
+export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:/Applications/MAMP/bin/php/php5.6.10/bin:/Users/GZM/composer:/Users/GZM/.composer/vendor/bin
+#export GOPATH=/Users/GZM/work/go
+#export GOPATH=/Volumes/Transcend/git/360/private_cloud_server_code/tools/gowork/
+#export GOBIN=$GOPATH/bin
+#export GO15VENDOREXPERIMENT=1
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+```
+**插件**   
+
+[Plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)   
+
+**升级**   
+upgrade_oh_my_zsh
