@@ -7,11 +7,9 @@
   - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS无法输入中文](#wps无法输入中文)
-<<<<<<< HEAD
-  - [zsh+oh-my-zsh默认shell的最佳替代品](#zsh+oh-my-zsh默认shell的最佳替代品)
-=======
   - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
->>>>>>> 284db4dbc003eec9e03a652aabcf14d2736fd641
+  - [zsh+oh-my-zsh默认shell的最佳替代品](#zsh+oh-my-zsh默认shell的最佳替代品)
+
 
 ---
 ## 安装python依赖库
@@ -143,8 +141,18 @@ export QT_IM_MODULE="fcitx"
 修改完后保存，打开相应的程序切换输入法就可以输入中文了。
 
 ---
-<<<<<<< HEAD
-## zsh+oh-my-zsh默认shell的最佳替代品   
+## 安装赛睿霜冻之蓝v2驱动
+先安装依赖项：   
+```shell
+sudo apt-get install build-essential python-dev libusb-1.0-0-dev libudev-dev
+```
+接着安装驱动：   
+```shell
+sudo pip install rivalcfg
+```
+
+---
+## zsh+oh-my-zsh默认shell的最佳替代品
 ### 项目地址   
 **zsh** -----> http://www.zsh.org   
 **oh-my-zsh** ----> http://ohmyz.sh   
@@ -196,14 +204,3 @@ LC_ALL=en_US.UTF-8
 
 **升级**   
 upgrade_oh_my_zsh
-=======
-## 安装赛睿霜冻之蓝v2驱动
-先安装依赖项：   
-```shell
-sudo apt-get install build-essential python-dev libusb-1.0-0-dev libudev-dev
-```
-接着安装驱动：   
-```shell
-sudo pip install rivalcfg
-```
->>>>>>> 284db4dbc003eec9e03a652aabcf14d2736fd641
