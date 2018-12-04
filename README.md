@@ -31,7 +31,11 @@
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
      - [安装搜狗输入法](./source/env_set.md#ubuntu-16下安装搜狗输入法)
      - [WPS无法输入中文](./source/env_set.md#wps无法输入中文)
+<<<<<<< HEAD
      - [zsh+oh-my-zsh默认shell的最佳替代品](./source/env_set.md#zsh+oh-my-zsh默认shell的最佳替代品)
+=======
+     - [安装赛睿霜冻之蓝V2驱动](./source/env_set.md#安装赛睿霜冻之蓝v2驱动)
+>>>>>>> 284db4dbc003eec9e03a652aabcf14d2736fd641
 14. [深度学习算法程序安装](./source/algorithm_install.md)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
        - [docker常用命令](./source/dlFAQ.md#docker常用命令) 
