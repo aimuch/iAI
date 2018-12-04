@@ -32,7 +32,7 @@
      - [安装搜狗输入法](./source/env_set.md#ubuntu-16下安装搜狗输入法)
      - [WPS无法输入中文](./source/env_set.md#wps无法输入中文)
      - [安装赛睿霜冻之蓝V2驱动](./source/env_set.md#安装赛睿霜冻之蓝v2驱动)
-     - [zsh+oh-my-zsh默认shell的最佳替代品](./source/env_set.md#zsh+oh-my-zsh默认shell的最佳替代品)
+     - [zsh oh-my-zsh默认shell的最佳替代品](./source/env_set.md#zsh-oh-my-zsh默认shell的最佳替代品)
 14. [深度学习算法程序安装](./source/algorithm_install.md)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
        - [docker常用命令](./source/dlFAQ.md#docker常用命令) 

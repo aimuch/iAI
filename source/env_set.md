@@ -8,7 +8,7 @@
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS无法输入中文](#wps无法输入中文)
   - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
-  - [zsh+oh-my-zsh默认shell的最佳替代品](#zsh+oh-my-zsh默认shell的最佳替代品)
+  - [zsh oh-my-zsh默认shell的最佳替代品](#zsh-oh-my-zsh默认shell的最佳替代品)
 
 
 ---
@@ -152,7 +152,7 @@ sudo pip install rivalcfg
 ```
 
 ---
-## zsh+oh-my-zsh默认shell的最佳替代品
+## zsh oh-my-zsh默认shell的最佳替代品
 ### 项目地址   
 **zsh** -----> http://www.zsh.org   
 **oh-my-zsh** ----> http://ohmyz.sh   
