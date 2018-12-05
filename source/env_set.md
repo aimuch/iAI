@@ -275,7 +275,10 @@ git config --global oh-my-zsh.hide-status 0
   ```
 2. Activate the plugin in `~/.zshrc`:    
   ```shell
-    plugins=( [plugins...] zsh-syntax-highlighting)
+    plugins=(
+      git
+      zsh-syntax-highlighting
+    )
   ```
 3. Source `~/.zshrc` to take changes into account:   
   ```shell
