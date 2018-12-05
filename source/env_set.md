@@ -269,15 +269,15 @@ git config --global oh-my-zsh.hide-status 0
 
 ### 安装zsh-syntax-highlighting    
 **Oh-my-zsh**    
-1. Clone this repository in oh-my-zsh's plugins directory:
+1. Clone this repository in **oh-my-zsh**'s plugins directory:
   ```shell
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
   ```
-2. Activate the plugin in ~/.zshrc:    
+2. Activate the plugin in `~/.zshrc`:    
   ```shell
     plugins=( [plugins...] zsh-syntax-highlighting)
   ```
-3. Source ~/.zshrc to take changes into account:   
+3. Source `~/.zshrc` to take changes into account:   
   ```shell
     source ~/.zshrc
   ```
