@@ -285,13 +285,14 @@ git config --global oh-my-zsh.hide-status 0
     source ~/.zshrc
   ```
 
-**In your ~/.zshrc**
-Simply clone this repository and source the script:
+**In your ~/.zshrc**    
+
+1. Simply clone this repository and source the script:
 ```shell
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
 ```
-Then, enable syntax highlighting in the current interactive shell:    
+2. Then, enable syntax highlighting in the current interactive shell:    
 ```shell
 source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
