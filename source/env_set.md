@@ -472,7 +472,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 显示效果：   
 ![YcmDiags效果](../img/vim8.png)   
 
-7 添加头文件 
+8 添加头文件     
 目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`’-isystem’`。     
 ![添加头文件](../img/vim9.png)   
 以后需要boost库等其他的补全，也需要将相应的路径添加进去。
