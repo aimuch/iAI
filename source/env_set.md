@@ -9,6 +9,10 @@
   - [WPS无法输入中文](#wps无法输入中文)
   - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
   - [zsh oh-my-zsh默认shell的最佳替代品](#zsh-oh-my-zsh默认shell的最佳替代品)
+    - [安装zsh](#安装zsh)
+    - [安装vimrc](#安装vimrc)
+    - [安装oh-my-zsh](#安装oh-my-zsh)
+    - [安装zsh-syntax-highlighting](#安装zsh-syntax-highlighting)
 
 
 ---
@@ -154,24 +158,16 @@ sudo pip install rivalcfg
 ---
 ## zsh oh-my-zsh默认shell的最佳替代品
 ### 项目地址   
-**zsh** -----> http://www.zsh.org   
-**oh-my-zsh** ----> http://ohmyz.sh   
+- **[zsh](http://www.zsh.org)**     
+- **[vimrc](https://github.com/amix/vimrc)**
+- **[oh-my-zsh](http://ohmyz.sh)**      
+- **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)**    
 
 ### 安装zsh   
 ```shell   
 sudo apt-get install zsh
 ```
-### 安装oh-my-zsh   
-**via curl**   
-```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
-**via wget**   
-```shell
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-```
-
-### 设置zsh为系统默认shell   
+#### 设置zsh为系统默认shell   
 **为root用户修改默认shell为zsh**   
 ```shell
 chsh -s /bin/zsh root
@@ -204,3 +200,67 @@ LC_ALL=en_US.UTF-8
 
 **升级**   
 upgrade_oh_my_zsh
+
+
+
+### 安装vimrc    
+**Install for your own user only**    
+The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
+```shell
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+```
+**Install for multiple users**    
+To install for multiple users, the repository needs to be cloned to a location accessible for all the intended users.    
+```shell
+git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
+sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime user0 user1 user2
+# to install for all users with home directories
+sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
+```
+Naturally, /opt/vim_runtime can be any directory, as long as all the users specified have read access.   
+
+
+### 安装oh-my-zsh   
+**via curl**   
+```shell
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+**via wget**   
+```shell
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
+
+
+### 安装zsh-syntax-highlighting    
+**Oh-my-zsh**    
+1. Clone this repository in oh-my-zsh's plugins directory:
+  ```shell
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  ```
+2. Activate the plugin in ~/.zshrc:    
+  ```shell
+    plugins=( [plugins...] zsh-syntax-highlighting)
+  ```
+3. Source ~/.zshrc to take changes into account:   
+  ```shell
+    source ~/.zshrc
+  ```
+
+**In your ~/.zshrc**
+Simply clone this repository and source the script:
+```shell
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+```
+Then, enable syntax highlighting in the current interactive shell:    
+```shell
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
+If git is not installed, download and extract a snapshot of the latest development tree from:   
+```shell
+https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+```
+Note the `source` command must be **at the end** of `~/.zshrc`.
+
+
