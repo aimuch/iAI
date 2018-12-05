@@ -37,6 +37,8 @@
        - [安装vimrc](./source/env_set.md#安装vimrc)
        - [安装oh-my-zsh](./source/env_set.md#安装oh-my-zsh)
        - [安装zsh-syntax-highlighting](./source/env_set.md#安装zsh-syntax-highlighting)
+     - [vim配置](./source/env_set.md#vim配置)
+       - [YouCompleteMe实现vim自动补全](./source/env_set.md#youcompleteme实现vim自动补全)
 14. [深度学习算法程序安装](./source/algorithm_install.md)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
        - [docker常用命令](./source/dlFAQ.md#docker常用命令) 
