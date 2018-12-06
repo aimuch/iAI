@@ -98,7 +98,7 @@ options nouveau modeset=0
 ```shell
 sudo update-initramfs -u
 ```
-**重启电脑**，然后输入以下命令，若什么都没有显示则禁用nouveau生效了：
+然后输入以下命令，若什么都没有显示则禁用nouveau生效了(**重启电脑有可能会出现黑屏，原因是禁用了集成显卡，系统没有显卡驱动**)：    
 ```shell
 lsmod | grep nouveau
 ```
