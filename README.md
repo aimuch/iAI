@@ -253,9 +253,29 @@ sudo ln  -s  /home/andy/anaconda3/bin/deactivate  /usr/local/bin/deactivate
 - `/usr/bin`下面的都是系统预装的可执行程序，会随着系统升级而改变    
 - `/usr/local/bin`目录是给用户放置自己的可执行程序的地方，推荐放在这里，不会被系统升级而覆盖同名文件    
 
-**使用**时，是需要用`source conda`、`source activate`、`source deactivate`。
+**软连接后使用**时：
+首先用以下命令查看anaconda环境(自带为base):    
+```shell
+conda env list
+```
+![conda list](img/conda1.png)    
 
+**激活环境用：**        
+```shell
+conda activate [env name]
+# or
+source activate [env name]
+```
+**注意:** 上面`[env name]`用具体的环境名代替，如`conda activate base`.    
+![conda list](img/conda2.png)    
 
+**取消激活环境用：**    
+```shell
+conda deactivate
+# or
+source deactivate
+```
+![conda list](img/conda3.png)    
 
 ---
 ## 安装opencv   
@@ -267,7 +287,7 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_JPE
 make -j8  #编译
 ```
 **遇到一下报错信息有两种可能：**
-![编译报错](img/img1.png)
+![编译报错](img/img1.png)    
 - 在编译opencv3.4.0源码的时候，会下载诸如ippicv_2017u3_lnx_intel64_20170822.tgz的东西，如果下载失败，请下载离线包（source文件夹中），解压该文件，会得到.cache文件夹，用此文件夹覆盖opencv源码文件夹下的.cache文件夹，再重新编译即可。.cahce文件夹为隐藏文件，可用ctrl+h查看。
 
 - 若本机里安装了anaconda，则需要在环境变量(`sudo gedit ~/.bashrc`)中加入：
