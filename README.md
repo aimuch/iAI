@@ -18,8 +18,8 @@
 6. [安装OpenCV](#安装opencv) 
 7. [安装TensorRT](#安装tensorrt) 
 8. [安装Caffe](#安装caffe)   
-    - Python2 下安装caffe  
-    - Python3下安装caffe
+    - [Python2下安装Caffe](#python2下安装cafe) 
+    - [Python3下安装Caffe](#python3下安装cafe )
 9.  [安装YOLO V3](#安装yolov3)
 10. [安装Protobuf](#安装protobuf)
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
@@ -232,9 +232,11 @@ sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
 sudo gedit ~/.bashrc
 ```
 然后屏蔽后的结果如下：    
-`#export PATH="/home/andy/anaconda3/bin:$PATH"`     
-`#export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH`     
-`#export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m`     
+```vim
+#export PATH="/home/andy/anaconda3/bin:$PATH"
+#export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
+#export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
+```
 最后命令行输入以下命令：
 ```shell
 source ~/.bashrc
@@ -445,7 +447,8 @@ exit
 ---
 ## 安装caffe  
 
-### python2下安装cafe（推荐） <font color=red>需要Python2.7下安装OpenCV</font>
+### Python2下安装Cafe
+**推荐**此方法安装caffeine， <font color=red>需要Python2.7下安装OpenCV</font>
 #### 装依赖库   
 ```shell
 sudo apt-get update
@@ -466,12 +469,7 @@ sudo gedit ~/.bashrc
 export PATH=/usr/local/cuda-9.0/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 ```
-Conda 安装依赖模块: 
-```shell
-conda install -c menpo opencv3
-conda install libgcc
-conda install protobuf
-```
+
 #### <font color=red>需要Python2.7下安装OpenCV</font>
 方法同: [安装OpenCV](#安装opencv) 
 
@@ -619,12 +617,12 @@ CUDA_DIR := /usr/local/cuda
 # For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
 # For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
 CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
-		-gencode arch=compute_35,code=sm_35 \
-		-gencode arch=compute_50,code=sm_50 \
-		-gencode arch=compute_52,code=sm_52 \
-		-gencode arch=compute_60,code=sm_60 \
-		-gencode arch=compute_61,code=sm_61 \
-		-gencode arch=compute_61,code=compute_61
+             -gencode arch=compute_35,code=sm_35 \
+             -gencode arch=compute_50,code=sm_50 \
+             -gencode arch=compute_52,code=sm_52 \
+             -gencode arch=compute_60,code=sm_60 \
+             -gencode arch=compute_61,code=sm_61 \
+             -gencode arch=compute_61,code=compute_61
 
 # BLAS choice:
 # atlas for ATLAS (default)
@@ -649,7 +647,7 @@ BLAS := atlas
 # NOTE: this is required only if you will compile the python interface.
 # We need to be able to find Python.h and numpy/arrayobject.h.
 PYTHON_INCLUDE := /usr/include/python2.7 \
-		/usr/lib/python2.7/dist-packages/numpy/core/include
+                  /usr/lib/python2.7/dist-packages/numpy/core/include
 # Anaconda Python distribution is quite popular. Include path:
 # Verify anaconda location, sometimes it's in root.
 # ANACONDA_HOME := $(HOME)/anaconda
@@ -721,15 +719,21 @@ LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl
 pip uninstall numpy
 pip install numpy==1.14.5
 ```
-
-
-### python3下安装cafe
+    
+    
+### Python3下安装Cafe   
 #### 装依赖库   
-`同Python2.7`
+[同Python2.7](#python2下安装cafe)
 #### 配置CUDA 及 CUDNN   
-`同Python2.7`da install protobuf
+[同Python2.7](#python2下安装cafe)
 
-**conda install -c menpo opencv3命令有时候会显示权限不够permission issue。这是因为你安装anaconda时用的是sudo，这时候需要修改anaconda3文件夹权限**:
+#### Conda 安装依赖模块: 
+```shell
+conda install -c menpo opencv3
+conda install libgcc
+conda install protobuf
+```
+**`conda install -c menpo opencv3`命令有时候会显示权限不够`permission issue`。这是因为你安装`anaconda`时用的是`sudo`，这时候需要修改`anaconda3`文件夹权限**:
 ```shell
 sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
 ```
@@ -761,12 +765,12 @@ CUDA_DIR := /usr/local/cuda
 # CUDA architecture setting: going with all of them.
 # For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
 CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
--gencode arch=compute_35,code=sm_35 \
--gencode arch=compute_50,code=sm_50 \
--gencode arch=compute_52,code=sm_52 \
--gencode arch=compute_60,code=sm_60 \
--gencode arch=compute_61,code=sm_61 \
--gencode arch=compute_61,code=compute_61
+             -gencode arch=compute_35,code=sm_35 \
+             -gencode arch=compute_50,code=sm_50 \
+             -gencode arch=compute_52,code=sm_52 \
+             -gencode arch=compute_60,code=sm_60 \
+             -gencode arch=compute_61,code=sm_61 \
+             -gencode arch=compute_61,code=compute_61
 
 # BLAS choice:
 # atlas for ATLAS (default)
