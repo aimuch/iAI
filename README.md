@@ -289,10 +289,18 @@ export PATH="$PATH:$HOME/bin"
 ```shell
 sudo make install #安装
 ```
+
+运行以下命令刷新opencv动态链接库：    
+```shell
+sudo ldconfig
+```
+
 安装完成后通过查看 opencv 版本验证是否安装成功：   
 ```shell
 pkg-config --modversion opencv
 ```
+<p>
+<del>
 接下来要给系统加入opencv库的环境变量:    
 用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
 ```shell
@@ -302,8 +310,9 @@ sudo gedit /etc/ld.so.conf
 ```shell
 /usr/local/lib
 ```
-`/user/local`是opencv安装路径 就是makefile中指定的安装路径.
-
+`/user/local`是opencv安装路径 就是makefile中指定的安装路径。    
+<p>
+<del>
 再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
 ```shell
 sudo gedit /etc/bash.bashrc
@@ -314,8 +323,11 @@ PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 export PKG_CONFIG_PATH 
 ```
 运行`source /etc/bash.bashrc`使其生效。
+</del>  
+</p>    
 
-卸载OpenCV的方法：进入OpenCV解压文件夹中的buid 文件夹：   
+**卸载OpenCV的方法：**
+进入OpenCV解压文件夹中的buid 文件夹：   
 ```shell
 cd /home/ccem/opencv-3.4.0/build
 ```
