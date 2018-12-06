@@ -105,7 +105,8 @@ pip3 install -U pyqt5
    ```
 3. System Setting -> Language Support -> Keyboard input method system:`fcitx`    
 4. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
-5. 有可能重启后会出现两个输入法图标，解决方法：    
+![BundleInstall](../img/sougou.png)     
+6. 有可能重启后会出现两个输入法图标，解决方法：    
    ```shell
    sudo apt-get remove fcitx-ui-qimpanel
    ```
