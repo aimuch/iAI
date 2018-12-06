@@ -10,21 +10,20 @@
 ````
 ---
 ### 目录
-1. [参考](#参考)
-2. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
-3. [安装NVIDIA驱动](#安装nvidia驱动)   
-4. [安装CUDA 9.0](#安装cuda9)   
-5. [安装cuDNN](#安装cudnn)  
-6. [安装anaconda](#安装anaconda)
-7. [安装OpenCV](#安装opencv) 
-8. [安装TensorRT](#安装tensorrt) 
-9. [安装Caffe](#安装caffe)   
+1. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
+2. [安装NVIDIA驱动](#安装nvidia驱动)   
+3. [安装CUDA 9.0](#安装cuda9)   
+4. [安装cuDNN](#安装cudnn)  
+5. [安装anaconda](#安装anaconda)
+6. [安装OpenCV](#安装opencv) 
+7. [安装TensorRT](#安装tensorrt) 
+8. [安装Caffe](#安装caffe)   
     - Python2 下安装caffe  
     - Python3下安装caffe
-10. [安装YOLO V3](#安装yolov3)
-11. [安装Protobuf](#安装protobuf)
-12. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
-13. [Ubuntu系统环境设置问题](./source/env_set.md)
+9.  [安装YOLO V3](#安装yolov3)
+10. [安装Protobuf](#安装protobuf)
+11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
+12. [Ubuntu系统环境设置问题](./source/env_set.md)
      - [安装python依赖库](./source/env_set.md#安装python依赖库)
      - [安装chrome浏览器](./source/env_set.md#安装chrome浏览器)
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
@@ -39,7 +38,7 @@
        - [安装zsh-syntax-highlighting](./source/env_set.md#安装zsh-syntax-highlighting)
      - [vim配置](./source/env_set.md#vim配置)
        - [YouCompleteMe实现vim自动补全](./source/env_set.md#youcompleteme实现vim自动补全)
-14. [深度学习算法程序安装](./source/algorithm_install.md)
+13. [深度学习算法程序安装](./source/algorithm_install.md)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
        - [docker常用命令](./source/dlFAQ.md#docker常用命令) 
        - [多显卡训练问题](./source/dlFAQ.md#多显卡训练问题) 
@@ -48,15 +47,7 @@
        - [安装shadowsocks-qt5](./source/ss.md##安装shadowsocks-qt5)
        - [配置chrome浏览器](./source/ss.md##配置chrome浏览器)
      - [Faster R-CNN编译问题](./source/algorithm_install.md#faster-r-cnn编译问题)
----
-##  参考  
-> 1. [win10下安装Ubuntu16.04双系统](https://blog.csdn.net/s717597589/article/details/79117112/)
-> 2. [Ubuntu 16.04+CUDA 9.1+cuDNN v7+OpenCV 3.4.0+Caffe+PyCharm 完全安装指南](https://blog.csdn.net/balixiaxuetian/article/details/79154013)
-> 3. [Install caffe with anaconda(3.6) on ubuntu16.04](http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/)
-> 4. [caffe编译遇到的问题](https://blog.csdn.net/m0_37407756/article/details/70789271)
-> 5. [Linux MATLAB 2018a 安装教程及启动失败解决办法](https://blog.csdn.net/ouening/article/details/79751393)
-> 6. [关于Ubuntu16.04LTS下Python版本和安装Spyder3的问题？](https://www.zhihu.com/question/51248022/answer/142596984)
-> 7. [zsh + oh-my-zsh 默认shell的最佳替代品](https://blog.phpgao.com/oh-my-zsh.html)
+14. [参考](#参考)
 
 ---
 ## 安装Ubuntu和Windows双系统  
@@ -1214,3 +1205,13 @@ mkdir exclude
 mv libfreetype* exclude/
 ```
 当然，我遇到的情况是这样，网上还有一些说`linstdc.so`库和Linux系统自带的版本区别造成的，我也按照方法改成系统的了，但这个不是我遇到的问题解决办法，如果大家遇到了一些crash，发送报给给support也是个不错的选择。
+
+---
+##  参考  
+> 1. [win10下安装Ubuntu16.04双系统](https://blog.csdn.net/s717597589/article/details/79117112/)
+> 2. [Ubuntu 16.04+CUDA 9.1+cuDNN v7+OpenCV 3.4.0+Caffe+PyCharm 完全安装指南](https://blog.csdn.net/balixiaxuetian/article/details/79154013)
+> 3. [Install caffe with anaconda(3.6) on ubuntu16.04](http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/)
+> 4. [caffe编译遇到的问题](https://blog.csdn.net/m0_37407756/article/details/70789271)
+> 5. [Linux MATLAB 2018a 安装教程及启动失败解决办法](https://blog.csdn.net/ouening/article/details/79751393)
+> 6. [关于Ubuntu16.04LTS下Python版本和安装Spyder3的问题？](https://www.zhihu.com/question/51248022/answer/142596984)
+> 7. [zsh + oh-my-zsh 默认shell的最佳替代品](https://blog.phpgao.com/oh-my-zsh.html)
