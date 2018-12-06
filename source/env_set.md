@@ -259,7 +259,7 @@ LC_ALL=en_US.UTF-8
 upgrade_oh_my_zsh
 ```
 
-**使用oh-my-zsh后导致的卡顿问题**
+**使用oh-my-zsh后导致的卡顿问题**    
 现象是每次cd和ll时都会被卡住很长时间根本受不了，最后在官方github查明原因是使用的主题会自动获取git信息，可以使用以下命令禁止zsh自动获取git信息，解决卡顿问题:    
 ```shell
 git config --global oh-my-zsh.hide-status 1
