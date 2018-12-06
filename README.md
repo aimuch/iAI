@@ -497,12 +497,15 @@ sudo gedit Makefile.config
 将： `#WITH_PYTHON_LAYER := 1`修改为`WITH_PYTHON_LAYER := 1`   
 **修改 python 路径**
 将：   
-`INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include`   
-`LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib `   
-修改为：          
-`INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial`    
-`LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial`
-
+```vim
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include
+LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib
+```
+修改为：         
+```vim
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
+LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
+```
 此python路径为系统自带python的路径，假如想使用Anaconda的python的话需要在其他地方修改。
 
 **去掉compute_20**
