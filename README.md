@@ -326,7 +326,7 @@ export PKG_CONFIG_PATH
 </del>  
 </p>    
 
-**卸载OpenCV的方法：**
+**卸载OpenCV的方法：**    
 进入OpenCV解压文件夹中的buid 文件夹：   
 ```shell
 cd /home/ccem/opencv-3.4.0/build
