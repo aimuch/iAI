@@ -28,7 +28,7 @@
      - [安装chrome浏览器](./source/env_set.md#安装chrome浏览器)
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./source/env_set.md#ubuntu-16下安装spyder3)
-     - [安装搜狗输入法](./source/env_set.md#ubuntu-16下安装搜狗输入法)
+     - [安装搜狗输入法](./source/env_set.md#安装搜狗输入法)
      - [WPS无法输入中文](./source/env_set.md#wps无法输入中文)
      - [安装赛睿霜冻之蓝V2驱动](./source/env_set.md#安装赛睿霜冻之蓝v2驱动)
      - [zsh oh-my-zsh默认shell的最佳替代品](./source/env_set.md#zsh-oh-my-zsh默认shell的最佳替代品)
