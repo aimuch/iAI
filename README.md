@@ -538,16 +538,29 @@ CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
             -gencode arch=compute_61,code=sm_61 \
             -gencode arch=compute_61,code=compute_61
 ```
-由于CUDA 9.x +并不支持compute_20，此处不修改的话编译caffe时会报错：
-`nvcc fatal   : Unsupported gpu architecture 'compute_20'`
-然后修改 caffe 目录下的 Makefile 文件（修改的地方找起来比较困难的话可以复制到word里查找）：
-将：`NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)`
-替换为：`NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)`
+由于**CUDA 9.x +并不支持compute_20**，此处不修改的话编译caffe时会报错：    
+```shell
+nvcc fatal  : Unsupported gpu architecture 'compute_20'
+```
+然后，修改` caffe 目录`下的` Makefile `文件（修改的地方找起来比较困难的话可以复制到word里查找）：
+将：   
+```vim
+NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)
+```
+**替换为：**   
+```vim
+NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
+```
    
-将：`LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5`
-改为：`LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial`
-
-   至此caffe配置文件修改完毕，可以开始编译了。假如显卡不是feimi架构的可以输入如下命令防止出现Unsupported gpu architecture 'compute_20'的问题：
+将：
+```vim
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
+```
+**改为：**    
+```vim
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
+```
+至此caffe配置文件修改完毕，可以开始编译了。假如显卡不是feimi架构的可以输入如下命令防止出现`Unsupported gpu architecture 'compute_20'`的问题：    
 ```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CUDA_GENERATION=Kepler ..
 ```
