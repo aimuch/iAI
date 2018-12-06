@@ -185,31 +185,14 @@ chsh -s `which zsh`
 chsh -s /bin/bash
 ```
 
-**add to ~/.zshrc**   
-```shell
-export PATH=$PATH:/usr/local/go/bin
-#export PATH=$PATH:/Applications/MAMP/bin/php/php5.6.10/bin:/Users/GZM/composer:/Users/GZM/.composer/vendor/bin
-#export GOPATH=/Users/GZM/work/go
-#export GOPATH=/Volumes/Transcend/git/360/private_cloud_server_code/tools/gowork/
-#export GOBIN=$GOPATH/bin
-#export GO15VENDOREXPERIMENT=1
-LC_CTYPE=en_US.UTF-8
-LC_ALL=en_US.UTF-8
-```
-**插件**   
-
-[Plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)   
-
-**升级**   
-upgrade_oh_my_zsh
-
 
 
 ### 安装vimrc    
 **Install for your own user only**    
 The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
 ```shell
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime 
+
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 ```
 **Install for multiple users**    
@@ -253,6 +236,27 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 **via wget**   
 ```shell
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```   
+   
+
+**add to ~/.zshrc**   
+```shell
+export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:/Applications/MAMP/bin/php/php5.6.10/bin:/Users/GZM/composer:/Users/GZM/.composer/vendor/bin
+#export GOPATH=/Users/GZM/work/go
+#export GOPATH=/Volumes/Transcend/git/360/private_cloud_server_code/tools/gowork/
+#export GOBIN=$GOPATH/bin
+#export GO15VENDOREXPERIMENT=1
+LC_CTYPE=en_US.UTF-8
+LC_ALL=en_US.UTF-8
+```
+**插件**   
+
+[Plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)   
+
+**升级**   
+```shell
+upgrade_oh_my_zsh
 ```
 
 **使用oh-my-zsh后导致的卡顿问题**

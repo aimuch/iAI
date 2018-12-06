@@ -50,12 +50,13 @@
      - [Faster R-CNN编译问题](./source/algorithm_install.md#faster-r-cnn编译问题)
 ---
 ##  参考  
-1. https://blog.csdn.net/s717597589/article/details/79117112/
-2. https://blog.csdn.net/balixiaxuetian/article/details/79154013
-3. http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/
-4. https://blog.csdn.net/m0_37407756/article/details/70789271
-5. https://blog.csdn.net/ouening/article/details/79751393
-6. https://www.zhihu.com/question/51248022/answer/142596984
+> 1. [win10下安装Ubuntu16.04双系统](https://blog.csdn.net/s717597589/article/details/79117112/)
+> 2. [Ubuntu 16.04+CUDA 9.1+cuDNN v7+OpenCV 3.4.0+Caffe+PyCharm 完全安装指南](https://blog.csdn.net/balixiaxuetian/article/details/79154013)
+> 3. [Install caffe with anaconda(3.6) on ubuntu16.04](http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/)
+> 4. [caffe编译遇到的问题](https://blog.csdn.net/m0_37407756/article/details/70789271)
+> 5. [Linux MATLAB 2018a 安装教程及启动失败解决办法](https://blog.csdn.net/ouening/article/details/79751393)
+> 6. [关于Ubuntu16.04LTS下Python版本和安装Spyder3的问题？](https://www.zhihu.com/question/51248022/answer/142596984)
+> 7. [zsh + oh-my-zsh 默认shell的最佳替代品](https://blog.phpgao.com/oh-my-zsh.html)
 
 ---
 ## 安装Ubuntu和Windows双系统  
