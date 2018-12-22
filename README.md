@@ -215,12 +215,14 @@ Cuda compilation tools, release 9.0, V9.0.85
 ---
 ## 安装anaconda
 下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
-```shell
-chmod a+x ./Anaconda3-5.2.0-Linux-x86_64.sh
+```bash
+chmod a+x ./Anaconda3-5.2.0-Linux-x86_64.sh #chmod 777 ./Anaconda3-5.2.0-Linux-x86_64.sh
+bash Anaconda3-5.2.0-Linux-x86_64.sh
 ```
 或者
-```shell
-sudo ./Anaconda3-5.2.0-Linux-x86_64.sh
+```bash
+chmod 777 Anaconda3-5.3.1-Linux-x86_64.sh
+bash Anaconda3-5.3.1-Linux-x86_64.sh
 ```
 **conda install -c menpo opencv3命令有时候会显示权限不够permission issue。这是因为你安装anaconda时用的是sudo，这时候需要修改anaconda3文件夹权限**:
 ```shell
@@ -233,15 +235,34 @@ sudo gedit ~/.bashrc
 ```
 然后屏蔽后的结果如下：    
 ```vim
+# added by Anaconda3 5.3.1 installer
 #export PATH="/home/andy/anaconda3/bin:$PATH"
 #export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
 #export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
+```
+或者
+```vim
+# added by Anaconda3 5.2.0 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/andy/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/andy/anaconda3/etc/profile.d/conda.sh" ]; then#        . "/home/andy/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/andy/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
 ```
 最后命令行输入以下命令：
 ```shell
 source ~/.bashrc
 ```
-**必须重启电脑**
+**必须重启电脑**    
 
 当需要**重新使用anaconda的时候**，只需要将anaconda的执行文件**软连接**到`/usr/local/bin`里，注意**这里要用绝对路径，否则不起作用**，如：
 ```shell
