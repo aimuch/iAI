@@ -259,7 +259,7 @@ unset __conda_setup
 # <<< conda init <<<
 ```
 最后命令行输入以下命令：
-```shell
+```bash
 source ~/.bashrc
 ```
 **必须重启电脑**    
