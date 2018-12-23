@@ -170,18 +170,18 @@ sudo pip install rivalcfg
 ```shell   
 sudo apt-get install zsh
 ```
-#### 设置zsh为系统默认shell   
-**为root用户修改默认shell为zsh**   
+#### 设置zsh为系统默认shell:   
+- **为root用户修改默认shell为zsh**   
 ```shell
 chsh -s /bin/zsh root
 ```
-**为当前用户修改默认shell为zsh**   
+- **为当前用户修改默认shell为zsh**   
 ```shell
 chsh -s /bin/zsh
 # or
 chsh -s `which zsh`
 ```
-**恢复命令**   
+#### 恢复bash为系统默认：   
 ```shell
 chsh -s /bin/bash
 ```
