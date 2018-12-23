@@ -1,6 +1,6 @@
 # Ubuntu 系统环境设置问题
 
-- [Ubuntu 系统环境设置问题](#ubuntu-系统环境设置问题)
+[Ubuntu 系统环境设置问题](#ubuntu-系统环境设置问题)
   - [安装python依赖库](#安装python依赖库)
   - [安装chrome浏览器](#安装chrome浏览器)
   - [pip和pip3安装报错](#pip和pip3安装报错)
