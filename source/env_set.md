@@ -189,14 +189,14 @@ chsh -s /bin/bash
 
 
 ### 安装vimrc    
-**Install for your own user only**    
+- **Install for your own user only**    
 The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
 ```shell
 git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime 
 
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 ```
-**Install for multiple users**    
+- **Install for multiple users**    
 To install for multiple users, the repository needs to be cloned to a location accessible for all the intended users.    
 ```shell
 git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
@@ -230,11 +230,11 @@ let g:go_version_warning = 0
     
     
 ### 安装oh-my-zsh   
-**via curl**   
+- **via curl**   
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
-**via wget**   
+- **via wget**   
 ```shell
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```   
@@ -273,7 +273,7 @@ git config --global oh-my-zsh.hide-status 0
 
 
 ### 安装zsh-syntax-highlighting    
-**Oh-my-zsh**    
+- **Oh-my-zsh**    
 1. Clone this repository in **oh-my-zsh**'s plugins directory:
   ```shell
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -290,7 +290,7 @@ git config --global oh-my-zsh.hide-status 0
     source ~/.zshrc
   ```
 
-**In your ~/.zshrc**    
+- **In your ~/.zshrc**    
 
 1. Simply clone this repository and source the script:
 ```shell
