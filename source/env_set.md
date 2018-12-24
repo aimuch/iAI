@@ -2,6 +2,7 @@
 
 [Ubuntu 系统环境设置问题](#ubuntu-系统环境设置问题)
   - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
+  - [Ubuntu循环登陆问题](#ubuntu循环登陆问题)
   - [安装python依赖库](#安装python依赖库)
   - [安装chrome浏览器](#安装chrome浏览器)
   - [pip和pip3安装报错](#pip和pip3安装报错)
@@ -26,6 +27,55 @@ ls #可以查看错误报告
 sudo rm /var/crash/* #删除该目录下的所有文件
 ```
 但是，这只是删除掉的是错误报告，如果系统再有什么崩溃，又会再报错。   
+
+---
+## Ubuntu循环登陆问题
+### 问题描述
+登录Ubuntu的时候在输入密码和登录桌面之间反复循环。   
+
+### 原因
+安装软件的时候破坏了NVIDIA驱动导致。   
+
+### 解决方法
+1. 进入linux的shell    
+在登录界面进入linux的shell（`ctrl + Alt + F1`），输入用户名、密码，进入shell。   
+关闭图形界面，命令为:    
+```bash
+sudo service lightdm stop #或者 sudo /etc/init.d/lightdm stop
+#sudo apt-get autoremove #有可能需要
+```
+2. 卸载NVIDIA驱动:    
+```bash
+sudo apt-get purge nvidia*
+```
+或者:   
+```bash
+sudo PATH_TO_NVIDIA_DRIVE/NVIDIA-Linux-x86_64-xxx.run --uninstall
+```
+3. 重新安装NVIDIA驱动:    
+```bash
+sudo apt-get install nvidia-390 nvidia-settings nvidia-prime #nvidia-390可以替换为其他版本
+```
+或者:   
+```bash
+sudo PATH_TO_NVIDIA_DRIVER/NVIDIA-Linux-x86_64-xxx.run --no-opengl-files
+```
+**.run**安装过程选项为:    
+```vim
+在NVIDIA驱动安装过程中，依次的选项为：
+1
+accept
+2 The distribution-provided pre-install script failed … …
+Continue installation
+3 Would you like to run the nvidia-xconfig utility to automatically update your X Configuration file so set the NVIDIA X driver will be used when you restart X?
+NO
+4 Install 32-Bit compatibility libraries?
+NO
+```
+4. 打开图形界面，命令为:   
+```bash
+sudo service lightdm start #或者sudo /etc/init.d/lightdm start
+```
 
 ---
 ## 安装python依赖库
