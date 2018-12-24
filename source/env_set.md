@@ -1,6 +1,7 @@
 # Ubuntu 系统环境设置问题
 
 [Ubuntu 系统环境设置问题](#ubuntu-系统环境设置问题)
+  - [Ubuntu每次开机后提示:检测到系统程序出现问题的解决方法](#ubuntu每次开机后提示:检测到系统程序出现问题的解决方法)
   - [安装python依赖库](#安装python依赖库)
   - [安装chrome浏览器](#安装chrome浏览器)
   - [pip和pip3安装报错](#pip和pip3安装报错)
@@ -16,6 +17,15 @@
   - [vim配置](#vim配置)
     - [YouCompleteMe实现vim自动补全](#youcompleteme实现vim自动补全)
 
+---
+## Ubuntu每次开机后提示:检测到系统程序出现问题的解决方法
+首先，错误报告存放位置:   
+```bash
+cd /var/crash/
+ls #可以查看错误报告
+sudo rm /var/crash/* #删除该目录下的所有文件
+```
+但是，这只是删除掉的是错误报告，如果系统再有什么崩溃，又会再报错。   
 
 ---
 ## 安装python依赖库

@@ -24,6 +24,7 @@
 10. [安装Protobuf](#安装protobuf)
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 12. [Ubuntu系统环境设置问题](./source/env_set.md)
+     - [Ubuntu每次开机后提示:检测到系统程序出现问题的解决方法](./source/env_set.md#ubuntu每次开机后提示:检测到系统程序出现问题的解决方法)
      - [安装python依赖库](./source/env_set.md#安装python依赖库)
      - [安装chrome浏览器](./source/env_set.md#安装chrome浏览器)
      - [pip/pip3安装报错问题](./source/env_set.md#pip和pip3安装报错)
