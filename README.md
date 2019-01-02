@@ -40,6 +40,8 @@
        - [安装zsh-syntax-highlighting](./source/env_set.md#安装zsh-syntax-highlighting)
      - [vim配置](./source/env_set.md#vim配置)
        - [YouCompleteMe实现vim自动补全](./source/env_set.md#youcompleteme实现vim自动补全)
+     - [Sublime Text 3配置问题](./source/env_set.md#sublime-text-3配置问题)
+     - [Visual Studio Code配置问题](./source/env_set.md#visual-studio-code配置问题) 
 13. [深度学习环境设置](./source/algorithm_install.md)
      - [Python项目requirements.txt的生成和使用](./source/algorithm_install.md#python项目requirements.txt的生成和使用)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)

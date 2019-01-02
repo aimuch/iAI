@@ -17,7 +17,8 @@
     - [安装zsh-syntax-highlighting](#安装zsh-syntax-highlighting)
   - [vim配置](#vim配置)
     - [YouCompleteMe实现vim自动补全](#youcompleteme实现vim自动补全)
-
+  - [Sublime Text 3配置问题](#sublime-text-3配置问题)
+  - [Visual Studio Code配置问题](visual-studio-code配置问题) 
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
 首先，错误报告存放位置:   
@@ -545,3 +546,56 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`’-isystem’`。     
 ![添加头文件](../img/vim9.png)   
 以后需要boost库等其他的补全，也需要将相应的路径添加进去。
+
+
+---
+## Sublime Text 3配置问题
+**安装Control Package**:   
+通过按下`Ctrl+'` 然后输入以下命令：   
+```
+import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee'
++ 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package
+Control.sublime-package'; ipp = sublime.installed_packages_path();
+urllib.request.install_opener( urllib.request.build_opener(
+urllib.request.ProxyHandler()) ); by = urllib.request.urlopen
+('http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh =
+hashlib.sha256(by).hexdigest(); print('Error validating download (got %s
+instead of %s), please try manual install' % (dh, h)) if dh != h else
+open(os.path.join( ipp, pf), 'wb' ).write(by)
+```
+
+
+**环境配置**:   
+```json
+{
+    "font_face": "Dank Mono",
+    "font_size": 14,
+    "translate_tabs_to_spaces": true
+}
+```
+
+---
+## Visual Studio Code配置问题
+**推荐插件**:   
+- Anaconda Extension Pack
+- Chinese (Simplified) Language Pack for Visual Studio Code
+- Markdown All in One
+- Markdown Preview Github Styling
+- Markdown Shortcuts
+- prototxt
+- vscode-cudacpp   
+
+**环境配置**：   
+```json
+{
+    "python.pythonPath": "/home/andy/anaconda3/envs/tensorflow/bin/python",
+    "window.zoomLevel": 0,
+    "ai.homepage.openOnStartup": false,
+    "vsicons.presets.foldersAllDefaultIcon": true,
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "editor.fontFamily": "'Dank Mono', 'Fira Code'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 16,
+}
+```
