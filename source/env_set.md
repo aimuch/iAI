@@ -568,7 +568,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 **环境配置**:   
 ```json
 {
-    "font_face": "Dank Mono",
+    "font_face": "Monaco",
     "font_size": 14,
     "translate_tabs_to_spaces": true
 }
@@ -594,8 +594,12 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
     "vsicons.presets.foldersAllDefaultIcon": true,
     "git.autofetch": true,
     "git.enableSmartCommit": true,
-    "editor.fontFamily": "'Dank Mono', 'Fira Code'",
+    "editor.fontFamily": "'Monaco', 'Dank Mono', 'Fira Code'",
     "editor.fontLigatures": true,
-    "editor.fontSize": 16,
+    "editor.fontSize": 15,
 }
 ```
+其中`"editor.fontFamily"`优先使用第一个字体，当第一个字体没有的时候依次使用后面的。
+
+
+---
