@@ -167,10 +167,18 @@ pip3 install -U pyqt5
 3. System Setting -> Language Support -> Keyboard input method system:`fcitx`    
 4. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
 ![BundleInstall](../img/sougou.png)     
-6. 有可能重启后会出现两个输入法图标，解决方法：    
+5. 有可能重启后会出现两个输入法图标，解决方法：    
    ```shell
    sudo apt-get remove fcitx-ui-qimpanel
    ```
+
+6. 搜狗拼音输入法候选栏乱码解决方法    
+   ```shell
+   cd ~/.config
+   sudo rm -rf SogouPY* sogou*
+   ```
+
+
 ---
 ## WPS无法输入中文    
 **问题**：Ubuntu16.04自带的libre对于office的格式兼容性太差，只好安装了WPS。但是WPS文字、表格、演示均不能输入中文。   
