@@ -1,4 +1,4 @@
-# Inatall AI Envirnment on Ubuntu platform
+# AI Envirnment Configuration on Ubuntu Platform
 
    
 **安装环境**  
