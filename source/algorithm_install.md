@@ -15,41 +15,44 @@ Flask==0.10.1
 ```
 Python安装依赖库使用pip可以很方便的安装，如果我们需要迁移一个项目，那我们就需要导出项目中依赖的所有三方类库的版本、名称等信息。   
 
-接下来就看Python项目如何根据`requirements.txt`文件来安装三方类库
+接下来就看Python项目如何根据`requirements.txt`文件来安装三方类库    
 
-- ### 方法一：pip freeze
+### 1. 生成requirements.txt    
+- #### 方法一：pip freeze    
+*使用`pip freeze`生成`requirements.txt`*    
 ```bash
 pip freeze > requirements.txt
 ```
-pip freeze命令输出的格式和requirements.txt文件内容格式完全一样，因此我们可以将pip freeze的内容输出到文件requirements.txt中。在其他机器上可以根据导出的requirements.txt进行包安装。    
+`pip freeze`命令输出的格式和`requirements.txt`文件内容格式完全一样，因此我们可以将`pip freeze`的内容输出到文件`requirements.txt`中。在其他机器上可以根据导出的`requirements.txt`进行包安装。    
 
-如果要安装requirements.txt中的类库内容，那么你可以执行:    
-```bash
-pip install -r requirements.txt
-```
 **注意**：`pip freeze`输出的是本地环境中所有三方包信息，但是会比`pip list`少几个包，因为`pip，wheel，setuptools`等包，是自带的而无法`(un)install`的，如果要显示所有包可以加上参数`-all`，即`pip freeze -all`。    
 
-- ### 方法二：pipreqs
-*使用pipreqs生成`requirements.txt`*    
+- #### 方法二：pipreqs
+*使用`pipreqs`生成`requirements.txt`*    
 
-首先先安装pipreqs:    
+首先先安装`pipreqs`:    
 ```bash
 pip install pipreqs
 ```
 使用`pipreqs`生成`requirements.txt`:   
 ```bash
-pipreqs requirements.txt
+pipreqs ./
 ```
 **注意**：pipreqs生成指定目录下的依赖类库
 
-- ### 上面两个方法的区别？    
-使用`pip freeze`保存的是**当前Python环境**下**所有**的类库，如果你没有用virtualenv来对Python环境做虚拟化的话，类库就会很杂很多，在对项目进行迁移的时候我们只需关注项目中使用的类库，没有必要导出所有安装过的类库，因此我们一般迁移项目不会使用`pipreqs，pip freeze`更加适合迁移**整个python环境**下安装过的类库时使用。(
-不知道virtualenv是什么或者不会使用它的可以查看：《构建Python多个虚拟环境来进行不同版本开发之神器-virtualenv》)。    
+- #### 上面两个方法的区别？    
+使用`pip freeze`保存的是**当前Python环境**下**所有**的类库，如果你没有用`virtualenv`来对`Python`环境做虚拟化的话，类库就会很杂很多，在对项目进行迁移的时候我们只需关注项目中使用的类库，没有必要导出所有安装过的类库，因此我们一般迁移项目不会使用`pipreqs`，`pip freeze`更加适合迁移**整个python环境**下安装过的类库时使用。(不知道`virtualenv`是什么或者不会使用它的可以查看：《构建`Python`多个虚拟环境来进行不同版本开发之神器-virtualenv》)。    
 
 使用`pipreqs`它会根据**当前目录**下的项目的依赖来导出三方类库，因此常用与项目的迁移中。    
 
 **这就是pip freeze、pipreqs的区别，前者是导出Python环境下所有安装的类库，后者导出项目中使用的类库。**
 
+
+### 2. 根据requirements.txt安装依赖库    
+如果要安装`requirements.txt`中的类库内容，那么你可以执行:    
+```bash
+pip install -r requirements.txt
+```
 
 ---
 ## Faster R-CNN编译问题
