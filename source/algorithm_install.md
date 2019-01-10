@@ -1,8 +1,33 @@
 # 深度学习算法程序安装
 
-1. [Python项目requirements.txt的生成和使用](#python项目requirements.txt的生成和使用)
-2. [Faster R-CNN编译问题](#faster-r-cnn编译问题)
+1. [监视GPU和CPU资源利用情况](#监视gpu和cpu资源利用情况)    
+2. [Python项目requirements.txt的生成和使用](#python项目requirements.txt的生成和使用)    
+3. [Faster R-CNN编译问题](#faster-r-cnn编译问题)    
 
+---
+## 监视GPU和CPU资源利用情况
+**监视GPU资源利用情况：**   
+```shell
+watch -n 1 nvidia-smi #每隔一秒刷新一下GPU资源情况
+```
+![png](../img/nvidia_smi.png)
+**或者**   
+```shell
+nvtop
+```
+`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。   
+![png](../img/nvtop.png)
+
+**监视CPU资源利用情况**    
+CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:    
+```shell
+sudo apt-get install htop
+```
+然后输入以下命令显示CPU资源利用情况:    
+```shell
+htop
+```
+![png](../img/htop.png)
 ---
 ## Python项目requirements.txt的生成和使用
 我们做开发时为何需要对依赖库进行管理？当依赖类库过多时，如何管理类库的版本？    

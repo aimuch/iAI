@@ -12,10 +12,19 @@
 ### 目录
 1. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
 2. [安装NVIDIA驱动](#安装nvidia驱动)   
-3. [安装CUDA 9.0](#安装cuda9)   
-4. [安装cuDNN](#安装cudnn)  
-5. [安装anaconda](#安装anaconda)
-6. [安装OpenCV](#安装opencv) 
+    - [安装驱动所需的依赖包](#安装驱动所需的依赖包)   
+    - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)   
+    - [安装nvidia官方显卡驱动](#安装nvidia官方显卡驱动)   
+    - [配置环境变量](#配置环境变量)   
+    - [查看显卡驱动版本](#查看显卡驱动版本)    
+3. [安装CUDA](#安装cuda)   
+    - [安装CUDA步骤](#安装cuda步骤)    
+    - [修改配置文件](#修改配置文件)    
+    - [查看CUDA版本](#查看cuda版本)
+    - [卸载CUDA的方法](#卸载cuda的方法)    
+4. [安装cuDNN](#安装cudnn)    
+5. [安装anaconda](#安装anaconda)    
+6. [安装OpenCV](#安装opencv)   
 7. [安装TensorRT](#安装tensorrt) 
 8. [安装Caffe](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
@@ -43,6 +52,7 @@
      - [Sublime Text 3配置问题](./source/env_set.md#sublime-text-3配置问题)
      - [Visual Studio Code配置问题](./source/env_set.md#visual-studio-code配置问题) 
 13. [深度学习环境设置](./source/algorithm_install.md)
+     - [监视GPU和CPU资源利用情况](./source/algorithm_install.md#监视gpu和cpu资源利用情况)
      - [Python项目requirements.txt的生成和使用](./source/algorithm_install.md#python项目requirements.txt的生成和使用)
      - [深度学习服务器FAQ](./source/dlFAQ.md#深度学习服务器faq)
        - [docker常用命令](./source/dlFAQ.md#docker常用命令) 
@@ -66,7 +76,8 @@
 ---
 ## 安装NVIDIA驱动   
 
-### **在终端里依次输入以下命令安装驱动所需的依赖包**：   
+### 安装驱动所需的依赖包   
+*在终端里依次输入以下命令安装驱动所需的依赖包*    
 ```shell
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 sudo apt-get install --no-install-recommends libboost-all-dev
@@ -78,7 +89,7 @@ sudo apt-get install git cmake build-essential
 ```shell
 sudo apt-get update 
 ```
-### **禁用Ubuntu自带的显卡驱动**：  
+### 禁用Ubuntu自带的显卡驱动  
 Ubuntu 16.04 自带 nouveau显卡驱动，这个自带的驱动是不能用于CUDA的，需要卸载重装。假如重装过显卡驱动则可跳过这一步。没有重装过的就跟着我的步骤往下走。
 
 首先得禁用Ubuntu自带的显卡驱动nouveau，只有在禁用掉 nouveau 后才能顺利安装 NVIDIA 显卡驱动，禁用方法就是在 `/etc/modprobe.d/blacklist-nouveau.conf`文件中添加一条禁用命令，首先需要打开该文件，通过以下命令打开：   
@@ -98,7 +109,7 @@ sudo update-initramfs -u
 ```shell
 lsmod | grep nouveau
 ```
-### **安装NVIDIA官方显卡驱动**：
+### 安装nvidia官方显卡驱动     
 通过`Ctrl + Alt + F1`进入文本模式，输入帐号密码登录，通过`Ctrl + Alt + F7`可返回图形化模式，在文本模式登录后首先关闭桌面服务：
 ```shell
 sudo service lightdm stop
@@ -121,7 +132,7 @@ sudo apt-get install nvidia-390 nvidia-settings nvidia-prime  #大部分NVIDIA�
 nvidia-settings
 ```
 
-### **配置环境变量**：
+### 配置环境变量  
 使用 gedit 命令打开配置文件：
 ```shell
 sudo gedit ~/.bashrc
@@ -135,8 +146,17 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ```shell
 source  ~/.bashrc
 ```
+### 查看显卡驱动版本    
+```bash
+cat /proc/driver/nvidia/version
+```
+或者   
+```shell
+nvidia-smi
+```
 ---
-## 安装cuda9
+## 安装CUDA    
+### 安装CUDA步骤    
 安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```shell
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
@@ -148,8 +168,9 @@ Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
 ```
 其余的一律按默认或者y进行安装即可。    
 
-![CUDA安装完成](img/cuda_finished.png)
+![CUDA安装完成](img/cuda_finished.png)    
 
+### 修改配置文件   
 安装完成后配置CUDA环境变量，使用 gedit 命令打开配置文件：   
 ```shell
 sudo gedit ~/.bashrc
@@ -159,7 +180,7 @@ sudo gedit ~/.bashrc
 export PATH=/usr/local/cuda/bin:$PATH    #/usr/local/cuda和/usr/local/cuda-9.0是同一个文件夹，两者通过软连接相连
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```
-使该配置生效：   
+**使该配置生效：**   
 ```shell
 source  ~/.bashrc
 ```
@@ -169,7 +190,13 @@ cd /usr/local/cuda-9.0/samples/1_Utilities/deviceQuery
 sudo make
 ./deviceQuery
 ```
-卸载CUDA 9.1 的方法：   
+### 查看CUDA版本   
+```shell
+cat /usr/local/cuda/version.txt
+```
+![cuda](./img/cuda.png)   
+
+### 卸载CUDA的方法   
 ```shell
 cd /usr/local/cuda/bin
 sudo ./uninstall_cuda_9.0.pl
@@ -217,6 +244,11 @@ Copyright (c) 2005-2017 NVIDIA Corporation
 Built on Fri_Nov__3_21:07:56_CDT_2017
 Cuda compilation tools, release 9.0, V9.0.85
 ```
+查看cuDNN版本    
+```shell
+cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+```
+
 ---
 ## 安装anaconda
 下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
