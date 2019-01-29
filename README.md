@@ -25,7 +25,9 @@
 4. [安装cuDNN](#安装cudnn)    
 5. [安装anaconda](#安装anaconda)    
 6. [安装OpenCV](#安装opencv)   
-7. [安装TensorRT](#安装tensorrt) 
+7. [TensorRT](#tensorrt) 
+    - [安装TensorRT](#安装tensorrt)    
+    - [TensorRT生成Engine](#tensorrt生成engine)
 8. [安装Caffe](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
     - [Python3下安装Caffe](#python3下安装cafe )
@@ -419,8 +421,8 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 把一些残余的动态链接文件和空文件夹删掉。有些文件夹已经被删掉了所以会找不到路径。    
 
 ---
-## 安装TensorRT
-#### 安装步骤
+## TensorRT
+### 安装TensorRT
 首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
 安装TensorRT前需要安装Cuda和cudnn，安装步骤可以参考上方。   
 打开下载的TensorRT所在路径，解压下载的tar文件：   
@@ -525,9 +527,13 @@ pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 exit
 ```   
 
-#### **使用TensorRT生成engine**
-```bash
-/TensorRT/bin/giexec --deploy=path_to_prototxt/intputdeploy.prototxt --output=prob --model=path_to_caffemodel/caffeModelName.caffemodel --engine=path_to_output_engine/outputEngineName.engine
+### TensorRT生成Engine
+```shell
+/home/andy/TensorRT/bin/giexec \
+--deploy=path_to_prototxt/intputdeploy.prototxt \
+--output=prob \
+--model=path_to_caffemodel/caffeModelName.caffemodel \
+--engine=path_to_output_engine/outputEngineName.engine
 ```
 
 ---
