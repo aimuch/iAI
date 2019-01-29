@@ -4,7 +4,7 @@
 **安装环境**  
 *其他环境类似* 
 ```
-硬件环境: CPU i7 / NVIDIA TITAN V
+硬件环境: CPU i7 / NVIDIA TITAN V / SSD
 系统环境：Ubuntu 16.04 64bit
 安装软件：CUDA9.0 / caffe / YOLO V3 / Protobuf / Matlab
 ````
