@@ -21,6 +21,7 @@
   - [Visual Studio Code配置问题](#visual-studio-code配置问题)   
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令&和nohup](#ubuntu后台执行命令&和nohup)   
+  - [查看系统状态nvtop,htop和glances](#查看系统状态nvtop,htop和glances)
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
 首先，错误报告存放位置:   
@@ -666,3 +667,91 @@ command >out.file 2>&1 &
 2. 2>&1 是将标准出错重定向到标准输出，这里的标准输出已经重定向到了out.file文件，即将标准出错也输出到out.file文件中。最后一个&， 是让该命令在后台执行。
 3. 试想2>1代表什么，2与>结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出；换成2>&1，&与1结合就代表标准输出了，就变成错误重定向到标准输出.
 
+---
+# 查看系统状态nvtop,htop和glances
+
+## 1. nvtop　　　
+*查看NVIDIA显卡状态信息*　　　
+```shell
+# Install CMake, ncurses and git
+sudo apt install cmake libncurses5-dev libncursesw5-dev git
+
+git clone https://github.com/Syllo/nvtop.git
+mkdir -p nvtop/build && cd nvtop/build
+cmake ..
+
+# If it errors with "Could NOT find NVML (missing: NVML_INCLUDE_DIRS)"
+# try the following command instead, otherwise skip to the build with make.
+cmake .. -DNVML_RETRIEVE_HEADER_ONLINE=True
+
+make
+make install # You may need sufficient permission for that (root)
+```   
+
+运行一下命令：　　　　
+```shell
+nvtop
+```
+![png](../img/nvtop.png)   
+
+
+从上图可以看出**F1**被默认设置为关掉进程的快捷键，会跟系统的帮助快捷键冲突，所里这里需要修改３处源码，重新编译安装:    
+```c
+case KEY_F(1): //在nvtop.c#L297 
+//改为:
+case KEY_F(9):
+```
+
+```c
+case KEY_F(1): //在interface.c#L1661
+//改为：
+case KEY_F(9):
+```
+
+```c
+wprintw(win, "F%zu", i + 1);  //在interface.c#L1435
+//改为：
+if(i==0)
+{
+    wprintw(win, "F%zu", i + 9); 
+}
+else
+{
+    wprintw(win, "F%zu", i + 1);
+}
+```   
+**重新编译安装后的效果：**　　　
+![png](../img/nvtop_new.png)   
+
+
+
+## 2. htop　　　
+*代替传统top命令*　　　
+
+CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:    
+```shell
+sudo apt-get install htop
+```
+也可以通过源码安装：　　　
+```shell
+git clone https://github.com/hishamhm/htop.git
+cd htop
+./autogen.sh && ./configure && make
+```   
+然后输入以下命令显示CPU资源利用情况:    
+```shell
+htop
+```
+![png](../img/htop.png)   
+
+## 3. glances　　　
+*查看系统全部信息*   
+
+```shell
+curl -L https://bit.ly/glances | /bin/bash
+```   
+然后运行：
+```shell
+glances
+```   
+![png](../img/glances.png)    
