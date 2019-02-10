@@ -895,7 +895,7 @@ else
 **重新编译安装后的效果：**　　　
 ![png](../img/nvtop_new.png)   
 
-
+**注意**：https://github.com/Syllo/nvtop/commit/b126abb63f38d50e8fbb961ad0aedc11b51b3911 之后修复这个问题。    
 
 ## 2. htop　　　
 *代替传统top命令*　　　
