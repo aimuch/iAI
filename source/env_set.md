@@ -17,6 +17,7 @@
     - [安装zsh-syntax-highlighting](#安装zsh-syntax-highlighting)
   - [vim配置](#vim配置)
     - [YouCompleteMe实现vim自动补全](#youcompleteme实现vim自动补全)
+    - [vim最终配置](#vim最终配置)
   - [Sublime Text 3配置问题](#sublime-text-3配置问题)
   - [Visual Studio Code配置问题](#visual-studio-code配置问题)   
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
@@ -425,6 +426,7 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 (2) 在 `.vimrc` 的文件起始处，插入以下内容并保存：   
 ```vim
+" >>>>>> vundle
 set nocompatible  " be iMproved
 
 set rtp+=~/.vim/bundle/vundle/
@@ -452,6 +454,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 " ...
 Bundle 'Valloric/YouCompleteMe'
 filetype plugin indent on     " required!
+" <<<<<< vundle
 ```
 **注意**：`Bundle ‘插件名或git链接’ `表示要安装的插件     
 
@@ -488,7 +491,7 @@ cd ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 ```
 `ls -a` 即可看到。    
 
-(2) 自行在`YoucompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:    
+(2) 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:    
 ```shell
 cd ~/.vim/bundle/YouCompleteMe
 mkdir cpp
@@ -499,6 +502,7 @@ cp ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle
 (3) 修改`.vimrc`配置文件
 将下面的内容添加到`.vimrc`里面:    
 ```vim
+" >>>>>> YouCompleteMe
 " 寻找全局配置文件
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
@@ -530,6 +534,7 @@ let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'
 " 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
 " let g:ycm_use_ultisnips_completer=0
+" <<<<<< YouCompleteMe
 ```
 上面的内容中，除了第一句寻找全局配置文件，其他的语句可以根据自己的需要更改、删除或添加。 
 **注**：如果没有在第(3)步中自己创建`cpp/ycm`目录拷贝`.ycm_extra_conf.py`文件，则需要将第一句中的路径改为全局配置文件所在的具体路径，如下：   
@@ -558,6 +563,173 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 ![添加头文件](../img/vim9.png)   
 以后需要boost库等其他的补全，也需要将相应的路径添加进去。
 
+# vim最终配置
+```vim
+" >>>>>> VIMRC
+set runtimepath+=~/.vim_runtime
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
+
+" <<<<<< VIMRC
+
+" >>>>>> Vundle
+set nocompatible    "be improved
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'scrooloose/syntastic'
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+
+" original repos on GitHub
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+" non-GitHub repos
+"Bundle 'git://git.wincent.com/command-t.git'
+" Git repos on your local machine (i.e. when working on your own plugin)
+Bundle 'file:///Users/andy/path/to/plugin'
+" ...
+Bundle 'Valloric/YouCompleteMe'
+filetype plugin indent on   " required!
+" <<<<<< Vundle
+
+" >>>>>> YouCompleteMe
+" 寻找全局配置文件
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+" 禁用syntastic来对python检查
+let g:syntastic_ignore_files=[".*\.py$"]
+" 使用ctags生成的tags文件
+let g:ycm_collect_identifiers_from_tag_files = 1
+" 开启语义补全
+" 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
+"let g:ycm_key_invoke_completion = '<M-;>'
+" 设置转到定义处的快捷键为ALT+G，未测出效果
+nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
+"关键字补全
+let g:ycm_seed_identifiers_with_syntax = 1
+" 在接受补全后不分裂出一个窗口显示接受的项
+set completeopt-=preview
+" 让补全行为与一般的IDE一致
+set completeopt=longest,menu
+" 不显示开启vim时检查ycm_extra_conf文件的信息
+let g:ycm_confirm_extra_conf=0
+" 每次重新生成匹配项，禁止缓存匹配项
+let g:ycm_cache_omnifunc=0
+" 在注释中也可以补全
+let g:ycm_complete_in_comments=1
+" 输入第一个字符就开始补全
+let g:ycm_min_num_of_chars_for_completion=1
+" 错误标识符
+let g:ycm_error_symbol='>>'
+" 警告标识符
+let g:ycm_warning_symbol='>*'
+" 不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
+" let g:ycm_use_ultisnips_completer=0
+" <<<<<< YouCompleteMe
+
+" >>>>>> add by ANDY
+" 显示行号
+set number
+" 显示标尺
+set ruler
+" 历史纪录
+set history=1000
+" 输入的命令显示出来，看的清楚些
+set showcmd
+" 状态行显示的内容
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+" 启动显示状态行1，总是显示状态行2
+set laststatus=2
+" 语法高亮显示
+syntax on
+set fileencodings=utf-8,gb2312,gbk,cp936,latin-1
+set fileencoding=utf-8
+set termencoding=utf-8
+set fileformat=unix
+set encoding=utf-8
+" 配色方案
+colorscheme desert
+" 指定配色方案是256色
+set t_Co=256
+set wildmenu
+" 去掉有关vi一致性模式，避免以前版本的一些bug和局限，解决backspace不能使用的问题
+set nocompatible
+set backspace=indent,eol,start
+set backspace=2
+" 启用自动对齐功能，把上一行的对齐格式应用到下一行
+set autoindent
+" 依据上面的格式，智能的选择对齐方式，对于类似C语言编写很有用处
+set smartindent
+" vim禁用自动备份
+set nobackup
+set nowritebackup
+set noswapfile
+" 用空格代替tab
+set expandtab
+" 设置显示制表符的空格字符个数,改进tab缩进值，默认为8，现改为4
+set tabstop=4
+" 统一缩进为4，方便在开启了et后使用退格(backspace)键，每次退格将删除X个空格
+set softtabstop=4
+" 设定自动缩进为4个字符，程序中自动缩进所使用的空白长度
+set shiftwidth=4
+" 设置帮助文件为中文(需要安装vimcdoc文档)
+set helplang=cn
+" 显示匹配的括号
+set showmatch
+" 文件缩进及tab个数
+au FileType html,python,vim,javascript setl shiftwidth=4
+au FileType html,python,vim,javascript setl tabstop=4
+au FileType java,php setl shiftwidth=4
+au FileType java,php setl tabstop=4
+" 高亮搜索的字符串
+set hlsearch
+" 检测文件的类型
+filetype off
+filetype plugin on
+filetype indent on
+" C风格缩进
+set cindent
+set completeopt=longest,menu
+" 功能设置
+" 去掉输入错误提示声音
+set noeb
+" 自动保存
+set autowrite
+" 突出显示当前行
+set cursorline
+" 突出显示当前列
+set cursorcolumn
+"设置光标样式为竖线vertical bar
+" Change cursor shape between insert and normal mode in iTerm2.app
+"if $TERM_PROGRAM =~ "iTerm"
+let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+"endif
+" 共享剪贴板
+set clipboard+=unnamed
+" 文件被改动时自动载入
+set autoread
+" 顶部底部保持3行距离
+set scrolloff=3
+" <<<<<< add by ANDY
+```
 
 ---
 ## Sublime Text 3配置问题

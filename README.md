@@ -51,6 +51,7 @@
        - [安装zsh-syntax-highlighting](./source/env_set.md#安装zsh-syntax-highlighting)
      - [vim配置](./source/env_set.md#vim配置)
        - [YouCompleteMe实现vim自动补全](./source/env_set.md#youcompleteme实现vim自动补全)
+       - [vim最终配置](./source/env_set.md#vim最终配置)
      - [Sublime Text 3配置问题](./source/env_set.md#sublime-text-3配置问题)
      - [Visual Studio Code配置问题](./source/env_set.md#visual-studio-code配置问题)    
      - [Ubuntu查看和关闭进程](./source/env_set.md#ubuntu查看和关闭进程)
