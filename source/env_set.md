@@ -421,39 +421,60 @@ sudo apt-get install clang
 2 安装**vundle**   
 (1) 下载`vundle`源码到本地    
 ```shell
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 (2) 在 `.vimrc` 的文件起始处，插入以下内容并保存：   
 ```vim
 " >>>>>> vundle
-set nocompatible  " be iMproved
+set nocompatible              " 去除VI一致性,必须
+filetype off                  " 必须
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" 设置包括vundle和初始化相关的runtime path
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" 另一种选择, 指定一个vundle安装插件的路径
+"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required!
-Bundle 'scrooloose/syntastic'
-Bundle 'gmarik/vundle'
+" 让vundle管理插件版本,必须
+Plugin 'VundleVim/Vundle.vim'
 
-" My bundles here:
+" 以下范例用来支持不同格式的插件安装.
+" 请将安装插件的命令放在vundle#begin和vundle#end之间.
+" Github上的插件
+" 格式为 Plugin '用户名/插件仓库名'
+Plugin 'tpope/vim-fugitive'
+" 来自 http://vim-scripts.org/vim/scripts.html 的插件
+" Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
+Plugin 'L9'
+" 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
+Plugin 'git://git.wincent.com/command-t.git'
+" 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
+"Plugin 'file:///home/andy/path/to/plugin'
+" 插件在仓库的子目录中.
+" 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
+"Plugin 'ascenator/L9', {'name': 'newL9'}
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'yggdroot/indentline'
+Plugin 'jiangmiao/auto-pairs'
+
+" 你的所有插件需要在下面这行之前
+call vundle#end()            " 必须
+filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
+" 忽视插件改变缩进,可以使用以下替代:
+"filetype plugin on
 "
-" original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non-GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
-" Git repos on your local machine (i.e. when working on your own plugin)
-"Bundle 'file:///Users/andy/path/to/plugin'
-" ...
-Bundle 'Valloric/YouCompleteMe'
-filetype plugin indent on     " required!
+" 简要帮助文档
+" :PluginList       - 列出所有已配置的插件
+" :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+"
+" 查阅 :h vundle 获取更多细节和wiki以及FAQ
+" 将你自己对非插件片段放在这行之后
 " <<<<<< vundle
 ```
 **注意**：`Bundle ‘插件名或git链接’ `表示要安装的插件     
@@ -479,7 +500,7 @@ cd  ~/.vim/bundle/YouCompleteMe/
 
 (2) 编译
 ```shell
-./install.sh  --clang-completer
+./install.py  --clang-completer --go-completer --ts-completer
 ```
 参数`–clang-completer`是为了支持C/C++的补全，不需要可以不加。编译过程比较长，耐心等待。    
 
@@ -505,6 +526,7 @@ cp ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
 let g:syntastic_ignore_files=[".*\.py$"] 
 " 使用ctags生成的tags文件
@@ -565,7 +587,58 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 
 # vim最终配置
 ```vim
-" >>>>>> VIMRC
+" >>>>>>>> Vundle
+set nocompatible              " 去除VI一致性,必须
+filetype off                  " 必须
+
+" 设置包括vundle和初始化相关的runtime path
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" 另一种选择, 指定一个vundle安装插件的路径
+"call vundle#begin('~/some/path/here')
+
+" 让vundle管理插件版本,必须
+Plugin 'VundleVim/Vundle.vim'
+
+" 以下范例用来支持不同格式的插件安装.
+" 请将安装插件的命令放在vundle#begin和vundle#end之间.
+" Github上的插件
+" 格式为 Plugin '用户名/插件仓库名'
+Plugin 'tpope/vim-fugitive'
+" 来自 http://vim-scripts.org/vim/scripts.html 的插件
+" Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
+Plugin 'L9'
+" 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
+Plugin 'git://git.wincent.com/command-t.git'
+" 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
+"Plugin 'file:///home/andy/path/to/plugin'
+" 插件在仓库的子目录中.
+" 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
+"Plugin 'ascenator/L9', {'name': 'newL9'}
+" YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'yggdroot/indentline'
+Plugin 'jiangmiao/auto-pairs'
+
+" 你的所有插件需要在下面这行之前
+call vundle#end()            " 必须
+filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和文件类型相关脚本
+" 忽视插件改变缩进,可以使用以下替代:
+"filetype plugin on
+"
+" 简要帮助文档
+" :PluginList       - 列出所有已配置的插件
+" :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+"
+" 查阅 :h vundle 获取更多细节和wiki以及FAQ
+" 将你自己对非插件片段放在这行之后
+" <<<<<<<< Vundle
+
+" >>>>>>>> Vimrc
 set runtimepath+=~/.vim_runtime
 
 source ~/.vim_runtime/vimrcs/basic.vim
@@ -578,52 +651,24 @@ source ~/.vim_runtime/my_configs.vim
 catch
 endtry
 
-" <<<<<< VIMRC
+let g:go_version_warning = 0
+" <<<<<<<< Vimrc
 
-" >>>>>> Vundle
-set nocompatible    "be improved
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'scrooloose/syntastic'
-Bundle 'gmarik/vundle'
-
-" My bundles here:
-
-" original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-" non-GitHub repos
-"Bundle 'git://git.wincent.com/command-t.git'
-" Git repos on your local machine (i.e. when working on your own plugin)
-Bundle 'file:///Users/andy/path/to/plugin'
-" ...
-Bundle 'Valloric/YouCompleteMe'
-filetype plugin indent on   " required!
-" <<<<<< Vundle
 
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
-let g:syntastic_ignore_files=[".*\.py$"]
+let g:syntastic_ignore_files=[".*\.py$"] 
 " 使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1
 " 开启语义补全
 " 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
 "let g:ycm_key_invoke_completion = '<M-;>'
 " 设置转到定义处的快捷键为ALT+G，未测出效果
-nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
+"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR> 
 "关键字补全
-let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_seed_identifiers_with_syntax = 1
 " 在接受补全后不分裂出一个窗口显示接受的项
 set completeopt-=preview
 " 让补全行为与一般的IDE一致
@@ -670,7 +715,7 @@ colorscheme desert
 set t_Co=256
 set wildmenu
 " 去掉有关vi一致性模式，避免以前版本的一些bug和局限，解决backspace不能使用的问题
-set nocompatible
+"set nocompatible
 set backspace=indent,eol,start
 set backspace=2
 " 启用自动对齐功能，把上一行的对齐格式应用到下一行
@@ -701,7 +746,7 @@ au FileType java,php setl tabstop=4
 " 高亮搜索的字符串
 set hlsearch
 " 检测文件的类型
-filetype off
+"filetype off
 filetype plugin on
 filetype indent on
 " C风格缩进
