@@ -29,8 +29,9 @@
     - [安装TensorRT](#安装tensorrt)    
       - [环境变量设置](#tensorrt1)
       - [安装Python的TensorRT包](#tensorrt2)
-      - [验证是否安装成功](#tensorrt3)
-      - [安装过程中遇到的问题以及解决方法](#tensorrt4)
+      - [安装uff](#tensorrt3)
+      - [验证是否安装成功](#tensorrt4)
+      - [安装过程中遇到的问题以及解决方法](#tensorrt5)
     - [TensorRT生成Engine](#tensorrt生成engine)
 8. [安装Caffe](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
@@ -435,25 +436,25 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
 安装`TensorRT`前需要安装`Cuda`和`cudnn`，安装步骤可以参考上方。   
 打开下载的TensorRT所在路径，解压下载的tar文件：   
-```shell
+```bash
 chmod 777 TensorRT-XXX.tar.gz
 tar -xzvf TensorRT-XXX.tar.gz
 ```
 解压好了，然后添加**环境变量**：    
-```shell
+```bash
 # bash
 gedit ~/.bashrc # 打开环境变量文件
 
 # zsh
 gedit ~/.zshrc # 打开环境变量文件
 ```
-```shell
+```bash
 # 将下面三个环境变量写入环境变量文件并保存
 export LD_LIBRARY_PATH=TensorRT-XXX解压路径/lib:$LD_LIBRARY_PATH 
 export CUDA_INSTALL_DIR=/usr/local/cuda-9.0
 export CUDNN_INSTALL_DIR=/usr/local/cuda-9.0
 ```
-```shell
+```bash
 # bash
 source ~/.bashrc   # 使刚刚修改的环境变量文件生效
 
@@ -465,7 +466,7 @@ source ~/.zshrc
 #### <span id="tensorrt2">2. 安装Python的TensorRT包</span>  
 进到解压后的TensorRT的**Python**文件下：   
 **2.1 非虚拟环境下**
-```shell
+```bash
 cd TensorRT-XXX/python/
 
 # 对于python2
@@ -475,7 +476,7 @@ sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
 sudo pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```
 或者：
-```shell
+```bash
 cd TensorRT-XXX/python/
 
 # 对于python2
@@ -499,19 +500,10 @@ pip install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 
 **如安装失败请参考[安装过程中遇到的问题以及解决方法](#安装过程中遇到的问题以及解决方法)。**   
 
-<!-- #### 3. 验证是否安装成功     -->
-#### <span id="tensorrt3">3. 验证是否安装成功</span> 
-测试TensorRT是否安装成功：   
-```shell
-which tensorrt
-```
-会输出TensorRT的安装路径:    
-```shell
-/usr/local/bin/tensorrt
-```
-
-然后转到**uff**目录下安装uff包：   
-```shell
+<!-- #### 3. 安装uff     -->
+#### <span id="tensorrt3">3. 安装uff</span>
+转到**uff**目录下安装uff文件夹下安装：   
+```bash
 cd TensorRT-XXX/uff/
 
 # 对于python2
@@ -520,17 +512,29 @@ sudo pip2 install uff-0.1.0rc0-py2.py3-none-any.whl
 # 对于python3
 sudo pip3 install uff-0.1.0rc0-py2.py3-none-any.whl
 ```
-测试：   
-```shell
+
+<!-- #### 4. 验证是否安装成功     -->
+#### <span id="tensorrt4">4. 验证是否安装成功</span> 
+**测试TensorRT是否安装成功**：   
+```bash
+which tensorrt
+```
+会输出`TensorRT`的安装路径:    
+```bash
+/usr/local/bin/tensorrt
+```
+
+**测试uff是否安装成功**：   
+```bash
 which convert-to-uff
 ```
-会输出uff的安装路径:    
-```shell
+会输出`uff`的安装路径:    
+```bash
 /usr/local/bin/convert-to-uff
 ```
 
 拷贝`lenet5.uff`到python相关目录进行验证：   
-```shell
+```bash
 sudo cp TensorRT-XXX/data/mnist/lenet5.uff TensorRT-XXX/python/data/mnist/lenet5.uff
 cd TensorRT-XXX/samples/sampleMNIST
 make clean
@@ -540,10 +544,10 @@ cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此�
 ```
 命令执行顺利即安装成功。   
    
-<!-- #### 4. 安装过程中遇到的问题以及解决方法 -->
-#### <span id="tensorrt4">4. 安装过程中遇到的问题以及解决方法</span>
+<!-- #### 5. 安装过程中遇到的问题以及解决方法 -->
+#### <span id="tensorrt5">5. 安装过程中遇到的问题以及解决方法</span>
 在安装`Python`的`TensorRT`包时可能出现的错误：
-```shell
+```bash
 In file included from src/cpp/cuda.cpp:1:0:
 src/cpp/cuda.hpp:14:18: fatal error: cuda.h: No such file or directory
 compilation terminated.
