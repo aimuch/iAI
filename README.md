@@ -426,36 +426,51 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 ## TensorRT
 ### 安装TensorRT
 首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
-安装TensorRT前需要安装Cuda和cudnn，安装步骤可以参考上方。   
+安装`TensorRT`前需要安装`Cuda`和`cudnn`，安装步骤可以参考上方。   
 打开下载的TensorRT所在路径，解压下载的tar文件：   
 ```shell
+chmod 777 TensorRT-XXX.tar.gz
 tar -xzvf TensorRT-XXX.tar.gz
 ```
 解压好添加环境变量：    
 ```shell
+# bash
 gedit ~/.bashrc # 打开环境变量文件
+
+# zsh
+gedit ~/.zshrc # 打开环境变量文件
 ```
 ```shell
 # 将下面三个环境变量写入环境变量文件并保存
-export LD_LIBRARY_PATH=TensorRT解压路径/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=TensorRT-XXX解压路径/lib:$LD_LIBRARY_PATH 
 export CUDA_INSTALL_DIR=/usr/local/cuda-9.0
 export CUDNN_INSTALL_DIR=/usr/local/cuda-9.0
 ```
 ```shell
+# bash
 source ~/.bashrc   # 使刚刚修改的环境变量文件生效
+
+# zsh
+source ~/.zshrc
 ```
 **下面是安装Python的TensorRT包：**   
 进到解压的TensorRT目录下的**Python**目录：   
 ```shell
+cd TensorRT-XXX/python/
+
 # 对于python2
 sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
+
 # 对于python3
 sudo pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```
 或者：
 ```shell
+cd TensorRT-XXX/python/
+
 # 对于python2
 pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl --user
+
 # 对于python3
 pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl --user
 ```
@@ -472,8 +487,11 @@ which tensorrt
 
 然后转到**uff**目录下安装uff包：   
 ```shell
+cd TensorRT-XXX/uff/
+
 # 对于python2
 sudo pip2 install uff-0.1.0rc0-py2.py3-none-any.whl
+
 # 对于python3
 sudo pip3 install uff-0.1.0rc0-py2.py3-none-any.whl
 ```
@@ -501,9 +519,9 @@ cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此�
 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```shell
 In file included from src/cpp/cuda.cpp:1:0:
-    src/cpp/cuda.hpp:14:18: fatal error: cuda.h: No such file or directory
-    compilation terminated.
-    error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+src/cpp/cuda.hpp:14:18: fatal error: cuda.h: No such file or directory
+compilation terminated.
+error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
 ```
 ![TensorRT报错](img/tensorrt_error.png)    
 **原因**   
@@ -524,6 +542,7 @@ export PATH=/usr/local/cuda-9.0/bin:$PATH
 sudo su -
 # 对于python2
 pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
+
 # 对于python3
 pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 exit
