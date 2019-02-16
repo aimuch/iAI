@@ -27,6 +27,10 @@
 6. [安装OpenCV](#安装opencv)   
 7. [TensorRT](#tensorrt) 
     - [安装TensorRT](#安装tensorrt)    
+      - [环境变量设置](#tensorrt1)
+      - [安装Python的TensorRT包](#tensorrt2)
+      - [验证是否安装成功](#tensorrt3)
+      - [安装过程中遇到的问题以及解决方法](#tensorrt4)
     - [TensorRT生成Engine](#tensorrt生成engine)
 8. [安装Caffe](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
@@ -425,6 +429,9 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 ---
 ## TensorRT
 ### 安装TensorRT
+
+<!-- #### 1. 环境变量设置 -->
+####<span id="tensorrt1">1. 环境变量设置</span>  
 首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
 安装`TensorRT`前需要安装`Cuda`和`cudnn`，安装步骤可以参考上方。   
 打开下载的TensorRT所在路径，解压下载的tar文件：   
@@ -432,7 +439,7 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 chmod 777 TensorRT-XXX.tar.gz
 tar -xzvf TensorRT-XXX.tar.gz
 ```
-解压好添加环境变量：    
+解压好了，然后添加**环境变量**：    
 ```shell
 # bash
 gedit ~/.bashrc # 打开环境变量文件
@@ -453,8 +460,11 @@ source ~/.bashrc   # 使刚刚修改的环境变量文件生效
 # zsh
 source ~/.zshrc
 ```
-**下面是安装Python的TensorRT包：**   
-进到解压的TensorRT目录下的**Python**目录：   
+
+<!-- #### 2. 安装Python的TensorRT包 -->
+####<span id="tensorrt2">2. 安装Python的TensorRT包</span>  
+进到解压后的TensorRT的**Python**文件下：   
+**2.1 非虚拟环境下**
 ```shell
 cd TensorRT-XXX/python/
 
@@ -474,8 +484,23 @@ pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl --user
 # 对于python3
 pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl --user
 ```
-**如安装失败请参考`安装过程中遇到的问题以及解决方法`。**   
 
+**2.2 虚拟环境下**   
+```bash
+source  activate venv
+cd TensorRT-XXX/python/
+
+# 对于python2
+pip install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
+
+# 对于python3
+pip install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
+```
+
+**如安装失败请参考[安装过程中遇到的问题以及解决方法](#安装过程中遇到的问题以及解决方法)。**   
+
+<!-- #### 3. 验证是否安装成功     -->
+####<span id="tensorrt3">3. 验证是否安装成功</span> 
 测试TensorRT是否安装成功：   
 ```shell
 which tensorrt
@@ -515,7 +540,8 @@ cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此�
 ```
 命令执行顺利即安装成功。   
    
-#### **安装过程中遇到的问题以及解决方法**
+<!-- #### 4. 安装过程中遇到的问题以及解决方法 -->
+####<span id="tensorrt4">4. 安装过程中遇到的问题以及解决方法</span>
 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```shell
 In file included from src/cpp/cuda.cpp:1:0:
