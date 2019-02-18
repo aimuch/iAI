@@ -29,8 +29,9 @@
 ## Linuxbrew安装
 [*The Homebrew package manager for Linux*](https://linuxbrew.sh/)    
 
-**Install**   
-Paste at a terminal prompt:    
+### 安装    
+
+将以下命令粘贴到命令行中运行:    
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 ```
@@ -50,6 +51,9 @@ brew install hello
 ```
 If you’re using an older distribution of Linux, installing your first package will also install a recent version of glibc and gcc. Use brew doctor to troubleshoot common issues.
 
+### linuxbrew必装包   
+- git
+- wget
 
 
 ---
