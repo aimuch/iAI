@@ -43,6 +43,7 @@ test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 test -r ~/.profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+source ~/.profile
 ```
 
 You’re done! Try installing a package:
