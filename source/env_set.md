@@ -1,6 +1,7 @@
 # Ubuntu FAQ
 
 [Ubuntu FAQ](#ubuntu-faq)
+  - [Linuxbrew安装](#linuxbrew安装)
   - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
   - [Ubuntu循环登陆问题](#ubuntu循环登陆问题)
   - [安装python依赖库](#安装python依赖库)
@@ -23,6 +24,34 @@
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
   - [查看系统状态](#查看系统状态)
+---
+
+## Linuxbrew安装
+[*The Homebrew package manager for Linux*](https://linuxbrew.sh/)    
+
+**Install**   
+Paste at a terminal prompt:    
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+```
+The installation script installs Linuxbrew to `/home/linuxbrew/.linuxbrew` using sudo if possible and in your home directory at` ~/.linuxbrew` otherwise. Linuxbrew does not use sudo after installation. Using `/home/linuxbrew/.linuxbrew` allows the use of more binary packages (bottles) than installing in your personal home directory.   
+
+Follow the Next steps instructions to add Linuxbrew to your `PATH` and to your bash shell profile script, either `~/.profile` on Debian/Ubuntu or `~/.bash_profile` on CentOS/Fedora/RedHat.    
+```bash
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+test -r ~/.profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+```
+
+You’re done! Try installing a package:
+```bash
+brew install hello
+```
+If you’re using an older distribution of Linux, installing your first package will also install a recent version of glibc and gcc. Use brew doctor to troubleshoot common issues.
+
+
+
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
 首先，错误报告存放位置:   

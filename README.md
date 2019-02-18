@@ -40,6 +40,7 @@
 10. [安装Protobuf](#安装protobuf)
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 12. [Ubuntu FAQ](./source/env_set.md#ubuntu-faq)
+     - [Linuxbrew安装](./source/env_set.md#linuxbrew安装)
      - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](./source/env_set.md#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
      - [Ubuntu循环登陆问题](./source/env_set.md#ubuntu循环登陆问题)
      - [安装python依赖库](./source/env_set.md#安装python依赖库)
