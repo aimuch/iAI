@@ -1,4 +1,4 @@
-# AI Envirnment Configuration on Ubuntu Platform
+# AI Play on Ubuntu Platform
 
    
 **安装环境**  
@@ -33,6 +33,9 @@
       - [验证是否安装成功](#tensorrt4)
       - [安装过程中遇到的问题以及解决方法](#tensorrt5)
     - [TensorRT生成Engine](#tensorrt生成engine)
+      - [TensorRT Caffe Engine](./source/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
+      - [TensorRT Tensorflow Engine](./source/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
+      - [Manually Construct Tensorrt Engine](./source/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
 8. [安装Caffe](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
     - [Python3下安装Caffe](#python3下安装cafe )
@@ -587,6 +590,7 @@ exit
 --model=path_to_caffemodel/caffeModelName.caffemodel \
 --engine=path_to_output_engine/outputEngineName.engine
 ```
+
 
 ---
 ## 安装caffe  
