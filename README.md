@@ -374,7 +374,7 @@ cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_JPEG=ON -DBUILD_TIFF=ON -DBUILD_PNG=ON ..
 make -j8  #编译
 ```
-**遇到一下报错信息有两种可能：**
+**遇到一下报错信息有两种可能：**    
 ![编译报错](img/opencv-error1.png)    
 - 在编译`opencv3.4.0`源码的时候，会下载诸如`ippicv_2017u3_lnx_intel64_20170822.tgz`的压缩包，如果下载失败，请[下载离线包](source/opencv/opencv-3.4.0-dev.cache.zip)，解压该文件，会得到`.cache`文件夹，用此文件夹覆盖`opencv`源码文件夹下的`.cache`文件夹，再重新编译即可。`.cahce`文件夹为隐藏文件，可用`ctrl+h`查看。
 
@@ -388,7 +388,7 @@ make -j8  #编译
     ```
 在`98%`的时候会等很久很久，属于正常现象。
 
-### 安装OpenCV
+### 安装OpenCV    
 编译成功后安装：   
 ```bash
 sudo make install #安装
@@ -425,8 +425,8 @@ sudo gedit /etc/ld.so.conf
 ```bash
 sudo ldconfig
 ```
-- **bash**
-  - **所有用户**
+- **bash**    
+  - **所有用户**    
     修改`/etc/bash.bashrc`文件:
     ```shell
     sudo vim /etc/bash.bashrc
@@ -438,7 +438,7 @@ sudo ldconfig
     ```
     运行`source /etc/bash.bashrc`使其生效。    
 
-  - **当前用户**
+  - **当前用户**    
     修改`~/.bashrc`文件:
     ```shell
     vim ~/.bashrc
@@ -450,8 +450,8 @@ sudo ldconfig
     ```
     运行`source ~/.bashrc`使其生效。    
 
-- **zsh**
-  - **所有用户**
+- **zsh**    
+  - **所有用户**    
     ```bash
     vim /etc/zsh/zprofile
     ```
@@ -462,7 +462,7 @@ sudo ldconfig
     ```
     运行`source /etc/zsh/zprofile`使其生效。
 
-  - **当前用户**
+  - **当前用户**    
     ```bash
     vim ~/.zshrc
     ```
