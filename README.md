@@ -405,13 +405,13 @@ pkg-config --modversion opencv
 ```
 **若运行以上命令提示一下错误**：    
 ![编译报错](img/opencv-error2.png)    
-**临时解决方法**
+**临时解决方法**    
 ```bash
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ```   
-**彻底解决方法**
+**彻底解决方法**    
 接下来要给系统加入`opencv`库的环境变量:    
-用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
+用`gedit`打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
 ```shell
 sudo gedit /etc/ld.so.conf
 ```
