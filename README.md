@@ -176,7 +176,7 @@ nvidia-smi
 ---
 ## 安装CUDA    
 ### 安装CUDA步骤    
-安装完显卡驱动后，CUDA toolkit和samples可单独安装，直接在终端运行安装，无需进入文本模式：   
+安装完显卡驱动后，`CUDA Toolkit`和`samples`可单独安装，直接在终端运行安装，无需进入文本模式：   
 ```shell
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
 ```
@@ -376,9 +376,9 @@ make -j8  #编译
 ```
 **遇到一下报错信息有两种可能：**
 ![编译报错](img/img1.png)    
-- 在编译opencv3.4.0源码的时候，会下载诸如ippicv_2017u3_lnx_intel64_20170822.tgz的东西，如果下载失败，请下载离线包（source文件夹中），解压该文件，会得到.cache文件夹，用此文件夹覆盖opencv源码文件夹下的.cache文件夹，再重新编译即可。.cahce文件夹为隐藏文件，可用ctrl+h查看。
+- 在编译`opencv3.4.0`源码的时候，会下载诸如`ippicv_2017u3_lnx_intel64_20170822.tgz`的压缩包，如果下载失败，请[下载离线包](source/opencv/opencv-3.4.0-dev.cache.zip)，解压该文件，会得到`.cache`文件夹，用此文件夹覆盖`opencv`源码文件夹下的`.cache`文件夹，再重新编译即可。`.cahce`文件夹为隐藏文件，可用`ctrl+h`查看。
 
-- 若本机里安装了anaconda，则需要在环境变量(`sudo gedit ~/.bashrc`)中加入：
+- 若本机里安装了**Anaconda**，则需要在`~/.bashrc` 或 `~/.zshrc `中加入：
     ```shell
     # added by Anaconda3 installer
     export PATH="/home/andy/anaconda3/bin:$PATH"
@@ -386,20 +386,20 @@ make -j8  #编译
     export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
     export PATH="$PATH:$HOME/bin"
     ```
-在98%的时候会等很久很久，属于正常现象。
+在`98%`的时候会等很久很久，属于正常现象。
 
 ### 安装OpenCV
-编译过程很顺利，编译成功后安装：   
+编译成功后安装：   
 ```bash
 sudo make install #安装
 ```
 
-运行以下命令刷新opencv动态链接库：    
+运行以下命令刷新`opencv`动态链接库：    
 ```bash
 sudo ldconfig
 ```
 
-安装完成后通过查看 opencv 版本验证是否安装成功：   
+安装完成后通过查看 `opencv` 版本验证是否安装成功：   
 ```bash
 pkg-config --modversion opencv
 ```
