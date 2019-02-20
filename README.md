@@ -403,7 +403,7 @@ sudo ldconfig
 ```bash
 pkg-config --modversion opencv
 ```
-**若运行以上命令提示一下错误**：
+**若运行以上命令提示一下错误**：    
 ![编译报错](img/opencv-error2.png)    
 **临时解决方法**
 ```bash
