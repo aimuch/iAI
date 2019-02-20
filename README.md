@@ -375,7 +375,7 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_JPE
 make -j8  #编译
 ```
 **遇到一下报错信息有两种可能：**
-![编译报错](img/img1.png)    
+![编译报错](img/opencv-error1.png)    
 - 在编译`opencv3.4.0`源码的时候，会下载诸如`ippicv_2017u3_lnx_intel64_20170822.tgz`的压缩包，如果下载失败，请[下载离线包](source/opencv/opencv-3.4.0-dev.cache.zip)，解压该文件，会得到`.cache`文件夹，用此文件夹覆盖`opencv`源码文件夹下的`.cache`文件夹，再重新编译即可。`.cahce`文件夹为隐藏文件，可用`ctrl+h`查看。
 
 - 若本机里安装了**Anaconda**，则需要在`~/.bashrc` 或 `~/.zshrc `中加入：
@@ -403,9 +403,14 @@ sudo ldconfig
 ```bash
 pkg-config --modversion opencv
 ```
-<p>
-<del>
-接下来要给系统加入opencv库的环境变量:    
+**若运行以上命令提示一下错误**：
+![编译报错](img/opencv-error2.png)    
+**临时解决方法**
+```bash
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+```   
+**彻底解决方法**
+接下来要给系统加入`opencv`库的环境变量:    
 用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
 ```shell
 sudo gedit /etc/ld.so.conf
@@ -414,21 +419,60 @@ sudo gedit /etc/ld.so.conf
 ```shell
 /usr/local/lib
 ```
-`/user/local`是opencv安装路径 就是makefile中指定的安装路径。    
-<p>
-<del>
-再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
-```shell
-sudo gedit /etc/bash.bashrc
+`/user/local`是`opencv`安装路径 就是`makefile`中指定的安装路径。    
+
+再运行:   
+```bash
+sudo ldconfig
 ```
-在文件末尾加入： 
-```shell
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
-export PKG_CONFIG_PATH 
-```
-运行`source /etc/bash.bashrc`使其生效。
-</del>  
-</p>    
+- **bash**
+  - **所有用户**
+    修改`/etc/bash.bashrc`文件:
+    ```shell
+    sudo vim /etc/bash.bashrc
+    ```
+    在文件末尾加入： 
+    ```shell
+    PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
+    export PKG_CONFIG_PATH 
+    ```
+    运行`source /etc/bash.bashrc`使其生效。    
+
+  - **当前用户**
+    修改`~/.bashrc`文件:
+    ```shell
+    vim ~/.bashrc
+    ```
+    在文件末尾加入： 
+    ```vim
+    PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
+    export PKG_CONFIG_PATH 
+    ```
+    运行`source ~/.bashrc`使其生效。    
+
+- **zsh**
+  - **所有用户**
+    ```bash
+    vim /etc/zsh/zprofile
+    ```
+    然后加入以下内容:   
+    ```vim
+    PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
+    export PKG_CONFIG_PATH
+    ```
+    运行`source /etc/zsh/zprofile`使其生效。
+
+  - **当前用户**
+    ```bash
+    vim ~/.zshrc
+    ```
+    然后加入以下内容:   
+    ```vim
+    PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
+    export PKG_CONFIG_PATH
+    ```
+    运行`source ~/.zshrc`使其生效。
+
 
 ### 卸载OpenCV    
 进入`OpenCV`解压文件夹中的`buid`文件夹：   
