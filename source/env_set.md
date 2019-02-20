@@ -57,8 +57,8 @@ If you’re using an older distribution of Linux, installing your first package 
 - wget
 - vim
 
-### brew常用命令
-- `brew shellenv`
+### brew常用命令    
+- `brew shellenv`    
   Prints export statements - run them in a shell and this installation of Homebrew will be included into your PATH, MANPATH and INFOPATH.
 
   HOMEBREW_PREFIX, HOMEBREW_CELLAR and HOMEBREW_REPOSITORY are also exported to save multiple queries of those variables.
@@ -76,8 +76,12 @@ If you’re using an older distribution of Linux, installing your first package 
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
   ```
-- `brew install xxx`
-- 
+- `brew install xxx`    
+  安装xxx软件    
+- `brew uninstall xxx`    
+  卸载xxx软件    
+- `brew search xxx`    
+  搜索xxx软件     
 
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
