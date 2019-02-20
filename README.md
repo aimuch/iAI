@@ -25,6 +25,10 @@
 4. [安装cuDNN](#安装cudnn)    
 5. [安装anaconda](#安装anaconda)    
 6. [安装OpenCV](#安装opencv)   
+    - [下载OpenCV](#下载opencv)
+    - [编译OpenCV](#编译opencv)
+    - [安装OpenCV](#安装opencv)
+    - [卸载OpenCV](#卸载opencv)
 7. [TensorRT](#tensorrt) 
     - [安装TensorRT](#安装tensorrt)    
       - [环境变量设置](#tensorrt1)
@@ -353,8 +357,18 @@ source deactivate
 
 ---
 ## 安装opencv   
-进入官网 : http://opencv.org/releases.html , 选择 3.4.0 版本的 sources , 下载 opencv-3.4.0.zip 。随后解压到你要安装的位置，命令行进入已解压的文件夹 opencv-3.4.0 目录下，执行：
+### 下载OpenCV   
+进入官网 : http://opencv.org/releases.html 或者 https://github.com/opencv/opencv/releases, 选择 需要的 `x.x.x.zip`版本, 下载 `opencv-x.x.x.zip` :
+```bash
+cd
+wget https://github.com/opencv/opencv/archive/x.x.x.zip
+chmod 777 x.x.x.zip
+unzip x.x.x.zip
+```
+### 编译OpenCV   
+随后解压到你要安装的位置，命令行进入已解压的文件夹 `opencv-x.x.x` 目录下，执行：
 ```shell
+cd opencv-x.x.x
 mkdir build # 创建编译的文件目录
 cd build
 cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_JPEG=ON -DBUILD_TIFF=ON -DBUILD_PNG=ON ..
@@ -365,25 +379,28 @@ make -j8  #编译
 - 在编译opencv3.4.0源码的时候，会下载诸如ippicv_2017u3_lnx_intel64_20170822.tgz的东西，如果下载失败，请下载离线包（source文件夹中），解压该文件，会得到.cache文件夹，用此文件夹覆盖opencv源码文件夹下的.cache文件夹，再重新编译即可。.cahce文件夹为隐藏文件，可用ctrl+h查看。
 
 - 若本机里安装了anaconda，则需要在环境变量(`sudo gedit ~/.bashrc`)中加入：
-```shell
-# added by Anaconda3 installer
-export PATH="/home/andy/anaconda3/bin:$PATH"
-export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
-export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
-export PATH="$PATH:$HOME/bin"
-```
-在98%的时候会等很久很久，属于正常现象。编译过程很顺利，编译成功后安装：   
-```shell
+    ```shell
+    # added by Anaconda3 installer
+    export PATH="/home/andy/anaconda3/bin:$PATH"
+    export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
+    export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
+    export PATH="$PATH:$HOME/bin"
+    ```
+在98%的时候会等很久很久，属于正常现象。
+
+### 安装OpenCV
+编译过程很顺利，编译成功后安装：   
+```bash
 sudo make install #安装
 ```
 
 运行以下命令刷新opencv动态链接库：    
-```shell
+```bash
 sudo ldconfig
 ```
 
 安装完成后通过查看 opencv 版本验证是否安装成功：   
-```shell
+```bash
 pkg-config --modversion opencv
 ```
 <p>
@@ -413,16 +430,16 @@ export PKG_CONFIG_PATH
 </del>  
 </p>    
 
-**卸载OpenCV的方法：**    
-进入OpenCV解压文件夹中的buid 文件夹：   
+### 卸载OpenCV    
+进入`OpenCV`解压文件夹中的`buid`文件夹：   
 ```shell
-cd /home/ccem/opencv-3.4.0/build
+cd $HOME/opencv-x.x.x/build
 ```
 运行：   
 ```shell
 sudo make uninstall
 ```
-然后把整个opencv-3.4.0文件夹都删掉。随后再运行：   
+然后把整个`opencv-x.x.x`文件夹都删掉。随后再运行：   
 ```shell
 sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 /usr/include/opencv /usr/include/opencv2 /usr/local/share/opencv \
