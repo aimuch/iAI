@@ -57,6 +57,27 @@ If you’re using an older distribution of Linux, installing your first package 
 - wget
 - vim
 
+### brew常用命令
+- `brew shellenv`
+  Prints export statements - run them in a shell and this installation of Homebrew will be included into your PATH, MANPATH and INFOPATH.
+
+  HOMEBREW_PREFIX, HOMEBREW_CELLAR and HOMEBREW_REPOSITORY are also exported to save multiple queries of those variables.
+
+  Consider adding evaluating the output in your dotfiles (e.g. ~/.profile) with eval $(brew shellenv)
+
+  ```
+  brew shellenv
+  ```
+  ```bash
+  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+  export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
+  export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+  export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+  export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+  ```
+- `brew install xxx`
+- 
 
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
@@ -103,8 +124,7 @@ sudo PATH_TO_NVIDIA_DRIVER/NVIDIA-Linux-x86_64-xxx.run --no-opengl-files
 **.run**安装过程选项为:    
 ```vim
 在NVIDIA驱动安装过程中，依次的选项为：
-1
-accept
+1 accept
 2 The distribution-provided pre-install script failed … …
 Continue installation
 3 Would you like to run the nvidia-xconfig utility to automatically update your X Configuration file so set the NVIDIA X driver will be used when you restart X?
