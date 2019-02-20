@@ -55,6 +55,7 @@ If you’re using an older distribution of Linux, installing your first package 
 ### linuxbrew必装包   
 - git
 - wget
+- vim
 
 
 ---
@@ -446,7 +447,7 @@ sudo apt-get install cmake
 ```
 sudo apt-get install clang
 ```
-**或者跳过这步**，后面编译**YCM**(YouCompleteMe)时，如果没有clang会自动安装。 
+**或者跳过这步**，后面编译**YCM**(YouCompleteMe)时，如果没有`clang`会自动安装。 
 
 (4)安装`Vundle`   
 这个是用来管理`vim`插件的，安装和卸载都特别方便，各个插件是一个文件夹，放在目录`bunble`下。 
@@ -521,10 +522,10 @@ BundleInstall
 进入安装插件过程：    
 ![vim插件安装过程](../img/vim2.png)   
 
-Plugin前面有`‘>’`表示该插件正在安装，YoucompleteMe插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为ycm需要手工编译出库文件，就像上图中的‘！’，忽略它。    
+Plugin前面有`‘>’`表示该插件正在安装，`YouCompleteMe`插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为`YouCompleteMe`需要手工编译出库文件，就像上图中的‘！’，忽略它。    
 **注**：若要卸载插件，只需将`.vimrc`中 “Bundle ‘插件’ ”这条语句删掉，然后在vim 命令行模式中执行：`BundleClean`即可。    
 
-3  编译YouCompleteMe     
+3  编译`YouCompleteMe`     
 
 (1) 进入YouCompleteMe文件夹下    
 ```shell
@@ -539,7 +540,7 @@ cd  ~/.vim/bundle/YouCompleteMe/
 参数`–clang-completer`是为了支持C/C++的补全，不需要可以不加。编译过程比较长，耐心等待。    
 
 
-4  修改.vimrc配置文件
+4  修改`.vimrc`配置文件
 (1) 找到配置文件`.ycm_extra_conf.py`在~/.vim/bundle/YouCompleteMe/third_party/ycmd/下面:    
 ```shell
 cd ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
@@ -559,8 +560,8 @@ cp ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle
 ```vim
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
 let g:syntastic_ignore_files=[".*\.py$"] 
 " 使用ctags生成的tags文件
