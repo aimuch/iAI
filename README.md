@@ -946,10 +946,36 @@ pip uninstall numpy
 pip install numpy==1.14.5
 ```
     
-
+**【报错1】**    
 导入`caffe`的时候还有一个**错误**:    
 ![导入caffe报错](img/caffe-error2.png)    
-原因是我在`ubutnu`下用的`linuxbrew`安装的`Python2`设为默认`Python`了，然后`caffe`编译配置文件里用的是系统的`Python2`路径.   
+原因是我在`ubutnu`下用的`linuxbrew`安装的`Python2`设为默认`Python`了，然后`caffe`编译配置文件里用的是系统的`Python2`路径，导致系统自带的`Python`与`linuxbrew`安装的`Python`环境混乱。     
+解决方法是屏蔽掉`linuxbrew`环境。只用系统自带的`Python`，将`~/.profile`文件中的`eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)`这一行屏蔽:    
+```shell
+# linuxbrew
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) 
+```
+然后重启电脑.     
+
+**【报错2】**    
+
+![导入caffe报错](img/caffe-error3.png)    
+导致上述原因是`pip2`同时存在于`/usr/bin/pip2`和`/usr/local/bin/pip2`两个地方:   
+```shell
+# 查看pip2位于哪里
+$ where pip2
+/usr/local/bin/pip2
+/usr/bin/pip2
+
+# 查看当前用到的pip2是哪一个
+$ which pip
+/usr/local/bin/pip
+```
+
+解决方法是用`/usr/local/bin/pip2`安装`protobuf`:   
+```shell
+/usr/local/bin/pip2 install protobuf
+```
 
 
     
