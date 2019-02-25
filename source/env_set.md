@@ -2,6 +2,10 @@
 
 [Ubuntu FAQ](#ubuntu-faq)
   - [Linuxbrew安装](#linuxbrew安装)
+    - [安装linuxbrew](#安装linuxbrew)
+    - [linuxbrew必装包](#linuxbrew必装包)
+    - [brew常用命令](#brew常用命令)
+    - [linuxbrew注意事项](#linuxbrew注意事项)
   - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
   - [Ubuntu循环登陆问题](#ubuntu循环登陆问题)
   - [安装python依赖库](#安装python依赖库)
@@ -29,7 +33,7 @@
 ## Linuxbrew安装
 [*The Homebrew package manager for Linux*](https://linuxbrew.sh/)    
 
-### 安装    
+### 安装linuxbrew    
 
 将以下命令粘贴到命令行中运行:    
 ```bash
@@ -82,6 +86,15 @@ If you’re using an older distribution of Linux, installing your first package 
   卸载xxx软件    
 - `brew search xxx`    
   搜索xxx软件     
+
+### linuxbrew注意事项
+假如用`linuxbrew`安装的`Python`会替换系统默认的`Python`。若需要还原则需要将`~/.profile`文件中的`eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)`这一行屏蔽:    
+```shell
+# linuxbrew
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) 
+```    
+然后重启电脑.   
+
 
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
