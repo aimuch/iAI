@@ -686,87 +686,95 @@ export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
 ```shell
 git clone https://github.com/BVLC/caffe.git
 ```
-这时候会出现一个caffe文件夹。命令行进入此文件夹，运行：
+这时候会出现一个 `caffe` 文件夹。命令行进入此文件夹，运行：
 ```shell
-sudo cp Makefile.config.example Makefile.config
+cp Makefile.config.example Makefile.config
+
+# 若无法拷贝则运行以下命令
+# chmod 777 Makefile.config.example
+# cp Makefile.config.example Makefile.config
 ```    
-此命令是将 Makefile.config.example 文件复制一份并更名为 Makefile.config ，复制一份的原因是编译 caffe 时需要的是 Makefile.config 文件，而Makefile.config.example 只是caffe 给出的配置文件例子，不能用来编译 caffe。   
+此命令是将 `Makefile.config.example` 文件复制一份并更名为 `Makefile.config` ，复制一份的原因是编译 `caffe` 时需要的是 `Makefile.config` 文件，而Makefile.config.example 只是 `caffe` 给出的配置文件例子，不能用来编译 `caffe`。   
 
-**然后修改 Makefile.config 文件**，在 caffe 目录下打开该文件：
+**然后修改 Makefile.config 文件**，在 `caffe` 目录下打开该文件：
 ```shell
-sudo gedit Makefile.config
-```
-修改 Makefile.config 文件内容：   
-**应用 cudnn**   
-将：`#USE_CUDNN := 1`修改为：`USE_CUDNN := 1`   
+gedit Makefile.config
 
-**应用 opencv 3 版本**   
-将：`#OPENCV_VERSION := 3 `修改为：`OPENCV_VERSION := 3`   
-**使用 python 接口**
-将： `#WITH_PYTHON_LAYER := 1`修改为`WITH_PYTHON_LAYER := 1`   
-**修改 python 路径**
+# 或者用右键选择gedit/vscode打开该文件
+```
+#### 修改 `Makefile.config` 文件内容：   
+- **应用 cudnn**   
+  将：`#USE_CUDNN := 1`修改为：`USE_CUDNN := 1`   
+
+- **应用 opencv 3 版本**   
+  将：`#OPENCV_VERSION := 3 `修改为：`OPENCV_VERSION := 3`   
+- **使用 python 接口**
+  将： `#WITH_PYTHON_LAYER := 1`修改为`WITH_PYTHON_LAYER := 1`   
+- **修改 python 路径**
+  将：   
+  ```vim
+  INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include
+  LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib
+  ```
+  修改为：         
+  ```vim
+  INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
+  LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
+  ```
+  此python路径为系统自带python的路径，假如想使用`Anaconda`的python的话需要在其他地方修改。
+
+- **去掉compute_20**
+  找到
+  ```shell
+  # CUDA architecture setting: going with all of them.
+  # For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+  # For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+  # For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+  CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+              -gencode arch=compute_20,code=sm_21 \
+              -gencode arch=compute_30,code=sm_30 \
+              -gencode arch=compute_35,code=sm_35 \
+              -gencode arch=compute_50,code=sm_50 \
+              -gencode arch=compute_52,code=sm_52 \
+              -gencode arch=compute_60,code=sm_60 \
+              -gencode arch=compute_61,code=sm_61 \
+              -gencode arch=compute_61,code=compute_61
+  ```
+  改为：
+  ```shell
+  # CUDA architecture setting: going with all of them.
+  # For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+  # For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+  # For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+  CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
+              -gencode arch=compute_35,code=sm_35 \
+              -gencode arch=compute_50,code=sm_50 \
+              -gencode arch=compute_52,code=sm_52 \
+              -gencode arch=compute_60,code=sm_60 \
+              -gencode arch=compute_61,code=sm_61 \
+              -gencode arch=compute_61,code=compute_61
+  ```
+  由于**CUDA 9.x +并不支持compute_20**，此处不修改的话编译`caffe`时会报错：    
+  ```shell
+  nvcc fatal  : Unsupported gpu architecture 'compute_20'
+  ```
+
+####  **修改` caffe 目录`下的` Makefile `文件**    
+*修改的地方找起来比较困难的话可以复制到word里查找*    
 将：   
-```vim
-INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include
-LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib
-```
-修改为：         
-```vim
-INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
-LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
-```
-此python路径为系统自带python的路径，假如想使用Anaconda的python的话需要在其他地方修改。
-
-**去掉compute_20**
-找到
 ```shell
-# CUDA architecture setting: going with all of them.
-# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
-# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
-# For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
-CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
-            -gencode arch=compute_20,code=sm_21 \
-            -gencode arch=compute_30,code=sm_30 \
-            -gencode arch=compute_35,code=sm_35 \
-            -gencode arch=compute_50,code=sm_50 \
-            -gencode arch=compute_52,code=sm_52 \
-            -gencode arch=compute_60,code=sm_60 \
-            -gencode arch=compute_61,code=sm_61 \
-            -gencode arch=compute_61,code=compute_61
-```
-改为：
-```shell
-# CUDA architecture setting: going with all of them.
-# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
-# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
-# For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
-CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
-            -gencode arch=compute_35,code=sm_35 \
-            -gencode arch=compute_50,code=sm_50 \
-            -gencode arch=compute_52,code=sm_52 \
-            -gencode arch=compute_60,code=sm_60 \
-            -gencode arch=compute_61,code=sm_61 \
-            -gencode arch=compute_61,code=compute_61
-```
-由于**CUDA 9.x +并不支持compute_20**，此处不修改的话编译caffe时会报错：    
-```shell
-nvcc fatal  : Unsupported gpu architecture 'compute_20'
-```
-然后，修改` caffe 目录`下的` Makefile `文件（修改的地方找起来比较困难的话可以复制到word里查找）：
-将：   
-```vim
 NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)
 ```
-**替换为：**   
+替换为：   
 ```vim
 NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
 ```
-   
+  
 将：
 ```vim
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
 ```
-**改为：**    
+改为：    
 ```vim
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
@@ -774,14 +782,15 @@ LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl
 ```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CUDA_GENERATION=Kepler ..
 ```
-**在 caffe 目录**下执行 ：
+
+#### **在 `caffe` 目录**下执行 ：
 ```shell
 make all -j $(($(nproc) + 1))
 make test -j $(($(nproc) + 1))
 make runtest -j $(($(nproc) + 1))
 make pycaffe -j $(($(nproc) + 1))
 ```
-runtest之后成功成功的界面如下:    
+`runtest`之后成功成功的界面如下:    
 ![png](./img/caffe_install.png)
 
 这时如果之前的配置或安装出错，那么编译就会出现各种各样的问题，所以前面的步骤一定要细心。假如编译失败可对照出现的问题Google解决方案，再次编译之前使用`make clean`命令清除之前的编译，报错：`nothing
@@ -790,7 +799,7 @@ runtest之后成功成功的界面如下:
 make runtest -j8
 ```
 
-#### 在caffe源码目录中新建`Makefile.config`文件，添加内容如下：
+#### 在caffe源码目录中修改后的完整`Makefile.config`文件，内容如下：
 ```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
@@ -917,21 +926,28 @@ Q ?= @
 ```shell
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
-上述中`Makefile.config`和`Makefile`文件都要添加`hdf5`相关选项，否则会提示以下错误：
-![hdf5报错](img/img10.png)
+上述中`Makefile.config`和`Makefile`文件都要添加`hdf5`相关选项，否则会提示以下错误：    
+![hdf5报错](img/caffe-error1.png)    
 
 
-在python中导入caffe库的时候会提示以下信息：
+在`python`中导入`caffe`库的时候会提示以下信息：
 ```shell
-/usr/local/lib/python2.7/dist-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88
+/usr/local/lib/python2.7/dist-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype 
+size changed, may indicate binary incompatibility. Expected 96, got 88
 ```
 **解决方法**
-将numpy降版本：
+将`numpy`降版本：
 ```shell
 pip uninstall numpy
 pip install numpy==1.14.5
 ```
     
+
+导入`caffe`的时候还有一个**错误**:    
+![导入caffe报错](img/caffe-error2.png)    
+原因是我在`ubutnu`下用的`linuxbrew`安装的`Python2`设为默认`Python`了，然后`caffe`编译配置文件里用的是系统的`Python2`路径.   
+
+
     
 ### Python3下安装Cafe   
 #### 装依赖库   
@@ -949,15 +965,15 @@ conda install protobuf
 ```shell
 sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
 ```
-添加Anaconda CPLUS路径:   
+添加`Anaconda CPLUS`路径:   
 ```shell
 export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
 ```
-配置 boost_python   
+配置 `boost_python`   
 ```shell
 cd /usr/lib/x86_64-linux-gnu && sudo ln -s libboost_python-py35.so libboost_python3.so
 ```
-在caffe源码目录中修改Makefile.config文件如下：
+在`caffe`源码目录中修改`Makefile.config`文件如下：
 ```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
@@ -1105,7 +1121,7 @@ make:***
 
 **解决：**
 
-执行：`sudofind / -name 'Python.h'`找到他的路径，
+执行：`sudo find / -name 'Python.h'`找到他的路径，
 在`Makefile.config`的PYTHON_INCLUDE加上`/home/abc/anaconda2/include/python2.7`（路径是自己的）
 
 <table><tr><td bgcolor=Violet>错误：import caffe时：ImportError:No module named skimage.io</td></tr></table>
