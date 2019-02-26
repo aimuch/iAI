@@ -977,6 +977,12 @@ $ which pip
 /usr/local/bin/pip2 install protobuf
 ```
 
+> [Importing caffe results in ImportError: "No module named google.protobuf.internal"
+](https://stackoverflow.com/questions/37666241/importing-caffe-results-in-importerror-no-module-named-google-protobuf-interna)
+> This is probably because you have two python environments in your machine, the one provided by your linux distribution(pip) and the other by the anaconda environment (/home/username/anaconda2/bin/pip).
+> Try installing protobuf for both environments to be sure
+> `pip install protobuf`
+> `/home/username/anaconda2/bin/pip` install protobuf
 
     
 ### Python3下安装Cafe   
