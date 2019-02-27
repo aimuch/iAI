@@ -16,6 +16,7 @@
   - [WPS无法输入中文](#wps无法输入中文)
   - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
   - [zsh oh-my-zsh默认shell的最佳替代品](#zsh-oh-my-zsh默认shell的最佳替代品)
+    - [查看系统shell环境](#查看系统shell环境)
     - [安装zsh](#安装zsh)
     - [安装vimrc](#安装vimrc)
     - [安装oh-my-zsh](#安装oh-my-zsh)
@@ -310,6 +311,21 @@ sudo pip install rivalcfg
 - **[vimrc](https://github.com/amix/vimrc)**
 - **[oh-my-zsh](http://ohmyz.sh)**      
 - **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)**    
+
+
+### 查看系统shell环境     
+查看当前发行版可以使用的`shell`:    
+```shell
+cat /etc/shells 
+```
+查看当前使用的`shell`:    
+```shell
+echo $0
+```
+查看当前用户(默认)使用的`shell`:    
+```shell
+echo $SHELL
+```
 
 ### 安装zsh   
 ```shell   

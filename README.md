@@ -62,6 +62,7 @@
      - [WPS无法输入中文](./source/env_set.md#wps无法输入中文)
      - [安装赛睿霜冻之蓝V2驱动](./source/env_set.md#安装赛睿霜冻之蓝v2驱动)
      - [zsh oh-my-zsh默认shell的最佳替代品](./source/env_set.md#zsh-oh-my-zsh默认shell的最佳替代品)
+       - [查看系统shell环境](./source/env_set.md#查看系统shell环境)
        - [安装zsh](./source/env_set.md#安装zsh)
        - [安装vimrc](./source/env_set.md#安装vimrc)
        - [安装oh-my-zsh](./source/env_set.md#安装oh-my-zsh)
