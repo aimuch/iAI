@@ -290,7 +290,7 @@ bash Anaconda3-5.3.1-Linux-x86_64.sh
 sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
 ```
 
-**若需要将anaconda屏蔽**
+#### 若需要将anaconda屏蔽
 ```shell
 sudo gedit ~/.bashrc
 ```
@@ -662,8 +662,10 @@ exit
 ## 安装caffe  
 
 ### Python2下安装Cafe
-**推荐**此方法安装caffeine， <font color=red>需要Python2.7下安装OpenCV</font>
-#### 装依赖库   
+
+~~**推荐**此方法安装caffe， [需要Python2.7下安装OpenCV](#安装opencv)~~
+
+#### 1. 安装依赖库   
 ```shell
 sudo apt-get update
 sudo apt-get upgrade
@@ -676,16 +678,21 @@ sudo apt-get install -y --no-install-recommends libboost-all-dev
 sudo apt-get install -y libgflags-dev libgoogle-glog-dev liblmdb-dev
 sudo apt-get -y install build-essential cmake git libgtk2.0-dev pkg-config python-dev python-numpy libdc1394-22 libdc1394-22-dev libjpeg-dev libpng12-dev libtiff5-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev libtbb-dev libqt4-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils unzip
 ```
-#### 配置CUDA 及 CUDNN   
+#### 2. 配置`CUDA` 及 `CUDNN`  
 添加 CUDA 环境变量   
 ```shell
-sudo gedit ~/.bashrc
-export PATH=/usr/local/cuda-9.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64:$LD_LIBRARY_PATH
+vim ~/.bashrc
+
+# CUDA
+export PATH=/usr/local/cuda/bin:$PATH  # cuda -> /usr/local/cuda-9.0
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```
 
-#### <font color=red>需要Python2.7下安装OpenCV</font>
-方法同: [安装OpenCV](#安装opencv) 
+#### 3. 安装`OpenCV`，方法同: [安装OpenCV](#安装opencv)     
+
+#### 4. 然后按照前面的方法[屏蔽Anaconda](#若需要将anaconda屏蔽)    
+
+#### 5. 配置`Caffe`
 
 **首先cd 到你要安装的路径下运行**：
 ```shell
@@ -703,11 +710,11 @@ cp Makefile.config.example Makefile.config
 
 **然后修改 Makefile.config 文件**，在 `caffe` 目录下打开该文件：
 ```shell
-gedit Makefile.config
+vim Makefile.config
 
 # 或者用右键选择gedit/vscode打开该文件
 ```
-#### 修改 `Makefile.config` 文件内容：   
+#### 5.1 修改 `Makefile.config` 文件内容：   
 - **应用 cudnn**   
   将：`#USE_CUDNN := 1`修改为：`USE_CUDNN := 1`   
 
@@ -764,7 +771,134 @@ gedit Makefile.config
   nvcc fatal  : Unsupported gpu architecture 'compute_20'
   ```
 
-####  **修改` caffe 目录`下的` Makefile `文件**    
+
+
+#### 5.2 **配置好的完整的`Makefile.config`文件**
+
+在caffe源码目录中修改后的完整`Makefile.config`文件，内容如下：
+```shell
+## Refer to http://caffe.berkeleyvision.org/installation.html
+# Contributions simplifying and improving our build system are welcome!
+
+# cuDNN acceleration switch (uncomment to build with cuDNN).
+USE_CUDNN := 1
+
+# CPU-only switch (uncomment to build without GPU support).
+# CPU_ONLY := 1
+
+# uncomment to disable IO dependencies and corresponding data layers
+# USE_OPENCV := 0
+# USE_LEVELDB := 0
+# USE_LMDB := 0
+
+# uncomment to allow MDB_NOLOCK when reading LMDB files (only if necessary)
+#	You should not set this flag if you will be reading LMDBs with any
+#	possibility of simultaneous read and write
+# ALLOW_LMDB_NOLOCK := 1
+
+# Uncomment if you're using OpenCV 3
+OPENCV_VERSION := 3
+
+# To customize your choice of compiler, uncomment and set the following.
+# N.B. the default for Linux is g++ and the default for OSX is clang++
+CUSTOM_CXX := g++
+
+# CUDA directory contains bin/ and lib/ directories that we need.
+CUDA_DIR := /usr/local/cuda
+# On Ubuntu 14.04, if cuda tools are installed via
+# "sudo apt-get install nvidia-cuda-toolkit" then use this instead:
+# CUDA_DIR := /usr
+
+# CUDA architecture setting: going with all of them.
+# For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+# For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+# For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
+            -gencode arch=compute_35,code=sm_35 \
+            -gencode arch=compute_50,code=sm_50 \
+            -gencode arch=compute_52,code=sm_52 \
+            -gencode arch=compute_60,code=sm_60 \
+            -gencode arch=compute_61,code=sm_61 \
+            -gencode arch=compute_61,code=compute_61
+
+# BLAS choice:
+# atlas for ATLAS (default)
+# mkl for MKL
+# open for OpenBlas
+BLAS := atlas
+# Custom (MKL/ATLAS/OpenBLAS) include and lib directories.
+# Leave commented to accept the defaults for your choice of BLAS
+# (which should work)!
+# BLAS_INCLUDE := /path/to/your/blas
+# BLAS_LIB := /path/to/your/blas
+
+# Homebrew puts openblas in a directory that is not on the standard search path
+# BLAS_INCLUDE := $(shell brew --prefix openblas)/include
+# BLAS_LIB := $(shell brew --prefix openblas)/lib
+
+# This is required only if you will compile the matlab interface.
+# MATLAB directory should contain the mex binary in /bin.
+# MATLAB_DIR := /usr/local
+# MATLAB_DIR := /Applications/MATLAB_R2012b.app
+
+# NOTE: this is required only if you will compile the python interface.
+# We need to be able to find Python.h and numpy/arrayobject.h.
+PYTHON_INCLUDE := /usr/include/python2.7 \
+                  /usr/lib/python2.7/dist-packages/numpy/core/include
+# Anaconda Python distribution is quite popular. Include path:
+# Verify anaconda location, sometimes it's in root.
+# ANACONDA_HOME := $(HOME)/anaconda
+# PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
+    # $(ANACONDA_HOME)/include/python2.7 \
+    # $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include
+
+# Uncomment to use Python 3 (default is Python 2)
+# PYTHON_LIBRARIES := boost_python3 python3.5m
+# PYTHON_INCLUDE := /usr/include/python3.5m \
+#                 /usr/lib/python3.5/dist-packages/numpy/core/include
+
+# We need to be able to find libpythonX.X.so or .dylib.
+PYTHON_LIB := /usr/lib
+# PYTHON_LIB := $(ANACONDA_HOME)/lib
+
+# Homebrew installs numpy in a non standard path (keg only)
+# PYTHON_INCLUDE += $(dir $(shell python -c 'import numpy.core; print(numpy.core.__file__)'))/include
+# PYTHON_LIB += $(shell brew --prefix numpy)/lib
+
+# Uncomment to support layers written in Python (will link against Python libs)
+WITH_PYTHON_LAYER := 1
+
+# Whatever else you find you need goes here.
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/
+LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
+
+# If Homebrew is installed at a non standard location (for example your home directory) and you use it for general dependencies
+# INCLUDE_DIRS += $(shell brew --prefix)/include
+# LIBRARY_DIRS += $(shell brew --prefix)/lib
+
+# NCCL acceleration switch (uncomment to build with NCCL)
+# https://github.com/NVIDIA/nccl (last tested version: v1.2.3-1+cuda8.0)
+# USE_NCCL := 1
+
+# Uncomment to use `pkg-config` to specify OpenCV library paths.
+# (Usually not necessary -- OpenCV libraries are normally installed in one of the above $LIBRARY_DIRS.)
+# USE_PKG_CONFIG := 1
+
+# N.B. both build and distribute dirs are cleared on `make clean`
+BUILD_DIR := build
+DISTRIBUTE_DIR := distribute
+
+# Uncomment for debugging. Does not work on OSX due to https://github.com/BVLC/caffe/issues/171
+# DEBUG := 1
+
+# The ID of the GPU that 'make runtest' will use to run unit tests.
+TEST_GPUID := 0
+
+# enable pretty build (comment to see full commands)
+Q ?= @
+```
+
+####  5.3 **修改` caffe 目录`下的` Makefile `文件**    
 *修改的地方找起来比较困难的话可以复制到word里查找*    
 将：   
 ```shell
@@ -788,8 +922,10 @@ LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl
 cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CUDA_GENERATION=Kepler ..
 ```
 
-#### **在 `caffe` 目录**下执行 ：
+#### 6. 编译安装`Caffe`    
+在 `caffe` 目录下执行：    
 ```shell
+cd caffe
 make all -j $(($(nproc) + 1))
 make test -j $(($(nproc) + 1))
 make runtest -j $(($(nproc) + 1))
@@ -798,13 +934,142 @@ make pycaffe -j $(($(nproc) + 1))
 `runtest`之后成功成功的界面如下:    
 ![png](./img/caffe_install.png)
 
-这时如果之前的配置或安装出错，那么编译就会出现各种各样的问题，所以前面的步骤一定要细心。假如编译失败可对照出现的问题Google解决方案，再次编译之前使用`make clean`命令清除之前的编译，报错：`nothing
+**添加`Caffe`环境变量**    
+```shell
+vim ~/.bashrc
+export PYTHONPATH=~/caffe/python:$PYTHONPATH
+```
+
+<!-- 这时如果之前的配置或安装出错，那么编译就会出现各种各样的问题，所以前面的步骤一定要细心。假如编译失败可对照出现的问题Google解决方案，再次编译之前使用`make clean`命令清除之前的编译，报错：`nothing
  to be done for all`就说明没有清除之前的编译。编译成功后可运行测试：
 ```shell
 make runtest -j8
+``` -->
+
+#### 7. 常见问题    
+**常见问题 1**    
+在caffe源码目录中修改`Makefile`文件中这一行如下：
+```shell
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
+```
+上述中`Makefile.config`和`Makefile`文件都要添加`hdf5`相关选项，否则会提示以下错误：    
+![hdf5报错](img/caffe-error1.png)    
+
+**常见问题 2**    
+在`python`中导入`caffe`库的时候会提示以下信息：
+```shell
+/usr/local/lib/python2.7/dist-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype 
+size changed, may indicate binary incompatibility. Expected 96, got 88
+```
+**解决方法**
+将`numpy`降版本：
+```shell
+pip uninstall numpy
+pip install numpy==1.14.5
+```
+    
+**常见问题 3**       
+导入`caffe`的时候还有一个**错误**:    
+![导入caffe报错](img/caffe-error2.png)    
+原因是我在`ubutnu`下用的`linuxbrew`安装的`Python2`设为默认`Python`了，然后`caffe`编译配置文件里用的是系统的`Python2`路径，导致系统自带的`Python`与`linuxbrew`安装的`Python`环境混乱。     
+解决方法是屏蔽掉`linuxbrew`环境。只用系统自带的`Python`，将`~/.profile`文件中的`eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)`这一行屏蔽:    
+```shell
+# linuxbrew
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) 
+```
+然后重启电脑.     
+
+**常见问题 4**    
+![导入caffe报错](img/caffe-error3.png)    
+导致上述原因是`pip2`同时存在于`/usr/bin/pip2`和`/usr/local/bin/pip2`两个地方:   
+```shell
+# 查看pip2位于哪里
+$ where pip2
+/usr/local/bin/pip2
+/usr/bin/pip2
+
+# 查看当前用到的pip2是哪一个
+$ which pip
+/usr/local/bin/pip
 ```
 
-#### 在caffe源码目录中修改后的完整`Makefile.config`文件，内容如下：
+解决方法是用`/usr/local/bin/pip2`安装`protobuf`:   
+```shell
+/usr/local/bin/pip2 install protobuf
+```
+
+> [Importing caffe results in ImportError: "No module named google.protobuf.internal"
+](https://stackoverflow.com/questions/37666241/importing-caffe-results-in-importerror-no-module-named-google-protobuf-interna)
+> This is probably because you have two python environments in your machine, the one provided by your linux distribution(pip) and the other by the anaconda environment (/home/username/anaconda2/bin/pip).
+> Try installing protobuf for both environments to be sure
+> `pip install protobuf`
+> `/home/username/anaconda2/bin/pip` install protobuf
+
+    
+### Python3下安装Cafe    
+#### 0. 切换系统`Python`版本到`Python3`    
+将系统Python切换到Python3版本:    
+```shell
+which python3
+which python
+sudo rm /usr/bin/python # 删掉Python软连接
+sudo ln -s /usr/bin/python3 /usr/bin/python # 将Python3软连接到Python
+```
+#### 1. 装依赖库   
+> [同Python2.7安装依赖库](#python2下安装cafe)    
+> 
+#### 2. 配置`CUDA` 及 `CUDNN`   
+> [同Python2.7配置CUDA以及CUDNN](#python2下安装cafe)    
+
+#### 3. pip 安装依赖模块: 
+```shell
+pip install opencv-python==3.4.0.12 # OpenCV的Python版本要跟opencv源码安装的版本对应起来
+pip install protobuf
+```
+
+<!-- **`conda install -c menpo opencv3`命令有时候会显示权限不够`permission issue`。这是因为你安装`anaconda`时用的是`sudo`，这时候需要修改`anaconda3`文件夹权限**:
+```shell
+sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
+```
+添加`Anaconda CPLUS`路径:   
+```shell
+export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
+```
+配置 `boost_python`   
+```shell
+cd /usr/lib/x86_64-linux-gnu && sudo ln -s libboost_python-py35.so libboost_python3.so
+``` -->
+
+
+
+#### 3. 安装`OpenCV`，方法同: [安装OpenCV](#安装opencv)     
+
+#### 4. 然后按照前面的方法[屏蔽Anaconda](#若需要将anaconda屏蔽)     
+
+#### 5. 配置`Caffe`    
+**首先cd 到你要安装的路径下运行**：
+```shell
+git clone https://github.com/BVLC/caffe.git
+```
+这时候会出现一个 `caffe` 文件夹。命令行进入此文件夹，运行：
+```shell
+cp Makefile.config.example Makefile.config
+
+# 若无法拷贝则运行以下命令
+# chmod 777 Makefile.config.example
+# cp Makefile.config.example Makefile.config
+```    
+此命令是将 `Makefile.config.example` 文件复制一份并更名为 `Makefile.config` ，复制一份的原因是编译 `caffe` 时需要的是 `Makefile.config` 文件，而Makefile.config.example 只是 `caffe` 给出的配置文件例子，不能用来编译 `caffe`。   
+
+##### 5.1 **然后修改 Makefile.config 文件**，在 `caffe` 目录下打开该文件：
+```shell
+vim Makefile.config
+
+# 或者用右键选择gedit/vscode打开该文件
+```
+
+
+在`caffe`源码目录中修改`Makefile.config`内容如下：
 ```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
@@ -872,8 +1137,8 @@ BLAS := atlas
 
 # NOTE: this is required only if you will compile the python interface.
 # We need to be able to find Python.h and numpy/arrayobject.h.
-PYTHON_INCLUDE := /usr/include/python2.7 \
-                  /usr/lib/python2.7/dist-packages/numpy/core/include
+# PYTHON_INCLUDE := /usr/include/python2.7 \
+#                  /usr/lib/python2.7/dist-packages/numpy/core/include
 # Anaconda Python distribution is quite popular. Include path:
 # Verify anaconda location, sometimes it's in root.
 # ANACONDA_HOME := $(HOME)/anaconda
@@ -882,9 +1147,9 @@ PYTHON_INCLUDE := /usr/include/python2.7 \
 		# $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include
 
 # Uncomment to use Python 3 (default is Python 2)
-# PYTHON_LIBRARIES := boost_python3 python3.5m
-# PYTHON_INCLUDE := /usr/include/python3.5m \
-#                 /usr/lib/python3.5/dist-packages/numpy/core/include
+PYTHON_LIBRARIES := boost_python3 python3.5m
+PYTHON_INCLUDE := /usr/include/python3.5m \
+                 /usr/lib/python3.5/dist-packages/numpy/core/include
 
 # We need to be able to find libpythonX.X.so or .dylib.
 PYTHON_LIB := /usr/lib
@@ -925,185 +1190,63 @@ TEST_GPUID := 0
 
 # enable pretty build (comment to see full commands)
 Q ?= @
-```
+```    
 
-#### 在caffe源码目录中修改`Makefile`文件中这一行如下：
+##### 5.2 **修改` caffe 目录`下的` Makefile `文件**    
+*修改的地方找起来比较困难的话可以复制到word里查找*    
+将：   
 ```shell
+NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)
+```
+替换为：   
+```vim
+NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
+```
+  
+将：
+```vim
+LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
+```
+改为：    
+```vim
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
-上述中`Makefile.config`和`Makefile`文件都要添加`hdf5`相关选项，否则会提示以下错误：    
-![hdf5报错](img/caffe-error1.png)    
-
-
-在`python`中导入`caffe`库的时候会提示以下信息：
+至此caffe配置文件修改完毕，可以开始编译了。假如显卡不是feimi架构的可以输入如下命令防止出现`Unsupported gpu architecture 'compute_20'`的问题：    
 ```shell
-/usr/local/lib/python2.7/dist-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype 
-size changed, may indicate binary incompatibility. Expected 96, got 88
-```
-**解决方法**
-将`numpy`降版本：
-```shell
-pip uninstall numpy
-pip install numpy==1.14.5
-```
-    
-**【报错1】**    
-导入`caffe`的时候还有一个**错误**:    
-![导入caffe报错](img/caffe-error2.png)    
-原因是我在`ubutnu`下用的`linuxbrew`安装的`Python2`设为默认`Python`了，然后`caffe`编译配置文件里用的是系统的`Python2`路径，导致系统自带的`Python`与`linuxbrew`安装的`Python`环境混乱。     
-解决方法是屏蔽掉`linuxbrew`环境。只用系统自带的`Python`，将`~/.profile`文件中的`eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)`这一行屏蔽:    
-```shell
-# linuxbrew
-#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) 
-```
-然后重启电脑.     
-
-**【报错2】**    
-
-![导入caffe报错](img/caffe-error3.png)    
-导致上述原因是`pip2`同时存在于`/usr/bin/pip2`和`/usr/local/bin/pip2`两个地方:   
-```shell
-# 查看pip2位于哪里
-$ where pip2
-/usr/local/bin/pip2
-/usr/bin/pip2
-
-# 查看当前用到的pip2是哪一个
-$ which pip
-/usr/local/bin/pip
+cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CUDA_GENERATION=Kepler ..
 ```
 
-解决方法是用`/usr/local/bin/pip2`安装`protobuf`:   
+
+#### 6. 编译安装`Caffe`      
 ```shell
-/usr/local/bin/pip2 install protobuf
-```
-
-> [Importing caffe results in ImportError: "No module named google.protobuf.internal"
-](https://stackoverflow.com/questions/37666241/importing-caffe-results-in-importerror-no-module-named-google-protobuf-interna)
-> This is probably because you have two python environments in your machine, the one provided by your linux distribution(pip) and the other by the anaconda environment (/home/username/anaconda2/bin/pip).
-> Try installing protobuf for both environments to be sure
-> `pip install protobuf`
-> `/home/username/anaconda2/bin/pip` install protobuf
-
-    
-### Python3下安装Cafe   
-#### 装依赖库   
-[同Python2.7](#python2下安装cafe)
-#### 配置CUDA 及 CUDNN   
-[同Python2.7](#python2下安装cafe)
-
-#### Conda 安装依赖模块: 
-```shell
-conda install -c menpo opencv3
-conda install libgcc
-conda install protobuf
-```
-**`conda install -c menpo opencv3`命令有时候会显示权限不够`permission issue`。这是因为你安装`anaconda`时用的是`sudo`，这时候需要修改`anaconda3`文件夹权限**:
-```shell
-sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
-```
-添加`Anaconda CPLUS`路径:   
-```shell
-export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
-```
-配置 `boost_python`   
-```shell
-cd /usr/lib/x86_64-linux-gnu && sudo ln -s libboost_python-py35.so libboost_python3.so
-```
-在`caffe`源码目录中修改`Makefile.config`文件如下：
-```shell
-## Refer to http://caffe.berkeleyvision.org/installation.html
-# Contributions simplifying and improving our build system are welcome!
-
-# cuDNN acceleration switch (uncomment to build with cuDNN).
-USE_CUDNN := 1
-
-# Uncomment if you're using OpenCV 3
-OPENCV_VERSION := 3
-
-# CUDA directory contains bin/ and lib/ directories that we need.
-CUDA_DIR := /usr/local/cuda
-# On Ubuntu 14.04, if cuda tools are installed via
-# "sudo apt-get install nvidia-cuda-toolkit" then use this instead:
-# CUDA_DIR := /usr
-
-# CUDA architecture setting: going with all of them.
-# For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
-CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
-             -gencode arch=compute_35,code=sm_35 \
-             -gencode arch=compute_50,code=sm_50 \
-             -gencode arch=compute_52,code=sm_52 \
-             -gencode arch=compute_60,code=sm_60 \
-             -gencode arch=compute_61,code=sm_61 \
-             -gencode arch=compute_61,code=compute_61
-
-# BLAS choice:
-# atlas for ATLAS (default)
-# mkl for MKL
-# open for OpenBlas
-BLAS := atlas
-
-# NOTE: this is required only if you will compile the python interface.
-# We need to be able to find Python.h and numpy/arrayobject.h.
-# PYTHON_INCLUDE := /usr/include/python2.7 \
-# /usr/lib/python2.7/dist-packages/numpy/core/include
-# Anaconda Python distribution is quite popular. Include path:
-# Verify anaconda location, sometimes it's in root.
-ANACONDA_HOME := $(HOME)/anaconda3
-PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
-# $(ANACONDA_HOME)/include/python3.6m \
-# $(ANACONDA_HOME)/lib/python3.6/site-packages/numpy/core/include
-
-# Uncomment to use Python 3 (default is Python 2)
-PYTHON_LIBRARIES := boost_python3 python3.6m
-# PYTHON_INCLUDE := /usr/include/python3.5m \
-# /usr/lib/python3.5/dist-packages/numpy/core/include
-
-# We need to be able to find libpythonX.X.so or .dylib.
-#PYTHON_LIB := /usr/lib
-PYTHON_LIB := $(ANACONDA_HOME)/lib
-
-# Uncomment to support layers written in Python (will link against Python libs)
-WITH_PYTHON_LAYER := 1
-
-# Whatever else you find you need goes here.
-INCLUDE_DIRS :=  $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
-LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
-
-# If Homebrew is installed at a non standard location (for example your home directory) and you use it for general dependencies
-# INCLUDE_DIRS += $(shell brew --prefix)/include
-# LIBRARY_DIRS += $(shell brew --prefix)/lib
-
-# N.B. both build and distribute dirs are cleared on `make clean`
-BUILD_DIR := build
-DISTRIBUTE_DIR := distribute
-
-# The ID of the GPU that 'make runtest' will use to run unit tests.
-TEST_GPUID := 0
-
-# enable pretty build (comment to see full commands)
-Q ?= @
-```
-
-保存后,开始编译:   
-```shell
+cd caffe
 make all -j $(($(nproc) + 1))
 make test -j $(($(nproc) + 1))
 make runtest -j $(($(nproc) + 1))
 make pycaffe -j $(($(nproc) + 1))
 ```
 
-<font color=red>在编译的时候有可能会提示错误，可能是因为anaconda环境的原因，需要在~/.bashrc中将anaconda的环境变量屏蔽掉,</font> **<font color=red>然后重启电脑</font>** 
-
-添加环境变量
+**添加`Caffe`环境变量**    
 ```shell
-sudo gedit ~/.bashrc
+vim ~/.bashrc
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
 
-### <font color=red>caffe编译遇到的问题 </font>
+#### 7. 常见问题    
 
-<table><tr><td bgcolor=Violet>错误：protoc: error while loading shared libraries: libprotoc.so.10: cannot open shared object file: No such file or directory</td></tr></table>
+**常见问题 1**    
+![编译caffe报错](img/caffe-error4.png)    
+**解决方法**    
+```shell
+git clone https://github.com/madler/zlib
+cd path/to/zlib
+./configure
+make
+make install  # you may add 'sudo'
+```    
+
+**常见问题 2**    
+<table><tr><td bgcolor=Violet>protoc: error while loading shared libraries: libprotoc.so.10: cannot open shared object file: No such file or directory</td></tr></table>
 
 **解决：**
 
@@ -1111,84 +1254,63 @@ export PYTHONPATH=~/caffe/python:$PYTHONPATH
 export LD_LIBRARY_PATH=/usr/local/lib
 ```
 
-<table><tr><td bgcolor=Violet>错误：/sbin/ldconfig.real: /usr/local/cuda-8.0/lib64/libcudnn.so.5 不是符号连接</td></tr></table>
+**常见问题 3**    
+<table><tr><td bgcolor=Violet>/sbin/ldconfig.real: /usr/local/cuda-9.0/lib64/libcudnn.so.5 不是符号连接</td></tr></table>
 
-**解决：**
-
-在sudo ldconfig时遇到`usr/local/cuda-8.0/lib64/libcudnn.so.5 `不是符号连接的问题，解决办法也很简单，重新建立链接并删除原链接
+**解决：**    
+在sudo ldconfig时遇到`usr/local/cuda-9.0/lib64/libcudnn.so.5 `不是符号连接的问题，解决办法也很简单，重新建立链接并删除原链接
 
 首先找到`usr/local/cuda-8.0/lib64/`目录，搜索` libcudnn `然后发现两个文件`libcudnn.so.5`和`libcudnn.so.5.0.5 `理论上只有一个`libcudnn.so.5.0.5`
 
 终端执行:
 ```shell
-ln -sf /usr/local/cuda-8.0/lib64/libcudnn.so.5.0.5 /usr/local/cuda-8.0/lib64/libcudnn.so.5 
+ln -sf /usr/local/cuda-9.0/lib64/libcudnn.so.5.0.5 /usr/local/cuda-9.0/lib64/libcudnn.so.5 
 ```
-再`sudo ldconfig`时就可以了，这时候会发现usr/local/cuda-8.0/lib64/目录下只有`libcudnn.so.5.0.5`文件了，`libcudnn.so.5`消失了。
+再`sudo ldconfig`时就可以了，这时候会发现usr/local/cuda-9.0/lib64/目录下只有`libcudnn.so.5.0.5`文件了，`libcudnn.so.5`消失了。
 
-<table><tr><td bgcolor=Violet>错误：.build_release/tools/caffe: error while loading shared libraries: libhdf5.so.10: cannot open shared object file: No such file    or directory</td></tr></table>
 
-**解决：**
+**常见问题 4**    
+<table><tr><td bgcolor=Violet>.build_release/tools/caffe: error while loading shared libraries: libhdf5.so.10: cannot open shared object file: No such file    or directory</td></tr></table>
+
+**解决：**    
 ```shell
 echo "export LD_LIBRARY_PATH=/home/abc/anaconda2/lib:$LD_LIBRARY_PATH" >>~/.bashrc
 ```
-<table><tr><td bgcolor=Violet>/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFOpen@LIBTIFF_4.0’未定义的引用
-/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFReadEncodedStrip@LIBTIFF_4.0’未定义的引用
-/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFSetField@LIBTIFF_4.0’未定义的引用
-/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFSetWarningHandler@LIBTIFF_4.0’未定义的引用
-/usr/lib/x86_64-linux-gnu/libopencv_highgui.so：对‘TIFFSetErrorHandler@LIBTIFF_4.0’未定义的引用
-collect2:错误：ld返回1
-make:*** [.build_release/tools/extract_features.bin]错误1</td></tr></table>
 
-**解决：**
-
-这个可能是权限问题，采用以下指令：
-```shell
-sudo su； 
-make all ； 
-make test ； 
-make runtest ； 
-make pycaffe； 
-```
-一切都能顺利解决
-
+**常见问题 5**    
 <table><tr><td bgcolor=Violet>错误：python/caffe/_caffe.cpp:1:52:致命错误：Python.h：没有那个文件或目录
 编译中断。
 make:***    
 [python/caffe/_caffe.so]错误1</td></tr></table>
 
-**解决：**
-
+**解决：**    
 执行：`sudo find / -name 'Python.h'`找到他的路径，
-在`Makefile.config`的PYTHON_INCLUDE加上`/home/abc/anaconda2/include/python2.7`（路径是自己的）
+在`Makefile.config`的PYTHON_INCLUDE加上`/home/abc/anaconda2/include/python2.7`（路径是自己的）    
 
+**常见问题 6**    
 <table><tr><td bgcolor=Violet>错误：import caffe时：ImportError:No module named skimage.io</td></tr></table>
 
-**解决：**
+**解决：**    
 可能是我们没有安装所谓的skimage.io模块，所以可以用以下的命令来安装：
 ```shell
-pip install scikit-image
+pip install scikit-image  # you may need use sudo
 ```
-关掉终端，重新进入再编译，或者：
-```shell
-sudo pip install scikit-image
-```
-另一种方法：
-```shell
-sudo apt-get install python-skimage
-```
-<table><tr><td bgcolor=Violet>错误：  
 
+
+
+**常见问题 7**    
+<table><tr><td bgcolor=Violet>
 import caffe 
 Traceback(most recent call last):   
 File"<stdin>", line 1, in <module>     
 ImportError:No module named caffe</td></tr></table>
 
-**解决：**
+**解决：**    
 ```shell
-echo'export PATH="/home/abc/caffe-master/python:$PATH"' >>~/.bashrc
+echo'export PATH="/home/andy/caffe/python:$PATH"' >>~/.bashrc
 source~/.bashrc
 ```
-关掉终端，重新进入再编译
+关掉终端，重新进入
 
 
 
