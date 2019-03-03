@@ -20,7 +20,8 @@
     - [安装zsh](#安装zsh)
     - [安装vimrc](#安装vimrc)
     - [安装oh-my-zsh](#安装oh-my-zsh)
-    - [安装zsh-syntax-highlighting](#安装zsh-syntax-highlighting)
+    - [安装zsh-syntax-highlighting](#安装zsh-syntax-highlighting)    
+    - [安装colorls](#安装colorls)    
   - [vim配置](#vim配置)
     - [YouCompleteMe实现vim自动补全](#youcompleteme实现vim自动补全)
     - [vim最终配置](#vim最终配置)
@@ -311,6 +312,7 @@ sudo pip install rivalcfg
 - **[vimrc](https://github.com/amix/vimrc)**
 - **[oh-my-zsh](http://ohmyz.sh)**      
 - **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)**    
+- **[colorls](https://github.com/athityakumar/colorls)**    
 
 
 ### 查看系统shell环境     
@@ -467,6 +469,72 @@ If git is not installed, download and extract a snapshot of the latest developme
 https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
 ```
 Note the `source` command must be **at the end** of `~/.zshrc`.
+
+
+### 安装colorls    
+先看效果:    
+![png](../img/colorls.png)    
+
+#### 安装    
+1. 用Rbenv安装Ruby (preferably, version > 2.1)
+  安装依赖包:   
+   ```shell
+   sudo apt update
+   sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-devCopy
+   ```
+    安装Rbenv:    
+    ```shell
+    curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+    ```
+    配置Rbenv环境:    
+    ```shell
+    # Bash
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+    source ~/.bashrc
+    
+    # Zsh
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+    echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+    source ~/.zshrc
+    ```
+    安装Ruby:    
+    ```shell
+    rbenv install 2.5.1
+    rbenv global 2.5.1
+    ```
+
+2. Install the patched fonts of powerline nerd-font and/or font-awesome. Have a look at the [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) for more installation instructions.
+
+    *Note for `iTerm2` users - Please enable the Nerd Font at iTerm2 > Preferences > Profiles > Text > Non-ASCII font > Hack Regular Nerd Font Complete.*
+
+3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with `gem install colorls`
+
+    *Note for `rbenv` users - In case of load error when using `lc`, please try the below patch.*
+
+    ```sh
+    rbenv rehash
+    rehash
+    ```
+
+4. Enable tab completion for flags by entering following line to your shell configuration file (`~/.bashrc` or `~/.zshrc`) :
+    ```bash
+    source $(dirname $(gem which colorls))/tab_complete.sh
+    ```
+5. 配置Bash或Zsh环境
+    ```shell
+    vim ~/.zshrc
+    ```
+    ```shell
+    alias ps='colorls -1'
+    alias lc='colorls -lA --sd'
+    ```
+    ```shell
+    source ~/.zshrc
+    ```
+6. Start using `colorls`    
+7. 升级用`gem update colorls`    
+8. 卸载用`gem uninstall colorls`    
 
 
 ---
