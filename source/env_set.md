@@ -521,14 +521,19 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     ```bash
     source $(dirname $(gem which colorls))/tab_complete.sh
     ```
-5. 配置Bash或Zsh环境
+5. 配置Bash或Zsh环境，这里以Zsh配置为例:    
+   进入`~/.zshrc`配置文件:    
     ```shell
     vim ~/.zshrc
     ```
+    在文件末追加以下内容:    
     ```shell
-    alias ps='colorls -1'
+    # Colorls
+    alias ps='colorls'
+    alias ps='colorls -al --report'
     alias lc='colorls -lA --sd'
     ```
+    使其生效:    
     ```shell
     source ~/.zshrc
     ```
