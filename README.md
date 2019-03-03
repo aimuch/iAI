@@ -1620,3 +1620,4 @@ mv libfreetype* exclude/
 > 5. [Linux MATLAB 2018a 安装教程及启动失败解决办法](https://blog.csdn.net/ouening/article/details/79751393)
 > 6. [关于Ubuntu16.04LTS下Python版本和安装Spyder3的问题？](https://www.zhihu.com/question/51248022/answer/142596984)
 > 7. [zsh + oh-my-zsh 默认shell的最佳替代品](https://blog.phpgao.com/oh-my-zsh.html)
+> 8. [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)

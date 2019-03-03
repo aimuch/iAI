@@ -537,6 +537,8 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
 8. 卸载用`gem uninstall colorls`    
 
 
+> [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
+
 ---
 ## vim配置
 ### YouCompleteMe实现vim自动补全    
