@@ -88,7 +88,6 @@
        - [远程访问服务器Jupyter Notebook](./source/dlFAQ.md#远程访问服务器jupyter-notebook)
          - [方法1 ssh远程使用jupyter notebook](./source/dlFAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./source/dlFAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
-         - [方法3 配置自己的config文件](./source/dlFAQ.md#方法3-配置自己的config文件)
      - [Shadowsocks 安装](./source/ss.md#shadowsocks安装)
        - [说明](./source/ss.md##说明)
        - [安装shadowsocks-qt5](./source/ss.md##安装shadowsocks-qt5)
@@ -1629,3 +1628,4 @@ mv libfreetype* exclude/
 > 7. [zsh + oh-my-zsh 默认shell的最佳替代品](https://blog.phpgao.com/oh-my-zsh.html)
 > 8. [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
 > 9. [远程访问服务器Jupyter Notebook的方法](https://www.jianshu.com/p/8fc3cd032d3c)    
+> 10. [Jupyer Notebook官方指南](https://jupyter-notebook.readthedocs.io/en/latest/public_server.html#notebook-server-security)

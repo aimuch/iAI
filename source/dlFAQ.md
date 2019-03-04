@@ -4,7 +4,6 @@
 - [远程访问服务器Jupyter Notebook](#远程访问服务器jupyter-notebook)
   - [方法1 ssh远程使用jupyter notebook](#方法1-ssh远程使用jupyter-notebook)
   - [方法2 利用jupyter notebook自带的远程访问功能](#方法2-利用jupyter-notebook自带的远程访问功能)
-  - [方法3 配置自己的config文件](#方法3-配置自己的config文件)
 
 
 ---
@@ -185,20 +184,47 @@ sh /opt/tomcat/bin/catalina.sh   run
 官方指南：[官方指南](https://jupyter-notebook.readthedocs.io/en/latest/public_server.html#notebook-server-security)
 
 - **生成默认配置文件**    
+    默认情况下，配置文件`~/.jupyter/jupyter_notebook_config.py`并不存在，需要自行创建。使用下列命令生成配置文件:    
     ```shell
     jupyter notebook --generate-config
     ```
-- **生成访问密码(token)**
-    终端输入`ipython`，设置你自己的`jupyter`访问密码，注意复制输出的sha1:xxxxxxxx密码串
+    如果是`root`用户执行上面的命令，会发生一个问题：
     ```shell
-    In [1]: from notebook.auth import passwd
-    In [2]: passwd()
-    Enter password:
-    Verify password:
-    Out[2]: 'sha1:xxxxxxxxxxxxxxxxx'
+    Running as root it not recommended. Use --allow-root to bypass.
     ```
+    提示信息很明显，`root`用户执行时需要加上`--allow-root`选项。
+    ```shell
+    jupyter notebook --generate-config --allow-config
+    ```
+    执行成功后，会出现下面的信息：
+    ```shell
+    Writing default config to: /root/.jupyter/jupyter_notebook_config.py
+    ```
+- **生成访问密码(token)**
+    - **自动生成**    
+        从`jupyter notebook 5.0`版本开始，提供了一个命令来设置密码：`jupyter notebook password`，生成的密码存储在： `jupyter_notebook_config.json`：    
+        ```shell
+        $ jupyter notebook password
+        Enter password:  ****
+        Verify password: ****
+        [NotebookPasswordApp] Wrote hashed password to /Users/you/.jupyter/jupyter_notebook_config.json
+        ```
+    - **手动生成**    
+        除了使用提供的命令，也可以通过手动安装，推荐使用的手动安装，因为`jupyter notebook password` 出来一堆内容，没耐心看。打开 `ipython` 执行下面内容：    
+        ```python
+        In [1]: from notebook.auth import passwd
+        In [2]: passwd()
+        Enter password:
+        Verify password:
+        Out[2]: 'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
+        ```
+        `sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed` 这一串就是要在 `jupyter_notebook_config.py` 添加的密码。    
+        ```python
+        c.NotebookApp.password = u'sha1:67c9e60bb8b6:9ffede0825894254b2e042ea597d771089e11aed'
+        ```
 
-- 修改`./jupyter/jupyter_notebook_config.py`中对应行如下:    
+- **配置config文件**    
+    在 `jupyter_notebook_config.py` 中找到下面的行，取消注释并修改:   
     ```python
     c.NotebookApp.ip='*'
     c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'
@@ -206,18 +232,17 @@ sh /opt/tomcat/bin/catalina.sh   run
     c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
     ```
 
-- 在**服务器**上启动`jupyter notebook`:    
+- **服务器**上启动 `jupyter notebook`:    
     ```shell
     jupyter notebook
     ```
-- 最后打开**本地**浏览器，访问：http://ip:8888/
+    `root`用户使用:
+    ```shell
+    jupyter notebook --allow-root
+    ```
 
-
-### 方法3 配置自己的config文件
-配置自己的`config`文件，如`./jupyter/jupyter_notebook_config_backup.py`:    
-```shell
-jupyter notebook --config ./jupyter/jupyter_notebook_config_backup.py
-```
+- 最后**本地浏览器**打开`IP:指定的端口`，访问：http://ip:8888/，输入密码就可以访问了。需要注意的是不能在隐藏目录 (以 `.` 开头的目录)下启动 `jupyter notebook`, 否则无法正常访问文件。
 
 **参考资料**    
 > [远程访问服务器Jupyter Notebook的方法](https://www.jianshu.com/p/8fc3cd032d3c)    
+> [Jupyer Notebook官方指南](https://jupyter-notebook.readthedocs.io/en/latest/public_server.html#notebook-server-security)
