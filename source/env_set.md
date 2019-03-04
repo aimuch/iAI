@@ -515,7 +515,7 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
 
     *Note for `rbenv` users - In case of load error when using `lc`, please try the below patch.*
 
-    ```sh
+    ```shell
     rbenv rehash
     rehash
     ```
@@ -526,7 +526,7 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     ```
 #### 配置colorls
 在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**别名**来替代`colorls`:         
-配置Bash或Zsh环境，这里以Zsh配置为例:    
+配置`Bash`或`Zsh`环境，这里以`Zsh`配置为例:    
 进入`~/.zshrc`配置文件:    
 ```shell
 vim ~/.zshrc
