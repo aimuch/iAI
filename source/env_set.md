@@ -506,9 +506,12 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
 
 2. Install the patched fonts of powerline nerd-font and/or font-awesome. Have a look at the [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) for more installation instructions.
 
-    *Note for `iTerm2` users - Please enable the Nerd Font at iTerm2 > Preferences > Profiles > Text > Non-ASCII font > Hack Regular Nerd Font Complete.*
+    *Note for `ubuntu` users - Please enable the Nerd Font at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
 
-3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with `gem install colorls`
+3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：   
+    ```shell
+    gem install colorls
+    ```
 
     *Note for `rbenv` users - In case of load error when using `lc`, please try the below patch.*
 
@@ -521,7 +524,9 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     ```bash
     source $(dirname $(gem which colorls))/tab_complete.sh
     ```
-5. 配置Bash或Zsh环境，这里以Zsh配置为例:    
+5. 在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**别名**来替代`colorls`         
+
+6. 配置Bash或Zsh环境，这里以Zsh配置为例:    
    进入`~/.zshrc`配置文件:    
     ```shell
     vim ~/.zshrc
@@ -536,10 +541,9 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     使其生效:    
     ```shell
     source ~/.zshrc
-    ```
-6. Start using `colorls`    
+    ```   
 7. 升级用`gem update colorls`    
-8. 卸载用`gem uninstall colorls`    
+8.  卸载用`gem uninstall colorls`    
 
 
 > [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
