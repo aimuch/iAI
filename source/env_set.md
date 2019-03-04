@@ -504,9 +504,9 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     rbenv global 2.5.1
     ```
 
-2. 安装字体并设置`Terminal`否则`icon`显示不全,推荐 `powerline nerd-font` and/or `font-awesome`. Have a look at the [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) for more installation instructions.
+2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`。可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。    
 
-    *Note for `ubuntu` users - Please enable the Nerd Font at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
+    *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
 
 3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：   
     ```shell
