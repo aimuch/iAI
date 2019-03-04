@@ -48,6 +48,8 @@
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 12. [Ubuntu FAQ](./source/env_set.md#ubuntu-faq)
      - [Docker安装与使用](./source/env_set.md#docker安装与使用)
+       - [安装docker](./source/env_set.md#安装docker)
+       - [使用docker](./source/env_set.md#使用docker)
      - [Linuxbrew安装](./source/env_set.md#linuxbrew安装)
        - [安装linuxbrew](./source/env_set.md#安装linuxbrew)
        - [linuxbrew必装包](./source/env_set.md#linuxbrew必装包)
