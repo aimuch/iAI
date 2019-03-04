@@ -220,8 +220,8 @@ For more examples and ideas, visit:
 如果在使用过程中发现拉取 Docker 镜像十分缓慢，可以配置 Docker [国内镜像加速](mirror.md)。
 
 ### 参考文档
-> [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)
-> [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+> [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)    
+> [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)    
 
 
 
