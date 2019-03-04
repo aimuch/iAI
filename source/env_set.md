@@ -535,7 +535,7 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     ```shell
     # Colorls
     alias ps='colorls'
-    alias ps='colorls -al --report'
+    alias ps='colorls -lA --report'
     alias lc='colorls -lA --sd'
     ```
     使其生效:    
