@@ -6,7 +6,7 @@
 ```
 硬件环境: CPU i7 / NVIDIA TITAN V / SSD
 系统环境：Ubuntu 16.04 64bit
-安装软件：CUDA9.0 / caffe / YOLO V3 / Protobuf / Matlab
+安装软件：CUDA9.0 / caffe / YOLO V3 / Protobuf / Matlab / VIM
 ````
 ---
 ### 目录
@@ -48,8 +48,6 @@
 11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 12. [Ubuntu FAQ](./source/env_set.md#ubuntu-faq)
      - [Docker安装与使用](./source/env_set.md#docker安装与使用)
-       - [安装docker](./source/env_set.md#安装docker)
-       - [使用docker](./source/env_set.md#使用docker)
      - [Linuxbrew安装](./source/env_set.md#linuxbrew安装)
        - [安装linuxbrew](./source/env_set.md#安装linuxbrew)
        - [linuxbrew必装包](./source/env_set.md#linuxbrew必装包)
@@ -1630,3 +1628,5 @@ mv libfreetype* exclude/
 > 9. [远程访问服务器Jupyter Notebook的方法](https://www.jianshu.com/p/8fc3cd032d3c)    
 > 10. [Jupyer Notebook官方指南](https://jupyter-notebook.readthedocs.io/en/latest/public_server.html#notebook-server-security)
 > 11. [设置 jupyter notebook 可远程访问](https://blog.csdn.net/simple_the_best/article/details/77005400)
+> 12. [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)
+> 13. [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
