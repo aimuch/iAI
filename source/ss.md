@@ -1,9 +1,9 @@
 # shadowsocks安装
 ***Ubuntu上面经常需要科学上网，为了防止忘记，故此记录***
-- [shadowsocks安装](#shadowsocks安装)
-    - [说明](#说明)
-    - [安装shadowsocks-qt5](#安装shadowsocks-qt5)
-    - [配置chrome浏览器](#配置chrome浏览器)
+- [shadowsocks安装](#shadowsocks%E5%AE%89%E8%A3%85)
+  - [说明](#%E8%AF%B4%E6%98%8E)
+  - [安装shadowsocks-qt5](#%E5%AE%89%E8%A3%85shadowsocks-qt5)
+  - [配置chrome浏览器](#%E9%85%8D%E7%BD%AEchrome%E6%B5%8F%E8%A7%88%E5%99%A8)
 
 ---
 ## 说明
