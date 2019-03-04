@@ -476,17 +476,17 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
 ![png](../img/colorls.png)    
 
 #### 安装    
-1. 用Rbenv安装Ruby (preferably, version > 2.1)
+1. 用`Rbenv`安装`Ruby` (preferably, version > 2.1)
   安装依赖包:   
    ```shell
    sudo apt update
    sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-devCopy
    ```
-    安装Rbenv:    
+    安装`Rbenv`:    
     ```shell
     curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
     ```
-    配置Rbenv环境:    
+    配置`Rbenv`环境:    
     ```shell
     # Bash
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -498,13 +498,13 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     source ~/.zshrc
     ```
-    安装Ruby:    
+    安装`Ruby`:    
     ```shell
     rbenv install 2.5.1
     rbenv global 2.5.1
     ```
 
-2. Install the patched fonts of powerline nerd-font and/or font-awesome. Have a look at the [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) for more installation instructions.
+2. 安装字体并设置`Terminal`否则`icon`显示不全,推荐 `powerline nerd-font` and/or `font-awesome`. Have a look at the [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) for more installation instructions.
 
     *Note for `ubuntu` users - Please enable the Nerd Font at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
 
