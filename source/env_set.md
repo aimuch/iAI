@@ -524,28 +524,34 @@ Note the `source` command must be **at the end** of `~/.zshrc`.
     ```bash
     source $(dirname $(gem which colorls))/tab_complete.sh
     ```
-5. 在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**别名**来替代`colorls`         
+#### 配置colorls
+在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**别名**来替代`colorls`:         
+配置Bash或Zsh环境，这里以Zsh配置为例:    
+进入`~/.zshrc`配置文件:    
+```shell
+vim ~/.zshrc
+```
+在文件末追加以下内容:    
+```shell
+# Colorls
+alias ps='colorls'
+alias ps='colorls -lA --report'
+alias lc='colorls -lA --sd'
+```
+使其生效:    
+```shell
+source ~/.zshrc
+```   
+#### 升级colorls
+```shell
+gem update colorls
+```    
+#### 卸载colorls
+```shell
+gem uninstall colorls
+```   
 
-6. 配置Bash或Zsh环境，这里以Zsh配置为例:    
-   进入`~/.zshrc`配置文件:    
-    ```shell
-    vim ~/.zshrc
-    ```
-    在文件末追加以下内容:    
-    ```shell
-    # Colorls
-    alias ps='colorls'
-    alias ps='colorls -lA --report'
-    alias lc='colorls -lA --sd'
-    ```
-    使其生效:    
-    ```shell
-    source ~/.zshrc
-    ```   
-7. 升级用`gem update colorls`    
-8.  卸载用`gem uninstall colorls`    
-
-
+#### 参考资料  
 > [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
 
 ---
