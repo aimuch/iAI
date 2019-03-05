@@ -1163,7 +1163,6 @@ set scrolloff=3
 ![tmux1](../img/tmux1.gif)    
 ![tmux2](../img/tmux2.gif)    
 ![tmux3](../img/tmux3.gif)    
-![tmux4](../img/tmux5.png)    
 
 ### Tmux安装
 ```shell
@@ -1193,6 +1192,13 @@ sudo apt-get install tmux
   tmux_conf_theme_right_separator_main=''
   tmux_conf_theme_right_separator_sub=''
   ```
+  可以修改右侧状态栏来显示天气预报:    
+  ```
+  tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in?format=3) , %R , %d %b | #{username}#{root} | #{hostname} '
+  ```
+  效果如下:    
+  ![tmux4](../img/tmux5.png)    
+
   **更详细配置介绍[请看](tmux/tmux_conf.md)**    
   
 - 官方催件安装[`Source Code Pro`](tmux/source-code-pro-2.030R-ro-1.050R-it.zip)字体，官方[GitHub地址](https://github.com/adobe-fonts/source-code-pro/releases)或者[Powerline](https://github.com/powerline/fonts)中提供的`Source Code Pro`字体，解压后文件夹`source-code-pro/TTF/`下直接安装即可。但是安装了`Source Code Pro`字体后[安装colorls](#安装colorls)显示会有问题，所以为了兼容性**推荐 `powerline nerd-font`字体**。具体可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。    
