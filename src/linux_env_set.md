@@ -1175,7 +1175,6 @@ sudo apt-get install tmux
 - **`.tmux`安装要求**:    
   - tmux **`>= 2.1`** 
   - outside of tmux, `$TERM` must be set to `xterm-256color`    
-  ![tmux7](../img/tmux7.png)    
 
 - **`.tmux`安装** 
   按照下面命令安装: (安装之前首先备份一下 `~/.tmux.conf` 文件)    
@@ -1203,8 +1202,9 @@ sudo apt-get install tmux
   
 - 官方催件安装[`Source Code Pro`](tmux/source-code-pro-2.030R-ro-1.050R-it.zip)字体，官方[GitHub地址](https://github.com/adobe-fonts/source-code-pro/releases)或者[Powerline](https://github.com/powerline/fonts)中提供的`Source Code Pro`字体，解压后文件夹`source-code-pro/TTF/`下直接安装即可。但是安装了`Source Code Pro`字体后[安装colorls](#安装colorls)显示会有问题，所以为了兼容性**推荐 `powerline nerd-font`字体**。具体可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。    
   *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
-  ![colorls1](../img/colorls1.png)
+  ![colorls1](../img/colorls1.png)    
   ![colorls2](../img/colorls2.png)     
+  ![tmux7](../img/tmux7.png)    
   
   
 - 安装[Powerline symbols](https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf).
