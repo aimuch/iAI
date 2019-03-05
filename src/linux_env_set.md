@@ -28,6 +28,9 @@
   - [vim配置](#vim配置)
     - [YouCompleteMe实现vim自动补全](#youcompleteme实现vim自动补全)
     - [vim最终配置](#vim最终配置)
+  - [Tmux配置与使用](#tmux配置与使用)
+    - [Tmux配置](#tmux配置)
+    - [Tmux使用手册](#tmux使用手册)
   - [Sublime Text 3配置问题](#sublime-text-3配置问题)
   - [Visual Studio Code配置问题](#visual-studio-code配置问题)   
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
@@ -1152,6 +1155,123 @@ set autoread
 set scrolloff=3
 " <<<<<< add by ANDY
 ```
+---
+## Tmux配置与使用
+**先上配置好的效果图**:     
+![tmux1](../img/tmux1.gif)    
+![tmux2](../img/tmux2.gif)    
+![tmux3](../img/tmux3.gif)    
+![tmux4](../img/tmux5.png)    
+
+### Tmux安装
+```shell
+sudo apt-get install tmux
+```
+
+### Tmux配置    
+安装`.tmux`配置文件，官方github地址: https://github.com/gpakosz/.tmux#installation    
+
+- `.tmux`安装要求:    
+  - tmux **`>= 2.1`** 
+  - outside of tmux, `$TERM` must be set to `xterm-256color`
+
+- `.tmux`安装 
+  按照下面命令安装: (安装之前首先备份一下 `~/.tmux.conf` 文件)    
+  ```shell
+  cd
+  git clone https://github.com/gpakosz/.tmux.git
+  ln -s -f .tmux/.tmux.conf
+  cp .tmux/.tmux.conf.local .
+  ```
+- 然后配置`~/.tmux.conf.local`文件，将下列代码取消屏蔽，并将原始的屏蔽：    
+  ```
+  tmux_conf_theme_left_separator_main=''
+  tmux_conf_theme_left_separator_sub=''
+  tmux_conf_theme_right_separator_main=''
+  tmux_conf_theme_right_separator_sub=''
+  ```
+  **更详细配置介绍[请看](tmux/tmux_conf.md)**    
+  
+- 安装[`Source Code Pro`](tmux/source-code-pro-2.030R-ro-1.050R-it.zip)字体，官方[GitHub地址](https://github.com/adobe-fonts/source-code-pro/releases)或者[Powerline](https://github.com/powerline/fonts)中提供的`Source Code Pro`字体，解压后文件夹`source-code-pro/TTF/`下直接安装即可。
+- 安装[Powerline symbols](https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf).
+
+- 使`~/.tmux.conf.local`配置文件生效:    
+  ```shell
+  tmux # 启动tmux
+
+  #然后`Ctrl+b`再按`:`进入`tmux`命令行模式
+  source ~/.tmux.conf
+  ```
+  ![tmux6](../img/tmux6.png)    
+
+### Tmux使用手册   
+
+**常用命令**    
+
+启动新会话：
+
+    tmux [new -s 会话名 -n 窗口名]
+
+恢复会话：
+
+    tmux at [-t 会话名]
+
+列出所有会话：
+
+    tmux ls
+
+<a name="killSessions"></a>关闭会话：
+
+    tmux kill-session -t 会话名
+
+<a name="killAllSessions"></a>关闭所有会话：
+
+    tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill
+
+
+**在 Tmux 中，按下 Tmux 前缀 `ctrl+b`，然后**：
+
+会话
+
+    :new<回车>  启动新会话
+    s           列出所有会话
+    $           重命名当前会话
+
+**<a name="WindowsTabs"></a>窗口 (标签页)**
+
+    c  创建新窗口
+    w  列出所有窗口
+    n  后一个窗口
+    p  前一个窗口
+    f  查找窗口
+    ,  重命名当前窗口
+    &  关闭当前窗口
+
+**调整窗口排序**
+
+    swap-window -s 3 -t 1  交换 3 号和 1 号窗口
+    swap-window -t 1       交换当前和 1 号窗口
+    move-window -t 1       移动当前窗口到 1 号
+
+**<a name="PanesSplits"></a>窗格（分割窗口**） 
+
+    %  垂直分割
+    "  水平分割
+    o  交换窗格
+    x  关闭窗格
+    ⍽  左边这个符号代表空格键 - 切换布局
+    q 显示每个窗格是第几个，当数字出现的时候按数字几就选中第几个窗格
+    { 与上一个窗格交换位置
+    } 与下一个窗格交换位置
+    z 切换窗格最大化/最小化
+
+
+**更多详情请[移步](tmux/tmux_cheatsheet.md)**     
+
+#### 参考资料    
+> [.tmux](https://github.com/gpakosz/.tmux#installation)
+> [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)
+
 
 ---
 ## Sublime Text 3配置问题
