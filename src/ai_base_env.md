@@ -6,18 +6,18 @@
 ### 目录
 1. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
 2. [安装NVIDIA驱动](#安装nvidia驱动)   
-    - [安装驱动所需的依赖包](#安装驱动所需的依赖包)   
+    - [安装NVIDIA驱动所需的依赖包](#安装nvidia驱动所需的依赖包)   
     - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)   
-    - [安装nvidia官方显卡驱动](#安装nvidia官方显卡驱动)   
-    - [配置环境变量](#配置环境变量)   
-    - [查看显卡驱动版本](#查看显卡驱动版本)    
+    - [安装NVIDIA官方显卡驱动](#安装nvidia官方显卡驱动)   
+    - [配置NVIDIA环境变量](#配置nvidia环境变量)   
+    - [查看NVIDIA驱动版本](#查看nvidia驱动版本)    
 3. [安装CUDA](#安装cuda)   
     - [安装CUDA步骤](#安装cuda步骤)    
     - [修改配置文件](#修改配置文件)    
     - [查看CUDA版本](#查看cuda版本)
     - [卸载CUDA的方法](#卸载cuda的方法)    
 4. [安装cuDNN](#安装cudnn)    
-5. [安装anaconda](#安装anaconda)    
+5. [安装Anaconda](#安装anaconda)    
 6. [安装OpenCV](#安装opencv)   
     - [下载OpenCV](#下载opencv)
     - [编译OpenCV](#编译opencv)
@@ -25,11 +25,11 @@
     - [卸载OpenCV](#卸载opencv)
 7. [TensorRT](#tensorrt) 
     - [安装TensorRT](#安装tensorrt)    
-      - [环境变量设置](#tensorrt1)
+      - [TensorRT环境变量设置](#tensorrt1)
       - [安装Python的TensorRT包](#tensorrt2)
       - [安装uff](#tensorrt3)
-      - [验证是否安装成功](#tensorrt4)
-      - [安装过程中遇到的问题以及解决方法](#tensorrt5)
+      - [验证TensorRT是否安装成功](#tensorrt4)
+      - [TensorRT安装过程中遇到的问题以及解决方法](#tensorrt5)
     - [TensorRT生成Engine](#tensorrt生成engine)
       - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
       - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
@@ -53,7 +53,7 @@
 ---
 ## 安装NVIDIA驱动   
 
-### 安装驱动所需的依赖包   
+### 安装驱动NVIDIA所需的依赖包   
 *在终端里依次输入以下命令安装驱动所需的依赖包*    
 ```shell
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
@@ -86,7 +86,7 @@ sudo update-initramfs -u
 ```shell
 lsmod | grep nouveau
 ```
-### 安装nvidia官方显卡驱动     
+### 安装NVIDIA官方显卡驱动     
 通过`Ctrl + Alt + F1`进入文本模式，输入帐号密码登录，通过`Ctrl + Alt + F7`可返回图形化模式，在文本模式登录后首先关闭桌面服务：
 ```shell
 sudo service lightdm stop
@@ -109,7 +109,7 @@ sudo apt-get install nvidia-390 nvidia-settings nvidia-prime  #大部分NVIDIA�
 nvidia-settings
 ```
 
-### 配置环境变量  
+### 配置NVIDIA环境变量  
 使用 gedit 命令打开配置文件：
 ```shell
 sudo gedit ~/.bashrc
@@ -123,7 +123,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ```shell
 source  ~/.bashrc
 ```
-### 查看显卡驱动版本    
+### 查看NVIDIA驱动版本    
 ```bash
 cat /proc/driver/nvidia/version
 ```
@@ -227,7 +227,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 
 ---
-## 安装anaconda
+## 安装Anaconda
 下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
 ```bash
 chmod a+x ./Anaconda3-5.2.0-Linux-x86_64.sh #chmod 777 ./Anaconda3-5.2.0-Linux-x86_64.sh
@@ -454,8 +454,8 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 ## TensorRT
 ### 安装TensorRT
 
-<!-- #### 1. 环境变量设置 -->
-#### <span id="tensorrt1">1. 环境变量设置</span>  
+<!-- #### 1. TensorRT环境变量设置 -->
+#### <span id="tensorrt1">1. TensorRT环境变量设置</span>  
 首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
 安装`TensorRT`前需要安装`Cuda`和`cudnn`，安装步骤可以参考上方。   
 打开下载的TensorRT所在路径，解压下载的tar文件：   
@@ -536,8 +536,8 @@ sudo pip2 install uff-0.1.0rc0-py2.py3-none-any.whl
 sudo pip3 install uff-0.1.0rc0-py2.py3-none-any.whl
 ```
 
-<!-- #### 4. 验证是否安装成功     -->
-#### <span id="tensorrt4">4. 验证是否安装成功</span> 
+<!-- #### 4. 验证TensorRT是否安装成功     -->
+#### <span id="tensorrt4">4. 验证TensorRT是否安装成功</span> 
 **测试TensorRT是否安装成功**：   
 ```bash
 which tensorrt
@@ -567,8 +567,8 @@ cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此�
 ```
 命令执行顺利即安装成功。   
    
-<!-- #### 5. 安装过程中遇到的问题以及解决方法 -->
-#### <span id="tensorrt5">5. 安装过程中遇到的问题以及解决方法</span>
+<!-- #### 5. TensorRT安装过程中遇到的问题以及解决方法 -->
+#### <span id="tensorrt5">5. TensorRT安装过程中遇到的问题以及解决方法</span>
 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```bash
 In file included from src/cpp/cuda.cpp:1:0:

@@ -1,17 +1,17 @@
 # shadowsocks安装
 ***Ubuntu上面经常需要科学上网，为了防止忘记，故此记录***
 - [shadowsocks安装](#shadowsocks%E5%AE%89%E8%A3%85)
-  - [说明](#%E8%AF%B4%E6%98%8E)
-  - [安装shadowsocks-qt5](#%E5%AE%89%E8%A3%85shadowsocks-qt5)
+  - [Shadowsocks说明](#shadowsocks%E8%AF%B4%E6%98%8E)
+  - [安装Shadowsocks-qt5](#%E5%AE%89%E8%A3%85shadowsocks-qt5)
   - [安装electron-ssr](#%E5%AE%89%E8%A3%85electron-ssr)
   - [配置chrome浏览器](#%E9%85%8D%E7%BD%AEchrome%E6%B5%8F%E8%A7%88%E5%99%A8)
 
 ---
-## 说明
+## Shadowsocks说明
 `shadowsocks-qt5`和`electron-ssr`是`ubuntu`上一个可视化的界面，操作起来比较方便；也有脚本安装的，切换路线比较繁琐，所以推荐安装可视化界面版本。   
 
 ---
-## 安装shadowsocks-qt5
+## 安装Shadowsocks-qt5
 *只能用ss，不能用ssr*    
 1. **官方AppImage安装(推荐)**
     - 从官方[github](https://github.com/shadowsocks/shadowsocks-qt5/releases)下载`Shadowsocks-Qt5-*.AppImage`程序，到创建的ss文件夹下；

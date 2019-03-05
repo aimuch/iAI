@@ -14,18 +14,18 @@ AI实验环境搭建和深度学习算法安装实验
 1. [AI基础环境搭建和设置](src/ai_base_env.md#ai基础环境搭建和设置)
    1. [安装Ubuntu和Windows双系统](src/ai_base_env.md#安装ubuntu和windows双系统)   
    2. [安装NVIDIA驱动](src/ai_base_env.md#安装nvidia驱动)   
-       - [安装驱动所需的依赖包](src/ai_base_env.md#安装驱动所需的依赖包)   
+       - [安装NVIDIA驱动所需的依赖包](src/ai_base_env.md#安装nvidia驱动所需的依赖包)   
        - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)   
-       - [安装nvidia官方显卡驱动](src/ai_base_env.md#安装nvidia官方显卡驱动)   
-       - [配置环境变量](src/ai_base_env.md#配置环境变量)   
-       - [查看显卡驱动版本](src/ai_base_env.md#查看显卡驱动版本)    
+       - [安装NVIDIA官方显卡驱动](src/ai_base_env.md#安装nvidia官方显卡驱动)   
+       - [配置NVIDIA环境变量](src/ai_base_env.md#配置环境变量)   
+       - [查看NVIDIA显卡驱动版本](src/ai_base_env.md#查看NVIDIA驱动版本)    
    3. [安装CUDA](src/ai_base_env.md#安装cuda)   
        - [安装CUDA步骤](src/ai_base_env.md#安装cuda步骤)    
        - [修改配置文件](src/ai_base_env.md#修改配置文件)    
        - [查看CUDA版本](src/ai_base_env.md#查看cuda版本)
        - [卸载CUDA的方法](src/ai_base_env.md#卸载cuda的方法)    
    4. [安装cuDNN](src/ai_base_env.md#安装cudnn)    
-   5. [安装anaconda](src/ai_base_env.md#安装anaconda)    
+   5. [安装Anaconda](src/ai_base_env.md#安装anaconda)    
    6. [安装OpenCV](src/ai_base_env.md#安装opencv)   
        - [下载OpenCV](src/ai_base_env.md#下载opencv)
        - [编译OpenCV](src/ai_base_env.md#编译opencv)
@@ -33,11 +33,11 @@ AI实验环境搭建和深度学习算法安装实验
        - [卸载OpenCV](src/ai_base_env.md#卸载opencv)
    7. [TensorRT](src/ai_base_env.md#tensorrt) 
        - [安装TensorRT](src/ai_base_env.md#安装tensorrt)    
-         - [环境变量设置](src/ai_base_env.md#tensorrt1)
+         - [TensorRT环境变量设置](src/ai_base_env.md#tensorrt1)
          - [安装Python的TensorRT包](src/ai_base_env.md#tensorrt2)
          - [安装uff](src/ai_base_env.md#tensorrt3)
-         - [验证是否安装成功](src/ai_base_env.md#tensorrt4)
-         - [安装过程中遇到的问题以及解决方法](src/ai_base_env.md#tensorrt5)
+         - [验证TensorRT是否安装成功](src/ai_base_env.md#tensorrt4)
+         - [TensorRT安装过程中遇到的问题以及解决方法](src/ai_base_env.md#tensorrt5)
        - [TensorRT生成Engine](src/ai_base_env.md#tensorrt生成engine)
          - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
          - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
@@ -58,10 +58,10 @@ AI实验环境搭建和深度学习算法安装实验
          - [方法1 ssh远程使用jupyter notebook](./src/ai_server_FAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./src/ai_server_FAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
      - [Shadowsocks 安装](./src/ss.md#shadowsocks安装)
-       - [说明](./src/ss.md#说明)
-       - [安装shadowsocks-qt5](./src/ss.md#安装shadowsocks-qt5)
+       - [Shadowsocks说明](./src/ss.md#shadowsocks说明)
+       - [安装Shadowsocks-qt5](./src/ss.md#安装shadowsocks-qt5)
        - [安装electron-ssr](./src/ss.md#安装electron-ssr)
-       - [配置chrome浏览器](./src/ss.md#配置chrome浏览器)
+       - [配置Chrome浏览器](./src/ss.md#配置chrome浏览器)
      - [Faster R-CNN编译问题](./src/algorithm_install.md#faster-r-cnn编译问题)
 3.  [Ubuntu FAQ](./src/linux_env_set.md#ubuntu-faq)
      - [Docker安装与使用](./src/linux_env_set.md#docker安装与使用)
@@ -74,8 +74,8 @@ AI实验环境搭建和深度学习算法安装实验
        - [linuxbrew注意事项](./src/linux_env_set.md#linuxbrew注意事项)
      - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](./src/linux_env_set.md#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
      - [Ubuntu循环登陆问题](./src/linux_env_set.md#ubuntu循环登陆问题)
-     - [安装python依赖库](./src/linux_env_set.md#安装python依赖库)
-     - [安装chrome浏览器](./src/linux_env_set.md#安装chrome浏览器)
+     - [安装Python依赖库](./src/linux_env_set.md#安装python依赖库)
+     - [安装Chrome浏览器](./src/linux_env_set.md#安装chrome浏览器)
      - [pip/pip3安装报错问题](./src/linux_env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./src/linux_env_set.md#ubuntu-16下安装spyder3)
      - [安装搜狗输入法](./src/linux_env_set.md#安装搜狗输入法)
@@ -143,7 +143,7 @@ sudo update-initramfs -u
 ```shell
 lsmod | grep nouveau
 ```
-### 安装nvidia官方显卡驱动     
+### 安装NVIDIA官方显卡驱动     
 通过`Ctrl + Alt + F1`进入文本模式，输入帐号密码登录，通过`Ctrl + Alt + F7`可返回图形化模式，在文本模式登录后首先关闭桌面服务：
 ```shell
 sudo service lightdm stop
@@ -166,7 +166,7 @@ sudo apt-get install nvidia-390 nvidia-settings nvidia-prime  #大部分NVIDIA�
 nvidia-settings
 ```
 
-### 配置环境变量  
+### 配置NVIDIA环境变量  
 使用 gedit 命令打开配置文件：
 ```shell
 sudo gedit ~/.bashrc
@@ -180,7 +180,7 @@ export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ```shell
 source  ~/.bashrc
 ```
-### 查看显卡驱动版本    
+### 查看NVIDIA驱动版本    
 ```bash
 cat /proc/driver/nvidia/version
 ```
@@ -284,7 +284,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 
 ---
-## 安装anaconda
+## 安装Anaconda
 下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
 ```bash
 chmod a+x ./Anaconda3-5.2.0-Linux-x86_64.sh #chmod 777 ./Anaconda3-5.2.0-Linux-x86_64.sh
@@ -511,8 +511,8 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 ## TensorRT
 ### 安装TensorRT
 
-<!-- #### 1. 环境变量设置 -->
-#### <span id="tensorrt1">1. 环境变量设置</span>  
+<!-- #### 1. TensorRT环境变量设置 -->
+#### <span id="tensorrt1">1. TensorRT环境变量设置</span>  
 首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
 安装`TensorRT`前需要安装`Cuda`和`cudnn`，安装步骤可以参考上方。   
 打开下载的TensorRT所在路径，解压下载的tar文件：   
@@ -593,8 +593,8 @@ sudo pip2 install uff-0.1.0rc0-py2.py3-none-any.whl
 sudo pip3 install uff-0.1.0rc0-py2.py3-none-any.whl
 ```
 
-<!-- #### 4. 验证是否安装成功     -->
-#### <span id="tensorrt4">4. 验证是否安装成功</span> 
+<!-- #### 4. 验证TensorRT是否安装成功     -->
+#### <span id="tensorrt4">4. 验证TensorRT是否安装成功</span> 
 **测试TensorRT是否安装成功**：   
 ```bash
 which tensorrt
@@ -624,8 +624,8 @@ cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此�
 ```
 命令执行顺利即安装成功。   
    
-<!-- #### 5. 安装过程中遇到的问题以及解决方法 -->
-#### <span id="tensorrt5">5. 安装过程中遇到的问题以及解决方法</span>
+<!-- #### 5. TensorRT安装过程中遇到的问题以及解决方法 -->
+#### <span id="tensorrt5">5. TensorRT安装过程中遇到的问题以及解决方法</span>
 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```bash
 In file included from src/cpp/cuda.cpp:1:0:
