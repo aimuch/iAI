@@ -3,13 +3,16 @@
 - [shadowsocks安装](#shadowsocks%E5%AE%89%E8%A3%85)
   - [说明](#%E8%AF%B4%E6%98%8E)
   - [安装shadowsocks-qt5](#%E5%AE%89%E8%A3%85shadowsocks-qt5)
+  - [安装electron-ssr](#%E5%AE%89%E8%A3%85electron-ssr)
   - [配置chrome浏览器](#%E9%85%8D%E7%BD%AEchrome%E6%B5%8F%E8%A7%88%E5%99%A8)
 
 ---
 ## 说明
-shadowsocks-qt5是ubuntu上一个可视化的界面，操作起来比较方便；也有脚本安装的，切换路线比较繁琐，所以推荐安装前一种。   
+`shadowsocks-qt5`和`electron-ssr`是`ubuntu`上一个可视化的界面，操作起来比较方便；也有脚本安装的，切换路线比较繁琐，所以推荐安装可视化界面版本。   
 
+---
 ## 安装shadowsocks-qt5
+*只能用ss，不能用ssr*    
 1. **官方AppImage安装(推荐)**
     - 从官方[github](https://github.com/shadowsocks/shadowsocks-qt5/releases)下载`Shadowsocks-Qt5-*.AppImage`程序，到创建的ss文件夹下；
     - 终端下运行以下命令修改可执行权限：   
@@ -56,8 +59,19 @@ shadowsocks-qt5是ubuntu上一个可视化的界面，操作起来比较方便�
     其中`icon.png`需要从网上下载也可以从`../source/ss/icon.png`找到，放入ss文件夹中：        
     ![icon](../source/ss/icon.png)    
     然后保存退出即可。
+---
+## 安装electron-ssr
+**下载**    
+官方github地址: https://github.com/erguotou520/electron-ssr    
 
+`Linux`优先建议下载`electron-ssr-x.x.x.AppImage`，然后`chmod 777 electron-ssr-x.x.x.AppImage`，直接双击运行。    
 
+**配置文件位置**    
+`~/.config/gui-config.json`    
+
+![electron-ssr](../img/electron-ssr.png)    
+
+---
 ## 配置chrome浏览器
 1. 下载代理插件[Proxy SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega)对应的chrome版本；
 2. 在chrome地址栏输入`chrome://extensions/`然后将`Developer mode`打开，然后将上面下载好的`SwitchyOmega_Chromium.crx`**拖入**该页面下：   

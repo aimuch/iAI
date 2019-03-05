@@ -89,9 +89,10 @@
          - [方法1 ssh远程使用jupyter notebook](./source/dlFAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./source/dlFAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
      - [Shadowsocks 安装](./source/ss.md#shadowsocks安装)
-       - [说明](./source/ss.md##说明)
-       - [安装shadowsocks-qt5](./source/ss.md##安装shadowsocks-qt5)
-       - [配置chrome浏览器](./source/ss.md##配置chrome浏览器)
+       - [说明](./source/ss.md#说明)
+       - [安装shadowsocks-qt5](./source/ss.md#安装shadowsocks-qt5)
+       - [安装electron-ssr](./source/ss.md#安装electron-ssr)
+       - [配置chrome浏览器](./source/ss.md#配置chrome浏览器)
      - [Faster R-CNN编译问题](./source/algorithm_install.md#faster-r-cnn编译问题)
 14. [参考](#参考)
 
