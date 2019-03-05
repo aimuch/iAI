@@ -1,8 +1,9 @@
 # 深度学习算法安装和环境设置
 
-1. [监视GPU和CPU资源利用情况](#监视gpu和cpu资源利用情况)    
-2. [Python项目requirements.txt的生成和使用](#python项目requirements.txt的生成和使用)    
-3. [Faster R-CNN编译问题](#faster-r-cnn编译问题)    
+1. [监视GPU和CPU资源利用情况](#监视gpu和cpu资源利用情况)
+2. [Python项目requirements.txt的生成和使用](#python项目requirements.txt的生成和使用)
+3. [Anaconda环境下TensorFlow和Pytorch共存问题](#anaconda环境下tensorflow和pytorch共存问题)
+4. [Faster R-CNN编译问题](#faster-r-cnn编译问题)
 
 ---
 ## 监视GPU和CPU资源利用情况
@@ -78,6 +79,29 @@ pipreqs ./
 ```bash
 pip install -r requirements.txt
 ```
+---
+## Anaconda环境下TensorFlow和Pytorch共存问题
+`conda`环境中同时安装`TensorFlow`和`Pytorch`后，在导入这两个库的时候提示以下错误：    
+![tensorflowandpytorch1](../img/tensorflowandpytorch1.png)     
+![tensorflowandpytorch2](../img/tensorflowandpytorch2.png)    
+
+
+原因是安装`Pytorch`和`TensorFlow`的时候安装了两遍`numpy`，且和`numpy-base`版本不同:    
+![tensorflowandpytorch3](../img/tensorflowandpytorch3.png)    
+解决方法：    
+```shell
+pip uninstall numpy
+pip uninstall numpy # 确保所有numpy都卸载了
+conda install numpy # 然后用conda安装numpy
+# conda install --force-reinstall numpy # 上条命令无效使用本条命令
+```
+![tensorflowandpytorch4](../img/tensorflowandpytorch4.png)    
+安装好了以后查看`numpy`版本:    
+```shell
+conda list numpy
+```
+![tensorflowandpytorch5](../img/tensorflowandpytorch5.png)    
+
 
 ---
 ## Faster R-CNN编译问题
