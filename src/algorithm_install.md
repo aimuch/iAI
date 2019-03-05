@@ -1,4 +1,4 @@
-# 深度学习算法程序安装
+# 深度学习算法安装和环境设置
 
 1. [监视GPU和CPU资源利用情况](#监视gpu和cpu资源利用情况)    
 2. [Python项目requirements.txt的生成和使用](#python项目requirements.txt的生成和使用)    
@@ -86,9 +86,9 @@ pip install -r requirements.txt
 # Make sure to clone with --recursive
 git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
 ```
-or find it in `source/py-faster-rcnn.zip` and unzip it.
+or find it in [`src/algorithm/py-faster-rcnn.zip`](ai/py-faster-rcnn.zip) and unzip it.
 
-2. Build the Cython modules
+1. Build the Cython modules
 ```shell
 cd $FRCN_ROOT/lib
 make

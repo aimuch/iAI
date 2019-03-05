@@ -1,102 +1,45 @@
-# AI Play on Ubuntu Platform
+# AI基础环境搭建和设置
 
-AI实验环境搭建和深度学习算法安装实验     
-      
-**安装环境**  
-*其他环境类似* 
-```
-硬件环境: CPU i7 / NVIDIA TITAN V / SSD
-系统环境：Ubuntu 16.04 64bit
-安装软件：CUDA9.0 / caffe / YOLO V3 / Protobuf / Matlab / VIM
-````
+ 深度学习基础环境的搭建和设置    
+
 ---
 ### 目录
-1. [AI基础环境搭建和设置](src/ai_base_env.md#ai基础环境搭建和设置)
-   1. [安装Ubuntu和Windows双系统](src/ai_base_env.md#安装ubuntu和windows双系统)   
-   2. [安装NVIDIA驱动](src/ai_base_env.md#安装nvidia驱动)   
-       - [安装驱动所需的依赖包](src/ai_base_env.md#安装驱动所需的依赖包)   
-       - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)   
-       - [安装nvidia官方显卡驱动](src/ai_base_env.md#安装nvidia官方显卡驱动)   
-       - [配置环境变量](src/ai_base_env.md#配置环境变量)   
-       - [查看显卡驱动版本](src/ai_base_env.md#查看显卡驱动版本)    
-   3. [安装CUDA](src/ai_base_env.md#安装cuda)   
-       - [安装CUDA步骤](src/ai_base_env.md#安装cuda步骤)    
-       - [修改配置文件](src/ai_base_env.md#修改配置文件)    
-       - [查看CUDA版本](src/ai_base_env.md#查看cuda版本)
-       - [卸载CUDA的方法](src/ai_base_env.md#卸载cuda的方法)    
-   4. [安装cuDNN](src/ai_base_env.md#安装cudnn)    
-   5. [安装anaconda](src/ai_base_env.md#安装anaconda)    
-   6. [安装OpenCV](src/ai_base_env.md#安装opencv)   
-       - [下载OpenCV](src/ai_base_env.md#下载opencv)
-       - [编译OpenCV](src/ai_base_env.md#编译opencv)
-       - [安装OpenCV](src/ai_base_env.md#安装opencv)
-       - [卸载OpenCV](src/ai_base_env.md#卸载opencv)
-   7. [TensorRT](src/ai_base_env.md#tensorrt) 
-       - [安装TensorRT](src/ai_base_env.md#安装tensorrt)    
-         - [环境变量设置](src/ai_base_env.md#tensorrt1)
-         - [安装Python的TensorRT包](src/ai_base_env.md#tensorrt2)
-         - [安装uff](src/ai_base_env.md#tensorrt3)
-         - [验证是否安装成功](src/ai_base_env.md#tensorrt4)
-         - [安装过程中遇到的问题以及解决方法](src/ai_base_env.md#tensorrt5)
-       - [TensorRT生成Engine](src/ai_base_env.md#tensorrt生成engine)
-         - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
-         - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
-         - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
-   8. [安装Caffe](src/ai_base_env.md#安装caffe)   
-       - [Python2下安装Caffe](src/ai_base_env.md#python2下安装cafe) 
-       - [Python3下安装Caffe](src/ai_base_env.md#python3下安装cafe )
-   9.  [安装YOLO V3](src/ai_base_env.md#安装yolov3)
-   10. [安装Protobuf](src/ai_base_env.md#安装protobuf)
-   11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](src/ai_base_env.md#安装matlab)
-2.  [深度学习算法安装和环境设置](./src/algorithm_install.md)
-     - [监视GPU和CPU资源利用情况](./src/algorithm_install.md#监视gpu和cpu资源利用情况)
-     - [Python项目requirements.txt的生成和使用](./src/algorithm_install.md#python项目requirements.txt的生成和使用)
-     - [深度学习服务器FAQ](./src/ai_server_FAQ.md#深度学习服务器faq)
-       - [docker常用命令](./src/ai_server_FAQ.md#docker常用命令) 
-       - [多显卡训练问题](./src/ai_server_FAQ.md#多显卡训练问题) 
-       - [远程访问服务器Jupyter Notebook](./src/ai_server_FAQ.md#远程访问服务器jupyter-notebook)
-         - [方法1 ssh远程使用jupyter notebook](./src/ai_server_FAQ.md#方法1-ssh远程使用jupyter-notebook)
-         - [方法2 利用jupyter notebook自带的远程访问功能](./src/ai_server_FAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
-     - [Shadowsocks 安装](./src/ss.md#shadowsocks安装)
-       - [说明](./src/ss.md#说明)
-       - [安装shadowsocks-qt5](./src/ss.md#安装shadowsocks-qt5)
-       - [安装electron-ssr](./src/ss.md#安装electron-ssr)
-       - [配置chrome浏览器](./src/ss.md#配置chrome浏览器)
-     - [Faster R-CNN编译问题](./src/algorithm_install.md#faster-r-cnn编译问题)
-3.  [Ubuntu FAQ](./src/linux_env_set.md#ubuntu-faq)
-     - [Docker安装与使用](./src/linux_env_set.md#docker安装与使用)
-       - [Docker安装](./src/linux_env_set.md#docker安装)
-       - [Docker使用](./src/linux_env_set.md#docker使用)
-     - [Linuxbrew安装](./src/linux_env_set.md#linuxbrew安装)
-       - [安装linuxbrew](./src/linux_env_set.md#安装linuxbrew)
-       - [linuxbrew必装包](./src/linux_env_set.md#linuxbrew必装包)
-       - [brew常用命令](./src/linux_env_set.md#brew常用命令)
-       - [linuxbrew注意事项](./src/linux_env_set.md#linuxbrew注意事项)
-     - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](./src/linux_env_set.md#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
-     - [Ubuntu循环登陆问题](./src/linux_env_set.md#ubuntu循环登陆问题)
-     - [安装python依赖库](./src/linux_env_set.md#安装python依赖库)
-     - [安装chrome浏览器](./src/linux_env_set.md#安装chrome浏览器)
-     - [pip/pip3安装报错问题](./src/linux_env_set.md#pip和pip3安装报错)
-     - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./src/linux_env_set.md#ubuntu-16下安装spyder3)
-     - [安装搜狗输入法](./src/linux_env_set.md#安装搜狗输入法)
-     - [WPS无法输入中文](./src/linux_env_set.md#wps无法输入中文)
-     - [安装赛睿霜冻之蓝V2驱动](./src/linux_env_set.md#安装赛睿霜冻之蓝v2驱动)
-     - [zsh oh-my-zsh默认shell的最佳替代品](./src/linux_env_set.md#zsh-oh-my-zsh默认shell的最佳替代品)
-       - [查看系统shell环境](./src/linux_env_set.md#查看系统shell环境)
-       - [安装zsh](./src/linux_env_set.md#安装zsh)
-       - [安装vimrc](./src/linux_env_set.md#安装vimrc)
-       - [安装oh-my-zsh](./src/linux_env_set.md#安装oh-my-zsh)
-       - [安装zsh-syntax-highlighting](./src/linux_env_set.md#安装zsh-syntax-highlighting)
-       - [安装colorls](./src/linux_env_set.md#安装colorls)
-     - [vim配置](./src/linux_env_set.md#vim配置)
-       - [YouCompleteMe实现vim自动补全](./src/linux_env_set.md#youcompleteme实现vim自动补全)
-       - [vim最终配置](./src/linux_env_set.md#vim最终配置)
-     - [Sublime Text 3配置问题](./src/linux_env_set.md#sublime-text-3配置问题)
-     - [Visual Studio Code配置问题](./src/linux_env_set.md#visual-studio-code配置问题)    
-     - [Ubuntu查看和关闭进程](./src/linux_env_set.md#ubuntu查看和关闭进程)
-     - [Ubuntu后台执行命令](./src/linux_env_set.md#ubuntu后台执行命令)   
-     - [查看系统状态](./src/linux_env_set.md#查看系统状态)
-4.  [参考资料](#参考资料)
+1. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
+2. [安装NVIDIA驱动](#安装nvidia驱动)   
+    - [安装驱动所需的依赖包](#安装驱动所需的依赖包)   
+    - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)   
+    - [安装nvidia官方显卡驱动](#安装nvidia官方显卡驱动)   
+    - [配置环境变量](#配置环境变量)   
+    - [查看显卡驱动版本](#查看显卡驱动版本)    
+3. [安装CUDA](#安装cuda)   
+    - [安装CUDA步骤](#安装cuda步骤)    
+    - [修改配置文件](#修改配置文件)    
+    - [查看CUDA版本](#查看cuda版本)
+    - [卸载CUDA的方法](#卸载cuda的方法)    
+4. [安装cuDNN](#安装cudnn)    
+5. [安装anaconda](#安装anaconda)    
+6. [安装OpenCV](#安装opencv)   
+    - [下载OpenCV](#下载opencv)
+    - [编译OpenCV](#编译opencv)
+    - [安装OpenCV](#安装opencv)
+    - [卸载OpenCV](#卸载opencv)
+7. [TensorRT](#tensorrt) 
+    - [安装TensorRT](#安装tensorrt)    
+      - [环境变量设置](#tensorrt1)
+      - [安装Python的TensorRT包](#tensorrt2)
+      - [安装uff](#tensorrt3)
+      - [验证是否安装成功](#tensorrt4)
+      - [安装过程中遇到的问题以及解决方法](#tensorrt5)
+    - [TensorRT生成Engine](#tensorrt生成engine)
+      - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
+      - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
+      - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
+8. [安装Caffe](#安装caffe)   
+    - [Python2下安装Caffe](#python2下安装cafe) 
+    - [Python3下安装Caffe](#python3下安装cafe )
+9.  [安装YOLO V3](#安装yolov3)
+10. [安装Protobuf](#安装protobuf)
+11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 
 ---
 ## 安装Ubuntu和Windows双系统  
@@ -202,7 +145,7 @@ Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
 ```
 其余的一律按默认或者y进行安装即可。    
 
-![CUDA安装完成](img/cuda_finished.png)    
+![CUDA安装完成](../img/cuda_finished.png)    
 
 ### 修改配置文件   
 安装完成后配置CUDA环境变量，使用 gedit 命令打开配置文件：   
@@ -228,7 +171,7 @@ sudo make
 ```shell
 cat /usr/local/cuda/version.txt
 ```
-![cuda](./img/cuda.png)   
+![cuda](../img/cuda.png)   
 
 ### 卸载CUDA的方法   
 ```shell
@@ -351,7 +294,7 @@ sudo ln  -s  /home/andy/anaconda3/bin/deactivate  /usr/local/bin/deactivate
 ```shell
 conda env list
 ```
-![conda list](img/conda1.png)    
+![conda list](../img/conda1.png)    
 
 **激活环境用：**        
 ```shell
@@ -360,7 +303,7 @@ conda activate [env name]
 source activate [env name]
 ```
 **注意:** 上面`[env name]`用具体的环境名代替，如`conda activate base`.    
-![conda list](img/conda2.png)    
+![conda list](../img/conda2.png)    
 
 **取消激活环境用：**    
 ```shell
@@ -368,7 +311,7 @@ conda deactivate
 # or
 source deactivate
 ```
-![conda list](img/conda3.png)    
+![conda list](../img/conda3.png)    
 
 ---
 ## 安装opencv   
@@ -390,8 +333,8 @@ cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_JPE
 make -j8  #编译
 ```
 **遇到一下报错信息有两种可能：**    
-![编译报错](img/opencv-error1.png)    
-- 在编译`opencv3.4.0`源码的时候，会下载诸如`ippicv_2017u3_lnx_intel64_20170822.tgz`的压缩包，如果下载失败，请[下载离线包](src/opencv/opencv-3.4.0-dev.cache.zip)，解压该文件，会得到`.cache`文件夹，用此文件夹覆盖`opencv`源码文件夹下的`.cache`文件夹，再重新编译即可。`.cahce`文件夹为隐藏文件，可用`ctrl+h`查看。
+![编译报错](../img/opencv-error1.png)    
+- 在编译`opencv3.4.0`源码的时候，会下载诸如`ippicv_2017u3_lnx_intel64_20170822.tgz`的压缩包，如果下载失败，请[下载离线包](opencv/opencv-3.4.0-dev.cache.zip)，解压该文件，会得到`.cache`文件夹，用此文件夹覆盖`opencv`源码文件夹下的`.cache`文件夹，再重新编译即可。`.cahce`文件夹为隐藏文件，可用`ctrl+h`查看。
 
 - 若本机里安装了**Anaconda**，则需要在`~/.bashrc` 或 `~/.zshrc `中加入：
     ```shell
@@ -419,7 +362,7 @@ sudo ldconfig
 pkg-config --modversion opencv
 ```
 **若运行以上命令提示一下错误**：    
-![编译报错](img/opencv-error2.png)    
+![编译报错](../img/opencv-error2.png)    
 **临时解决方法**    
 ```bash
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
@@ -633,7 +576,7 @@ src/cpp/cuda.hpp:14:18: fatal error: cuda.h: No such file or directory
 compilation terminated.
 error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
 ```
-![TensorRT报错](img/tensorrt_error.png)    
+![TensorRT报错](../img/tensorrt_error.png)    
 **原因**   
 显示是找不到cuda.h，根据网上分析是因为用了sudo之后环境变量用的是root的环境变量。    
    
@@ -942,7 +885,7 @@ make runtest -j $(($(nproc) + 1))
 make pycaffe -j $(($(nproc) + 1))
 ```
 `runtest`之后成功成功的界面如下:    
-![png](./img/caffe_install.png)
+![png](../img/caffe_install.png)
 
 **添加`Caffe`环境变量**    
 ```shell
@@ -963,7 +906,7 @@ make runtest -j8
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
 上述中`Makefile.config`和`Makefile`文件都要添加`hdf5`相关选项，否则会提示以下错误：    
-![hdf5报错](img/caffe-error1.png)    
+![hdf5报错](../img/caffe-error1.png)    
 
 **常见问题 2**    
 在`python`中导入`caffe`库的时候会提示以下信息：
@@ -990,7 +933,7 @@ pip install numpy==1.14.5
 然后重启电脑.     
 
 **常见问题 4**    
-![导入caffe报错](img/caffe-error3.png)    
+![导入caffe报错](../img/caffe-error3.png)    
 导致上述原因是`pip2`同时存在于`/usr/bin/pip2`和`/usr/local/bin/pip2`两个地方:   
 ```shell
 # 查看pip2位于哪里
@@ -1245,7 +1188,7 @@ export PYTHONPATH=~/caffe/python:$PYTHONPATH
 #### 7. 常见问题    
 
 **常见问题 1**    
-![编译caffe报错](img/caffe-error4.png)    
+![编译caffe报错](../img/caffe-error4.png)    
 **解决方法**    
 ```shell
 git clone https://github.com/madler/zlib
@@ -1318,7 +1261,7 @@ ImportError:No module named caffe</td></tr></table>
 **解决：**    
 ```shell
 echo'export PATH="/home/andy/caffe/python:$PATH"' >>~/.bashrc
-source ~/.bashrc
+source~/.bashrc
 ```
 关掉终端，重新进入
 
@@ -1342,7 +1285,7 @@ cd darknet
 make -j8
 ```   
 也可以根据YOLO[官方](https://pjreddie.com/darknet/install/)安装指导安装即可，其中若编译的时候用到opencv库的时候，遇到以下报错：
-![编译报错](img/img2.png)
+![编译报错](../img/img2.png)
 **原因是opencv没有加入到环境变量中，解决方式**
 用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
 ```shell
@@ -1379,9 +1322,9 @@ protobuf（Protocol Buffer）它是google提供的一个开源库，是一种语
 ### 安装protocbuf
 #### 下载源码安装包
 https://developers.google.com/protocol-buffers/
-![下载界面](img/img3.png)
+![下载界面](../img/img3.png)
 
-![GitHub界面](img/img4.png)
+![GitHub界面](../img/img4.png)
 在release下可以找到所有的版本，我这里用的是2.4.1版本，复制protobuf-2.4.1.tar.gz的链接然后用wget命令下载。
 ```shell
 wget https://github.com/google/protobuf/releases/download/v2.4.1/protobuf-2.4.1.tar.gz
@@ -1433,11 +1376,11 @@ sudo ldconfig
 进入下面的链接
 https://code.google.com/p/protobuf-c/
 进入Downloads界面
-![下载界面](img/img5.png)
+![下载界面](../img/img5.png)
 
-![下载界面](img/img6.png)
+![下载界面](../img/img6.png)
 
-![下载界面](img/img7.png)
+![下载界面](../img/img7.png)
 
 不知怎地，wget无法下载途中的`protobuf-c-0.15.tar.gz`文件。
 
@@ -1520,7 +1463,7 @@ gcc person.pb-c.c main.c -lprotobuf-c
 matlab2018a 文件在下面吾爱破解给出：https://www.52pojie.cn/thread-713093-1-1.html
 
 最好在百度网盘下载，文件太大容易挂掉，下载完成后有3个文件 
-![下载界面](img/img8.png)
+![下载界面](../img/img8.png)
 
 crack文件里面有密钥、许可证文件和需要替换的文件，和win版本是一样的。
 

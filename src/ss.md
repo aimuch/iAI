@@ -56,8 +56,8 @@
     Encoding=UTF-8
     StartupNotify=true
     ```
-    其中`icon.png`需要从网上下载也可以从`../source/ss/icon.png`找到，放入ss文件夹中：        
-    ![icon](../source/ss/icon.png)    
+    其中`icon.png`需要从网上下载也可以从`../src/ss/icon.png`找到，放入ss文件夹中：        
+    ![icon](../src/ss/icon.png)    
     然后保存退出即可。
 ---
 ## 安装electron-ssr
