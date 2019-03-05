@@ -51,8 +51,10 @@ AI实验环境搭建和深度学习算法安装实验
 
 2.  [深度学习算法安装和环境设置](./src/algorithm_install.md)
      - [监视GPU和CPU资源利用情况](./src/algorithm_install.md#监视gpu和cpu资源利用情况)
-     - [Python项目requirements.txt的生成和使用](./src/algorithm_install.md#python项目requirements.txt的生成和使用)
-     - [Anaconda环境下TensorFlow和Pytorch共存问题](./src/algorithm_install.md#anaconda环境下tensorflow和pytorch共存问题)
+     - [Python项目requirements文件的生成和使用](./src/algorithm_install.md#python项目requirements文件的生成和使用)
+     - [Anaconda FAQ](./src/algorithm_install.md#anaconda-faq)
+       - [Anaconda环境下TensorFlow和Pytorch共存问题](./src/algorithm_install.md#anaconda环境下tensorflow和pytorch共存问题)
+       - [Anaconda环境下Python下导入正常Jupyter Notebook中导入莫名出错](./src/algorithm_install.md#anaconda环境下python下导入正常jupyter-notebook中导入莫名出错)
      - [深度学习服务器FAQ](./src/ai_server_FAQ.md#深度学习服务器faq)
        - [docker常用命令](./src/ai_server_FAQ.md#docker常用命令) 
        - [多显卡训练问题](./src/ai_server_FAQ.md#多显卡训练问题) 

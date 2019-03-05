@@ -1,8 +1,10 @@
 # 深度学习算法安装和环境设置
 
 1. [监视GPU和CPU资源利用情况](#监视gpu和cpu资源利用情况)
-2. [Python项目requirements.txt的生成和使用](#python项目requirements.txt的生成和使用)
-3. [Anaconda环境下TensorFlow和Pytorch共存问题](#anaconda环境下tensorflow和pytorch共存问题)
+2. [Python项目requirements文件的生成和使用](#python项目requirements文件的生成和使用)    
+3. [Anaconda FAQ](#anaconda-faq)
+   1. [Anaconda环境下TensorFlow和Pytorch共存问题](#anaconda环境下tensorflow和pytorch共存问题)    
+   2. [Anaconda环境下Python下导入正常Jupyter Notebook中导入莫名出错](#anaconda环境下python下导入正常jupyter-notebook中导入莫名出错)    
 4. [Faster R-CNN编译问题](#faster-r-cnn编译问题)
 
 ---
@@ -30,7 +32,7 @@ htop
 ```
 ![png](../img/htop.png)
 ---
-## Python项目requirements.txt的生成和使用
+## Python项目requirements文件的生成和使用
 我们做开发时为何需要对依赖库进行管理？当依赖类库过多时，如何管理类库的版本？    
 `Python`提供通过`requirements.txt`文件来进行项目中依赖的三方库进行整体安装导入。   
 
@@ -80,7 +82,8 @@ pipreqs ./
 pip install -r requirements.txt
 ```
 ---
-## Anaconda环境下TensorFlow和Pytorch共存问题
+## Anaconda FAQ
+### Anaconda环境下TensorFlow和Pytorch共存问题
 `conda`环境中同时安装`TensorFlow`和`Pytorch`后，在导入这两个库的时候提示以下错误：    
 ![tensorflowandpytorch1](../img/tensorflowandpytorch1.png)     
 ![tensorflowandpytorch2](../img/tensorflowandpytorch2.png)    
@@ -100,8 +103,18 @@ conda install numpy # 然后用conda安装numpy
 ```shell
 conda list numpy
 ```
-![tensorflowandpytorch5](../img/tensorflowandpytorch5.png)    
+![tensorflowandpytorch5](../img/tensorflowandpytorch5.png)     
 
+### Anaconda环境下Python下导入正常Jupyter Notebook中导入莫名出错    
+**问题描述**     
+Anaconda环境下Python下导入正常JupyterNotebook中导入莫名出错    
+
+**解决方案**   
+出现该问题的原因是`Anaconda`虚拟环境中没有安装`Jupyter Notebook`而在虚拟环境中运行的`Jupyter Notebook`是调用的外部环境的`Jupyter Notebook`，解决方法是在虚拟环境中安装`Jupyter Notebook`:    
+```shell
+source activate virtualenv
+conda install jupyter notebook
+```
 
 ---
 ## Faster R-CNN编译问题
