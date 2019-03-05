@@ -121,5 +121,5 @@ AI实验环境搭建和深度学习算法安装实验
 > 11. [设置 jupyter notebook 可远程访问](https://blog.csdn.net/simple_the_best/article/details/77005400)
 > 12. [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)
 > 13. [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-> 14. [.tmux配置](https://github.com/gpakosz/.tmux#installation)
+> 14. [.tmux配置](https://github.com/gpakosz/.tmux)
 > 15. [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)

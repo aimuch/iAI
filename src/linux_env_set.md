@@ -1269,7 +1269,7 @@ sudo apt-get install tmux
 **更多详情请[移步](tmux/tmux_cheatsheet.md)**     
 
 #### 参考资料    
-> [.tmux配置](https://github.com/gpakosz/.tmux#installation)     
+> [.tmux配置](https://github.com/gpakosz/.tmux)     
 > [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)    
 
 
