@@ -48,7 +48,7 @@ AI实验环境搭建和深度学习算法安装实验
    9.  [安装Protobuf](src/ai_base_env.md#安装protobuf)
    10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](src/ai_base_env.md#安装matlab)
 
-2.  [AI算法学习](./src/ai_algorithms.md)
+2.  [AI Algorithms](./src/ai_algorithms.md)
      - [YOLO V3](src/ai_algorithms.md#yolo-v3)
      - [Faster R-CNN](./src/ai_algorithms.md#faster-r-cnn)
      - [Anaconda FAQ](./src/ai_algorithms.md#anaconda-faq)
@@ -61,7 +61,11 @@ AI实验环境搭建和深度学习算法安装实验
          - [方法1 ssh远程使用jupyter notebook](./src/ai_server_FAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./src/ai_server_FAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
 
-3.  [Ubuntu FAQ](./src/linux_env_set.md#ubuntu-faq)
+3.  [AI Framework](./src/ai_framework.md#ai-framework)
+    - [TensorFlow](./src/ai_framework.md#tensorflow)
+    - [Pytorch](./src/ai_framework.md#pytorch) 
+
+4.  [Ubuntu FAQ](./src/linux_env_set.md#ubuntu-faq)
      - [Docker安装与使用](./src/linux_env_set.md#docker安装与使用)
        - [Docker安装](./src/linux_env_set.md#docker安装)
        - [Docker使用](./src/linux_env_set.md#docker使用)
@@ -106,7 +110,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [安装electron-ssr](./src/ss.md#安装electron-ssr)
        - [配置Chrome浏览器](./src/ss.md#配置chrome浏览器)
 
-4.  [参考资料](#参考资料)
+5.  [参考资料](#参考资料)
 
 
 ---

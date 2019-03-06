@@ -1,6 +1,6 @@
-# AI算法学习
+# AI Algorithms
 
-- [AI算法学习](#ai%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0)
+- [AI Algorithms](#ai-algorithms)
 	- [YOLO V3](#yolo-v3)
 	- [Faster R-CNN](#faster-r-cnn)
 	- [Anaconda FAQ](#anaconda-faq)
@@ -9,7 +9,7 @@
 
 
 ---
-##  YOLO V3  
+##  YOLO V3
 
 ```shell
 git clone http://github.com/pjreddie/darknet.git
@@ -51,6 +51,7 @@ export PKG_CONFIG_PATH
 
 ---
 ## Faster R-CNN
+
 1. Clone the Faster R-CNN repository
 ```shell
 # Make sure to clone with --recursive
@@ -195,7 +196,8 @@ conda list numpy
 ```
 ![tensorflowandpytorch5](../img/tensorflowandpytorch5.png)     
 
-### Anaconda环境下Python下导入正常Jupyter Notebook中导入莫名出错    
+### Anaconda环境下Python下导入正常Jupyter Notebook中导入莫名出错
+
 **问题描述**     
 Anaconda环境下Python下导入正常JupyterNotebook中导入莫名出错    
 
