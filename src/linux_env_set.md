@@ -35,7 +35,7 @@
     - [Tmux配置](#tmux配置)
     - [Tmux使用手册](#tmux使用手册)
   - [Sublime Text 3配置问题](#sublime-text-3配置问题)
-  - [Visual Studio Code配置问题](#visual-studio-code配置问题)   
+  - [VSCode配置问题](#vscode配置问题)   
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
   - [查看系统状态](#查看系统状态)
@@ -1395,17 +1395,18 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 ```
 
 ---
-## Visual Studio Code配置问题
+## VSCode配置问题
 **推荐插件**:   
+- go
 - Anaconda Extension Pack
 - Chinese (Simplified) Language Pack for Visual Studio Code
 - Markdown All in One
 - Markdown Preview Github Styling
 - Markdown Shortcuts
-- prototxt
-- vscode-cudacpp   
+- prototxt    
 
 **环境配置**：   
+![vscode](../img/vscode.png)     
 ```json
 {
     "python.pythonPath": "/home/andy/anaconda3/envs/tensorflow/bin/python",

@@ -100,7 +100,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [Tmux配置](./src/linux_env_set.md#tmux配置)
        - [Tmux使用手册](./src/linux_env_set.md#tmux使用手册)
      - [Sublime Text 3配置问题](./src/linux_env_set.md#sublime-text-3配置问题)
-     - [Visual Studio Code配置问题](./src/linux_env_set.md#visual-studio-code配置问题)    
+     - [VSCode配置问题](./src/linux_env_set.md#vscode配置问题)    
      - [Ubuntu查看和关闭进程](./src/linux_env_set.md#ubuntu查看和关闭进程)
      - [Ubuntu后台执行命令](./src/linux_env_set.md#ubuntu后台执行命令)   
      - [查看系统状态](./src/linux_env_set.md#查看系统状态)
