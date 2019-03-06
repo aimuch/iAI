@@ -396,9 +396,30 @@ sudo service lightdm start #或者sudo /etc/init.d/lightdm start
 ## 安装python依赖库
 
 ### Python基础库安装
-`注意：Python2 的话用pip安装，Python3用pip3安装（总之要知道安装在哪里，有的系统将python软连接到Python3上了）`
+**注意**：`Python2` 的话用`pip`安装，`Python3`用`pip3`安装（总之要知道安装在哪里，有的系统将`python`软连接到`Python3`上了）    
 ```shell
-pip install scipy numpy scikit-image scikit-learn jupyter notebook matplotlib pandas
+pip install scipy \
+            pandas \
+            numpy \
+            scikit-image \
+            scikit-learn \
+            matplotlib \
+            pandas \
+            tqdm \
+            Pillow     
+```   
+`Anaconda`虚拟环境中首先激活虚拟环境，然后用`conda`安装依赖包:     
+```shell
+conda install jupyter notebook \
+              scipy \
+              pandas \
+              numpy \
+              scikit-image \
+              cikit-learn \
+              matplotlib \
+              pandas \
+              tqdm \
+              Pillow
 ```
 **DGX-ONE**服务器下安装：
 ```shell
