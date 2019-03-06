@@ -166,6 +166,9 @@ sh /opt/tomcat/bin/catalina.sh   run
     ```shell
     jupyter notebook --allow-root --port=8889
     ```
+    ![jupyternobook1](../img/jupyternotebook1.png)    
+    运行后会生成一串`token`在[后面打开浏览器](#jupyter_jump1)的时候会用到:       
+    ![jupyternotebook2](../img/jupyternotebook2.png)     
 
 - 在**本地终端**中启动`SSH`：    
     ````shell
@@ -175,9 +178,10 @@ sh /opt/tomcat/bin/catalina.sh   run
     - `-f` 告诉`SSH`在后台执行
     - `-L` 是指定port forwarding的配置，远端端口是`8889`，本地的端口号的`8890`    
 
-    **注意**：username@serverIP替换成服务器的对应账号。
+    **注意**：username@serverIP替换成服务器的对应账号。    
 
-- 最后在**本地**打开浏览器，访问：http://localhost:8890/
+-  <span id="jupyter_jump1">最后在**本地**打开浏览器</span>，访问：http://localhost:8890/  , 并在对话框中输入服务器端生成的那串`token`:    
+  ![jupyternotebook3](../img/jupyternotebook3.png)    
 
 
 ### 方法2 利用jupyter notebook自带的远程访问功能
