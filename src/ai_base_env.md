@@ -38,7 +38,7 @@
     - [Python2下安装Caffe](#python2下安装cafe) 
     - [Python3下安装Caffe](#python3下安装cafe )
 9.  [安装Protobuf](#安装protobuf)
-10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
+10. [Linux MATLAB安装](#linux-matlab安装)
 
 ---
 ## 安装Ubuntu和Windows双系统  
@@ -1415,109 +1415,87 @@ gcc person.pb-c.c main.c -lprotobuf-c
 
 
 ---
-##  安装matlab   
+##  Linux MATLAB安装   
 
-matlab2018a 文件在下面吾爱破解给出：https://www.52pojie.cn/thread-713093-1-1.html
+### 安装前准备工作
+下载`MATLAB for Linux`文件, 这里用到的是[@晨曦月下](https://blog.csdn.net/m0_37775034/article/details/80876362)提供的百度网盘链接下载:    
+> 链接: https://pan.baidu.com/s/1W6jWkaXEMpMUEmIl8qmRwg
+> 密码: igx6
 
-最好在百度网盘下载，文件太大容易挂掉，下载完成后有3个文件 
-![下载界面](../img/img8.png)
-
-crack文件里面有密钥、许可证文件和需要替换的文件，和win版本是一样的。
-
-（1）在安装包目录下打开Linux终端，执行下列命令：
+进入下载后的文件夹(假如下载后的文件放在了`/home/Download/`, 解压破解文件`Matlab2018aLinux64Crack.tar.gz`文件, 创建一个文件夹`Crack`来放置解压后的文件:    
 ```shell
-sudo mkdir /mnt/matlab
-sudo mount -o loop R2018a_glnxa64_dvd1.iso /mnt/matlab
-cd /mnt/
-sudo ./mnt/matlab/install
+cd ~/Download
+sudo mkdir Crack
 ```
-经过上面步骤就能看到安装界面了，默认安装路径在/usr/local/MATLAB/R2018a/ ，
-
-（2）注意，上面只是挂载了第一个安装包，等安装到60%左右的时候会提示插入第二张CD，此时在刚才安装包目录下再次打开一个终端，执行
+解压文件:
 ```shell
-sudo mount -o loop R2018a_glnxa64_dvd2.iso /mnt/matlab
+cd ~/Download
+tar -xvf Matlab2018aLinux64Crack.tar.gz -C Crack
 ```
-挂载第二张CD。    
-
-（3）安装完成后，将crack里面的R2018a/bin 文件复制替换到安装目录下/usr/local/MATLAB/R2018a/ 
-![下载界面](img/img9.png)
+在`/mnt`中创建一个文件夹用来挂载`R2018a_glnxa64_dvd1.iso`和`R2018a_glnxa64_dvd2.iso`:    
 ```shell
-sudo cp -rvf R2018a/bin/* /usr/local/MATLAB/R2018a/bin
+cd /mnt
+sudo mkdir iso
+```
+先挂载`R2018a_glnxa64_dvd1.iso`:    
+```shell
+cd ~
+sudo mount -t auto -o loop R2018a_glnxa64_dvd1.iso /mnt/iso
+```
+如果这个时候提示`/mnt/iso: WARNING:device write-protected, mounted read-only`,那就修改下`/mnt`的权限:    
+```shell
+cd /
+sudo chmod 755 mnt
 ```
 
+### Matlab安装过程
+安装开始，从挂载的文件夹`iso`中:    
 ```shell
-sudo ln -s /usr/local/MATLAB/R2018a/bin/matlab /usr/local/bin/matlab    
-```
-
-（4）接下来在/usr/local/MATLAB/R2018a/bin 目录下打开matlab
-```shell
+cd /mnt/iso
 sudo ./matlab
 ```
-指向许可证文件，激活，等下再次启动MATLAB，之后我自己的就出错了，转达下面部分讨论的内容。    
-全部安装完matlab2018a之后启动报错，将crash报给了MathWorks Support，很快回复了，按照里面提供的方法解决了，真是佩服MathWorks的服务（惭愧为了使用simulink使用db，平时数值计算还是用octave或者Python）
+1. 选择 `Use a File Installation Key`:    
+  ![matlab1](../img/matlab1.png)     
+2. 选择`Yes`,同意条约:
+  ![matlab2](../img/matlab2.png)     
+3. 选择默认安装目录,默认放在`/usr/local`中
+4. 选择`I have the File Installation Key for my license`,输入:
+    `09806-07443-53955-64350-21751-41297`
+5. 安装到某个进度会提示插入`iso2`,这个时候挂载`R2018a_glnxa64_dvd2.iso`
+    ```shell
+    cd ~
+    sudo mount -t auto -o loop R2018a_glnxa64_dvd2.iso /mnt/iso
+    ```
+6. 最后安装完成选择`finsh`
 
-首先贴出我的错误代码提示:
-```markdown
---------------------------------------------------------------------------------
-       Segmentation violation detected at 五 3月 30 00:05:20 2018 +0800
---------------------------------------------------------------------------------
-Configuration:
-  Crash Decoding           : Disabled - No sandbox or build area path
-  Crash Mode               : continue (default)
-  Default Encoding         : UTF-8
-  Deployed                 : false
-  Desktop Environment      : XFCE
-  GNU C Library            : 2.26 stable
-  Java Version             : Java 1.8.0_144-b01 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
-  MATLAB Architecture      : glnxa64
-  MATLAB Entitlement ID    : 6257193
-  MATLAB Root              : /usr/local/MATLAB/R2018a
-  MATLAB Version           : 9.4.0.813654 (R2018a)
-  Operating System         : "Manjaro Linux"
-  Process ID               : 1155
-  Processor ID             : x86 Family 6 Model 69 Stepping 1, GenuineIntel
-  Session Key              : 44bbb319-da74-462f-b0e8-79d2dd5ab281
-  Static TLS mitigation    : Disabled: Unnecessary 1
-  Window System            : The X.Org Foundation (11906000), display :0.0
+### 激活
+1. 复制破解文件`Crack`中`license_standalone.lic`到安装目录中
+    ```shell
+    cd ~/Crack
+    sudo cp license_standalone.lic /usr/loca/MATLAB/R2018a/licenses
+    ```
+2. 复制`Crack`中的`R2018a`到`安装目录`
+    ```
+    cd ~/Crack
+    sudo cp -r R2018a /usr/local/MATLAB
+    ```
 
-Fault Count: 1
+至此激活完成!    
 
-
-Abnormal termination
-
-Register State (from fault):
-  RAX = 0000000000000000  RBX = 00007f3007ff7cf0
-  RCX = 000000000097b3c0  RDX = 000000000097b3c0
-  RSP = 00007f30836ed6b8  RBP = 0000000000000002
-  RSI = 00007fff62861f48  RDI = 0000000000000002
-
-   R8 = 00007f30287a2820   R9 = 000000000000002f
-  R10 = 00007f302879c640  R11 = 0000000000000206
-  R12 = 00007fff62861f48  R13 = 000000000097b3c0
-  R14 = 00007f3007ff7cf8  R15 = 0000000000000000
-
-  RIP = 000000000000b4c0  EFL = 0000000000010246
-
-   CS = 0033   FS = 0000   GS = 0000
-
-Stack Trace (from fault):
-[  0] 0x000000000000b4c0     <unknown-module>+00000000
-```
-原因是
+**收拾残局**, 取消挂载,删除文件:   
 ```shell
-This error occurs when your computer cannot load a certain font display library through MATLAB.
+sudo umunt /mnt/iso
+cd /mnt
+sudo rmdir iso
 ```
-官方给出的解决办法：
 
-https://cn.mathworks.com/matlabcentral/answers/364727-why-does-matlab-crash-on-linux-fedora-26-with-a-segmentation-violation-r2017b-or-later
-
-就是下面的方法
+### Matlab设置
+创建命令方便在任何终端都可以打开`matlab`,采用软链接的方式在`/usr/local/bin`中创建启动命令`matlab`:    
 ```shell
-cd  /usr/local/MATLAB/R2018b   (or wherever you may have installed MATLAB)
-cd bin/glnxa64
-mkdir exclude
-mv libfreetype* exclude/
+cd /usr/lcoal/bin
+sudo ln -s /usr/local/MATLAB/R2018a/bin/matlab matlab
 ```
-当然，我遇到的情况是这样，网上还有一些说`linstdc.so`库和Linux系统自带的版本区别造成的，我也按照方法改成系统的了，但这个不是我遇到的问题解决办法，如果大家遇到了一些crash，发送报给给support也是个不错的选择。
 
 
+**参考资料**    
+> [linux安装MATLAB R2018a步骤](https://blog.csdn.net/m0_37775034/article/details/80876362)    

@@ -46,7 +46,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [Python2下安装Caffe](src/ai_base_env.md#python2下安装cafe) 
        - [Python3下安装Caffe](src/ai_base_env.md#python3下安装cafe )
    9.  [安装Protobuf](src/ai_base_env.md#安装protobuf)
-   10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](src/ai_base_env.md#安装matlab)
+   10. [Linux MATLAB安装](src/ai_base_env.md#linux-matlab安装)
 
 2.  [AI Algorithms](./src/ai_algorithms.md)
      - [YOLO V3](src/ai_algorithms.md#yolo-v3)
@@ -119,7 +119,7 @@ AI实验环境搭建和深度学习算法安装实验
 > 2. [Ubuntu 16.04+CUDA 9.1+cuDNN v7+OpenCV 3.4.0+Caffe+PyCharm 完全安装指南](https://blog.csdn.net/balixiaxuetian/article/details/79154013)
 > 3. [Install caffe with anaconda(3.6) on ubuntu16.04](http://www.yaoingwen.com/ubuntu16-04-anaconda-3-6-caffe/)
 > 4. [caffe编译遇到的问题](https://blog.csdn.net/m0_37407756/article/details/70789271)
-> 5. [Linux MATLAB 2018a 安装教程及启动失败解决办法](https://blog.csdn.net/ouening/article/details/79751393)
+> 5. [linux安装MATLAB R2018a步骤](https://blog.csdn.net/m0_37775034/article/details/80876362) 
 > 6. [关于Ubuntu16.04LTS下Python版本和安装Spyder3的问题？](https://www.zhihu.com/question/51248022/answer/142596984)
 > 7. [zsh + oh-my-zsh 默认shell的最佳替代品](https://blog.phpgao.com/oh-my-zsh.html)
 > 8. [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
