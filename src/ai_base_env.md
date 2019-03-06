@@ -1419,8 +1419,8 @@ gcc person.pb-c.c main.c -lprotobuf-c
 
 ### 安装前准备工作
 下载`MATLAB for Linux`文件, 这里用到的是[@晨曦月下](https://blog.csdn.net/m0_37775034/article/details/80876362)提供的百度网盘链接下载:    
-> 链接: https://pan.baidu.com/s/1W6jWkaXEMpMUEmIl8qmRwg
-> 密码: igx6
+> 链接: https://pan.baidu.com/s/1W6jWkaXEMpMUEmIl8qmRwg    
+> 密码: igx6    
 
 进入下载后的文件夹(假如下载后的文件放在了`/home/Download/`, 解压破解文件`Matlab2018aLinux64Crack.tar.gz`文件, 创建一个文件夹`Crack`来放置解压后的文件:    
 ```shell
