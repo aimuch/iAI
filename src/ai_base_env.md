@@ -1451,12 +1451,12 @@ sudo chmod 755 mnt
 ### Matlab安装过程
 安装开始，从挂载的文件夹`iso`中:    
 ```shell
-cd /mnt/iso
-sudo ./matlab
+cd ~
+sudo ./mnt/iso/install
 ```
-1. 选择 `Use a File Installation Key`:    
+1. 选择 `Use a File Installation Key`:     
   ![matlab1](../img/matlab1.png)     
-2. 选择`Yes`,同意条约:
+2. 选择`Yes`,同意条约:     
   ![matlab2](../img/matlab2.png)     
 3. 选择默认安装目录,默认放在`/usr/local`中
 4. 选择`I have the File Installation Key for my license`,输入:
