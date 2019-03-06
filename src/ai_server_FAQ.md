@@ -164,7 +164,7 @@ sh /opt/tomcat/bin/catalina.sh   run
 
 - 在**远程服务器**上，启动`jupyter notebook`服务：    
     ```shell
-    jupyter notebook --no-browser --port=8889
+    jupyter notebook --allow-root --port=8889
     ```
 
 - 在**本地终端**中启动`SSH`：    
