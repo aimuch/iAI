@@ -37,9 +37,8 @@
 8. [安装Caffe](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
     - [Python3下安装Caffe](#python3下安装cafe )
-9.  [安装YOLO V3](#安装yolov3)
-10. [安装Protobuf](#安装protobuf)
-11. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
+9.  [安装Protobuf](#安装protobuf)
+10. [Linux MATLAB 2018a 安装教程及启动失败解决办法](#安装matlab)
 
 ---
 ## 安装Ubuntu和Windows双系统  
@@ -1265,48 +1264,6 @@ source~/.bashrc
 ```
 关掉终端，重新进入
 
-
-
----
-##  安装yolov3  
-
-```shell
-git clone http://github.com/pjreddie/darknet.git
-cd darknet
-```    
-修改`Makefile`编译配置文件：    
-```vim
-  GPU=1
-  CUDNN=1
-  OPENCV=1
-```
-然后运行一下命令：    
-```bash
-make -j8
-```   
-也可以根据YOLO[官方](https://pjreddie.com/darknet/install/)安装指导安装即可，其中若编译的时候用到opencv库的时候，遇到以下报错：
-![编译报错](../img/img2.png)
-**原因是opencv没有加入到环境变量中，解决方式**
-用gedit打开`/etc/ld.so.conf`，注意要用sudo打开获得权限，不然无法修改， 如：
-```shell
-sudo gedit /etc/ld.so.conf
-```
-在文件中加上一行:
-```shell
-/usr/local/lib
-```
-`/user/local`是opencv安装路径 就是makefile中指定的安装路径.
-
-再运行`sudo ldconfig`, 修改`bash.bashrc`文件:
-```shell
-sudo gedit /etc/bash.bashrc
-```
-在文件末尾加入： 
-```shell
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig 
-export PKG_CONFIG_PATH 
-```
-运行`source /etc/bash.bashrc`使其生效。
 
 ---
 ##  安装protobuf

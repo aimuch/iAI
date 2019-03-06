@@ -9,9 +9,12 @@
     - [linuxbrew必装包](#linuxbrew必装包)
     - [brew常用命令](#brew常用命令)
     - [linuxbrew注意事项](#linuxbrew注意事项)
+  - [监视GPU和CPU资源利用情况](#监视gpu和cpu资源利用情况)
   - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
   - [Ubuntu循环登陆问题](#ubuntu循环登陆问题)
   - [安装python依赖库](#安装python依赖库)
+    - [Python基础库安装](#python基础库安装)
+    - [Python项目requirements文件的生成和使用](#python项目requirements文件的生成和使用) 
   - [安装chrome浏览器](#安装chrome浏览器)
   - [pip和pip3安装报错](#pip和pip3安装报错)
   - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
@@ -304,6 +307,32 @@ If you’re using an older distribution of Linux, installing your first package 
 ```    
 然后重启电脑.   
 
+---
+
+## 监视GPU和CPU资源利用情况
+**监视GPU资源利用情况：**   
+```shell
+watch -n 1 nvidia-smi #每隔一秒刷新一下GPU资源情况
+```
+![png](../img/nvidia_smi.png)
+**或者**   
+```shell
+nvtop
+```
+`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。   
+![png](../img/nvtop.png)
+
+**监视CPU资源利用情况**    
+CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:    
+```shell
+sudo apt-get install htop
+```
+然后输入以下命令显示CPU资源利用情况:    
+```shell
+htop
+```
+![png](../img/htop.png)
+
 
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
@@ -365,6 +394,8 @@ sudo service lightdm start #或者sudo /etc/init.d/lightdm start
 
 ---
 ## 安装python依赖库
+
+### Python基础库安装
 `注意：Python2 的话用pip安装，Python3用pip3安装（总之要知道安装在哪里，有的系统将python软连接到Python3上了）`
 ```shell
 pip install scipy numpy scikit-image scikit-learn jupyter notebook matplotlib pandas
@@ -375,6 +406,56 @@ apt-get install scipy
 apt-get install numpy
 apt-get install python-skimage(install skimage)
 (pspnet): install matio
+```
+
+### Python项目requirements文件的生成和使用
+我们做开发时为何需要对依赖库进行管理？当依赖类库过多时，如何管理类库的版本？    
+`Python`提供通过`requirements.txt`文件来进行项目中依赖的三方库进行整体安装导入。   
+
+首先看一下`requirements.txt`的格式:    
+```vim
+requests==1.2.0
+Flask==0.10.1
+```
+Python安装依赖库使用pip可以很方便的安装，如果我们需要迁移一个项目，那我们就需要导出项目中依赖的所有三方类库的版本、名称等信息。   
+
+接下来就看Python项目如何根据`requirements.txt`文件来安装三方类库    
+
+#### 1. 生成requirements.txt    
+- #### 方法一：pip freeze    
+*使用`pip freeze`生成`requirements.txt`*    
+```bash
+pip freeze > requirements.txt
+```
+`pip freeze`命令输出的格式和`requirements.txt`文件内容格式完全一样，因此我们可以将`pip freeze`的内容输出到文件`requirements.txt`中。在其他机器上可以根据导出的`requirements.txt`进行包安装。    
+
+**注意**：`pip freeze`输出的是本地环境中所有三方包信息，但是会比`pip list`少几个包，因为`pip，wheel，setuptools`等包，是自带的而无法`(un)install`的，如果要显示所有包可以加上参数`-all`，即`pip freeze -all`。    
+
+- #### 方法二：pipreqs
+*使用`pipreqs`生成`requirements.txt`*    
+
+首先先安装`pipreqs`:    
+```bash
+pip install pipreqs
+```
+使用`pipreqs`生成`requirements.txt`:   
+```bash
+pipreqs ./
+```
+**注意**：pipreqs生成指定目录下的依赖类库
+
+**上面两个方法的区别？**    
+使用`pip freeze`保存的是**当前Python环境**下**所有**的类库，如果你没有用`virtualenv`来对`Python`环境做虚拟化的话，类库就会很杂很多，在对项目进行迁移的时候我们只需关注项目中使用的类库，没有必要导出所有安装过的类库，因此我们一般迁移项目不会使用`pipreqs`，`pip freeze`更加适合迁移**整个python环境**下安装过的类库时使用。(不知道`virtualenv`是什么或者不会使用它的可以查看：《构建`Python`多个虚拟环境来进行不同版本开发之神器-virtualenv》)。    
+
+使用`pipreqs`它会根据**当前目录**下的项目的依赖来导出三方类库，因此常用与项目的迁移中。    
+
+**这就是pip freeze、pipreqs的区别，前者是导出Python环境下所有安装的类库，后者导出项目中使用的类库。**
+
+
+#### 2. 根据requirements.txt安装依赖库    
+如果要安装`requirements.txt`中的类库内容，那么你可以执行:    
+```bash
+pip install -r requirements.txt
 ```
 
 ---
