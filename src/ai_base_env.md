@@ -144,7 +144,10 @@ Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
 ```
 其余的一律按默认或者y进行安装即可。    
 
-![CUDA安装完成](../img/cuda_finished.png)    
+![CUDA安装完成](../img/cuda_finished.png)     
+
+安装结束以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-9.0`文件夹，还生成一个相应`软连接`文件夹`cuda`:    
+![cuda1](../img/cuda1.png)    
 
 ### 修改配置文件   
 安装完成后配置CUDA环境变量，使用 gedit 命令打开配置文件：   
@@ -184,20 +187,25 @@ sudo rm -r cuda-9.0
 ---
 ## 安装cudnn   
 
-解压cuNDD v7.zip到当前文件夹，得到一个cudn 文件夹，该文件夹下有include 和 lib64 两个文件夹，命令行进入其中的include 文件夹路径下，然后进行以下操作：
+解压`cuNDD v7.zip`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹，命令行进入其中的`include`文件夹路径下，然后进行以下操作：
 ```shell
+cd ~/Download/cuda/include/
 sudo cp cudnn.h /usr/local/cuda/include/ #复制头文件
 ```
-然后命令行进入 cudn/lib64 文件夹路径下，运行以下命令：
+然后命令行进入`cuda/lib64`文件夹路径下，运行以下命令：    
 ```shell
+cd ~/Download/cuda/lib64/
 sudo cp lib* /usr/local/cuda/lib64/ #复制动态链接库
-cd /usr/local/cuda/lib64/ 
+cd /usr/local/cuda/lib64/
 sudo rm -rf libcudnn.so libcudnn.so.7  #删除原有动态文件
-sudo ln -s libcudnn.so.7.0.5 libcudnn.so.7  #生成软衔接
+sudo ln -s libcudnn.so.7.4.1 libcudnn.so.7  #生成软链接
 sudo ln -s libcudnn.so.7 libcudnn.so  #生成软链接
 ```
-随后需要将路径/usr/local/cuda/lib64 添加到动态库，分两步：
-1）安装vim。输入： 
+
+![cudnn1](../img/cudnn1.png)    
+
+随后需要将路径`/usr/local/cuda/lib64`添加到动态库，分两步：
+1）安装`vim`, 输入： 
 ```shell
 sudo apt-get install vim-gtk
 ```
@@ -205,7 +213,7 @@ sudo apt-get install vim-gtk
 ```shell
 sudo vim /etc/ld.so.conf.d/cuda.conf
 ```
-编辑状态下，输入：   
+**编辑状态**下，输入：   
 ```shell
 /usr/local/cuda/lib64
 ```
