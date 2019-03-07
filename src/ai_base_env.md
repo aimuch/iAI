@@ -165,7 +165,7 @@ source  ~/.bashrc
 ```
 检验CUDA 是否安装成功，输入：   
 ```shell
-cd /usr/local/cuda-9.0/samples/1_Utilities/deviceQuery
+cd /usr/local/cuda/samples/1_Utilities/deviceQuery
 sudo make
 ./deviceQuery
 ```
