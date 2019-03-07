@@ -5,25 +5,26 @@
 ---
 ### 目录
 1. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
-2. [安装NVIDIA驱动](#安装nvidia驱动)   
+2. [安装**NVIDIA驱动**](#安装nvidia驱动)   
     - [安装NVIDIA驱动所需的依赖包](#安装nvidia驱动所需的依赖包)   
     - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)   
     - [安装NVIDIA官方显卡驱动](#安装nvidia官方显卡驱动)   
     - [配置NVIDIA环境变量](#配置nvidia环境变量)   
     - [查看NVIDIA驱动版本](#查看nvidia驱动版本)    
-3. [安装CUDA](#安装cuda)   
+3. [安装**CUDA**](#安装cuda)   
     - [安装CUDA步骤](#安装cuda步骤)    
     - [修改配置文件](#修改配置文件)    
     - [查看CUDA版本](#查看cuda版本)
     - [卸载CUDA的方法](#卸载cuda的方法)    
-4. [安装cuDNN](#安装cudnn)    
-5. [安装Anaconda](#安装anaconda)    
-6. [安装OpenCV](#安装opencv)   
+4. [安装**cuDNN**](#安装cudnn)    
+5. [**CUDA多版本**问题](#cuda多版本问题)
+6. [安装**Anaconda**](#安装anaconda)    
+7. [安装**OpenCV**](#安装opencv)   
     - [下载OpenCV](#下载opencv)
     - [编译OpenCV](#编译opencv)
     - [安装OpenCV](#安装opencv)
     - [卸载OpenCV](#卸载opencv)
-7. [TensorRT](#tensorrt) 
+8. [**TensorRT**](#tensorrt) 
     - [安装TensorRT](#安装tensorrt)    
       - [TensorRT环境变量设置](#tensorrt1)
       - [安装Python的TensorRT包](#tensorrt2)
@@ -34,11 +35,11 @@
       - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
       - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
       - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
-8. [安装Caffe](#安装caffe)   
+9. [安装**Caffe**](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
     - [Python3下安装Caffe](#python3下安装cafe )
-9.  [安装Protobuf](#安装protobuf)
-10. [Linux MATLAB安装](#linux-matlab安装)
+10. [安装**Protobuf**](#安装protobuf)
+11. [Linux **MATLAB**安装](#linux-matlab安装)
 
 ---
 ## 安装Ubuntu和Windows双系统  
@@ -232,6 +233,9 @@ Cuda compilation tools, release 9.0, V9.0.85
 ```shell
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
+---
+## CUDA多版本问题
+可以同时安装多个CUDA版本
 
 ---
 ## 安装Anaconda
