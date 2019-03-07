@@ -19,6 +19,9 @@
 4. [安装**cuDNN**](#安装cudnn)    
 5. [**CUDA多版本**问题](#cuda多版本问题)
 6. [安装**Anaconda**](#安装anaconda)    
+   - [安装Anaconda](#安装anaconda)    
+   - [屏蔽Anaconda](#屏蔽anaconda)    
+   - [重建Anaconda软连接](#重建anaconda软连接)    
 7. [安装**OpenCV**](#安装opencv)   
     - [下载OpenCV](#下载opencv)
     - [编译OpenCV](#编译opencv)
@@ -35,7 +38,7 @@
       - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
       - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
       - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
-9. [安装**Caffe**](#安装caffe)   
+9.  [安装**Caffe**](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
     - [Python3下安装Caffe](#python3下安装cafe )
 10. [安装**Protobuf**](#安装protobuf)
@@ -182,9 +185,9 @@ cat /usr/local/cuda/version.txt
 cd /usr/local/cuda/bin
 sudo ./uninstall_cuda_9.0.pl
 ```
-卸载完成后如果显示：`Not removing directory, it is not empty: /usr/local/cuda-9.0` ，假如需要重装CUDA 9.0的话就把这个文件夹删除。在/usr/local/路劲下输入：
+卸载完成后如果显示：`Not removing directory, it is not empty: /usr/local/cuda-9.0` ，假如需要重装CUDA 9.0的话就把这个文件夹删除。在`/usr/local/`路径下输入：
 ```shell
-sudo rm -r cuda-9.0
+sudo rm -rf cuda-9.0
 ```
 ---
 ## 安装cudnn   
@@ -257,7 +260,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
     ```
 ---
 ## 安装Anaconda
-下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
+下载`Anaconda`的`sh`文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
 ```bash
 chmod a+x ./Anaconda3-5.2.0-Linux-x86_64.sh #chmod 777 ./Anaconda3-5.2.0-Linux-x86_64.sh
 bash Anaconda3-5.2.0-Linux-x86_64.sh
@@ -272,7 +275,7 @@ bash Anaconda3-5.3.1-Linux-x86_64.sh
 sudo chown -R 你的用户名 /home/你的用户名/anaconda3
 ```
 
-#### 若需要将anaconda屏蔽
+#### 屏蔽Anaconda
 ```shell
 vim ~/.bashrc
 ```
@@ -283,7 +286,14 @@ vim ~/.bashrc
 #export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
 #export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
 ```
-或者
+其实这里涉及到`linux可执行程序搜索路径`的问题，上述`PATH="/home/andy/anaconda3/bin:$PATH"`将`/home/andy/anaconda3/bin`放在了原始的`$PATH`前面，这样系统在执行的时候首先检查要可执行文件是否在`/home/andy/anaconda3/bin`中，然后再从`$PATH`中搜索，理解了这个关系，上述代码可以改为，这样改了以后将不需要[重建Anaconda软连接](#重建anaconda软连接)这一步操作了:    
+```vim
+# added by Anaconda3 5.3.1 installer
+export PATH="$PATH：/home/andy/anaconda3/bin"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH：~/anaconda3/lib
+export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
+```
+**Anaconda最新版屏蔽如下**    
 ```vim
 # added by Anaconda3 5.3.1 installer
 # >>> conda init >>>
@@ -308,13 +318,15 @@ source ~/.bashrc
 ```
 **必须重启电脑**    
 
-当需要**重新使用anaconda的时候**，只需要将anaconda的执行文件**软连接**到`/usr/local/bin`里，注意**这里要用绝对路径，否则不起作用**，如：
+
+#### 重建Anaconda软连接
+当需要**重新使用`Anaconda`的时候**，只需要将`Anaconda`的执行文件**软连接**到`/usr/local/bin`里，注意**这里要用绝对路径，否则不起作用**，如：
 ```shell
 sudo ln  -s  /home/andy/anaconda3/bin/conda  /usr/local/bin/conda
 sudo ln  -s  /home/andy/anaconda3/bin/activate  /usr/local/bin/activate
 sudo ln  -s  /home/andy/anaconda3/bin/deactivate  /usr/local/bin/deactivate
 ```
-首先注意usr 指 Unix System Resource，而不是User,    
+首先注意`usr` 指 `Unix System Resource`，而不是`User`,    
 - `/usr/bin`下面的都是系统预装的可执行程序，会随着系统升级而改变    
 - `/usr/local/bin`目录是给用户放置自己的可执行程序的地方，推荐放在这里，不会被系统升级而覆盖同名文件    
 
@@ -365,7 +377,7 @@ make -j8  #编译
 ![编译报错](../img/opencv-error1.png)    
 - 在编译`opencv3.4.0`源码的时候，会下载诸如`ippicv_2017u3_lnx_intel64_20170822.tgz`的压缩包，如果下载失败，请[下载离线包](opencv/opencv-3.4.0-dev.cache.zip)，解压该文件，会得到`.cache`文件夹，用此文件夹覆盖`opencv`源码文件夹下的`.cache`文件夹，再重新编译即可。`.cahce`文件夹为隐藏文件，可用`ctrl+h`查看。
 
-- 若本机里安装了**Anaconda**，则需要在`~/.bashrc` 或 `~/.zshrc `中加入：
+- 若本机里安装了**Anaconda**，**推荐[屏蔽Anaconda](#屏蔽anaconda)**，否则需要在`~/.bashrc` 或 `~/.zshrc `中加入：
     ```shell
     # added by Anaconda3 installer
     export PATH="/home/andy/anaconda3/bin:$PATH"
@@ -672,7 +684,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 #### 3. 安装`OpenCV`，方法同: [安装OpenCV](#安装opencv)     
 
-#### 4. 然后按照前面的方法[屏蔽Anaconda](#若需要将anaconda屏蔽)    
+#### 4. 然后按照前面的方法[屏蔽Anaconda](#屏蔽anaconda)    
 
 #### 5. 配置`Caffe`
 
@@ -952,7 +964,7 @@ pip install numpy==1.14.5
     
 **常见问题 3**       
 导入`caffe`的时候还有一个**错误**:    
-![导入caffe报错](img/caffe-error2.png)    
+![导入caffe报错](../img/caffe-error2.png)    
 原因是我在`ubutnu`下用的`linuxbrew`安装的`Python2`设为默认`Python`了，然后`caffe`编译配置文件里用的是系统的`Python2`路径，导致系统自带的`Python`与`linuxbrew`安装的`Python`环境混乱。     
 解决方法是屏蔽掉`linuxbrew`环境。只用系统自带的`Python`，将`~/.profile`文件中的`eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)`这一行屏蔽:    
 ```shell
@@ -1438,10 +1450,12 @@ void main()
 gcc person.pb-c.c main.c -lprotobuf-c
  ```
 执行` ./a.out`，输出结果如下：
-`id = 1314`
-`name = lily`
-`id = 1314`
-`name = lily`
+```shell
+id = 1314
+name = lily
+id = 1314
+name = lily
+```
 
 
 ---
