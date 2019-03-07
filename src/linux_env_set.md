@@ -35,7 +35,9 @@
     - [Tmux配置](#tmux配置)
     - [Tmux使用手册](#tmux使用手册)
   - [Sublime Text 3配置问题](#sublime-text-3配置问题)
-  - [VSCode配置问题](#vscode配置问题)   
+  - [VSCode配置问题](#vscode配置问题) 
+    - [VScode推荐插件](#vscode推荐插件)
+    - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
   - [查看系统状态](#查看系统状态)
@@ -1417,16 +1419,29 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 ---
 ## VSCode配置问题
-**推荐插件**:   
+### VScode推荐插件   
 - go
+- C/C++
+- Python
+- EditorConfig for VS Code
 - Anaconda Extension Pack
 - Chinese (Simplified) Language Pack for Visual Studio Code
 - Markdown All in One
+- Markdown Preview Enhanced
 - Markdown Preview Github Styling
 - Markdown Shortcuts
-- prototxt    
+- markdownlint
+- VS Code Jupyter Notebook Previewer
+- Beautify
+- prototxt
+- GitLens
+- GitHub Pull Requests
+- Git History
+- LaTeX Workshop
 
-**环境配置**：   
+
+### VScode环境配置
+
 ![vscode](../img/vscode.png)     
 ```json
 {
