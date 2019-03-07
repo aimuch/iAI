@@ -206,12 +206,12 @@ sudo ln -s libcudnn.so.7 libcudnn.so  #生成软链接
 
 ![cudnn1](../img/cudnn1.png)    
 
-随后需要将路径`/usr/local/cuda/lib64`添加到动态库，分两步：
+随后需要将路径`/usr/local/cuda/lib64`添加到动态库，分两步：    
 1）安装`vim`, 输入： 
 ```shell
 sudo apt-get install vim-gtk
 ```
-2）输入：
+2）**配置**，输入：
 ```shell
 sudo vim /etc/ld.so.conf.d/cuda.conf
 ```
@@ -219,7 +219,7 @@ sudo vim /etc/ld.so.conf.d/cuda.conf
 ```shell
 /usr/local/cuda/lib64
 ```
-保存退出，输入下面代码使其生效：
+保存退出，输入下面代码使其**生效**：
 ```shell
 sudo ldconfig
 ```
@@ -230,7 +230,7 @@ Copyright (c) 2005-2017 NVIDIA Corporation
 Built on Fri_Nov__3_21:07:56_CDT_2017
 Cuda compilation tools, release 9.0, V9.0.85
 ```
-查看cuDNN版本    
+查看`cuDNN`版本:    
 ```shell
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
