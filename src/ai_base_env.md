@@ -275,7 +275,7 @@ bash Anaconda3-5.3.1-Linux-x86_64.sh
 sudo chown -R 你的用户名 /home/你的用户名/anaconda3
 ```
 
-#### 屏蔽Anaconda
+### 屏蔽Anaconda
 ```shell
 vim ~/.bashrc
 ```
@@ -319,7 +319,7 @@ source ~/.bashrc
 **必须重启电脑**    
 
 
-#### 重建Anaconda软连接   
+### 重建Anaconda软连接   
 **重建原理**   
 由于linux系统默认搜索可执行文件的顺序为`/bin` -> `/usr/bin` -> `/usr/local/bin` ，而前两个为系统的可执行文件存放的地方，`/usr/local/bin`为用户自定义的可执行文件存放区，所以只需要将`Anaconda`的`~/anaconda3/bin/可执行文件`**软连接**到`/usr/local/bin`即可。    
 
