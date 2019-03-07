@@ -235,8 +235,19 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 ---
 ## CUDA多版本问题
-可以同时安装多个CUDA版本
+在实验的时候有些算法跟当前生效(安装)的`CUDA`和`cuDNN`版本不一致，所以需要同时安装多个版本，这里就是解决同时管理多个`CUDA`版本问题.   
 
+1. 首先按照上述介绍的[安装cuda](#安装cuda)和[安装cudnn](#安装cudnn)，安装实验环境依赖的版本；
+2. 默认`/usr/local/cuda`是软连接到**最新**安装的`CUDA`的文件夹上如：
+
+3. 删除已经软连接的`/usr/local/cuda`，将需要的`CUDA`版本软连接到`/usr/local/cuda`上, 如需要`CUDA 8.0`这个版本:      
+   ```shell
+   cd /usr/local/
+   sudo rm cuda
+   sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda
+   ```    
+   ![cuda2](../img/cuda2.png)    
+4. 由于在安装`CUDA`的时候已经将`cuda`加入了环境变量，所以不用再加入了。   
 ---
 ## 安装Anaconda
 下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
@@ -249,14 +260,14 @@ bash Anaconda3-5.2.0-Linux-x86_64.sh
 chmod 777 Anaconda3-5.3.1-Linux-x86_64.sh
 bash Anaconda3-5.3.1-Linux-x86_64.sh
 ```
-**conda install -c menpo opencv3命令有时候会显示权限不够permission issue。这是因为你安装anaconda时用的是sudo，这时候需要修改anaconda3文件夹权限**:
+**`conda install -c menpo opencv3`命令有时候会显示权限不够`permission issue`。这是因为你安装`anaconda`时用的是`sudo`，这时候需要修改`anaconda3`文件夹权限**:
 ```shell
-sudo chown -R 你的用户名（user ） /home/你的用户名/anaconda3
+sudo chown -R 你的用户名 /home/你的用户名/anaconda3
 ```
 
 #### 若需要将anaconda屏蔽
 ```shell
-sudo gedit ~/.bashrc
+vim ~/.bashrc
 ```
 然后屏蔽后的结果如下：    
 ```vim
