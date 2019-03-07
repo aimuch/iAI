@@ -138,12 +138,12 @@ nvidia-smi
 ```shell
 sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
 ```
-执行此命令约1分钟后会出现安装协议要你看，刚开始是0%，此时长按回车键让此百分比增长，直到100%，然后按照提示操作即可，先输入 accept ，是否安装显卡驱动选择no:   
+执行此命令约1分钟后会出现安装协议要你看，刚开始是0%，此时长按回车键让此百分比增长，直到100%，然后按照提示操作即可，先输入 `accept` ，是否安装显卡驱动选择`no`:   
 ```shell
 Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
 (y)es/(n)o/(q)uit: n
 ```
-其余的一律按默认或者y进行安装即可。    
+其余的一律按`默认`或者`y`进行安装即可。    
 
 ![CUDA安装完成](../img/cuda_finished.png)     
 
@@ -151,12 +151,13 @@ Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
 ![cuda1](../img/cuda1.png)    
 
 ### 修改配置文件   
-安装完成后配置CUDA环境变量，使用 gedit 命令打开配置文件：   
+安装完成后配置`CUDA`环境变量，使用`vim`配置文件：   
 ```shell
-sudo gedit ~/.bashrc
+vim ~/.bashrc
 ```
 在该文件最后加入以下两行并保存：   
 ```shell
+# CUDA
 export PATH=/usr/local/cuda/bin:$PATH    #/usr/local/cuda和/usr/local/cuda-9.0是同一个文件夹，两者通过软连接相连
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```
@@ -174,7 +175,7 @@ sudo make
 ```shell
 cat /usr/local/cuda/version.txt
 ```
-![cuda](../img/cuda.png)   
+![cuda](../img/cuda.png)    
 
 ### 卸载CUDA的方法   
 ```shell
@@ -233,21 +234,27 @@ Cuda compilation tools, release 9.0, V9.0.85
 ```shell
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
+![cudnn2](../img/cudnn2.png)    
+
 ---
 ## CUDA多版本问题
 在实验的时候有些算法跟当前生效(安装)的`CUDA`和`cuDNN`版本不一致，所以需要同时安装多个版本，这里就是解决同时管理多个`CUDA`版本问题.   
 
-1. 首先按照上述介绍的[安装cuda](#安装cuda)和[安装cudnn](#安装cudnn)，安装实验环境依赖的版本；
-2. 默认`/usr/local/cuda`是软连接到**最新**安装的`CUDA`的文件夹上如：
-
-3. 删除已经软连接的`/usr/local/cuda`，将需要的`CUDA`版本软连接到`/usr/local/cuda`上, 如需要`CUDA 8.0`这个版本:      
-   ```shell
-   cd /usr/local/
-   sudo rm cuda
-   sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda
-   ```    
-   ![cuda2](../img/cuda2.png)    
+1. 首先按照上述介绍的[安装CUDA](#安装cuda)和对应版本的[安装cuDNN](#安装cudnn)，安装实验环境依赖的版本；
+2. 默认`/usr/local/cuda`是**软连接**到**最新安装的`CUDA`文件夹**上的:    
+    ![cuda2](../img/cuda2.png)    
+3. 删除已经软连接的`/usr/local/cuda`，将需要的`CUDA-X.0安装文件夹`软连接到`/usr/local/cuda`上, 例如需要`CUDA 8.0`这个版本:      
+    ```shell
+    cd /usr/local/
+    sudo rm cuda
+    sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda
+    ```    
+    ![cuda3](../img/cuda3.png)       
 4. 由于在安装`CUDA`的时候已经将`cuda`加入了环境变量，所以不用再加入了。   
+5. 查看CUDA版本   
+    ```shell
+    cat /usr/local/cuda/version.txt
+    ```
 ---
 ## 安装Anaconda
 下载anaconda的sh文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
