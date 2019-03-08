@@ -18,10 +18,11 @@
     - [卸载CUDA的方法](#卸载cuda的方法)    
 4. [安装**cuDNN**](#安装cudnn)    
 5. [**CUDA多版本**问题](#cuda多版本问题)
-6. [安装**Anaconda**](#安装anaconda)    
+6. [**Anaconda**](#anaconda)    
    - [安装Anaconda](#安装anaconda)    
    - [屏蔽Anaconda](#屏蔽anaconda)    
    - [重建Anaconda软连接](#重建anaconda软连接)    
+   - [Anaconda虚拟环境](#anaconda虚拟环境)
 7. [安装**OpenCV**](#安装opencv)   
     - [下载OpenCV](#下载opencv)
     - [编译OpenCV](#编译opencv)
@@ -305,7 +306,8 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
     ```
     ![cuda](../img/cuda-version.png)     
 ---
-## 安装Anaconda
+## Anaconda
+### 安装Anaconda
 下载`Anaconda`的`sh`文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
 ```bash
 chmod a+x ./Anaconda3-5.2.0-Linux-x86_64.sh #chmod 777 ./Anaconda3-5.2.0-Linux-x86_64.sh
@@ -403,6 +405,20 @@ source deactivate
 ```
 ![conda list](../img/conda3.png)    
 
+
+### Anaconda虚拟环境    
+**创建新的虚拟环境**：    
+```shell
+conda create -n venv python=3.6 # select python version
+```
+**激活虚拟环境**:    
+```shell
+source activate venv
+```
+**删除虚拟环境**:   
+```shell
+conda env remove -n venv
+```
 ---
 ## 安装opencv   
 ### 下载OpenCV   
