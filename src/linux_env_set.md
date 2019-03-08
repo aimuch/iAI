@@ -1423,20 +1423,29 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - go
 - C/C++
 - Python
+- Chinese (Simplified) Language Pack for Visual Studio Code
 - EditorConfig for VS Code
 - Anaconda Extension Pack
-- Chinese (Simplified) Language Pack for Visual Studio Code
 - Markdown All in One
 - Markdown Shortcuts
 - markdownlint
 - VS Code Jupyter Notebook Previewer
 - Beautify
 - prototxt
-- GitLens
+- GitLens — Git supercharged=
 - GitHub Pull Requests
 - Git History
 - LaTeX Workshop
-
+- vscode-cudacpp
+- **文件夹图标主题**
+  - **vscode-icons**
+  - Material Icon Theme
+  - Nomo Dark Icon Theme
+  - VSCode Great Icons
+- **颜色主题**
+  - **Atom One Dark Theme**
+  - One Dark Pro
+  - Dracula Official
 
 ### VScode环境配置
 
