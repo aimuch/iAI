@@ -167,22 +167,14 @@ nvidia-smi
     chmod 777 cuda_10.1.105_418.39_linux.run
     sudo sh ./cuda_10.1.105_418.39_linux.run
     ```
-    若提示安装失败，查看` vim /var/log/cuda-installer.log`显示`ERROR: You appear to be running an X server; please exit X `，是由于没有卸载旧的显卡驱动导致，解决方法是`Ctrl + Alt + F1`在终端命令行进行安装:
-    ```shell
-    sudo service lightdm stop
-    bash # Switch from zsh environment to bash environment
-    sudo apt-get purge nvidia*
-    sudo sh ./cuda_10.1.105_418.39_linux.run
-    ```
-    ![CUDA 10.1](../img/cuda10.1_1.png)     
+    
     输入`accept`进入安装界面:    
+    ![CUDA 10.1](../img/cuda10.1_1.png)     
+    **不要安装`CUDA`自带的`NVIDIA`驱动**，将光标移动到`Driver`选项上，按下**空格键**取消选择安装`NVIDIA`驱动，移动光标再到`Install`上然后按回车。    
     ![CUDA 1O.1](../img/cuda10.1_2.png)      
-    选项一律默认，移动光标到`Install`上然后按回车。    
-    安装成功后运行:    
-    ```shell
-    sudo service lightdm start
-    ```
-    然后再按通过`Ctrl + Alt + F7`可返回图形化模式。   
+    安装成功后提示:    
+    ![CUDA success](../img/cuda10.1-finished.png)      
+    
 
 ### 修改配置文件   
 安装完成后配置`CUDA`环境变量，使用`vim`配置文件：   
@@ -215,12 +207,42 @@ cat /usr/local/cuda/version.txt
 ### 卸载CUDA的方法   
 ```shell
 cd /usr/local/cuda/bin
+
+# CUDA 9.0
 sudo ./uninstall_cuda_9.0.pl
+
+# CUDA 10.1
+sudo ./cuda-uninstaller
 ```
-卸载完成后如果显示：`Not removing directory, it is not empty: /usr/local/cuda-9.0` ，假如需要重装CUDA 9.0的话就把这个文件夹删除。在`/usr/local/`路径下输入：
+卸载完成后如果显示：`Not removing directory, it is not empty: /usr/local/cuda-9.0` ，假如需要重装`CUDA 9.0`的话就把这个文件夹删除。在`/usr/local/`路径下输入：
 ```shell
+# CUDA 9.0
 sudo rm -rf cuda-9.0
+
+# CUDA 10.1
+sudo rm -rf cuda-10.1
 ```
+
+### 安装CUDA过程中遇到的问题
+`CUDA 10.1`提示安装失败:    
+![CUDA Error](../img/cuda-error.png)    
+查看` vim /var/log/cuda-installer.log`显示:    
+![Error Detail](../img/cuda-error1.png)    
+`ERROR: You appear to be running an X server; please exit X `，是在安装`CUDA`的时候选择的安装`CUDA`自带的`NVIDIA`显卡驱动导致的，解决方法是:    
+(1)在安装`CUDA`的时候不要选择安装`CUDA`自带的`NVIDIA`驱动；    
+(2)若要用`CUDA`自带的`NVIDIA`显卡驱动，则`Ctrl + Alt + F1`在终端命令行进行安装:    
+```shell
+sudo service lightdm stop
+bash # Switch from zsh environment to bash environment
+sudo apt-get purge nvidia*
+sudo sh ./cuda_10.1.105_418.39_linux.run
+```
+若是在终端命令行下安装的CUDA，则需要安装成功后运行:    
+```shell
+sudo service lightdm start
+```
+然后再按通过`Ctrl + Alt + F7`可返回图形化模式。   
+
 ---
 ## 安装cuDNN   
 `cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`格式的文件**, 不推荐下载安装`.deb`格式，若误装了`.deb`格式的cuDNN请用以下命令进行卸载:
