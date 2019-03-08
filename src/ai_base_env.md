@@ -222,7 +222,11 @@ sudo rm -rf cuda-9.0
 ```
 ---
 ## 安装cuDNN   
-`cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`格式的文件**, 不推荐下载安装`.deb`格式    
+`cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`格式的文件**, 不推荐下载安装`.deb`格式，若误装了`.deb`格式的cuDNN请用以下命令进行卸载:
+```shell
+dpkg -l |grep -i libcudnn* # 查看.deb安装的cudnn
+sudo apt-get purge libcudnn×
+```    
 ![cuDNN Download](../img/cudnn.png)      
 
 解压`cudnn-10.1-linux-x64-v7.5.0.56.tgz`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹:    
