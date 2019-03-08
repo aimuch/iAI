@@ -94,7 +94,7 @@ lsmod | grep nouveau
 ```shell
 sudo service lightdm stop
 ```
-这里会要求你输入账户的密码。然后通过`Ctrl + Alt + F7`发现已无法成功返回图形化模式，说明桌面服务已成功关闭，注意此步对接下来的 nvidia 驱动安装尤为重要，必需确保桌面服务已关闭。按`Ctrl + Alt + F1`再次进入python文本模式，先卸载之前的显卡驱动：    
+这里会要求你输入账户的密码。然后通过`Ctrl + Alt + F7`发现已无法成功返回图形化模式，说明桌面服务已成功关闭，注意此步对接下来的 NVIDIA 显卡驱动安装尤为重要，必需确保桌面服务已关闭。按`Ctrl + Alt + F1`再次进入终端命令行界面，先卸载之前的显卡驱动(注意以下命令在`Zsh`的shell环境下不认识*，需要切换到`bash`的shell环境)：    
 ```shell
 sudo apt-get purge nvidia*
 ```
@@ -130,28 +130,58 @@ source  ~/.bashrc
 ```bash
 cat /proc/driver/nvidia/version
 ```
+![nvidia driver](../img/nvidia-driver.png)    
 或者   
 ```shell
 nvidia-smi
 ```
+![nvidia smi](../img/nvidia-smi.png)    
+
 ---
 ## 安装CUDA    
 ### 安装CUDA步骤    
-安装完显卡驱动后，`CUDA Toolkit`和`samples`可单独安装，直接在终端运行安装，无需进入文本模式：   
-```shell
-sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
-```
-执行此命令约1分钟后会出现安装协议要你看，刚开始是0%，此时长按回车键让此百分比增长，直到100%，然后按照提示操作即可，先输入 `accept` ，是否安装显卡驱动选择`no`:   
-```shell
-Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
-(y)es/(n)o/(q)uit: n
-```
-其余的一律按`默认`或者`y`进行安装即可。    
 
-![CUDA安装完成](../img/cuda_finished.png)     
+**[推荐下载安装`.run`格式文件](https://developer.nvidia.com/cuda-toolkit)。**  
 
-安装结束以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-9.0`文件夹，还生成一个相应`软连接`文件夹`cuda`:    
-![cuda1](../img/cuda1.png)    
+
+- **安装CUDA9.0以及之前版本**    
+    安装完显卡驱动后，`CUDA Toolkit`和`samples`可单独安装，直接在终端运行安装，无需进入文本模式：   
+    ```shell
+    sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
+    ```
+    执行此命令约1分钟后会出现安装协议要你看，刚开始是0%，此时长按回车键让此百分比增长，直到100%，然后按照提示操作即可，先输入 `accept` ，是否安装显卡驱动选择`no`:   
+    ```shell
+    Install NVIDIA Accelerated Graphics Driver for Linux-x86_64 387.26?
+    (y)es/(n)o/(q)uit: n
+    ```
+    其余的一律按`默认`或者`y`进行安装即可。    
+
+    ![CUDA安装完成](../img/cuda_finished.png)     
+
+    安装结束以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-9.0`文件夹，还生成一个相应`软连接`文件夹`cuda`:    
+    ![cuda1](../img/cuda1.png)    
+
+- **安装CUDA10.1**    
+    ```shell
+    chmod 777 cuda_10.1.105_418.39_linux.run
+    sudo sh ./cuda_10.1.105_418.39_linux.run
+    ```
+    若提示安装失败，查看` vim /var/log/cuda-installer.log`显示`ERROR: You appear to be running an X server; please exit X `，是由于没有卸载旧的显卡驱动导致，解决方法是`Ctrl + Alt + F1`在终端命令行进行安装:
+    ```shell
+    sudo service lightdm stop
+    sudo apt-get purge nvidia*
+    bash # Using Bash SHELL
+    sudo sh ./cuda_10.1.105_418.39_linux.run
+    ```
+    ![CUDA 10.1](../img/cuda10.1_1.png)     
+    输入`accept`进入安装界面:    
+    ![CUDA 1O.1](../img/cuda10.1_2.png)      
+    选项一律默认，移动光标到`Install`上然后按回车。    
+    安装成功后运行:    
+    ```shell
+    sudo service lightdm start
+    ```
+    然后再按通过`Ctrl + Alt + F7`可返回图形化模式。   
 
 ### 修改配置文件   
 安装完成后配置`CUDA`环境变量，使用`vim`配置文件：   
@@ -178,7 +208,8 @@ sudo make
 ```shell
 cat /usr/local/cuda/version.txt
 ```
-![cuda](../img/cuda.png)    
+<!-- ![cuda](../img/cuda.png)     -->
+![cuda](../img/cuda-version.png)     
 
 ### 卸载CUDA的方法   
 ```shell
@@ -190,17 +221,25 @@ sudo ./uninstall_cuda_9.0.pl
 sudo rm -rf cuda-9.0
 ```
 ---
-## 安装cudnn   
+## 安装cuDNN   
+`cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`格式的文件**, 不推荐下载安装`.deb`格式    
+![cuDNN Download](../img/cudnn.png)      
 
-解压`cuNDD v7.zip`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹，命令行进入其中的`include`文件夹路径下，然后进行以下操作：
+解压`cudnn-10.1-linux-x64-v7.5.0.56.tgz`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹:    
+![cuDNN folder](../img/cuDNN-folder.png)      
+
+**若安装了多个`CUDA`版本，要特别注意`/usr/local/cuda`软连接到了哪个版本的`CUDA`。**    
+
+命令行进入其中的`include`文件夹路径下，然后进行以下操作：
 ```shell
 cd ~/Download/cuda/include/
 sudo cp cudnn.h /usr/local/cuda/include/ #复制头文件
 ```
-然后命令行进入`cuda/lib64`文件夹路径下，运行以下命令：    
+然后命令行进入`cuda/lib64`文件夹路径下(其实`cuda/lib64`文件夹下通过Beyond Compare查看，`libcudnn.so`、`libcudnn.so.7`和`libcudnn.so.7.4.1`是同一个文件的不同扩展名)，运行以下命令：    
 ```shell
 cd ~/Download/cuda/lib64/
 sudo cp lib* /usr/local/cuda/lib64/ #复制动态链接库
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 cd /usr/local/cuda/lib64/
 sudo rm -rf libcudnn.so libcudnn.so.7  #删除原有动态文件
 sudo ln -s libcudnn.so.7.4.1 libcudnn.so.7  #生成软链接
@@ -237,8 +276,10 @@ Cuda compilation tools, release 9.0, V9.0.85
 ```shell
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
-![cudnn2](../img/cudnn2.png)    
+![cudnn2](../img/cudnn2.png)     
 
+**参考资料**    
+> [cuDNN官方安装指导](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installlinux)     
 ---
 ## CUDA多版本问题
 在实验的时候有些算法跟当前生效(安装)的`CUDA`和`cuDNN`版本不一致，所以需要同时安装多个版本，这里就是解决同时管理多个`CUDA`版本问题.   
@@ -258,6 +299,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
     ```shell
     cat /usr/local/cuda/version.txt
     ```
+    ![cuda](../img/cuda-version.png)     
 ---
 ## 安装Anaconda
 下载`Anaconda`的`sh`文件`Anaconda3-5.2.0-Linux-x86_64.sh`，然后运行以下代码：
