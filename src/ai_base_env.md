@@ -169,8 +169,8 @@ nvidia-smi
     若提示安装失败，查看` vim /var/log/cuda-installer.log`显示`ERROR: You appear to be running an X server; please exit X `，是由于没有卸载旧的显卡驱动导致，解决方法是`Ctrl + Alt + F1`在终端命令行进行安装:
     ```shell
     sudo service lightdm stop
+    bash # Switch from zsh environment to bash environment
     sudo apt-get purge nvidia*
-    bash # Using Bash SHELL
     sudo sh ./cuda_10.1.105_418.39_linux.run
     ```
     ![CUDA 10.1](../img/cuda10.1_1.png)     
