@@ -65,10 +65,10 @@ AI实验环境搭建和深度学习算法安装实验
          - [方法1 ssh远程使用jupyter notebook](./src/ai_server_FAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./src/ai_server_FAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
 
-3.  [**AI Framework**](./src/ai_framework.md#ai-framework)
-    - [TensorFlow](./src/ai_framework.md#tensorflow)
-    - [Pytorch](./src/ai_framework.md#pytorch)
-      - [将数据转换为Pytorch格式](./src/ai_framework.md#将数据转换为pytorch格式)
+3.  [**AI Framework**](src/ai_framework.md#ai-framework)
+    - [TensorFlow](src/ai/tensorflow.md#tensorflow)
+    - [Pytorch](src/ai/pytorch.md#pytorch)
+      - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
 
 4.  [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Docker**安装与使用](./src/linux_env_set.md#docker安装与使用)

@@ -1427,8 +1427,6 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - Anaconda Extension Pack
 - Chinese (Simplified) Language Pack for Visual Studio Code
 - Markdown All in One
-- Markdown Preview Enhanced
-- Markdown Preview Github Styling
 - Markdown Shortcuts
 - markdownlint
 - VS Code Jupyter Notebook Previewer
