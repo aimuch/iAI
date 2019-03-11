@@ -36,9 +36,11 @@
       - [验证TensorRT是否安装成功](#tensorrt4)
       - [TensorRT安装过程中遇到的问题以及解决方法](#tensorrt5)
     - [TensorRT生成Engine](#tensorrt生成engine)
-      - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
-      - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
-      - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
+      - [Caffe模型用TensorRT生成Engine](#caffe模型用tensorrt生成engine)
+      - [TensorRT官方实例](#tensorrt官方实例)
+        - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
+        - [TensorRT Tensorflow Engine](tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
+        - [Manually Construct Tensorrt Engine](tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
 9.  [安装**Caffe**](#安装caffe)   
     - [Python2下安装Caffe](#python2下安装cafe) 
     - [Python3下安装Caffe](#python3下安装cafe )
@@ -763,6 +765,7 @@ exit
 ```   
 
 ### TensorRT生成Engine
+#### Caffe模型用TensorRT生成Engine
 ```shell
 ~/TensorRT/bin/giexec \
 --deploy=path_to_prototxt/intputdeploy.prototxt \
@@ -770,6 +773,12 @@ exit
 --model=path_to_caffemodel/caffeModelName.caffemodel \
 --engine=path_to_output_engine/outputEngineName.engine
 ```    
+
+#### TensorRT官方实例
+- [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)    
+- [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)    
+- [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)    
+
 ### 参考资料    
 > [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)    
 
