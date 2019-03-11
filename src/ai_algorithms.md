@@ -186,8 +186,7 @@ cd $FRCN_ROOT
 ```shell
 pip uninstall numpy
 pip uninstall numpy # 确保所有numpy都卸载了
-conda install numpy # 然后用conda安装numpy
-# conda install --force-reinstall numpy # 上条命令无效使用本条命令
+conda install --force-reinstall numpy # 用conda强制重新安装numpy
 ```
 ![tensorflowandpytorch4](../img/tensorflowandpytorch4.png)    
 安装好了以后查看`numpy`版本:    
