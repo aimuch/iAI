@@ -107,7 +107,9 @@ for implementation details.
     # export TENSORRT_PATH=/home/andy/TensorRT
     include_directories(${TENSORRT_PATH}/include)
     link_directories(${TENSORRT_PATH}/lib)
-    # link_directories("/home/andy/TensorRT/lib")
+
+    # include_directories(/home/andy/TensorRT/include)
+    # link_directories(/home/andy/TensorRT/lib)
     ```
     然后编译运行:     
     ```shell
