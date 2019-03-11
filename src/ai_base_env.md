@@ -585,14 +585,22 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 > [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)    
 <!-- #### 1. TensorRT环境变量设置 -->
 #### <span id="tensorrt1">1. TensorRT环境变量设置</span>  
-首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
-安装`TensorRT`前需要安装`Cuda`和`cudnn`，安装步骤可以参考上方。   
-打开下载的TensorRT所在路径，解压下载的tar文件：   
+首先[下载**tar**版本的安装包](https://developer.nvidia.com/nvidia-tensorrt-download)，需要登陆NVIDIA。    
+安装`TensorRT`前需要[安装`Cuda`](#安装cuda)和[安装`cudnn`](#安装cudnn)，安装步骤可以参考上方。   
+打开下载的`TensorRT`所在路径，解压下载的`tar`文件：   
 ```bash
 chmod 777 TensorRT-XXX.tar.gz
 tar -xzvf TensorRT-XXX.tar.gz
 ```
-解压好了，然后添加**环境变量**：    
+将加压后的`TensorRT-XXX`文件夹移动到`HOME`目录下，并创建软连接，这样可以安装多个版本的`TensorRT-XXX`，在切换的时候只需要将用到的`TensorRT-XXX`版本软连接到`TensorRT`上就可以了:    
+```shell
+mv TensorRT-XXX  ~/TensorRT-XXX
+cd
+
+# Create Soft-Link
+ln -s ~/TensorRT-XXX  TensorRT
+```
+然后设置**环境变量**：    
 ```shell
 # bash
 vim ~/.bashrc # 打开环境变量文件
@@ -602,7 +610,7 @@ vim ~/.zshrc # 打开环境变量文件
 ```
 ```shell
 # 将下面三个环境变量写入环境变量文件并保存
-export LD_LIBRARY_PATH=TensorRT-XXX解压路径/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=~/TensorRT/lib:$LD_LIBRARY_PATH
 export CUDA_INSTALL_DIR=/usr/local/cuda
 export CUDNN_INSTALL_DIR=/usr/local/cuda
 ```
@@ -616,10 +624,10 @@ source ~/.zshrc
 
 <!-- #### 2. 安装Python的TensorRT包 -->
 #### <span id="tensorrt2">2. 安装Python的TensorRT包</span>  
-进到解压后的TensorRT的**Python**文件下：   
+进到解压后的`TensorRT`的**Python**文件下：   
 **2.1 非虚拟环境下**
 ```bash
-cd TensorRT-XXX/python/
+cd ~/TensorRT/python/
 
 # 对于python2
 sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
@@ -629,7 +637,7 @@ sudo pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```
 或者：
 ```bash
-cd TensorRT-XXX/python/
+cd TensorRT/python/
 
 # 对于python2
 pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl --user
@@ -641,7 +649,7 @@ pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl --user
 **2.2 虚拟环境下**   
 ```bash
 source  activate venv
-cd TensorRT-XXX/python/
+cd TensorRT/python/
 
 # 对于python2
 pip install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
@@ -654,15 +662,39 @@ pip install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 
 <!-- #### 3. 安装uff     -->
 #### <span id="tensorrt3">3. 安装uff</span>
-转到**uff**目录下安装uff文件夹下安装：   
+转到**uff**目录下安装`uff`文件夹下安装：   
+
+**3.1 非虚拟环境下**
 ```bash
-cd TensorRT-XXX/uff/
+cd ~/TensorRT/uff/
 
 # 对于python2
-sudo pip2 install uff-0.1.0rc0-py2.py3-none-any.whl
+sudo pip2 install uff-XXX-py2.py3-none-any.whl
 
 # 对于python3
-sudo pip3 install uff-0.1.0rc0-py2.py3-none-any.whl
+sudo pip3 install uff-XXX-py2.py3-none-any.whl
+```
+或者：
+```bash
+cd TensorRT/uff/
+
+# 对于python2
+pip2 install uff-XXX-py2.py3-none-any --user
+
+# 对于python3
+pip3 install uff-XXX-py2.py3-none-any --user
+```
+
+**3.2 虚拟环境下**   
+```bash
+source  activate venv
+cd TensorRT/uff/
+
+# 对于python2
+pip install uff-XXX-py2.py3-none-any.whl
+
+# 对于python3
+pip install uff-XXX-py2.py3-none-any.whl
 ```
 
 <!-- #### 4. 验证TensorRT是否安装成功     -->
@@ -687,11 +719,11 @@ which convert-to-uff
 
 拷贝`lenet5.uff`到python相关目录进行验证：   
 ```bash
-sudo cp TensorRT-XXX/data/mnist/lenet5.uff TensorRT-XXX/python/data/mnist/lenet5.uff
-cd TensorRT-XXX/samples/sampleMNIST
+sudo cp TensorRT/data/mnist/lenet5.uff TensorRT/python/data/mnist/lenet5.uff
+cd TensorRT/samples/sampleMNIST
 make clean
 make
-cd /TensorRT-XXX/bin（转到bin目录下面，make后的可执行文件在此目录下）
+cd /TensorRT/bin（转到bin目录下面，make后的可执行文件在此目录下）
 ./sample_mnist
 ```
 命令执行顺利即安装成功。   
@@ -717,7 +749,7 @@ sudo gedit /etc/profile.d/cuda.sh
 添加：  
 
 ```shell
-export PATH=/usr/local/cuda-9.0/bin:$PATH
+export PATH=/usr/local/cuda/bin:$PATH
 ```
 
 ```shell
@@ -732,7 +764,7 @@ exit
 
 ### TensorRT生成Engine
 ```shell
-/home/andy/TensorRT/bin/giexec \
+~/TensorRT/bin/giexec \
 --deploy=path_to_prototxt/intputdeploy.prototxt \
 --output=prob \
 --model=path_to_caffemodel/caffeModelName.caffemodel \
