@@ -717,12 +717,10 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 
 **add to ~/.zshrc**   
 ```shell
+# GO PATH
 export PATH=$PATH:/usr/local/go/bin
-#export PATH=$PATH:/Applications/MAMP/bin/php/php5.6.10/bin:/Users/GZM/composer:/Users/GZM/.composer/vendor/bin
-#export GOPATH=/Users/GZM/work/go
-#export GOPATH=/Volumes/Transcend/git/360/private_cloud_server_code/tools/gowork/
 #export GOBIN=$GOPATH/bin
-#export GO15VENDOREXPERIMENT=1
+
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 ```
