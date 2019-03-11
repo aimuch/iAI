@@ -580,8 +580,9 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 
 ---
 ## TensorRT
-### 安装TensorRT
 
+### 安装TensorRT
+> [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)    
 <!-- #### 1. TensorRT环境变量设置 -->
 #### <span id="tensorrt1">1. TensorRT环境变量设置</span>  
 首先下载**tar**版本的安装包，[下载地址](https://developer.nvidia.com/nvidia-tensorrt-download)需要登陆NVIDIA。    
@@ -592,20 +593,20 @@ chmod 777 TensorRT-XXX.tar.gz
 tar -xzvf TensorRT-XXX.tar.gz
 ```
 解压好了，然后添加**环境变量**：    
-```bash
+```shell
 # bash
-gedit ~/.bashrc # 打开环境变量文件
+vim ~/.bashrc # 打开环境变量文件
 
 # zsh
-gedit ~/.zshrc # 打开环境变量文件
+vim ~/.zshrc # 打开环境变量文件
 ```
-```bash
+```shell
 # 将下面三个环境变量写入环境变量文件并保存
-export LD_LIBRARY_PATH=TensorRT-XXX解压路径/lib:$LD_LIBRARY_PATH 
-export CUDA_INSTALL_DIR=/usr/local/cuda-9.0
-export CUDNN_INSTALL_DIR=/usr/local/cuda-9.0
+export LD_LIBRARY_PATH=TensorRT-XXX解压路径/lib:$LD_LIBRARY_PATH
+export CUDA_INSTALL_DIR=/usr/local/cuda
+export CUDNN_INSTALL_DIR=/usr/local/cuda
 ```
-```bash
+```shell
 # bash
 source ~/.bashrc   # 使刚刚修改的环境变量文件生效
 
@@ -736,8 +737,9 @@ exit
 --output=prob \
 --model=path_to_caffemodel/caffeModelName.caffemodel \
 --engine=path_to_output_engine/outputEngineName.engine
-```
-
+```    
+### 参考资料    
+> [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)    
 
 ---
 ## 安装caffe  
