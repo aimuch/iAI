@@ -98,9 +98,19 @@ for implementation details.
 
 5. Clone and build this project
 
-    ```
+    ```shell
     git clone --recursive https://github.com/NVIDIA-Jetson/tf_to_trt_image_classification.git
     cd tf_to_trt_image_classification
+    ```
+    修改`CMakeLists.txt`文件，添加以下内容:    
+    ```makefile
+    # export TENSORRT_PATH=/home/andy/TensorRT
+    include_directories(${TENSORRT_PATH}/include)
+    link_directories(${TENSORRT_PATH}/lib)
+    # link_directories("/home/andy/TensorRT/lib")
+    ```
+    然后编译运行:     
+    ```shell
     mkdir build
     cd build
     cmake ..
