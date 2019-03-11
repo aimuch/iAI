@@ -112,6 +112,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [Ubuntu查看和关闭进程](./src/linux_env_set.md#ubuntu查看和关闭进程)
      - [Ubuntu后台执行命令](./src/linux_env_set.md#ubuntu后台执行命令)   
      - [查看系统状态](./src/linux_env_set.md#查看系统状态)
+     - [**彻底卸载**软件](./src/linux_env_set.md#彻底卸载软件)
      - [**Shadowsocks**安装](./src/ss.md#shadowsocks安装)
        - [Shadowsocks说明](./src/ss.md#shadowsocks说明)
        - [安装Shadowsocks-qt5](./src/ss.md#安装shadowsocks-qt5)

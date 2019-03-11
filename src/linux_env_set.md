@@ -17,7 +17,7 @@
     - [Python项目requirements文件的生成和使用](#python项目requirements文件的生成和使用) 
   - [安装**Chrome**浏览器](#安装chrome浏览器)
   - [pip和pip3安装报错](#pip和pip3安装报错)
-  - [ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
+  - [Ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS无法输入中文](#wps无法输入中文)
   - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
@@ -41,6 +41,7 @@
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
   - [查看系统状态](#查看系统状态)
+  - [彻底卸载软件](#彻底卸载软件)
 ---
 
 ## Docker安装与使用
@@ -526,7 +527,7 @@ sudo python3 ez_setup.py
 其中[get-pip.py](./src/fix_pip/get-pip.py)和[ez_setup.py](./src/fix_pip/ez_setup-pip.py)文件在`src/fix_pip/`文件夹中。
 
 ---
-## ubuntu 16下安装spyder3
+## Ubuntu 16下安装spyder3
 安装pip3：
 ```shell
 sudo apt install python3-pip
@@ -1608,3 +1609,28 @@ curl -L https://bit.ly/glances | /bin/bash
 glances
 ```   
 ![png](../img/glances.png)    
+
+---
+# 彻底卸载软件
+彻底卸载软件，下面以卸载`Firefox`为例:    
+先列出来与`Firefox`相关的软件:    
+```shell
+dpkg --get-selections | grep firefox
+```
+列出来为:    
+```shell
+firefox
+firefox-locale-en
+unity-scope-firefoxbookmarks
+```
+
+卸载上述列出来跟`Firefox`相关的软件:   
+```shell
+sudo apt-get purge  firefox firefox-locale-en unity-scope-firefoxbookmarks
+```
+或者:    
+```shell
+sudo apt-get purge firefox* unity-scope-firefoxbookmarks
+```
+
+---
