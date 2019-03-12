@@ -25,6 +25,8 @@ AI实验环境搭建和深度学习算法安装实验
        - [查看CUDA版本](src/ai_base_env.md#查看cuda版本)
        - [卸载CUDA的方法](src/ai_base_env.md#卸载cuda的方法)    
    4. [安装**cuDNN**](src/ai_base_env.md#安装cudnn)    
+       - [下载安装**cuDNN**](src/ai_base_env.md#下载安装cudnn)    
+       - [**cuDNN**常见问题](src/ai_base_env.md#cudnn常见问题)    
    5. [**CUDA多版本**问题](src/ai_base_env.md#cuda多版本问题)
    6. [**Anaconda**](src/ai_base_env.md#anaconda)    
        - [安装Anaconda](src/ai_base_env.md#安装anaconda)    

@@ -17,6 +17,8 @@
     - [查看CUDA版本](#查看cuda版本)
     - [卸载CUDA的方法](#卸载cuda的方法)    
 4. [安装**cuDNN**](#安装cudnn)    
+   - [下载安装**cuDNN**](#下载安装cudnn)    
+   - [**cuDNN**常见问题](#cudnn常见问题)    
 5. [**CUDA多版本**问题](#cuda多版本问题)
 6. [**Anaconda**](#anaconda)    
    - [安装Anaconda](#安装anaconda)    
@@ -247,6 +249,8 @@ sudo service lightdm start
 
 ---
 ## 安装cuDNN   
+
+### 下载安装cuDNN
 `cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`格式的文件**, 不推荐下载安装`.deb`格式，若误装了`.deb`格式的cuDNN请用以下命令进行卸载:
 ```shell
 dpkg -l |grep -i libcudnn* # 查看.deb安装的cudnn
@@ -307,6 +311,15 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 ![cudnn2](../img/cudnn2.png)     
 
+### cuDNN常见问题
+```shell
+Error : Failed to get convolution algorithm. 
+This is probably because cuDNN failed to initialize, 
+so try looking to see if a warning log message was printed above.
+```
+出现上述问题是安装的`cuDNN`版本跟`CUDA`和`TensorFlow`相兼容的版本不符合，重新安装指定版本的`cuDNN`即可。    
+
+
 **参考资料**    
 > [cuDNN官方安装指导](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installlinux)     
 ---
@@ -324,7 +337,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
     ```    
     ![cuda3](../img/cuda3.png)       
 4. 由于在安装`CUDA`的时候已经将`cuda`加入了环境变量，所以不用再加入了。   
-5. 查看CUDA版本   
+5. 查看`CUDA`版本   
     ```shell
     cat /usr/local/cuda/version.txt
     ```
