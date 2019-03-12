@@ -246,6 +246,22 @@ sh /opt/tomcat/bin/catalina.sh   run
     ```
 
 - 最后**本地浏览器**打开 **`服务器IP地址:指定的端口`** ，假如服务器的地址为**10.1.1.31**，则在本地浏览器中访问：**http://10.1.1.31:8890/** , 输入密码就可以访问了。需要注意的是不能在隐藏目录 (以 `.` 开头的目录)下启动 `jupyter notebook`, 否则无法正常访问文件。
+  
+- SSL链接   
+    用以下命令生成`.key`和`.pem`：    
+    ```shell
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
+    ```
+    用以上生成的`.key`和`.pem`运行`Jupyter Notebook`命令:    
+    ```shell
+    jupyter notebook --certfile=mycert.pem --keyfile mykey.key
+    ```
+    可以将上面生成的`.key`和`.pem`添加到`jupyter_notebook_config.py`配置文件中，这样不用每次都需要指定`.key`和`.pem`了:    
+    ```python
+    c.NotebookApp.certfile = u'/absolute/path/to/your/certificate/mycert.pem'
+    c.NotebookApp.keyfile = u'/absolute/path/to/your/certificate/mykey.key'
+    ```
+    假如服务器的地址为**10.1.1.31**，则在本地浏览器中访问：**https://10.1.1.31:8890/** 
 
 **参考资料**    
 > 1. [远程访问服务器Jupyter Notebook的方法](https://www.jianshu.com/p/8fc3cd032d3c)    
