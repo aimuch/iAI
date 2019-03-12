@@ -231,9 +231,9 @@ sh /opt/tomcat/bin/catalina.sh   run
     在 `jupyter_notebook_config.py` 中找到下面的行，取消注释并修改:   
     ```python
     c.NotebookApp.ip='*'
-    c.NotebookApp.password = u'sha:ce...刚才复制的那个密文'
+    c.NotebookApp.password = u'sha1:67c9...11aed  # 刚才复制的那个密文
     c.NotebookApp.open_browser = False
-    c.NotebookApp.port =8888 #可自行指定一个端口, 访问时使用该端口
+    c.NotebookApp.port =8890 #可自行指定一个端口, 访问时使用该端口
     ```
 
 - **服务器**上启动 `jupyter notebook`:    
@@ -245,7 +245,7 @@ sh /opt/tomcat/bin/catalina.sh   run
     jupyter notebook --allow-root
     ```
 
-- 最后**本地浏览器**打开`IP:指定的端口`，访问：http://ip:8888/，输入密码就可以访问了。需要注意的是不能在隐藏目录 (以 `.` 开头的目录)下启动 `jupyter notebook`, 否则无法正常访问文件。
+- 最后**本地浏览器**打开`IP:指定的端口`，访问：http://ip:8890/，输入密码就可以访问了。需要注意的是不能在隐藏目录 (以 `.` 开头的目录)下启动 `jupyter notebook`, 否则无法正常访问文件。
 
 **参考资料**    
 > 1. [远程访问服务器Jupyter Notebook的方法](https://www.jianshu.com/p/8fc3cd032d3c)    
