@@ -164,7 +164,7 @@ sh /opt/tomcat/bin/catalina.sh   run
 
 - 在**远程服务器**上，启动`jupyter notebook`服务：    
     ```shell
-    jupyter notebook --allow-root --port=8889
+    jupyter notebook --allow-root --port=9000
     ```
     ![jupyternobook1](../img/jupyternotebook1.png)    
     运行后会生成一串`token`在[后面打开浏览器](#jupyter_jump1)的时候会用到:       
@@ -172,13 +172,13 @@ sh /opt/tomcat/bin/catalina.sh   run
 
 - 在**本地终端**中启动`SSH`：    
     ````shell
-    ssh -N -f -L localhost:8890:localhost:8889 username@serverIP
+    #            localhot Port ： Server Port
+    ssh -N -f -L localhost:8890:localhost:9000 username@serverIP
     ````
     - `-N` 告诉`SSH`没有命令要被远程执行
     - `-f` 告诉`SSH`在后台执行
-    - `-L` 是指定port forwarding的配置，远端端口是`8889`，本地的端口号的`8890`    
-
-    **注意**：username@serverIP替换成服务器的对应账号。    
+    - `-L` 是指定port forwarding的配置，本地的端口号的`8890`，服务器端口是`9000`    
+    - `username@serverIP`替换成服务器的对应账号。    
 
 -  <span id="jupyter_jump1">最后在**本地**打开浏览器</span>，访问：http://localhost:8890/  , 并在对话框中输入服务器端生成的那串`token`:    
   ![jupyternotebook3](../img/jupyternotebook3.png)    
