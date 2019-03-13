@@ -647,15 +647,15 @@ sudo apt-get install zsh
 ```
 #### 设置zsh为系统默认shell:   
 - **为root用户修改默认shell为zsh**   
-```shell
-chsh -s /bin/zsh root
-```
+  ```shell
+  chsh -s /bin/zsh root
+  ```
 - **为当前用户修改默认shell为zsh**   
-```shell
-chsh -s /bin/zsh
-# or
-chsh -s `which zsh`
-```
+  ```shell
+  chsh -s /bin/zsh
+  # or
+  chsh -s `which zsh`
+  ```
 #### 恢复bash为系统默认：   
 ```shell
 chsh -s /bin/bash
@@ -665,21 +665,20 @@ chsh -s /bin/bash
 
 ### 安装vimrc    
 - **Install for your own user only**    
-The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
-```shell
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime 
-
-sh ~/.vim_runtime/install_awesome_vimrc.sh
-```
+  The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
+  ```shell
+  git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime 
+  sh ~/.vim_runtime/install_awesome_vimrc.sh
+  ```
 - **Install for multiple users**    
-To install for multiple users, the repository needs to be cloned to a location accessible for all the intended users.    
-```shell
-git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
-sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime user0 user1 user2
-# to install for all users with home directories
-sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
-```
-Naturally, /opt/vim_runtime can be any directory, as long as all the users specified have read access.   
+  To install for multiple users, the repository needs to be cloned to a location accessible for all the intended users.    
+  ```shell
+  git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
+  sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime user0 user1 user2
+  # to install for all users with home directories
+  sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
+  ```
+Naturally, `/opt/vim_runtime` can be any directory, as long as all the users specified have read access.   
 
 **错误处理**    
 在运行vim的时候提示如下错误：    
@@ -706,19 +705,19 @@ let g:go_version_warning = 0
     
 ### 安装oh-my-zsh   
 - **via curl**   
-```shell
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
+  ```shell
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  ```
 - **via wget**   
-```shell
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-```   
+  ```shell
+  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  ```   
    
 
-**add to ~/.zshrc**   
+**在 `~/.zshrc` 配置文件追加以下内容**   
 ```shell
 # GO PATH
-export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:/usr/local/go/bin
 #export GOBIN=$GOPATH/bin
 
 LC_CTYPE=en_US.UTF-8
@@ -747,38 +746,37 @@ git config --global oh-my-zsh.hide-status 0
 
 ### 安装zsh-syntax-highlighting    
 - **Oh-my-zsh**    
-1. Clone this repository in **oh-my-zsh**'s plugins directory:
+  1. Clone this repository in **oh-my-zsh**'s plugins directory:
   ```shell
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
   ```
-2. Activate the plugin in `~/.zshrc`:    
+  2. Activate the plugin in `~/.zshrc`:    
   ```shell
     plugins=(
       git
       zsh-syntax-highlighting
     )
-  ```
-3. Source `~/.zshrc` to take changes into account:   
+    ```
+  3. Source `~/.zshrc` to take changes into account:   
   ```shell
     source ~/.zshrc
   ```
 
 - **In your ~/.zshrc**    
-
-1. Simply clone this repository and source the script:
-```shell
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-```
-2. Then, enable syntax highlighting in the current interactive shell:    
-```shell
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-```
-If git is not installed, download and extract a snapshot of the latest development tree from:   
-```shell
-https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
-```
-Note the `source` command must be **at the end** of `~/.zshrc`.
+  1. Simply clone this repository and source the script:
+  ```shell
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+  echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+  ```
+  2. Then, enable syntax highlighting in the current interactive shell:    
+  ```shell
+  source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ```
+  If git is not installed, download and extract a snapshot of the latest development tree from:   
+  ```shell
+  https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+  ```
+  Note the `source` command must be **at the end** of `~/.zshrc`.
 
 
 ### 安装colorls    
