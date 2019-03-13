@@ -600,7 +600,7 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 > [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)    
 <!-- #### 1. TensorRT环境变量设置 -->
 #### <span id="tensorrt1">1. TensorRT环境变量设置</span>  
-首先[下载**tar**版本的安装包](https://developer.nvidia.com/nvidia-tensorrt-download)，需要登陆NVIDIA。    
+首先[下载**tar**版本的安装包](https://developer.nvidia.com/nvidia-tensorrt-download)，需要登陆NVIDIA账号。    
 安装`TensorRT`前需要[安装`Cuda`](#安装cuda)和[安装`cudnn`](#安装cudnn)，安装步骤可以参考上方。   
 打开下载的`TensorRT`所在路径，解压下载的`tar`文件：   
 ```bash
@@ -612,8 +612,14 @@ tar -xzvf TensorRT-XXX.tar.gz
 mv TensorRT-XXX  ~/TensorRT-XXX
 cd
 
-# Create Soft-Link
+# Create Symbol Link
 ln -s ~/TensorRT-XXX  TensorRT
+
+# TensorRT 3
+sudo ln -s ~/TensorRT/bin/giexec /usr/local/bin/
+
+# TensorRT >= 4
+sudo ln -s ~/TensorRT/bin/trtexec /usr/local/bin/
 ```
 然后设置**环境变量**：    
 ```shell
