@@ -747,35 +747,35 @@ git config --global oh-my-zsh.hide-status 0
 ### 安装zsh-syntax-highlighting    
 - **Oh-my-zsh**    
   1. Clone this repository in **oh-my-zsh**'s plugins directory:
-  ```shell
+    ```shell
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  ```
+    ```
   2. Activate the plugin in `~/.zshrc`:    
-  ```shell
+    ```shell
     plugins=(
       git
       zsh-syntax-highlighting
     )
     ```
   3. Source `~/.zshrc` to take changes into account:   
-  ```shell
+    ```shell
     source ~/.zshrc
-  ```
+    ```
 
 - **In your ~/.zshrc**    
   1. Simply clone this repository and source the script:
-  ```shell
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-  echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-  ```
+    ```shell
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+    ```
   2. Then, enable syntax highlighting in the current interactive shell:    
-  ```shell
-  source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  ```
+    ```shell
+    source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    ```
   If git is not installed, download and extract a snapshot of the latest development tree from:   
-  ```shell
-  https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
-  ```
+    ```shell
+    https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+    ```
   Note the `source` command must be **at the end** of `~/.zshrc`.
 
 
