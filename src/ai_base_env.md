@@ -794,6 +794,7 @@ exit
 ```    
 
 #### TensorRT官方实例
+资料在本仓库`src/tensorrt`目录下:    
 - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)    
 - [TensorRT Tensorflow Engine](tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)    
 - [Manually Construct Tensorrt Engine](tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)    
