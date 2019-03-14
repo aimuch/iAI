@@ -47,7 +47,7 @@ AI实验环境搭建和深度学习算法安装实验
          - [TensorRT安装过程中遇到的问题以及解决方法](src/ai_base_env.md#tensorrt5)
        - [TensorRT生成Engine](src/ai_base_env.md#tensorrt生成engine)
          - [Caffe模型用TensorRT生成Engine](src/ai_base_env.md#caffe模型用tensorrt生成engine)
-         - [TensorRT官方实例](src/ai_base_env.md#tensorrt官方实例) >> 资料在[**src/tensorrt**](src/tensorrt)
+         - [TensorRT官方实例](src/ai_base_env.md#tensorrt官方实例) >> **资料在**[**src/tensorrt**](src/tensorrt)
            - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
            - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
            - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
