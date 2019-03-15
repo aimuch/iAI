@@ -37,8 +37,9 @@
       - [安装uff](#tensorrt3)
       - [验证TensorRT是否安装成功](#tensorrt4)
       - [TensorRT安装过程中遇到的问题以及解决方法](#tensorrt5)
-    - [TensorRT生成Engine](#tensorrt生成engine)
-      - [Caffe模型用TensorRT生成Engine](#caffe模型用tensorrt生成engine)
+    - [TensorRT生成**Engine**](#tensorrt生成engine)
+      - [**Caffe**模型用TensorRT生成Engine](#caffe模型用tensorrt生成engine)
+      - [**TensorFlow**模型用TensorRT生成Engine](tensorflow模型用tensorrt生成engine)
       - [TensorRT官方实例](#tensorrt官方实例)
         - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
         - [TensorRT Tensorflow Engine](tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
@@ -788,7 +789,6 @@ exit
 pip install -U numpy
 ```
 
-
 ### TensorRT生成Engine
 #### Caffe模型用TensorRT生成Engine
 ```shell
@@ -799,6 +799,90 @@ pip install -U numpy
 --engine=path_to_output_engine/outputEngineName.engine
 ```    
 
+#### TensorFlow模型用TensorRT生成Engine
+源码文件在[`src/tensorrt/tools`](tensorrt/tools)中。     
+首先将`TensorFlow`模型生成`uff`文件，然后再将`uff`文件转为`engine`:    
+- **将`TensorFlow`模型生成`uff`文件**    
+    ```python
+    import uff
+    import tensorflow as tf
+    import tensorrt as trt
+    import os
+
+    filepath = "model/model.ckpt"
+    forzen_model_path = "model/frozen_graphs/frozen_graph.pb"
+    output_path = "model/uff/model.uff"
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
+    def getChatBotModel(filepath):
+        with tf.Session() as sess:
+            sess.run(tf.global_variables_initializer())
+            saver = tf.train.import_meta_graph(filepath+'.meta')
+            saver.restore(sess, filepath)
+            graph = tf.get_default_graph().as_graph_def()
+            #graph = tf.get_default_graph()
+            #print('graph list:', graph.get_operations())
+            frozen_graph = tf.graph_util.convert_variables_to_constants(sess, graph, ["fc_3/frozen"])
+            return tf.graph_util.remove_training_nodes(frozen_graph)
+
+
+    tf_model = getChatBotModel(filepath)
+    with tf.gfile.FastGFile(forzen_model_path, mode='wb') as f:
+            f.write(tf_model.SerializeToString())
+    #uff_model = uff.from_tensorflow(tf_model, List_nodes=["lanenet_loss/instance_seg", "lanenet_loss/binary_seg"], output_filename=output_path, text=True)
+    uff_model = uff.from_tensorflow_frozen_model(forzen_model_path, output_nodes=["fc_3/frozen"], output_filename=output_path, text=True)
+    print('Done！')
+    ```
+- **将`uff`文件转为`engine`**
+    ```python
+    # -*- coding: utf-8 -*-
+    # Author : Andy Liu
+    # Last modified: 2019-03-15
+
+    # This script is used to convert .uff file to .engine for TX2/PX2 or other NVIDIA Platform
+    # Using: 
+    #        python uff_to_engine.py
+
+
+    import os
+    # import tensorflow as tf
+    import tensorrt as trt
+    from tensorrt.parsers import uffparser
+    import uff
+
+    print("TensorRT version = ", trt.__version__)
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
+
+
+    frozen_input_name = "input"
+    net_input_shape = (3, 32, 32)
+    frozen_output_name = "fc_3/frozen"
+    uff_path = 'model.uff'
+    engine_path = "model.engine"
+
+    def uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,engine_path):
+        with open(uff_path, 'rb') as f:
+            uff_model = f.read()
+            G_LOGGER = trt.infer.ConsoleLogger(trt.infer.LogSeverity.ERROR)
+            parser = uffparser.create_uff_parser()
+            parser.register_input(frozen_input_name, net_input_shape, 0)
+            # parser.register_input("input", (3, 128, 128), 0)
+            parser.register_output(frozen_output_name)
+            engine = trt.utils.uff_to_trt_engine(G_LOGGER, uff_model, parser, 1, 1<<20 )
+            parser.destroy()
+            trt.utils.write_engine_to_file(engine_path, engine.serialize())
+
+    if __name__ == '__main__':
+        
+        engine_dir = os.path.dirname(engine_path)
+        if not os.path.exists(engine_dir) and not engine_dir == '.' and not engine_dir =='':
+            print("Warning !!! %s is not exists, now has create "%engine_dir)
+            os.makedirs(engine_dir)
+
+        uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,engine_path)
+        print("Engine file has saved in ", os.path.abspath(engine_path))
+    ```
 #### TensorRT官方实例
 资料在本仓库`src/tensorrt`目录下:    
 - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)    
