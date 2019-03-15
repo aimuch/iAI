@@ -751,7 +751,7 @@ cd /TensorRT/bin（转到bin目录下面，make后的可执行文件在此目录
    
 <!-- #### 5. TensorRT安装过程中遇到的问题以及解决方法 -->
 #### <span id="tensorrt5">5. TensorRT安装过程中遇到的问题以及解决方法</span>
-在安装`Python`的`TensorRT`包时可能出现的错误：
+5.1 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```bash
 In file included from src/cpp/cuda.cpp:1:0:
 src/cpp/cuda.hpp:14:18: fatal error: cuda.h: No such file or directory
@@ -781,7 +781,13 @@ pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
 # 对于python3
 pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 exit
-```   
+```    
+5.2 `Python`导入`tensorrt`或者`tensorflow`的时候提示`ImportError: numpy.core.multiarray failed to import`    
+解决方法:    
+```shell
+pip install -U numpy
+```
+
 
 ### TensorRT生成Engine
 #### Caffe模型用TensorRT生成Engine
