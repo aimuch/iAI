@@ -38,4 +38,4 @@ with tf.gfile.FastGFile(forzen_model_path, mode='wb') as f:
         f.write(tf_model.SerializeToString())
 #uff_model = uff.from_tensorflow(tf_model, output_nodes=frozen_output_names, output_filename=uff_path, text=True)
 uff_model = uff.from_tensorflow_frozen_model(forzen_model_path, output_nodes=frozen_output_names, output_filename=uff_path, text=True)
-print('Success!, UFF file is in ', os.path.abspath(uff_path))
+print('Success! UFF file is in ', os.path.abspath(uff_path))

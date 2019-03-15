@@ -44,4 +44,4 @@ if __name__ == '__main__':
         os.makedirs(engine_dir)
 
     uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,engine_path)
-    print("Success!, Engine file has saved in ", os.path.abspath(engine_path))
+    print("Success! Engine file has saved in ", os.path.abspath(engine_path))
