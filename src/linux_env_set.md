@@ -819,7 +819,7 @@ git config --global oh-my-zsh.hide-status 0
     rbenv global 2.5.1
     ```
 
-2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`。可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。    
+2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`中的`Mononoki`字体。可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
 
     *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
     ![colorls1](../img/colorls1.png)
@@ -1278,7 +1278,7 @@ sudo apt-get install tmux
 ```
 
 ### Tmux配置    
-安装`.tmux`配置文件，官方github地址: https://github.com/gpakosz/.tmux#installation    
+安装`.tmux`配置文件，官方github地址: https://github.com/gpakosz/.tmux    
 
 - **`.tmux`安装要求**:    
   - tmux **`>= 2.1`** 
@@ -1465,9 +1465,14 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
     "editor.fontFamily": "'Monaco', 'Dank Mono', 'Fira Code'",
     "editor.fontLigatures": true,
     "editor.fontSize": 15,
+    "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.fontFamily": "'mononoki Nerd Font'",
 }
 ```
-其中`"editor.fontFamily"`优先使用第一个字体，当第一个字体没有的时候依次使用后面的。
+其中:    
+- `"editor.fontFamily"`优先使用第一个字体，当第一个字体没有的时候依次使用后面的。    
+- `"terminal.integrated.fontFamily": "'mononoki Nerd Font'"`, 终端显示字体，首先要安装 `powerline nerd-font`中的`Mononoki`字体，可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
+  ![vscode terminal](../img/vscode-terminal.png)    
 
 
 ---
