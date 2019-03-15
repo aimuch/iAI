@@ -12,6 +12,7 @@
   - [监视GPU和CPU资源利用情况](#监视gpu和cpu资源利用情况)
   - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
   - [Ubuntu循环登陆问题](#ubuntu循环登陆问题)
+  - [文件夹打开缓慢](#文件夹打开缓慢)
   - [安装python依赖库](#安装python依赖库)
     - [Python基础库安装](#python基础库安装)
     - [Python项目requirements文件的生成和使用](#python项目requirements文件的生成和使用) 
@@ -393,6 +394,12 @@ NO
 4. 打开图形界面，命令为:   
 ```bash
 sudo service lightdm start #或者sudo /etc/init.d/lightdm start
+```
+---
+## 文件夹打开缓慢
+经常会遇到打开Ubuntu文件夹资源管理器的时候卡住，必须得重启才能解决，现在临时的解决方法是:    
+```shell
+sudo apt-get install thunar thunar-archive-plugin
 ```
 
 ---

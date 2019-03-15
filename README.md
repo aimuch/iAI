@@ -88,6 +88,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [监视GPU和CPU资源利用情况](./src/linux_env_set.md#监视gpu和cpu资源利用情况)
      - [Ubuntu每次开机后提示检测到系统程序出现问题的解决方法](./src/linux_env_set.md#ubuntu每次开机后提示检测到系统程序出现问题的解决方法)
      - [Ubuntu循环登陆问题](./src/linux_env_set.md#ubuntu循环登陆问题)
+     - [文件夹打开缓慢](./src/linux_env_set.md#文件夹打开缓慢)
      - [安装Python依赖库](./src/linux_env_set.md#安装python依赖库)
        - [Python基础库安装](./src/linux_env_set.md#python基础库安装)
        - [Python项目requirements文件的生成和使用](./src/linux_env_set.md#python项目requirements文件的生成和使用) 
