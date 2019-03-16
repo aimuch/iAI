@@ -768,6 +768,11 @@ git config --global oh-my-zsh.hide-status 0
     ```shell
     source ~/.zshrc
     ```
+  4. Update
+  ```shell
+  cd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  git pull
+  ```
 
 - **In your ~/.zshrc**    
   1. Simply clone this repository and source the script:
