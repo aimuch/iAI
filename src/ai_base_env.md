@@ -34,13 +34,16 @@
     - [安装TensorRT](#安装tensorrt)    
       - [TensorRT环境变量设置](#tensorrt1)
       - [安装Python的TensorRT包](#tensorrt2)
-      - [安装uff](#tensorrt3)
+      - [安装**uff**](#tensorrt3)
       - [验证TensorRT是否安装成功](#tensorrt4)
       - [TensorRT安装过程中遇到的问题以及解决方法](#tensorrt5)
     - [TensorRT生成**Engine**](#tensorrt生成engine)
-      - [**Caffe**模型用TensorRT生成Engine](#caffe模型用tensorrt生成engine)
-      - [**TensorFlow**模型用TensorRT生成Engine](tensorflow模型用tensorrt生成engine)
-      - [TensorRT官方实例](#tensorrt官方实例)
+      - [**Caffe**模型用TensorRT生成**Engine**](#caffe模型用tensorrt生成engine)
+      - [**TensorFlow**模型用TensorRT生成**Engine**](#tensorflow模型用tensorrt生成engine)
+        - [将TensorFlow模型生成UFF文件](#将tensorflow模型生成uff文件)
+        - [将UFF文件转为Engine](#将uff文件转为engine)
+        - [调用Engine进行推理](#调用engine进行推理)
+      - [TensorRT**官方**实例](#tensorrt官方实例)
         - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
         - [TensorRT Tensorflow Engine](tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
         - [Manually Construct Tensorrt Engine](tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
@@ -799,10 +802,10 @@ pip install -U numpy
 --engine=path_to_output_engine/outputEngineName.engine
 ```    
 
-#### TensorFlow模型用TensorRT生成Engine
+#### Tensorflow模型用TensorRT生成Engine
 源码文件在[`src/tensorrt/tools`](tensorrt/tools)中。     
 首先将`TensorFlow`模型生成`uff`文件，然后再将`uff`文件转为`engine`:    
-- **将`TensorFlow`模型生成`uff`文件**    
+- ##### 将TensorFlow模型生成UFF文件    
     ```python
     # -*- coding: utf-8 -*-
     # Author : Andy Liu
@@ -822,7 +825,6 @@ pip install -U numpy
     forzen_model_path = "model/frozen_graphs/frozen_graph.pb"
     uff_path = "model/uff/model.uff"
 
-
     frozen_input_name = "input"
     net_input_shape = (3, 32, 32)
     frozen_output_names = ["fc_3/frozen"]
@@ -838,7 +840,6 @@ pip install -U numpy
             frozen_graph = tf.graph_util.convert_variables_to_constants(sess, graph, frozen_output_names)
             return tf.graph_util.remove_training_nodes(frozen_graph)
 
-
     tf_model = getChatBotModel(ckpt_path)
     with tf.gfile.FastGFile(forzen_model_path, mode='wb') as f:
             f.write(tf_model.SerializeToString())
@@ -846,7 +847,7 @@ pip install -U numpy
     uff_model = uff.from_tensorflow_frozen_model(forzen_model_path, output_nodes=frozen_output_names, output_filename=uff_path, text=True)
     print('Success! UFF file is in ', os.path.abspath(uff_path))
     ```
-- **将`uff`文件转为`engine`**
+- ##### 将UFF文件转为Engine
     ```python
     # -*- coding: utf-8 -*-
     # Author : Andy Liu
@@ -864,8 +865,6 @@ pip install -U numpy
 
     print("TensorRT version = ", trt.__version__)
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-
-
 
     frozen_input_name = "input"
     net_input_shape = (3, 32, 32)
@@ -894,7 +893,72 @@ pip install -U numpy
 
         uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,engine_path)
         print("Success! Engine file has saved in ", os.path.abspath(engine_path))
-    ```
+    ```    
+- ##### 调用Engine进行推理
+    ```python
+    import os
+    # import tensorflow as tf
+    import tensorrt as trt
+    from tensorrt.parsers import uffparser
+    import pycuda.driver as cuda
+    # import uff
+    from PIL import Image
+    import numpy as np
+
+    IMG_PATH = "./img/1.png"
+    LABEL = 1
+    ENGINE_PATH = "./model/engine/model.engine"
+    NET_INPUT_SHAPE = (32, 32)
+    NET_OUTPUT_SHAPE = 5
+
+    def normalize_img(img):
+        """
+        Normalize image data to [-1,+1]
+        
+        Arguments:
+            img: source image
+        """
+        return (img-128.)/128.
+
+    # Load Image
+    def load_image(img_path, net_input_shape):
+        img = Image.open(img_path)
+        img = img.resize(net_input_shape)
+        return np.asarray(img, dtype=np.float32)
+
+
+    img = load_image(IMG_PATH, NET_INPUT_SHAPE)
+    img = normalize_img(img)
+
+    # Load Engine file
+    G_LOGGER = trt.infer.ConsoleLogger(trt.infer.LogSeverity.ERROR)
+    engine = trt.utils.load_engine(G_LOGGER, ENGINE_PATH)
+    context = engine.create_execution_context()
+    runtime = trt.infer.create_infer_runtime(G_LOGGER)
+
+    output = np.empty(5, dtype = np.float32)
+
+    # Alocate device memory
+    d_input = cuda.mem_alloc(1 * img.nbytes)
+    d_output = cuda.mem_alloc(NET_OUTPUT_SHAPE * output.nbytes)
+
+    bindings = [int(d_input), int(d_output)]
+
+    stream = cuda.Stream()
+
+    # Transfer input data to device
+    cuda.memcpy_htod_async(d_input, img, stream)
+    # Execute model 
+    context.enqueue(1, bindings, stream.handle, None)
+    # Transfer predictions back
+    cuda.memcpy_dtoh_async(output, d_output, stream)
+    # Syncronize threads
+    stream.synchronize()
+
+
+    print("Test Case: " + str(LABEL))
+    print ("Prediction: " + str(np.argmax(output)))
+    ```  
 #### TensorRT官方实例
 资料在本仓库`src/tensorrt`目录下:    
 - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)    
