@@ -801,6 +801,12 @@ pip install -U numpy
 --model=path_to_caffemodel/caffeModelName.caffemodel \
 --engine=path_to_output_engine/outputEngineName.engine
 ```    
+5.3 在调用`TensorRT`的时候提示`ImportError: Please make sure you have pycuda installed`   
+![TensorRT error1](../img/tensorrt_error1.png)    
+原因是，显卡内存不够:     
+![TensorRT error2](../img/tensorrt_error2.png)    
+只要关闭占用大现存的程序重新运行程序即可。    
+
 
 #### Tensorflow模型用TensorRT生成Engine
 源码文件在[`src/tensorrt/tools`](tensorrt/tools)中。     
