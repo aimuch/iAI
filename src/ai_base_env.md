@@ -169,7 +169,7 @@ nvidia-smi
 
     ![CUDA安装完成](../img/cuda_finished.png)     
 
-    安装结束以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-9.0`文件夹，还生成一个相应`软连接`文件夹`cuda`:    
+    安装成功以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-9.0`文件夹，还生成一个相应`软连接`文件夹`cuda`:    
     ![cuda1](../img/cuda1.png)    
 
 - **安装CUDA10.1**    
@@ -209,6 +209,8 @@ nvidia-smi
 
     Logfile is /var/log/cuda-installer.log
     ```
+    安装成功以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-10.1`文件夹，还生成一个相应`软连接`文件夹`cuda`或者将之前cuda9.0生成的**cuda软连接**重新指向cuda10.1文件夹:    
+    ![CUDA 10.1 Sucessful](../img/cuda10.1-success.png)     
     
 
 ### 修改配置文件   
@@ -219,7 +221,7 @@ vim ~/.bashrc
 在该文件最后加入以下两行并保存：   
 ```shell
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH    #/usr/local/cuda和/usr/local/cuda-9.0是同一个文件夹，两者通过软连接相连
+export PATH=/usr/local/cuda/bin:$PATH    #/usr/local/cuda和/usr/local/cuda-10.1是同一个文件夹，两者通过软连接相连
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```
 **使该配置生效：**   
