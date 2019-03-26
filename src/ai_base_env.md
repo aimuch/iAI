@@ -114,7 +114,9 @@ sudo add-apt-repository ppa:graphics-drivers/ppa
 之后刷新软件库并安装显卡驱动：   
 ```shell
 sudo apt-get update
-sudo apt-get install nvidia-390 nvidia-settings nvidia-prime  #大部分NVIDIA驱动可以安装390
+sudo apt-get install nvidia-418 nvidia-settings nvidia-prime  # CUDA 10.1
+#sudo apt-get install nvidia-390 nvidia-settings nvidia-prime  # cuda 8.0 或 CUDA 9.0
+#sudo apt-get install nvidia-415 nvidia-settings nvidia-prime  # CUDA 9.0
 ```
 **重启电脑**，通过下面命令查看显卡信息：   
 ```shell
@@ -171,6 +173,7 @@ nvidia-smi
     ![cuda1](../img/cuda1.png)    
 
 - **安装CUDA10.1**    
+  *按照前面安装[NVIDIA驱动](#安装NVIDIA官方显卡驱动)方法安装**NVIDIA-418**驱动*    
     ```shell
     chmod 777 cuda_10.1.105_418.39_linux.run
     sudo sh ./cuda_10.1.105_418.39_linux.run
@@ -178,10 +181,34 @@ nvidia-smi
     
     输入`accept`进入安装界面:    
     ![CUDA 10.1](../img/cuda10.1_1.png)     
-    **不要安装`CUDA`自带的`NVIDIA`驱动**，将光标移动到`Driver`选项上，按下**空格键**取消选择安装`NVIDIA`驱动，移动光标再到`Install`上然后按回车。    
+    **不要安装`CUDA`自带的`NVIDIA`驱动**，将光标移动到**Driver**选项上，按下**空格键**取消选择安装`NVIDIA`驱动，移动光标再到`Install`上然后按回车。    
     ![CUDA 1O.1](../img/cuda10.1_2.png)      
+    若已经安装旧版本的CUDA版本，会出现以下提示，输入yes继续安装即可:     
+    ![CUDA 10.1 inatall](../img/cuda10.1_install1.png)    
     安装成功后提示:    
     ![CUDA success](../img/cuda10.1-finished.png)      
+    ```shell
+    ===========
+    = Summary =
+    ===========
+
+    Driver:   Not Selected
+    Toolkit:  Installed in /usr/local/cuda-10.1/
+    Samples:  Installed in /home/andy/, but missing recommended libraries
+
+    Please make sure that
+    -   PATH includes /usr/local/cuda-10.1/bin
+    -   LD_LIBRARY_PATH includes /usr/local/cuda-10.1/lib64, or, add /usr/local/cuda-10.1/lib64 to /etc/ld.so.conf and run ldconfig as root
+
+    To uninstall the CUDA Toolkit, run cuda-uninstaller in /usr/local/cuda-10.1/bin
+
+    Please see CUDA_Installation_Guide_Linux.pdf in /usr/local/cuda-10.1/doc/pdf for detailed information on setting up CUDA.
+    ***WARNING: Incomplete installation! This installation did not install the CUDA Driver. A driver of version at least 418.00 is required for CUDA 10.1 functionality to work.
+    To install the driver using this installer, run the following command, replacing <CudaInstaller> with the name of this run file:
+        sudo <CudaInstaller>.run --silent --driver
+
+    Logfile is /var/log/cuda-installer.log
+    ```
     
 
 ### 修改配置文件   
@@ -260,6 +287,7 @@ sudo service lightdm start
 dpkg -l |grep -i libcudnn* # 查看.deb安装的cudnn
 sudo apt-get purge libcudnn×
 ```    
+下面以安装**cuDNN v7.5.0**为例安装，其他版本类似，只需要将版本号改一下即可:    
 ![cuDNN Download](../img/cudnn.png)      
 
 解压`cudnn-10.1-linux-x64-v7.5.0.56.tgz`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹:    
@@ -272,14 +300,14 @@ sudo apt-get purge libcudnn×
 cd ~/Download/cuda/include/
 sudo cp cudnn.h /usr/local/cuda/include/ #复制头文件
 ```
-然后命令行进入`cuda/lib64`文件夹路径下(其实`cuda/lib64`文件夹下通过Beyond Compare查看，`libcudnn.so`、`libcudnn.so.7`和`libcudnn.so.7.4.1`是同一个文件的不同扩展名)，运行以下命令：    
+然后命令行进入`cuda/lib64`文件夹路径下(其实`cuda/lib64`文件夹下通过`Beyond Compare`查看，`libcudnn.so`、`libcudnn.so.7`和`libcudnn.so.7.5.0`是同一个文件的不同扩展名)，运行以下命令：    
 ```shell
 cd ~/Download/cuda/lib64/
 sudo cp lib* /usr/local/cuda/lib64/ #复制动态链接库
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 cd /usr/local/cuda/lib64/
 sudo rm -rf libcudnn.so libcudnn.so.7  #删除原有动态文件
-sudo ln -s libcudnn.so.7.4.1 libcudnn.so.7  #生成软链接
+sudo ln -s libcudnn.so.7.5.0 libcudnn.so.7  #生成软链接
 sudo ln -s libcudnn.so.7 libcudnn.so  #生成软链接
 ```
 
@@ -305,9 +333,9 @@ sudo ldconfig
 安装完成后可用`nvcc -V`命令验证是否安装成功，若出现以下信息则表示安装成功：
 ```
 nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2017 NVIDIA Corporation
-Built on Fri_Nov__3_21:07:56_CDT_2017
-Cuda compilation tools, release 9.0, V9.0.85
+Copyright (c) 2005-2019 NVIDIA Corporation
+Built on Fri_Feb__8_19:08:17_PST_2019
+Cuda compilation tools, release 10.1, V10.1.105
 ```
 查看`cuDNN`版本:    
 ```shell

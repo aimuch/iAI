@@ -77,6 +77,7 @@ AI实验环境搭建和深度学习算法安装实验
 3.  [**AI Framework**](src/ai_framework.md#ai-framework)
     - [TensorFlow](src/ai/tensorflow.md#tensorflow)
       - [Tensorflow to TensorRT Image Classification](src/ai/tensorflow.md#tensorflow-to-tensorrt-image-classification)
+      - [TensorFlow FAQ](src/ai/tensorflow.md#tensorflow-faq)
     - [Pytorch](src/ai/pytorch.md#pytorch)
       - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
 

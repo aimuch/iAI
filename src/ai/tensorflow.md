@@ -9,6 +9,8 @@
     - [Convert frozen graph to TensorRT engine](#convert-frozen-graph-to-tensorrt-engine)
     - [Execute TensorRT engine](#execute-tensorrt-engine)
     - [Benchmark all models](#benchmark-all-models)
+  - [TensorFlow FAQ](#tensorflow-faq)
+    - [导入TensorFlow的时候提示`ImportError: libcublas.so.10.0`](#%E5%AF%BC%E5%85%A5tensorflow%E7%9A%84%E6%97%B6%E5%80%99%E6%8F%90%E7%A4%BAimporterror-libcublasso100)
 
 
 ---
@@ -33,6 +35,8 @@ gains on the Jetson TX2 as seen [below](#models).
     - [Convert frozen graph to TensorRT engine](#convert-frozen-graph-to-tensorrt-engine)
     - [Execute TensorRT engine](#execute-tensorrt-engine)
     - [Benchmark all models](#benchmark-all-models)
+  - [TensorFlow FAQ](#tensorflow-faq)
+    - [导入TensorFlow的时候提示`ImportError: libcublas.so.10.0`](#%E5%AF%BC%E5%85%A5tensorflow%E7%9A%84%E6%97%B6%E5%80%99%E6%8F%90%E7%A4%BAimporterror-libcublasso100)
 
 <a name="models"></a>
 ### Models
@@ -211,3 +215,62 @@ python scripts/test_tf.py
 The results will be stored at **data/test_output_tf.txt**.  This benchmarking script loads an example image as input, make sure you have downloaded the sample images as [above](#download).
 
 ---
+## TensorFlow FAQ
+### 导入TensorFlow的时候提示`ImportError: libcublas.so.10.0`
+错误提示:   
+```python
+Python 3.6.8 |Anaconda, Inc.| (default, Dec 30 2018, 01:22:34) 
+[GCC 7.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+Traceback (most recent call last):
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/imp.py", line 243, in load_module
+    return load_dynamic(name, filename, file)
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/imp.py", line 343, in load_dynamic
+    return _load(spec)
+ImportError: libcublas.so.10.0: cannot open shared object file: No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/__init__.py", line 27, in <module>
+    from tensorflow._api.v2 import audio
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/_api/v2/audio/__init__.py", line 8, in <module>
+    from tensorflow.python.ops.gen_audio_ops import decode_wav
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/__init__.py", line 49, in <module>
+    from tensorflow.python import pywrap_tensorflow
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 74, in <module>
+    raise ImportError(msg)
+ImportError: Traceback (most recent call last):
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/imp.py", line 243, in load_module
+    return load_dynamic(name, filename, file)
+  File "/home/andy/anaconda3/envs/tf2/lib/python3.6/imp.py", line 343, in load_dynamic
+    return _load(spec)
+ImportError: libcublas.so.10.0: cannot open shared object file: No such file or directory
+
+
+Failed to load the native TensorFlow runtime.
+
+See https://www.tensorflow.org/install/errors
+
+for some common reasons and solutions.  Include the entire stack trace
+above this error message when asking for help
+```
+[解决方法](https://github.com/tensorflow/tensorflow/issues/26182#issuecomment-468882301):   
+```shell
+conda install cudatoolkit
+conda install cudnn
+```
