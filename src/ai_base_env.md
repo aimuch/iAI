@@ -228,12 +228,19 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```shell
 source  ~/.bashrc
 ```
-检验CUDA 是否安装成功，输入：   
+**检验CUDA 是否安装成功**，输入：   
 ```shell
 cd /usr/local/cuda/samples/1_Utilities/deviceQuery
 sudo make
 ./deviceQuery
 ```
+- **CUDA 9.0 PASS**:   
+    ![CUDA 9.0 PASS](../img/cuda9-pass.png)    
+
+- **CUDA 10.1 PASS**:   
+    ![CUDA 10.1 PASS](../img/cuda10.1-pass.png)    
+
+
 ### 查看CUDA版本   
 ```shell
 cat /usr/local/cuda/version.txt
