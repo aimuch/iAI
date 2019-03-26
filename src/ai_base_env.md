@@ -239,7 +239,11 @@ sudo make
 cat /usr/local/cuda/version.txt
 ```
 <!-- ![cuda](../img/cuda.png)     -->
-![cuda](../img/cuda-version.png)     
+- CUDA 9.0    
+    ![CUDA 9.0](../img/cuda9.0-version.png)     
+    
+- CUDA 10.1    
+    ![CUDA 10.1](../img/cuda-version.png)     
 
 ### 卸载CUDA的方法   
 ```shell
@@ -358,24 +362,24 @@ so try looking to see if a warning log message was printed above.
 > [cuDNN官方安装指导](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installlinux)     
 ---
 ## CUDA多版本问题
-在实验的时候有些算法跟当前生效(安装)的`CUDA`和`cuDNN`版本不一致，所以需要同时安装多个版本，这里就是解决同时管理多个`CUDA`版本问题.   
+在实验的时候有些算法跟当前生效(安装)的`CUDA`和`cuDNN`版本不一致，所以需要同时安装多个版本，这里就是解决同时管理多个`CUDA`版本问题。   
 
-1. 首先按照上述介绍的[安装CUDA](#安装cuda)和对应版本的[安装cuDNN](#安装cudnn)，安装实验环境依赖的版本；
+1. 首先按照上述介绍的[安装CUDA](#安装cuda)和对应版本的[安装cuDNN](#安装cudnn)，安装实验环境依赖的版本；    
 2. 默认`/usr/local/cuda`是**软连接**到**最新安装的`CUDA`文件夹**上的:    
-    ![cuda2](../img/cuda2.png)    
-3. 删除已经软连接的`/usr/local/cuda`，将需要的`CUDA-X.0安装文件夹`软连接到`/usr/local/cuda`上, 例如需要`CUDA 8.0`这个版本:      
+    ![cuda2](../img/../img/cuda10.1-success.png)     
+3. 删除已经软连接的`/usr/local/cuda`，将需要的`CUDA-X.0安装文件夹`软连接到`/usr/local/cuda`上, 例如需要`CUDA 9.0`这个版本:      
     ```shell
     cd /usr/local/
     sudo rm cuda
-    sudo ln -s /usr/local/cuda-8.0 /usr/local/cuda
+    sudo ln -s /usr/local/cuda-9.0 /usr/local/cuda
     ```    
-    ![cuda3](../img/cuda3.png)       
+    ![cuda3](../img/cuda9-cuda10.1.png)     
 4. 由于在安装`CUDA`的时候已经将`cuda`加入了环境变量，所以不用再加入了。   
 5. 查看`CUDA`版本   
     ```shell
     cat /usr/local/cuda/version.txt
     ```
-    ![cuda](../img/cuda-version.png)     
+    ![cuda](../img/cuda9.0-version.png)     
 ---
 ## Anaconda
 ### 安装Anaconda
