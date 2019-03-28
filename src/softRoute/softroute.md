@@ -52,9 +52,9 @@
 - **UltraISO**: U盘启动，按照提示安装即可。
 
 - **老毛桃**: 用U盘启动软路由，进入PE，选在老毛桃PE中运行**自定义镜像**选项，选择刚刚放入MYEXT文件夹中的ESXi镜像，按照提示安装ESXi即可。   
-  ![laomaotao](laomaotao4.png)    
-  ![laomaotao](laomaotao5.png)    
-  ![laomaotao](laomaotao6.png)    
+  ![老毛桃PE启界面](laomaotao4.png)    
+  ![运行自定义镜像](laomaotao5.png)    
+  ![选择镜像](laomaotao6.png)    
 
 进入安装界面:    
 ![ESXi](ESXi-install1.png)    
@@ -100,12 +100,13 @@
   - 存储->数据存储浏览器->创建文件夹->iKuai->将iKuai的ISO镜像上传到该文件夹下->虚拟机->新建虚拟机->客户机操作系统linux->客户机操作系统版本->其他64位->CD/DVD选择刚刚上传的iKuai的ISO文件->添加网络适配器(多少个网口添加多少个)->保存->重新编辑配置(若内存栏出现错误，刷新一下浏览器重新编辑)->设置网卡对应的端口
 
 - 网卡直通
-
-
+![网卡直通激活前](ESXi-networkcard.png)     
+![网卡直通激活后](ESXi-networkcard1.png)     
 
 ## iKuai
-下载iKuai的ISO文件
-设置LAN1的IP地址:10.10.10.1
+下载iKuai的ISO文件    
+设置LAN1的IP地址:10.10.10.1    
+![iKuai 设置IP](iKuai-finished.png)    
 
 ## LEDE
 ### 下载LEDE固件并转换格式
