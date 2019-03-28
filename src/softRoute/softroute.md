@@ -132,6 +132,7 @@
   
 ## iKuai
 ### 安装iKuai
+<<<<<<< HEAD
 下载iKuai的ISO文件，然后**创建iKuai虚拟机的流程为**:   
 存储->数据存储浏览器->创建文件夹->iKuai->将iKuai的ISO镜像上传到该文件夹下->虚拟机->新建虚拟机->客户机操作系统linux->客户机操作系统版本->其他64位->CD/DVD选择刚刚上传的iKuai的ISO文件->内存要勾选**预留所有客户机内存(全部锁定)**     
 ![安装iKuai step1](iKuai-install1.png)     
@@ -145,6 +146,13 @@
 **这里要特别注意iKuai虚拟机的内存>=4G** ，否则会出现以下错误:    
 
 ![iKuai install error](iKuai-install-error.png)    
+=======
+下载iKuai的ISO文件    
+ESXi=>存储=>数据存储浏览器=>创建目录=>
+设置LAN1的IP地址:10.10.10.1    
+![iKuai 设置IP](iKuai-finished.png)    
+### 设置iKuai
+>>>>>>> 60e934280a4c176f69c4880f3a94013c5c36e21a
 
 #### 网卡非直通情况
 重新编辑iKuai虚拟机设 -> 添加网络适配器并选择第6块虚拟网卡**VM Network5** ，配置好的界面如下:   
