@@ -8,10 +8,19 @@
     - [制作启动U盘](#%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8u%E7%9B%98)
     - [软路由U盘启动安装ESXi](#%E8%BD%AF%E8%B7%AF%E7%94%B1u%E7%9B%98%E5%90%AF%E5%8A%A8%E5%AE%89%E8%A3%85esxi)
     - [设置ESXi](#%E8%AE%BE%E7%BD%AEesxi)
-    - [进入ESXi后台](#%E8%BF%9B%E5%85%A5esxi%E5%90%8E%E5%8F%B0)
+    - [ESXi的web端设置](#esxi%E7%9A%84web%E7%AB%AF%E8%AE%BE%E7%BD%AE)
   - [iKuai](#ikuai)
+    - [安装iKuai](#%E5%AE%89%E8%A3%85ikuai)
+    - [设置iKuai](#%E8%AE%BE%E7%BD%AEikuai)
+      - [网卡非直通情况](#%E7%BD%91%E5%8D%A1%E9%9D%9E%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5)
+      - [网卡直通情况](#%E7%BD%91%E5%8D%A1%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5)
+    - [iKuai的web端设置](#ikuai%E7%9A%84web%E7%AB%AF%E8%AE%BE%E7%BD%AE)
   - [LEDE](#lede)
-    - [下载LEDE固件并转换格式](#%E4%B8%8B%E8%BD%BDlede%E5%9B%BA%E4%BB%B6%E5%B9%B6%E8%BD%AC%E6%8D%A2%E6%A0%BC%E5%BC%8F)
+    - [安装LEDE](#%E5%AE%89%E8%A3%85lede)
+    - [设置LEDE](#%E8%AE%BE%E7%BD%AElede)
+      - [网卡非直通情况](#%E7%BD%91%E5%8D%A1%E9%9D%9E%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5-1)
+      - [网卡直通情况](#%E7%BD%91%E5%8D%A1%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5-1)
+    - [LEDE的web端设置](#lede%E7%9A%84web%E7%AB%AF%E8%AE%BE%E7%BD%AE)
 
 
 
@@ -74,9 +83,9 @@
 ![IPv4 Configuration](ESXi-setting3.png)     
 光标移动到**Set Static IPv4 address and network configuration**，然后用空格键选择，并设置：    
 ![Set Static IPv4 address and network configuration](ESXi-setting4.png)     
-  - **IPv4 Address**: 10.10.10.100
-  - **Subnet Mask**: 255.255.255.0
-  - **Default Gateway**: 10.10.10.10
+  - **IPv4 Address**: **10.10.10.100**    
+  - **Subnet Mask**: **255.255.255.0**    
+  - **Default Gateway**: **10.10.10.10**    
   - 这里设置的默认网关`10.10.10.10`是给`iKuai`的后台地址
 
 按下回车键，然后按ESC键并输入Y保存设置:   
@@ -84,34 +93,58 @@
 设置生效后的界面如下，可以看出IP变为静态的了:    
 ![设置生效后的界面](ESXi-setting6.png)    
 
-### 进入ESXi后台
+### ESXi的web端设置
 将笔记本的网口用网线连接到软路由的LAN6口，并将笔记本有线网卡的IPv4设置为:    
-- IPv4: 10.10.10.111
-- 子网掩码: 255.255.255.0
-- 默认网关/路由器: 10.10.10.10  
+- IPv4: **10.10.10.111**
+- 子网掩码: **255.255.255.0**
+- 默认网关/路由器: **10.10.10.10**  
 ![笔记本IP设置](ESXi-PC-IP.png)    
 
 浏览器打开**10.10.10.100**，然后输入设置的密码进入ESXi后台(用户名为root，密码为安装ESXi时候设置的密码):   
 ![ESXI WEB login](ESXi-web-login.png)    
-- 非网卡直通
+
+激活ESXi，默认ESXi有试用期限制，解除限制需要用序列号激活ESXi:    
+![ESXi activate](ESXi-activate.png)    
+
+- **网卡非直通情况**
   - 网络->虚拟交换机->添加交换机(多少个网口添加多少个)->安全->全部接受
   - 网络->端口组->添加端口组(多少个网口添加多少个)->安全->全部接受
   - 存储->数据存储浏览器->创建文件夹->LEDE->将转换好的LEDE的ESXi虚拟机镜像上传到该文件夹下->虚拟机->新建虚拟机->客户机操作系统linux->客户机操作系统版本->其他64位->添加硬盘->添加现有硬盘->选择刚刚上传的LEDE虚拟机文件,**删除原来的硬盘**->添加网络适配器(多少个网口添加多少个)->保存->重新编辑配置(若内存栏出现错误，刷新一下浏览器重新编辑)->设置网卡对应的端口
   - 存储->数据存储浏览器->创建文件夹->iKuai->将iKuai的ISO镜像上传到该文件夹下->虚拟机->新建虚拟机->客户机操作系统linux->客户机操作系统版本->其他64位->CD/DVD选择刚刚上传的iKuai的ISO文件->添加网络适配器(多少个网口添加多少个)->保存->重新编辑配置(若内存栏出现错误，刷新一下浏览器重新编辑)->设置网卡对应的端口
 
-- 网卡直通
-![网卡直通激活前](ESXi-networkcard.png)     
-![网卡直通激活后](ESXi-networkcard1.png)     
+- **网卡直通情况**    
+  主机 => 硬件 => PCI设备 => 下拉选择`支持直通`来筛选网卡 = > 选中后5个(共6个)端口。    
+  这里要注意不要将第一个(第一个好记)端口这是为直通，否则导致进不去ESXi后台。    
+  ![网卡直通激活前](ESXi-networkcard.png)     
+  ![网卡直通激活后](ESXi-networkcard1.png)     
+  设置好以后要单机**重新引导主机**，否则可能导致进不去ESXi的后台。    
 
 ## iKuai
+### 安装iKuai
 下载iKuai的ISO文件    
 设置LAN1的IP地址:10.10.10.1    
 ![iKuai 设置IP](iKuai-finished.png)    
+### 设置iKuai
+
+#### 网卡非直通情况
+
+#### 网卡直通情况
+
+### iKuai的web端设置
+
 
 ## LEDE
-### 下载LEDE固件并转换格式
-到KoolShare官网下载LEDE的固件:    
+### 安装LEDE
+到KoolShare官网下载LEDE的固件，虚拟机转盘或PE下写盘专用=>要选择combined格式，因为uefi格式下LEDE编辑的时候硬盘显示错误:    
 ![LEDE Download](lede1.png)    
 下载完成后解压到本地，然后用**StarWind Converte**将LEDE的.img格式转换为ESXi虚拟机文件。    
 
 设置IP地址为:10.10.10.1
+
+### 设置LEDE
+#### 网卡非直通情况
+
+#### 网卡直通情况
+
+
+### LEDE的web端设置

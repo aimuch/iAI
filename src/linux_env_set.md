@@ -586,7 +586,7 @@ pip3 install -U pyqt5
 ```shell
 sudo vim /usr/bin/wps
 ```    
-添加一下文字到打开的文本中（添加到“#!/bin/bash”下面）：   
+添加一下文字到打开的文本中（添加到`#!/bin/bash`下面）：   
 ```shell
 export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE="fcitx"    
@@ -596,7 +596,7 @@ export QT_IM_MODULE="fcitx"
 ```shell
 sudo vim /usr/bin/et
 ```    
-添加一下文字到打开的文本中（添加到“#!/bin/bash”下面）：
+添加一下文字到打开的文本中（添加到`#!/bin/bash`下面）：
 ```shell
 export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE="fcitx"
@@ -606,7 +606,7 @@ export QT_IM_MODULE="fcitx"
 ```shell
 sudo vim /usr/bin/wpp
 ``` 
-添加一下文字到打开的文本中（添加到“#!/bin/bash”下面）：
+添加一下文字到打开的文本中（添加到`#!/bin/bash`下面）：
 ```shell
 export XMODIFIERS="@im=fcitx"
 export QT_IM_MODULE="fcitx"
