@@ -134,6 +134,7 @@
 ## iKuai
 ### 安装iKuai
 下载iKuai的ISO文件    
+ESXi=>存储=>数据存储浏览器=>创建目录=>
 设置LAN1的IP地址:10.10.10.1    
 ![iKuai 设置IP](iKuai-finished.png)    
 ### 设置iKuai
