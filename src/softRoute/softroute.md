@@ -26,6 +26,9 @@
       - [网卡直通情况](#%E7%BD%91%E5%8D%A1%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5-2)
     - [设置LEDE](#%E8%AE%BE%E7%BD%AElede)
     - [LEDE的web端设置](#lede%E7%9A%84web%E7%AB%AF%E8%AE%BE%E7%BD%AE)
+  - [设置iKuai和LEDE开机自动启动](#%E8%AE%BE%E7%BD%AEikuai%E5%92%8Clede%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8)
+    - [iKuai和LEDE虚拟机里设置](#ikuai%E5%92%8Clede%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%87%8C%E8%AE%BE%E7%BD%AE)
+    - [ESXi中设置自动启动](#esxi%E4%B8%AD%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8)
 
 
 
@@ -224,3 +227,13 @@ LAN -> 物理接口 -> 接口 -> **选中erspan0**以及**选中eth0-echo3**:
 ![LEDE WEB2](LEDE-web2.png)    
 
 所要外接路由器作为AP，则需要将DHCP服务器->高级设置->强制勾选上。  
+
+## 设置iKuai和LEDE开机自动启动
+### iKuai和LEDE虚拟机里设置
+在ESXi的WEB客户端->虚拟机->分别在iKuai和LEDE虚拟机上右键->自动启动 :    
+![iKuai LEDE开启自动启动](auto-start.png)     
+
+### ESXi中设置自动启动
+管理->系统->自动启动->编辑设置->是 :    
+![ESXi 中设置自动启动](auto-start1.png)    
+![ESXi 中设置自动启动](auto-start2.png)    
