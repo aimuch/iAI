@@ -980,7 +980,7 @@ pip install -U numpy
     context = engine.create_execution_context()
     runtime = trt.infer.create_infer_runtime(G_LOGGER)
 
-    output = np.empty(5, dtype = np.float32)
+    output = np.empty(NET_OUTPUT_SHAPE, dtype = np.float32)
 
     # Alocate device memory
     d_input = cuda.mem_alloc(1 * img.nbytes)
