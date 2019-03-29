@@ -80,6 +80,7 @@ AI实验环境搭建和深度学习算法安装实验
       - [TensorFlow FAQ](src/ai/tensorflow.md#tensorflow-faq)
     - [Pytorch](src/ai/pytorch.md#pytorch)
       - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
+    - [Caffe](src/ai/caffe.md#caffe)
 
 4.  [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Docker**安装与使用](./src/linux_env_set.md#docker安装与使用)
@@ -124,12 +125,12 @@ AI实验环境搭建和深度学习算法安装实验
      - [Ubuntu后台执行命令](./src/linux_env_set.md#ubuntu后台执行命令)   
      - [查看系统状态](./src/linux_env_set.md#查看系统状态)
      - [**彻底卸载**软件](./src/linux_env_set.md#彻底卸载软件)
+     - [**软路由**](src/softRoute/softroute.md#软路由)
      - [**Shadowsocks**安装](./src/ss.md#shadowsocks安装)
        - [Shadowsocks说明](./src/ss.md#shadowsocks说明)
        - [安装Shadowsocks-qt5](./src/ss.md#安装shadowsocks-qt5)
        - [安装electron-ssr](./src/ss.md#安装electron-ssr)
        - [配置Chrome浏览器](./src/ss.md#配置chrome浏览器)
-     - [**软路由**](src/softRoute/softroute.md#软路由)
 
 5.  [**参考资料**](#参考资料)
 
