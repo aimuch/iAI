@@ -1472,6 +1472,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
     "editor.fontSize": 15,
     "workbench.iconTheme": "vscode-icons",
     "terminal.integrated.fontFamily": "'mononoki Nerd Font'",
+    "terminal.integrated.fontSize": 15,
 }
 ```
 其中:    

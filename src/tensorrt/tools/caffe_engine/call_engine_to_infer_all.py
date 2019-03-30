@@ -37,7 +37,7 @@ def load_image(img_path, net_input_shape):
 
     # RGB_MEAN_PIXELS = np.array([88.159309, 97.966286, 103.66106]).reshape((1,1,1,3)).astype(np.float32)
 
-    return np.ascontiguousarray(imgS, dtype=np.float32)
+    return np.ascontiguousarray(imgS, dtype=np.float32) # avoid error: ndarray is not contiguous
 
 def test_Loader(TEST_PATH, net_input_shape):
     label_list = []
