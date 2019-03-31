@@ -230,7 +230,7 @@ LAN -> 物理接口 -> 接口 -> **选中erspan0**以及**选中eth0-echo3**:
 所要外接路由器作为AP，则需要将DHCP服务器->高级设置->强制勾选上。      
 
 **LAN->基本设置->IPv4网关->10.10.10.10->使用自定义的DNS服务器->114.114.114.114**:    
-![LEDE WEB2](LEDE-web3.png)    
+![LEDE WEB3](LEDE-web3.png)    
 
 ## 设置iKuai和LEDE开机自动启动
 ### iKuai和LEDE虚拟机里设置
