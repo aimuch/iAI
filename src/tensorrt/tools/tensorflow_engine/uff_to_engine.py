@@ -15,11 +15,15 @@ import uff
 print("TensorRT version = ", trt.__version__)
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
+
+# >>>>>> Here need to modify based on your data >>>>>>
+net_input_shape = (3, 128, 128)
 frozen_input_name = "input"
-net_input_shape = (3, 32, 32)
 frozen_output_name = "fc_3/frozen"
 uff_path = 'model.uff'
 engine_path = "model.engine"
+# <<<<<< Here need to modify based on your data <<<<<<
+
 
 def uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,engine_path):
     with open(uff_path, 'rb') as f:
@@ -28,7 +32,7 @@ def uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,en
         parser = uffparser.create_uff_parser()
         parser.register_input(frozen_input_name, net_input_shape, 0)
         parser.register_output(frozen_output_name)
-        engine = trt.utils.uff_to_trt_engine(G_LOGGER, uff_model, parser, 1, 1<<20 )
+        engine = trt.utils.uff_to_trt_engine(G_LOGGER, uff_model, parser, 1, 1<<30 )
         parser.destroy()
         trt.utils.write_engine_to_file(engine_path, engine.serialize())
 

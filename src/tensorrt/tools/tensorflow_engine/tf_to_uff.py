@@ -12,10 +12,12 @@ import tensorflow as tf
 import tensorrt as trt
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
+# >>>>>> Here need to modify based on your data >>>>>>
 model_path = "model/model.ckpt"
 frozen_model_path = "model/frozen_graphs/frozen_graph.pb"
 uff_path = "model/uff/model.uff"
 frozen_node_name = ["fc_3/frozen"]
+# <<<<<< Here need to modify based on your data <<<<<<
 
 def getFrozenModel(model_path):
     with tf.Session() as sess:
@@ -30,8 +32,10 @@ def getFrozenModel(model_path):
 tf_model = getFrozenModel(model_path)
 with tf.gfile.FastGFile(frozen_model_path, mode='wb') as f:
         f.write(tf_model.SerializeToString())
-#uff_model = uff.from_tensorflow(tf_model, output_nodes=frozen_node_name, output_filename=uff_path, text=True)
-uff_model = uff.from_tensorflow_frozen_model(frozen_model_path, output_nodes=frozen_node_name, output_filename=uff_path, text=True)
+
+# 若用了output_filename参数则返回的是NULL，否则返回的是序列化以后的UFF模型数据       
+#uff_model = uff.from_tensorflow(tf_model, output_nodes=frozen_node_name, output_filename=uff_path, text=True, list_nodes=True)
+uff_model = uff.from_tensorflow_frozen_model(frozen_model_path, output_nodes=frozen_node_name, output_filename=uff_path, text=True, list_nodes=True)
 
 print('Success! Frozen model is stored in ', os.path.abspath(frozen_model_path))
 print('Success! UFF file is stored in ', os.path.abspath(uff_path))

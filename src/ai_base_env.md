@@ -840,6 +840,7 @@ pip install -U numpy
 只要关闭占用大现存的程序重新运行程序即可。     
 
 ### TensorRT生成Engine
+*TensorRT版本: 3.0.4*    
 #### Caffe模型用TensorRT生成Engine
 ```shell
 ~/TensorRT/bin/giexec \
@@ -848,10 +849,19 @@ pip install -U numpy
 --model=path_to_caffemodel/caffeModelName.caffemodel \
 --engine=path_to_output_engine/outputEngineName.engine
 ```    
-调用Caffe生成的engine源码文件在[`src/tensorrt/tools/caffe_engine`](tensorrt/tools/caffe_engine)中。    
+调用Caffe生成的engine源码文件在[`src/tensorrt/tools/caffe_engine`](tensorrt/tools/caffe_engine)中:    
+- `call_engine_to_infer_one.py` : 测试单张图片   
+- `call_engine_to_infer_all.py` : 测试所有图片   
 
 #### Tensorflow模型用TensorRT生成Engine
-源码文件在[`src/tensorrt/tools/tensorflow_engine`](tensorrt/tools/tensorflow_engine)中。     
+源码文件在[`src/tensorrt/tools/tensorflow_engine`](tensorrt/tools/tensorflow_engine)中：     
+- `tf_to_uff.py` : TensorFlow模型生成UFF文件    
+- `uff_to_engine.py` : UFF模型转Engine文件    
+- `call_engine_to_infer_one.py` : 调用Engine测试单张图片进行推理    
+- `call_engine_to_infer_all.py` : 调用Engine测试所有图片进行推理   
+- `tf_to_trt.py` : 修改的官方代码   
+
+
 首先将`TensorFlow`模型生成`uff`文件，然后再将`uff`文件转为`engine`:    
 - ##### 将TensorFlow模型生成UFF文件    
     ```python
@@ -869,10 +879,12 @@ pip install -U numpy
     import tensorrt as trt
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
+    # >>>>>> Here need to modify based on your data >>>>>>
     model_path = "model/model.ckpt"
     frozen_model_path = "model/frozen_graphs/frozen_graph.pb"
     uff_path = "model/uff/model.uff"
     frozen_node_name = ["fc_3/frozen"]
+    # <<<<<< Here need to modify based on your data <<<<<<
 
     def getFrozenModel(model_path):
         with tf.Session() as sess:
@@ -887,8 +899,10 @@ pip install -U numpy
     tf_model = getFrozenModel(model_path)
     with tf.gfile.FastGFile(frozen_model_path, mode='wb') as f:
             f.write(tf_model.SerializeToString())
-    #uff_model = uff.from_tensorflow(tf_model, output_nodes=frozen_node_name, output_filename=uff_path, text=True)
-    uff_model = uff.from_tensorflow_frozen_model(frozen_model_path, output_nodes=frozen_node_name, output_filename=uff_path, text=True)
+
+    # 若用了output_filename参数则返回的是NULL，否则返回的是序列化以后的UFF模型数据       
+    #uff_model = uff.from_tensorflow(tf_model, output_nodes=frozen_node_name, output_filename=uff_path, text=True, list_nodes=True)
+    uff_model = uff.from_tensorflow_frozen_model(frozen_model_path, output_nodes=frozen_node_name, output_filename=uff_path, text=True, list_nodes=True)
 
     print('Success! Frozen model is stored in ', os.path.abspath(frozen_model_path))
     print('Success! UFF file is stored in ', os.path.abspath(uff_path))
@@ -912,11 +926,15 @@ pip install -U numpy
     print("TensorRT version = ", trt.__version__)
     os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
+
+    # >>>>>> Here need to modify based on your data >>>>>>
+    net_input_shape = (3, 128, 128)
     frozen_input_name = "input"
-    net_input_shape = (3, 32, 32)
     frozen_output_name = "fc_3/frozen"
     uff_path = 'model.uff'
     engine_path = "model.engine"
+    # <<<<<< Here need to modify based on your data <<<<<<
+
 
     def uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,engine_path):
         with open(uff_path, 'rb') as f:
@@ -925,7 +943,7 @@ pip install -U numpy
             parser = uffparser.create_uff_parser()
             parser.register_input(frozen_input_name, net_input_shape, 0)
             parser.register_output(frozen_output_name)
-            engine = trt.utils.uff_to_trt_engine(G_LOGGER, uff_model, parser, 1, 1<<20 )
+            engine = trt.utils.uff_to_trt_engine(G_LOGGER, uff_model, parser, 1, 1<<30 )
             parser.destroy()
             trt.utils.write_engine_to_file(engine_path, engine.serialize())
 
@@ -938,54 +956,59 @@ pip install -U numpy
 
         uff2engine(frozen_input_name, net_input_shape,frozen_output_name,uff_path,engine_path)
         print("Success! Engine file is stored in ", os.path.abspath(engine_path))
-    ```    
+    ```
 - ##### 调用Engine进行推理
     ```python
+    #!/usr/bin/python
+    # -*- coding: UTF-8 -*-
+
     import os
     # import tensorflow as tf
     import tensorrt as trt
     from tensorrt.parsers import uffparser
     import pycuda.driver as cuda
     # import uff
-    from PIL import Image
+    import cv2
     import numpy as np
+    from tqdm import tqdm
 
-    IMG_PATH = "./img/1.png"
-    LABEL = 1
+
+    # >>>>>> Here need to modify based on your data >>>>>>
+    img_path = "/media/andy/Data/DevWorkSpace/Projects/imageClassifier/data/test/valid/parallel_2862_1_16547177.png"
+    LABEL = 0
+
     ENGINE_PATH = "./model/engine/model.engine"
-    NET_INPUT_SHAPE = (32, 32)
+    NET_INPUT_SHAPE = (128, 128)
     NET_OUTPUT_SHAPE = 5
+    class_labels = ['error', 'half', 'invlb', 'invls', 'valid']
+    # <<<<<< Here need to modify based on your data <<<<<<
 
-    def normalize_img(img):
-        """
-        Normalize image data to [-1,+1]
-        
-        Arguments:
-            img: source image
-        """
-        return (img-128.)/128.
 
     # Load Image
     def load_image(img_path, net_input_shape):
-        img = Image.open(img_path)
-        img = img.resize(net_input_shape)
-        return np.asarray(img, dtype=np.float32)
+        # Use the same pre-processing as training
+        img = cv2.resize(cv2.cvtColor(cv2.imread(img_path), cv2.COLOR_BGR2RGB), NET_INPUT_SHAPE)
+        img = (img-128.)/128.
+
+        # Fixed usage
+        img = np.transpose(img, (2, 0, 1)) # 要转换成CHW,这里要特别注意
+        return np.ascontiguousarray(img, dtype=np.float32) # 避免error:ndarray is not contiguous
 
 
-    img = load_image(IMG_PATH, NET_INPUT_SHAPE)
-    img = normalize_img(img)
-
+    img = load_image(img_path, NET_INPUT_SHAPE)
+    print(img_path)
     # Load Engine file
     G_LOGGER = trt.infer.ConsoleLogger(trt.infer.LogSeverity.ERROR)
     engine = trt.utils.load_engine(G_LOGGER, ENGINE_PATH)
     context = engine.create_execution_context()
     runtime = trt.infer.create_infer_runtime(G_LOGGER)
 
+
     output = np.empty(NET_OUTPUT_SHAPE, dtype = np.float32)
 
     # Alocate device memory
-    d_input = cuda.mem_alloc(1 * img.nbytes)
-    d_output = cuda.mem_alloc(NET_OUTPUT_SHAPE * output.nbytes)
+    d_input = cuda.mem_alloc(1 * img.size * img.dtype.itemsize) # img.size * img.dtype.itemsize=img.nbytes
+    d_output = cuda.mem_alloc(1 * output.size * output.dtype.itemsize)  # output.size * output.dtype.itemsize=output.nbytes
 
     bindings = [int(d_input), int(d_output)]
 
@@ -993,17 +1016,22 @@ pip install -U numpy
 
     # Transfer input data to device
     cuda.memcpy_htod_async(d_input, img, stream)
+
     # Execute model 
     context.enqueue(1, bindings, stream.handle, None)
+
     # Transfer predictions back
     cuda.memcpy_dtoh_async(output, d_output, stream)
     # Syncronize threads
     stream.synchronize()
 
 
-    print("Test Case: " + str(LABEL))
-    print ("Prediction: " + str(np.argmax(output)))
-    ```  
+    # my frozen graph output is logists , here need convert to softmax
+    softmax = np.exp(output) / np.sum(np.exp(output))
+    predict = np.argmax(softmax)
+
+    print("True = ",LABEL, ", predict = ", predict, ", softmax = ", softmax)
+    ```
 #### TensorRT官方实例
 资料在本仓库`src/tensorrt`目录下:    
 - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)    
