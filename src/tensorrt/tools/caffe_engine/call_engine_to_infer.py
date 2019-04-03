@@ -50,7 +50,7 @@ output = np.empty(NET_OUTPUT_SHAPE, dtype = np.float32)
 
 # Alocate device memory
 d_input = cuda.mem_alloc(1 * img.nbytes) # img.size*img.dtype.itemsize==img.nbytes
-d_output = cuda.mem_alloc(1 * NET_OUTPUT_SHAPE * output.nbytes) # output.size*output*itemsize = output.nbytes
+d_output = cuda.mem_alloc(1 * output.nbytes) # output.size*output*itemsize = output.nbytes
 
 bindings = [int(d_input), int(d_output)]
 

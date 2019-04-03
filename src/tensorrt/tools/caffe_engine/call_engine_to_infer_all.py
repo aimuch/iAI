@@ -83,7 +83,7 @@ for img, label in pair:
 
     # Alocate device memory
     d_input = cuda.mem_alloc(1 * img.nbytes)
-    d_output = cuda.mem_alloc(NET_OUTPUT_SHAPE * output.nbytes)
+    d_output = cuda.mem_alloc(1 * output.nbytes)
 
     bindings = [int(d_input), int(d_output)]
 
