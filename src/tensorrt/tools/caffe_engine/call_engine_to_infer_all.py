@@ -33,7 +33,7 @@ def load_image(img_path, net_input_shape):
     imgF = np.asarray(img, dtype=np.float32)
     mean = [88.159309, 97.966286, 103.66106] # Caffe image mean
     imgSS = np.subtract(imgF, mean)
-    imgS = np.transpose(imgSS, (2, 0, 1))  # c,w,h
+    imgS = np.transpose(imgSS, (2, 0, 1))  # CHW
 
     # RGB_MEAN_PIXELS = np.array([88.159309, 97.966286, 103.66106]).reshape((1,1,1,3)).astype(np.float32)
 
