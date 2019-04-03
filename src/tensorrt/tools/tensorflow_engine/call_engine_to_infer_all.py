@@ -58,14 +58,14 @@ imgTestData = test_Loader(TEST_PATH, NET_INPUT_SHAPE)
 G_LOGGER = trt.infer.ConsoleLogger(trt.infer.LogSeverity.ERROR)
 
 
-# >>>> uff -> engine >>>>
+# # >>>> uff -> engine >>>>
 # frozen_model_path = "./model/frozen_graphs/model.pb"
 # uff_model = uff.from_tensorflow_frozen_model(frozen_model_path,["fc3/frozen"])
 # parser = uffparser.create_uff_parser()
 # parser.register_input("input", (3, 128, 128), 0) # 0表示输入通道顺序NCHW,1表示输入通道顺序为NHWC
 # parser.register_output("fc3/frozen")
 # engine = trt.utils.uff_to_trt_engine(G_LOGGER, uff_model, parser, 1, 1<<30)
-# <<<< uff -> engine <<<<
+# # <<<< uff -> engine <<<<
 
 
 # >>>> load engine >>>>
