@@ -789,7 +789,7 @@ sudo cp TensorRT/data/mnist/lenet5.uff TensorRT/python/data/mnist/lenet5.uff
 cd TensorRT/samples/sampleMNIST
 make clean
 make
-cd /TensorRT/bin（转到bin目录下面，make后的可执行文件在此目录下）
+cd /TensorRT/bin  #（转到bin目录下面，make后的可执行文件在此目录下）
 ./sample_mnist
 ```
 命令执行顺利即安装成功。   
@@ -1320,6 +1320,8 @@ make pycaffe -j $(($(nproc) + 1))
 **添加`Caffe`环境变量**    
 ```shell
 vim ~/.bashrc
+
+# Caffe
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
 
@@ -1607,18 +1609,33 @@ make all -j $(($(nproc) + 1))
 make test -j $(($(nproc) + 1))
 make runtest -j $(($(nproc) + 1))
 make pycaffe -j $(($(nproc) + 1))
+```    
+在编译的时候会提示: `cannot find -lboost_python3`:    
+![编译caffe报错](../img/caffe-error5.png)     
+首先去`/usr/lib/x86_64-linux-gnu`目录下查看是否有python3版本的libboost，如果有类似`libboost_python35.so`但是没有`libboost_python3.so`则需要手动建立连接:    
+```shell
+cd /usr/lib/x86_64-linux-gnu
+sudo ln -s libboost_python-py35.so libboost_python3.so 
 ```
+或者更改makefile文件:    
+```makefile
+PYTHON_LIBRARIES := boost_python-py35  python3.5m
+```
+推荐使用第一种方法。    
+
 
 **添加`Caffe`环境变量**    
 ```shell
 vim ~/.bashrc
+
+# Caffe
 export PYTHONPATH=~/caffe/python:$PYTHONPATH
 ```
 
 #### 7. 常见问题    
 
 **常见问题 1**    
-![编译caffe报错](../img/caffe-error4.png)    
+![编译caffe报错](../img/caffe-error4.png)      
 **解决方法**    
 ```shell
 git clone https://github.com/madler/zlib
