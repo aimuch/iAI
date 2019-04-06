@@ -334,12 +334,12 @@ sudo apt-get purge libcudnn×
 
 命令行进入其中的`include`文件夹路径下，然后进行以下操作：
 ```shell
-cd ~/Download/cuda/include/
+cd ~/Downloads/cuda/include/
 sudo cp cudnn.h /usr/local/cuda/include/ #复制头文件
 ```
 然后命令行进入`cuda/lib64`文件夹路径下(其实`cuda/lib64`文件夹下通过`Beyond Compare`查看，`libcudnn.so`、`libcudnn.so.7`和`libcudnn.so.7.5.0`是同一个文件的不同扩展名)，运行以下命令：    
 ```shell
-cd ~/Download/cuda/lib64/
+cd ~/Downloads/cuda/lib64/
 sudo cp lib* /usr/local/cuda/lib64/ #复制动态链接库
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 cd /usr/local/cuda/lib64/
@@ -1898,12 +1898,12 @@ name = lily
 
 进入下载后的文件夹(假如下载后的文件放在了`/home/Download/`, 解压破解文件`Matlab2018aLinux64Crack.tar.gz`文件, 创建一个文件夹`Crack`来放置解压后的文件:    
 ```shell
-cd ~/Download
+cd ~/Downloads
 sudo mkdir Crack
 ```
 解压文件:
 ```shell
-cd ~/Download
+cd ~/Downloads
 tar -xvf Matlab2018aLinux64Crack.tar.gz -C Crack
 ```
 在`/mnt`中创建一个文件夹用来挂载`R2018a_glnxa64_dvd1.iso`和`R2018a_glnxa64_dvd2.iso`:    
