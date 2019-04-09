@@ -20,7 +20,7 @@
   - [pip和pip3安装报错](#pip和pip3安装报错)
   - [Ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
   - [安装搜狗输入法](#安装搜狗输入法)
-  - [WPS字体以及无法输入中文](#wps字体以及无法输入中文)
+  - [WPS设置](#wps设置)
   - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
   - [**zsh** **oh-my-zsh**默认shell的最佳替代品](#zsh-oh-my-zsh默认shell的最佳替代品)
     - [查看系统shell环境](#查看系统shell环境)
@@ -43,6 +43,7 @@
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
   - [查看系统状态](#查看系统状态)
   - [彻底卸载软件](#彻底卸载软件)
+  - [截图快捷键](#截图快捷键)
 ---
 
 ## Docker安装与使用
@@ -577,8 +578,10 @@ pip3 install -U pyqt5
 
 
 ---
-## WPS字体以及无法输入中文   
-解决WPS启动提示字体未安装错误, 首先[下载字体库](wps/wps_symbol_fonts.zip)到本地，然后以下方式任选一个安装字体:    
+## WPS设置  
+### 解决WPS启动提示字体未安装错误
+
+首先[下载字体库](wps/wps_symbol_fonts.zip)到本地，然后以下方式任选一个安装字体:    
 
 1、解压    
 ```shell
@@ -598,7 +601,20 @@ sudo fc-cache
 
 3、这种方式是直接双击字体进行安装，进入到解压出的文件，双击即可。         
 
-**问题**：Ubuntu16.04自带的libre对于office的格式兼容性太差，只好安装了WPS。但是WPS文字、表格、演示均不能输入中文。   
+### WPS切换显示语言
+修改WPS的配置文件: `~/.config/Kingsoft/Office.conf`:    
+```shell
+vim ~/.config/Kingsoft/Office.conf
+```
+在文件开头添加以下内容:    
+```vim
+languages=zh_CN
+```
+![WPS Config](../img/wps-config1.png)    
+
+![WPS Config](../img/wps-config2.png)    
+
+### Ubuntu WPS不能输入中文。   
 **原因**：环境变量未正确设置。 
 **解决办法**:    
 #### WPS文字
@@ -1500,7 +1516,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 
 ---
-# ubuntu查看和关闭进程
+## ubuntu查看和关闭进程
 根据进程名查看进程PID：   
 ```shell
 ps -aux | grep [Process name]
@@ -1511,11 +1527,11 @@ kill -9 [Process_PID]
 ```
 
 ---
-# Ubuntu后台执行命令   
+## Ubuntu后台执行命令   
 
 *当我们在终端或控制台工作时，可能不希望由于运行一个作业而占住了屏幕，因为可能还有更重要的事情要做，比如阅读电子邮件。对于密集访问磁盘的进程，我们更希望它能够在每天的非负荷高峰时间段运行(例如凌晨)。为了使这些进程能够在后台运行，也就是说不在终端屏幕上运行，有几种选择方法可供使用。*   
 
-## 1、&
+### 1、&
 当在前台运行某个作业时，终端被该作业占据,可以在命令后面加上`&`实现后台运行。例如：`sh test.sh &`   
 适合在后台运行的命令有**find**、费时的排序及一些**shell**脚本。在后台运行作业时要当心：需要用户交互的命令不要放在后台执行，因为这样你的机器就会在那里傻等。不过，作业在后台运行一样会将结果输出到屏幕上，干扰你的工作。如果放在后台运行的作业会产生大量的输出，最好使用下面的方法把它的输出重定向到某个文件中：
 ```shell
@@ -1523,7 +1539,7 @@ command > out.file 2>&1 &
 ```
 这样，所有的标准输出和错误输出都将被重定向到一个叫做`out.file`的文件中。PS：当你成功地提交进程以后，就会显示出一个进程号，可以用它来监控该进程，或杀死它。(`ps -ef | grep 进程号 `或者 `kill -9 进程号`）   
 
-## 2、nohup
+### 2、nohup
 使用&命令后，作业被提交到后台运行，当前控制台没有被占用，但是一但把当前控制台关掉(退出帐户时)，作业就会停止运行。nohup命令可以在你退出帐户之后继续运行相应的进程。nohup就是不挂起的意思( no hang up)。该命令的一般形式为：   
 ```shell
 nohup command &
@@ -1544,7 +1560,7 @@ jobs #查看当前有多少在后台运行的命令。
 ```
 `jobs -l`选项可显示所有任务的PID，jobs的状态可以是running, stopped, Terminated。但是如果任务被终止了（kill），shell 从当前的shell环境已知的列表中删除任务的进程标识。
 
-## 2>&1解析
+### 2>&1解析
 ```shell
 command >out.file 2>&1 &
 ```
@@ -1554,9 +1570,9 @@ command >out.file 2>&1 &
 3. 试想2>1代表什么，2与>结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出；换成2>&1，&与1结合就代表标准输出了，就变成错误重定向到标准输出.
 
 ---
-# 查看系统状态
+## 查看系统状态
 
-## 1. nvtop　　　
+### 1. nvtop　　　
 *查看NVIDIA显卡状态信息*　　　
 ```shell
 # Install CMake, ncurses and git
@@ -1611,7 +1627,7 @@ else
 
 **注意**：https://github.com/Syllo/nvtop/commit/b126abb63f38d50e8fbb961ad0aedc11b51b3911 之后修复这个问题。    
 
-## 2. htop　　　
+### 2. htop　　　
 *代替传统top命令*　　　
 
 CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:    
@@ -1630,7 +1646,7 @@ htop
 ```
 ![png](../img/htop.png)   
 
-## 3. glances　　　
+### 3. glances　　　
 *查看系统全部信息*   
 
 ```shell
@@ -1643,7 +1659,7 @@ glances
 ![png](../img/glances.png)    
 
 ---
-# 彻底卸载软件
+## 彻底卸载软件
 彻底卸载软件，下面以卸载`Firefox`为例:    
 先列出来与`Firefox`相关的软件:    
 ```shell
@@ -1664,5 +1680,18 @@ sudo apt-get purge  firefox firefox-locale-en unity-scope-firefoxbookmarks
 ```shell
 sudo apt-get purge firefox* unity-scope-firefoxbookmarks
 ```
+
+---
+## 截图快捷键
+
+System Settings -> Keyboard -> Shortcuts -> Custom Shortcuts:   
+
+在自定义栏创建一个名字为"截图"的快捷键，在弹出窗口的命令栏填入:    
+```shell
+gnome-screenshot -a
+```
+保存后在该快捷键的右侧点击，然后按下需要设置的快捷键即可.    
+![Shortcut](../img/shortcut1.png)    
+
 
 ---

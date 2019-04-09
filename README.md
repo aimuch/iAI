@@ -102,7 +102,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [pip/pip3安装报错问题](./src/linux_env_set.md#pip和pip3安装报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./src/linux_env_set.md#ubuntu-16下安装spyder3)
      - [安装搜狗输入法](./src/linux_env_set.md#安装搜狗输入法)
-     - [WPS无法输入中文](./src/linux_env_set.md#wps无法输入中文)
+     - [WPS设置](./src/linux_env_set.md#wps设置)
      - [安装赛睿霜冻之蓝V2驱动](./src/linux_env_set.md#安装赛睿霜冻之蓝v2驱动)
      - [**zsh** **oh-my-zsh**默认shell的最佳替代品](./src/linux_env_set.md#zsh-oh-my-zsh默认shell的最佳替代品)
        - [查看系统shell环境](./src/linux_env_set.md#查看系统shell环境)
