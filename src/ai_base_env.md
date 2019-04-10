@@ -84,7 +84,18 @@
 
 > 最后，挂载“/”，类型为EXT4日志文件系统，选中逻辑分区和空间起始位置，
 因为除了home和usr还有很多别的目录，但那些都不是最重要的，“/”就把除了之前你挂载的home和usr外的全部杂项囊括了，大小也不要太小，最好不低于8GB。如果你非要挨个仔细分配空间，那么你需要知道这些各个分区的含义
-不过就算你把所有目录都自定义分配了空间也必须要给“/”挂载点分配一定的空间。
+不过就算你把所有目录都自定义分配了空间也必须要给“/”挂载点分配一定的空间。    
+
+### Ubuntu 16.04 LTS与Windows双系统时间同步解决方法
+
+```shell
+sudo apt-get install ntpdate
+sudo ntpdate time.windows.com
+```
+然后将时间更新到硬件上:    
+```shell
+sudo hwclock --localtime --systohc
+```
 
 ---
 ## 安装NVIDIA驱动   
