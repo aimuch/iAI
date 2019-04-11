@@ -159,12 +159,13 @@ nvidia-settings
 ```
 
 ### 配置NVIDIA环境变量  
-使用 gedit 命令打开配置文件：
+使用 `gedit` 命令打开配置文件：
 ```shell
-sudo gedit ~/.bashrc
+gedit ~/.bashrc
 ```
 打开后在**文件最后加入**以下两行内容：   
 ```shell
+# NVIDIA
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 ```
