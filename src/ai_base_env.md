@@ -193,7 +193,7 @@ nvidia-smi
 
 
 - **安装CUDA9.0以及之前版本**    
-    安装完显卡驱动后，`CUDA Toolkit`和`samples`可单独安装，直接在终端运行安装，无需进入文本模式：   
+    安装完显卡驱动后，`CUDA Toolkit` 和 `samples` 可单独安装，直接在终端运行安装，无需进入文本模式：   
     ```shell
     sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
     ```
@@ -206,8 +206,16 @@ nvidia-smi
 
     ![CUDA安装完成](../img/cuda_finished.png)     
 
-    安装成功以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-9.0`文件夹，还生成一个相应`软连接`文件夹`cuda`:    
+    安装成功以后在 `/usr/local/` 目录下查看，可以看到不但生成对应版本的 `cuda-9.0` 文件夹，还生成一个相应`软连接`文件夹`cuda`:    
     ![cuda1](../img/cuda1.png)    
+
+    安装 CUDA9.0 补丁：    
+    ```shell
+    sudo sh cuda_9.0.176.1_linux.run
+    sudo sh cuda_9.0.176.2_linux.run
+    sudo sh cuda_9.0.176.3_linux.run
+    sudo sh cuda_9.0.176.4_linux.run
+    ```
 
 - **安装CUDA10.1**    
   *按照前面安装[NVIDIA驱动](#安装NVIDIA官方显卡驱动)方法安装**NVIDIA-418**驱动*    
