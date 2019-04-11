@@ -688,6 +688,7 @@ echo $SHELL
 ```shell   
 sudo apt-get install zsh
 ```
+
 #### 设置zsh为系统默认shell:   
 - **为root用户修改默认shell为zsh**   
   ```shell
@@ -699,6 +700,40 @@ sudo apt-get install zsh
   # or
   chsh -s `which zsh`
   ```
+
+**重启电脑**后打开 `Terminal` 提示以下内容:  
+```shell
+This is the Z Shell configuration function for new users,
+zsh-newuser-install.
+You are seeing this message because you have no zsh startup files
+(the files .zshenv, .zprofile, .zshrc, .zlogin in the directory
+~).  This function can help you with a few settings that should
+make your use of the shell easier.
+
+You can:
+
+(q)  Quit and do nothing.  The function will be run again next time.
+
+(0)  Exit, creating the file ~/.zshrc containing just a comment.
+     That will prevent this function being run again.
+
+(1)  Continue to the main menu.
+
+(2)  Populate your ~/.zshrc with the configuration recommended
+     by the system administrator and exit (you will need to edit
+     the file by hand, if so desired).
+
+--- Type one of the keys in parentheses ---
+```
+![zsh install](../img/zsh-install.png)      
+- q: 啥也不做，下次打开终端还提示；
+- 0: 退出，创建只包含一条命令的`~/.zshrc`文件，下次打开终端不会提示
+- 1: 继续主菜单
+- 2: 创建系统推荐的`~/.zshrc`文件配置    
+
+一般情况下输入 `0` 即可，`~/.zshrc` 的配置文件用 `oh-my-zsh` 的配置.    
+
+
 #### 恢复bash为系统默认：   
 ```shell
 chsh -s /bin/bash
