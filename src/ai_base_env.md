@@ -25,6 +25,7 @@
    - [屏蔽Anaconda](#屏蔽anaconda)    
    - [重建Anaconda软连接](#重建anaconda软连接)    
    - [Anaconda虚拟环境](#anaconda虚拟环境)
+   - [卸载Anaconda](#卸载anaconda)
 7. [安装**OpenCV**](#安装opencv)   
     - [下载OpenCV](#下载opencv)
     - [编译OpenCV](#编译opencv)
@@ -550,6 +551,34 @@ source activate venv
 ```shell
 conda env remove -n venv
 ```
+### 卸载Anaconda
+直接删除anaconda文件夹。因为安装时默认是在用户的根目录下创建文件夹来放置anaconda的文件的，所以直接删除即可:      
+```shell
+cd
+rm -rf ~/anaconda3
+# rm -rf ~/anaconda2
+```
+
+清理下 `.bashrc` 或者 `.zshrc` 中的Anaconda环境变量:    
+```shell
+vim ~/.bashrc
+
+## vim ~/.zshrc
+```
+删掉与Anaconda相关的内容，然后使其生效:    
+```shell
+source ~/.bashrc
+
+# source ~/.zshrc
+```
+清理一些隐藏的文件/文件夹:    
+```shell
+cd
+rm .condarc
+rm -rf ~/.condarc ~/.conda ~/.continuum 
+```
+> [Anaconda官方给出的卸载方法](http://docs.anaconda.com/anaconda/install/uninstall/)     
+
 ---
 ## 安装opencv   
 ### 下载OpenCV   
