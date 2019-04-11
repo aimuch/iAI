@@ -267,9 +267,12 @@ vim ~/.bashrc
 在该文件最后加入以下两行并保存：   
 ```shell
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH    #/usr/local/cuda和/usr/local/cuda-10.1是同一个文件夹，两者通过软连接相连
+export PATH=/usr/local/cuda/bin:$PATH  #/usr/local/cuda是/usr/local/cuda-10.1的软连接
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-```
+```    
+`/usr/local/cuda/` 其实是 `/usr/local/cuda-10.1` 或者 `/usr/local/cuda-9.0` 的软连接，后面讲的[切换CUDA版本](#CUDA多版本问题)其实就是修改这个软连接，将其指向需要的CUDA版本即可.    
+
+
 **使该配置生效：**   
 ```shell
 source  ~/.bashrc
@@ -323,8 +326,8 @@ sudo rm -rf cuda-10.1
 查看` vim /var/log/cuda-installer.log`显示:    
 ![Error Detail](../img/cuda-error1.png)    
 `ERROR: You appear to be running an X server; please exit X `，是在安装`CUDA`的时候选择的安装`CUDA`自带的`NVIDIA`显卡驱动导致的，解决方法是:    
-(1)在安装`CUDA`的时候不要选择安装`CUDA`自带的`NVIDIA`驱动；    
-(2)若要用`CUDA`自带的`NVIDIA`显卡驱动，则`Ctrl + Alt + F1`在终端命令行进行安装:    
+(1) 在安装`CUDA`的时候不要选择安装`CUDA`自带的`NVIDIA`驱动；    
+(2) 若要用`CUDA`自带的`NVIDIA`显卡驱动，则`Ctrl + Alt + F1`在终端命令行进行安装:    
 ```shell
 sudo service lightdm stop
 bash # Switch from zsh environment to bash environment
