@@ -195,6 +195,7 @@ nvidia-smi
 - **安装CUDA9.0以及之前版本**    
     安装完显卡驱动后，`CUDA Toolkit` 和 `samples` 可单独安装，直接在终端运行安装，无需进入文本模式：   
     ```shell
+    chmod 777 cuda_9.0.176_384.81_linux.run
     sudo sh cuda_9.0.176_384.81_linux.run --no-opengl-libs
     ```
     执行此命令约1分钟后会出现安装协议要你看，刚开始是0%，此时长按回车键让此百分比增长，直到100%，然后按照提示操作即可，先输入 `accept` ，是否安装显卡驱动选择`no`:   
