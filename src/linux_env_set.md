@@ -880,11 +880,13 @@ git config --global oh-my-zsh.hide-status 0
     配置`Rbenv`环境:    
     ```shell
     # Bash
+    echo '\n# Rbenv' >> ~/.bashrc
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(rbenv init -)"' >> ~/.bashrc
     source ~/.bashrc
     
     # Zsh
+    echo '\n# Rbenv' >> ~/.zsh
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     source ~/.zshrc
@@ -928,7 +930,7 @@ vim ~/.zshrc
 ```shell
 # Colorls
 alias ls='colorls'
-alias ls='colorls -lA --report'
+alias ll='colorls -lA --report'
 alias lc='colorls -lA --sd'
 ```
 使其生效:    
