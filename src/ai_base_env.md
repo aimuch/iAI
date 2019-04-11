@@ -87,12 +87,12 @@
 不过就算你把所有目录都自定义分配了空间也必须要给“/”挂载点分配一定的空间。    
 
 ### Ubuntu 16.04 LTS与Windows双系统时间同步解决方法
-
+安装`ntpdate`:    
 ```shell
 sudo apt-get install ntpdate
 sudo ntpdate time.windows.com
 ```
-然后将时间更新到硬件上:    
+然后将时间更新到硬件上:      
 ```shell
 sudo hwclock --localtime --systohc
 ```
