@@ -17,7 +17,7 @@
     - [Python基础库安装](#python基础库安装)
     - [Python项目requirements文件的生成和使用](#python项目requirements文件的生成和使用) 
   - [安装**Chrome**浏览器](#安装chrome浏览器)
-  - [pip和pip3安装报错](#pip和pip3安装报错)
+  - [pip **/** pip3常见报错](#pip和pip3常见报错)
   - [Ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS设置](#wps设置)
@@ -512,8 +512,8 @@ sudo apt-get install google-chrome-stable
 ```
 
 ---
-## pip和pip3安装报错
-**问题描述**
+## pip和pip3常见报错
+### **问题描述 1**
 ```shell
 $ pip3 --version
 Traceback (most recent call last):
@@ -532,7 +532,45 @@ pkg_resources.DistributionNotFound: pip==1.5.6
 sudo python3 get-pip.py
 sudo python3 ez_setup.py
 ```
-其中[get-pip.py](./fix_pip/get-pip.py)和[ez_setup.py](./fix_pip/ez_setup-pip.py)文件在[`src/fix_pip`](./fix_pip/)文件夹中。
+其中[get-pip.py](./fix_pip/get-pip.py)和[ez_setup.py](./fix_pip/ez_setup-pip.py)文件在[`src/fix_pip`](./fix_pip/)文件夹中。    
+
+### **问题描述 2**
+```shell
+Error checking for conflicts.
+Traceback (most recent call last):
+  File "/home/andy/.local/lib/python3.5/site-packages/pip/_vendor/pkg_resources/__init__.py", line 2584, in version
+    return self._version
+  File "/home/andy/.local/lib/python3.5/site-packages/pip/_vendor/pkg_resources/__init__.py", line 2691, in __getattr__
+    raise AttributeError(attr)
+AttributeError: _version
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/andy/.local/lib/python3.5/site-packages/pip/_internal/commands/install.py", line 503, in _warn_about_conflicts
+    package_set, _dep_info = check_install_conflicts(to_install)
+  File "/home/andy/.local/lib/python3.5/site-packages/pip/_internal/operations/check.py", line 108, in check_install_conflicts
+    package_set, _ = create_package_set_from_installed()
+  File "/home/andy/.local/lib/python3.5/site-packages/pip/_internal/operations/check.py", line 47, in create_package_set_from_installed
+    package_set[name] = PackageDetails(dist.version, dist.requires())
+  File "/home/andy/.local/lib/python3.5/site-packages/pip/_vendor/pkg_resources/__init__.py", line 2589, in version
+    raise ValueError(tmpl % self.PKG_INFO, self)
+ValueError: ("Missing 'Version:' header and/or METADATA file", Unknown [unknown version] (/home/andy/.local/lib/python3.5/site-packages))
+```
+![pip error](../img/pip-error.png)    
+
+**解决方法**    
+运行以下代码，查看`site-packages`下的文件夹， 删除以 `-` 开头的文件夹:    
+```shell
+python3 -c "import site; print(site.getsitepackages())"
+```
+
+到报错文件夹下(这里是`/home/andy/.local/lib/python3.5/site-packages`)删除 `-` 开头的文件夹，然后重新执行 `pip3 list` .    
+我这里是 `-pencv_python-3.4.3.18.dist-info` ：
+```shell
+rm -rf  ./-pencv_python-3.4.3.18.dist-info
+```
+然后 `pip3 list` 正常了.     
 
 ---
 ## Ubuntu 16下安装spyder3
