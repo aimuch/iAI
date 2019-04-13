@@ -532,7 +532,7 @@ pkg_resources.DistributionNotFound: pip==1.5.6
 sudo python3 get-pip.py
 sudo python3 ez_setup.py
 ```
-其中[get-pip.py](./src/fix_pip/get-pip.py)和[ez_setup.py](./src/fix_pip/ez_setup-pip.py)文件在`src/fix_pip/`文件夹中。
+其中[get-pip.py](./fix_pip/get-pip.py)和[ez_setup.py](./fix_pip/ez_setup-pip.py)文件在[`src/fix_pip`](./fix_pip/)文件夹中。
 
 ---
 ## Ubuntu 16下安装spyder3
