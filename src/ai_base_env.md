@@ -927,12 +927,15 @@ pip install -U numpy
 --model=path_to_caffemodel/caffeModelName.caffemodel \
 --engine=path_to_output_engine/outputEngineName.engine
 ```    
-调用Caffe生成的engine源码文件在[`src/tensorrt/tools/caffe_engine`](tensorrt/tools/caffe_engine)中:    
+1、`C++` 调用 `engine` 进行推理的源码在[`src/tensorrt/tools/trt_cpp_caffe_engine`](tensorrt/tools/trt_cpp_caffe_engine)    
+2、`Python` 调用 `Caffe` 生成的 `engine` 源码文件在[`src/tensorrt/tools/caffe_engine`](tensorrt/tools/caffe_engine)中:    
 - `call_engine_to_infer_one.py` : 测试单张图片   
 - `call_engine_to_infer_all.py` : 测试所有图片   
 
 #### Tensorflow模型用TensorRT生成Engine
-源码文件在[`src/tensorrt/tools/tensorflow_engine`](tensorrt/tools/tensorflow_engine)中：     
+1、`C++` 调用 `UFF` 进行推理的源码在[`src/tensorrt/tools/trt_cpp_tf_uff`](tensorrt/tools/trt_cpp_tf_uff)    
+
+2、`Python` 源码文件在[`src/tensorrt/tools/tensorflow_engine`](tensorrt/tools/tensorflow_engine)中：     
 - `tf_to_uff.py` : TensorFlow模型生成UFF文件    
 - `uff_to_engine.py` : UFF模型转Engine文件    
 - `call_engine_to_infer_one.py` : 调用Engine测试单张图片进行推理    
