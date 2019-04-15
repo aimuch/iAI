@@ -1546,6 +1546,13 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - C/C++
 - Python
 - Chinese (Simplified) Language Pack for Visual Studio Code
+- **Bracket Pair Colorizer** - 着色匹配括号
+- **Indent-Rainbow** - 对缩进显示彩虹色作色，使得更加易读
+- **Trailing Spaces** - 检测多余空格并高亮
+- **Code Spell Checker** - 代码拼写检查
+- **Document This** - doc注释自动生成
+- **Sublime Text Keymap** - 在VScode中添加Sublime Text 热门快捷键
+- **Git Lens** - 增强了内置的Visual Studio代码Git功能
 - EditorConfig for VS Code
 - Anaconda Extension Pack
 - Markdown All in One
@@ -1554,7 +1561,6 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - VS Code Jupyter Notebook Previewer
 - Beautify
 - prototxt
-- GitLens — Git supercharged=
 - GitHub Pull Requests
 - Git History
 - LaTeX Workshop
