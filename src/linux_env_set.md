@@ -44,7 +44,9 @@
   - [查看系统状态](#查看系统状态)
   - [彻底卸载软件](#彻底卸载软件)
   - [截图快捷键](#截图快捷键)
-  - [Ubuntu 美化](#ubuntu-美化)
+  - [**Ubuntu 美化**](#ubuntu-美化)
+    - [Unity环境](#unity环境)
+    - [GNOME环境](#gnome环境)
 ---
 
 ## Docker安装与使用
@@ -1774,8 +1776,78 @@ gnome-screenshot -a
 ---
 ## Ubuntu 美化
 
-### Ubuntu 16.04安装主题
-安装Unity Tweak Tool
+### Unity环境
+Ubuntu 16.04是Unity环境, 安装 `Unity Tweak Tool` :    
 ```shell
 sudo apt-get install unity-tweak-tool
 ```
+- Numix主题
+  ```shell
+  sudo add-apt-repository ppa:numix/ppa
+  sudo apt-get update
+  sudo apt-get install numix-gtk-theme numix-icon-theme-circle
+  ```
+- Flatabulous主题
+```shell
+sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get update
+sudo apt-get install flatabulous-theme ultra-flat-icons
+```
+
+通过 `Unity Tweak Tool` 设置主题:    
+![Theme 1](../img/theme1.png)    
+
+![Theme 2](../img/theme2.png)    
+
+![Theme 3](../img/theme3.png)    
+
+![Theme 4](../img/theme4.png)     
+
+**参考资料**     
+> [How To Install Numix Theme And Icons In Ubuntu 14.04 & 16.04.](https://itsfoss.com/install-numix-ubuntu/)     
+> [Numix Gtk Theme](https://github.com/numixproject/numix-gtk-theme)    
+> [Numix Circle](https://github.com/numixproject/numix-icon-theme-circle)    
+
+
+
+### GNOME环境
+Ubuntu 17+ 以上是GNOME环境。    
+如果没有`gnome tweak tool`，运行下面的指令
+```shell
+sudo apt install gnome-tweak-tool
+```
+如果没有`user themes`插件，运行下面的指令
+```shell
+sudo apt install gnome-shell-extensions
+```
+
+1. Using PPA to install themes
+    ```shell
+    sudo add-apt-repository ppa:system76/pop
+    sudo apt-get update
+    sudo apt-get install pop-theme
+    ```
+2. Using .deb packages to install themes
+    ```shell
+    sudo dpkg -i theme-x.deb
+    ```
+3. Using archive files to install themes
+    在home目录下创建 `.themes` 和 `.icons` 两个文件夹:    
+    ```shell
+    cd
+    mkdir ~/.themes
+    mkdir ~/.icons
+    ```
+    - `.themes` – for GTK and GNOME Shell themes
+    - `.icons` – for icon themes
+
+![Theme 5](../img/theme5.jpeg)       
+
+![Theme 6](../img/theme6.jpeg)       
+
+![Theme 7](../img/theme7.jpeg)       
+
+![Theme 8](../img/theme8.jpeg)     
+
+**参考资料**    
+> [How to Install Themes in Ubuntu 18.04 and 16.04](https://itsfoss.com/install-themes-ubuntu/)    
