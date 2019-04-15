@@ -137,6 +137,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [安装Shadowsocks-qt5](./src/ss.md#安装shadowsocks-qt5)
        - [安装electron-ssr](./src/ss.md#安装electron-ssr)
        - [配置Chrome浏览器](./src/ss.md#配置chrome浏览器)
+     - [Ubuntu 美化](./src/linux_env_set.md#ubuntu-美化)
 
 5.  [**参考资料**](#参考资料)
 

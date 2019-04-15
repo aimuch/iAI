@@ -44,6 +44,7 @@
   - [查看系统状态](#查看系统状态)
   - [彻底卸载软件](#彻底卸载软件)
   - [截图快捷键](#截图快捷键)
+  - [Ubuntu 美化](#ubuntu-美化)
 ---
 
 ## Docker安装与使用
@@ -1771,3 +1772,10 @@ gnome-screenshot -a
 
 
 ---
+## Ubuntu 美化
+
+### Ubuntu 16.04安装主题
+安装Unity Tweak Tool
+```shell
+sudo apt-get install unity-tweak-tool
+```
