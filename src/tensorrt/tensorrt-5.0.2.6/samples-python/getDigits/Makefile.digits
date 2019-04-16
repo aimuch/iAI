@@ -1,0 +1,28 @@
+.SUFFIXES:
+ifdef VERBOSE
+AT=
+else
+AT=@
+endif
+
+ROOT_PATH=../..
+OUT_PATH=$(ROOT_PATH)/bin
+OUTDIR=$(OUT_PATH)
+
+OUTFILE=download-digits-model.py
+
+all: release debug
+
+release:
+	$(AT)cp $(OUTFILE) $(OUTDIR)/$(OUTFILE)
+	$(AT)chmod u+x $(OUTDIR)/$(OUTFILE)
+	$(AT)chmod u+w $(OUTDIR)/$(OUTFILE)
+
+debug:
+	$(AT)cp $(OUTFILE) $(OUTDIR)/$(OUTFILE)
+	$(AT)chmod u+x $(OUTDIR)/$(OUTFILE)
+	$(AT)chmod u+w $(OUTDIR)/$(OUTFILE)
+
+clean:
+	$(AT)echo Cleaning...
+	$(AT)-rm -rf $(OUTDIR)/$(OUTFILE)

@@ -1,0 +1,20 @@
+#!/bin/bash
+# Stub to call trtexec
+
+CUR_DPATH="$(dirname "$(readlink -f "${BASH_SOURCE}")")"
+TRTEXEC_FPATH=$CUR_DPATH/trtexec
+
+if [[ ! -f "$TRTEXEC_FPATH" ]]
+then
+    echo "Could not find trtexec"
+    exit 1
+fi
+
+if [[ ! -x "$TRTEXEC_FPATH" ]]
+then
+    echo "trtexec is not executable"
+    exit 1
+fi
+
+# Forward input args to trtexec
+$TRTEXEC_FPATH "$@"
