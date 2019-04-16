@@ -128,7 +128,7 @@ int printOutput(int64_t eltCount, DataType dtype, void* buffer)
 {
     std::cout << eltCount << " eltCount" << std::endl;
     assert(elementSize(dtype) == sizeof(float));
-    std::cout << "--- OUTPUT ---" << std::endl;
+    std::cout << "----- Predict -----" << std::endl;
 
     size_t memSize = eltCount * elementSize(dtype);
     float* outputs = new float[eltCount];
@@ -246,7 +246,7 @@ void execute(ICudaEngine& engine)
 
     float total = 0, ms;
 	#define MAX_LINE 1024
-	FILE *fpOpen=fopen("/media/andy/Data/DevWorkSpace/Projects/imageClassifier/data/test_abs.txt","r");
+	FILE *fpOpen=fopen("/home/andy/DevWorkSpace/imageClassifier/data/test_abs.txt","r");
 	if(fpOpen==NULL)
 	{
 		std::cout << ">>>> Open File Fail >>>> " << std::endl;
@@ -278,22 +278,25 @@ void execute(ICudaEngine& engine)
 
         
         // >>>>>>>> OpenCV 3
-        img_read(token, hostInput);
+        // img_read(token, hostInput);
         // <<<<<<<< OpenCV 3
 
         // >>>>>>>>  OpenCV 2
-		// int i, j, c, count=0;
-		// // scale pixel and change HWC->CHW
-		// for(c; c < in_img->nChannels; c++){
-		// 	for(j; j < in_img->height; j++){
-		// 		for(i; i < in_img->width; i++){
-		// 			hostInput[count] = (1.0 * ((unsigned char)(in_img->imageData[c*in_img->height + j*in_img->widthStep + i]) )- 128.0)/128.0;
-        //             count++;
-		// 		}
-		// 	}
-		// }
+		int count=0;
+        unsigned char *data = (unsigned char *)in_img->imageData;
+		// scale pixel and change HWC->CHW
+		for(int c = 0; c < in_img->nChannels; c++){
+			for(int j = 0; j < in_img->height; j++){
+				for(int i = 0; i < in_img->width; i++){
+                    // RGBRGBRGB -> RRRGGGBBB
+					hostInput[count++] = (1.0 * data[j * (in_img->widthStep) + i * (in_img->nChannels) + c] - 128.0)/128.0;
+				}
+			}
+		}
 
-        // // print
+
+        // // DEBUG
+        // // print information
         // for(int i=0;i<in_img->width * in_img->height * in_img->nChannels;i++){
         //     if(i==0){
         //         std::cout << hostInput[i];
@@ -348,7 +351,7 @@ void execute(ICudaEngine& engine)
             iCorrectNum++;
         }
 
-		// free(hostInput);
+		free(hostInput);
         cvReleaseImage(&cvtimg);
 		cvReleaseImage(&testImg);
 		cvReleaseImage(&in_img);
