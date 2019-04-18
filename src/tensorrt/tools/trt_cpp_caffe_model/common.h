@@ -17,7 +17,7 @@
 
 
 // Logger for GIE info/warning/errors
-class Logger : public nvinfer1::ILogger			
+class Logger : public nvinfer1::ILogger
 {
     public:
 	void log(nvinfer1::ILogger::Severity severity, const char* msg) override
@@ -38,5 +38,4 @@ class Logger : public nvinfer1::ILogger
 };
 
 std::string locateFile(const std::string& input, const std::vector<std::string> & directories);
-void readPGMFile(const std::string& fileName,  uint8_t *buffer, int inH, int inW);
 #endif // _TRT_COMMON_H_
