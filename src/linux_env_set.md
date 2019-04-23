@@ -21,6 +21,9 @@
   - [Ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS设置](#wps设置)
+    - [解决WPS启动提示字体未安装错误](#解决wps启动提示字体未安装错误)
+    - [WPS切换显示语言](#wps切换显示语言)
+    - [WPS不能输入中文](#wps不能输入中文)
   - [安装赛睿霜冻之蓝v2驱动](#安装赛睿霜冻之蓝v2驱动)
   - [**zsh** **oh-my-zsh**默认shell的最佳替代品](#zsh-oh-my-zsh默认shell的最佳替代品)
     - [查看系统shell环境](#查看系统shell环境)
@@ -658,7 +661,7 @@ languages=zh_CN
 
 ![WPS Config](../img/wps-config2.png)    
 
-### Ubuntu WPS不能输入中文。   
+### WPS不能输入中文   
 **原因**：环境变量未正确设置。 
 **解决办法**:    
 #### WPS文字
