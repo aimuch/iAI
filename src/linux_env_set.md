@@ -41,6 +41,9 @@
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
+  - [Ubuntu程序开机自启](#ubuntu程序开机自启)    
+    - [修改系统启动文件](#修改系统启动文件)
+    - [Startup Applications](#startup-applications)
   - [查看系统状态](#查看系统状态)
   - [彻底卸载软件](#彻底卸载软件)
   - [截图快捷键](#截图快捷键)
@@ -1653,6 +1656,30 @@ command >out.file 2>&1 &
 1. command>out.file是将command的输出重定向到out.file文件，即输出内容不打印到屏幕上，而是输出到out.file文件中。
 2. 2>&1 是将标准出错重定向到标准输出，这里的标准输出已经重定向到了out.file文件，即将标准出错也输出到out.file文件中。最后一个&， 是让该命令在后台执行。
 3. 试想2>1代表什么，2与>结合代表错误重定向，而1则代表错误重定向到一个文件1，而不代表标准输出；换成2>&1，&与1结合就代表标准输出了，就变成错误重定向到标准输出.
+
+
+---
+## Ubuntu程序开机自启
+
+### 修改系统启动文件
+打开系统的自动启动配置文件 `/etc/rc.local` :    
+```shell
+sudo vim /etc/rc.local
+```
+如要开机自动启动`frpc`，则 `/etc/rc.local` 添加的内容如下:    
+```vim
+nohup /home/andy/frp/frpc -c /home/andy/frp/frpc.ini &
+```
+保存退出，运行 `source /etc/rc.local` 或者重启电脑即可。    
+
+### Startup Applications
+
+![Startup Applications](../img/startupapplications1.png)      
+
+![Startup Applications](../img/startupapplications2.png)      
+
+![Startup Applications](../img/startupapplications3.png)      
+
 
 ---
 ## 查看系统状态
