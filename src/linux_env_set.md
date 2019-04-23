@@ -1674,6 +1674,8 @@ nohup /home/andy/frp/frpc -c /home/andy/frp/frpc.ini &
 
 ### Startup Applications
 
+`Ubuntu`中在 `Application` 中打开 `Startup Applications` :    
+
 ![Startup Applications](../img/startupapplications1.png)      
 
 ![Startup Applications](../img/startupapplications2.png)      
