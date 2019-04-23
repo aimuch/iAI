@@ -1,6 +1,7 @@
 # Ubuntu FAQ
 
 [**Ubuntu FAQ**](#ubuntu-faq)
+  - [Awesome Software](#awesome-software)
   - [**Docke**r安装与使用](#docker安装与使用)
     - [Docker安装](#docker安装)
     - [Docker使用](#docker使用)
@@ -54,7 +55,16 @@
     - [Unity环境](#unity环境)
     - [GNOME环境](#gnome环境)
 ---
+## Awesome Software
+- Visual Studio Code
+- Chrome
+- mpv media player
+- wps
+- Sublime Text
+- Beyond Compare
+- Wireshark
 
+---
 ## Docker安装与使用
 `Docker`分为`CE`和`EE`两大版本。`CE`即社区版（免费，支持周期 7 个月），`EE`即企业版，强调安全，付费使用，支持周期 24 个月。
 
