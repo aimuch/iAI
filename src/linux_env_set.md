@@ -1591,6 +1591,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
   - One Dark Pro
   - Dracula Official
 
+
 ### VScode环境配置
 
 ![vscode](../img/vscode.png)     
@@ -1615,6 +1616,13 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - `"terminal.integrated.fontFamily": "'mononoki Nerd Font'"`, 终端显示字体，首先要安装 `powerline nerd-font`中的`Mononoki`字体，可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
   ![vscode terminal](../img/vscode-terminal.png)    
 
+
+### vscode遇到的问题
+1. 在安装插件的时候提示`cannot read property local of undefined vscode`    
+    解决方法:
+    ```shell
+    sudo chown -R [用户名]  ~/.vscode
+    ```
 
 ---
 ## ubuntu查看和关闭进程

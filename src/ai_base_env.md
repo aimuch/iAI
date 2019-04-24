@@ -98,6 +98,112 @@ sudo ntpdate time.windows.com
 sudo hwclock --localtime --systohc
 ```
 
+### ubuntu修改grub，调整开机顺序，配置grub启动顺序   
+#### 方法一: 只更改默认选项
+只更改默认选项，修改`/etc/default/grub`文件:    
+```bash
+sudo vim /etc/default/grub
+```
+![grub](../img/grub.png)    
+
+```vim
+# If you change this file, run 'update-grub' afterwards to update
+# /boot/grub/grub.cfg.
+# For full documentation of the options in this file, see:
+#   info -f grub -n 'Simple configuration'
+
+GRUB_DEFAULT=0
+#GRUB_HIDDEN_TIMEOUT=0
+GRUB_HIDDEN_TIMEOUT_QUIET=true
+GRUB_TIMEOUT=10
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+
+# Uncomment to enable BadRAM filtering, modify to suit your needs
+# This works with Linux (no patch required) and with any kernel that obtains
+# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)
+#GRUB_BADRAM="0x01234567,0xfefefefe,0x89abcdef,0xefefefef"
+
+# Uncomment to disable graphical terminal (grub-pc only)
+#GRUB_TERMINAL=console
+
+# The resolution used on graphical terminal
+# note that you can use only modes which your graphic card supports via VBE
+# you can see them in real GRUB with the command `vbeinfo'
+#GRUB_GFXMODE=640x480
+
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to Linux
+#GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment to disable generation of recovery mode menu entries
+#GRUB_DISABLE_RECOVERY="true"
+
+# Uncomment to get a beep at grub start
+#GRUB_INIT_TUNE="480 440 1"
+```
+这是我们关注的内容，只需要把第6行的`GRUB_DEFAULT="0"`改成你想要默认选中的序号减去1就行，比如第一张图中，想要默认选中`Windows boot manger`，修改`GRUB_DEFAULT="2"`保存，退出
+然后执行关键的一步`sudo update-grub`
+这样，下次开机的时候默认选中的启动项就是`Windows`了。    
+
+这样的操作对于我这种强迫症晚期的人来说是绝对不能忍的。必须把Windows boot manger 放到第一位，下面就是第二种方法.    
+
+#### 方法二: 彻底解决
+
+修改`/boot/grub/grub.cfg`文件，首先讲原始的`grub.cfg`备份一份:    
+```bash
+sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.backup
+```
+然后用`gedit`打开`/boot/grub/grub.cfg`文件:    
+```bash
+sudo gedit /boot/grub/grub.cfg
+```
+在用gedit打开的文件里里搜索`menuentry`，找到以下位置:    
+```vim
+### BEGIN /etc/grub.d/30_os-prober ###
+menuentry 'Windows Boot Manager (on /dev/nvme1n1p1)' --class windows --class os $menuentry_id_option 'osprober-efi-00ED-6F44' {
+	insmod part_gpt
+	insmod fat
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root  00ED-6F44
+	else
+	  search --no-floppy --fs-uuid --set=root 00ED-6F44
+	fi
+	chainloader /efi/Microsoft/Boot/bootmgfw.efi
+}
+set timeout_style=menu
+if [ "${timeout}" = 0 ]; then
+  set timeout=10
+fi
+### END /etc/grub.d/30_os-prober ###
+```
+![grub.cfg](../img/grub.cfg.png)    
+剪切该段，放到以下位置的前面:    
+```vim
+menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-0a4a1e2a-292f-43d2-bd28-97cc6bee3b02' {
+	recordfail
+	load_video
+	gfxmode $linux_gfx_mode
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_msdos
+	insmod ext2
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root  0a4a1e2a-292f-43d2-bd28-97cc6bee3b02
+	else
+	  search --no-floppy --fs-uuid --set=root 0a4a1e2a-292f-43d2-bd28-97cc6bee3b02
+	fi
+        linux	/boot/vmlinuz-4.15.0-48-generic root=UUID=0a4a1e2a-292f-43d2-bd28-97cc6bee3b02 ro  quiet splash $vt_handoff
+	initrd	/boot/initrd.img-4.15.0-48-generic
+}
+```
+调整后如下:   
+![grub cfg](../img/grub.cfg1.png)    
+
+
+**注意**    
+这里千万不要 千万不要 千万不要执行` sudo update-grub` .    
+
 ---
 ## 安装NVIDIA驱动   
 
