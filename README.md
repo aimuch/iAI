@@ -74,6 +74,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [远程访问服务器**Jupyter Notebook**](./src/ai_server_FAQ.md#远程访问服务器jupyter-notebook)
          - [方法1 ssh远程使用jupyter notebook](./src/ai_server_FAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./src/ai_server_FAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
+     - [Transfer Learning](src/ai/transfer-learning.md#transfer-learning)
 
 3.  [**AI Framework**](src/ai_framework.md#ai-framework)
     - [TensorFlow](src/ai/tensorflow.md#tensorflow)
