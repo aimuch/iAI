@@ -142,11 +142,13 @@ GRUB_CMDLINE_LINUX=""
 # Uncomment to get a beep at grub start
 #GRUB_INIT_TUNE="480 440 1"
 ```
-这是我们关注的内容，只需要把第6行的`GRUB_DEFAULT="0"`改成你想要默认选中的序号减去1就行，比如第一张图中，想要默认选中`Windows boot manger`，修改`GRUB_DEFAULT="2"`保存，退出
-然后执行关键的一步`sudo update-grub`
+这是我们关注的内容，只需要把第6行的`GRUB_DEFAULT="0"`改成你想要默认选中的序号减去1就行，比如第一张图中，想要默认选中`Windows boot manger`，修改`GRUB_DEFAULT="2"`按 `ESC` 然后 `wq` 保存，退出。最后执行关键的一步:    
+```bash
+sudo update-grub
+```
 这样，下次开机的时候默认选中的启动项就是`Windows`了。    
 
-这样的操作对于我这种强迫症晚期的人来说是绝对不能忍的。必须把Windows boot manger 放到第一位，下面就是第二种方法.    
+这样的操作对于强迫症人来说是绝对不能忍的。必须把 `Windows boot manger` 放到第一位，下面就是第二种方法.    
 
 #### 方法二: 彻底解决
 
@@ -202,7 +204,7 @@ menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menu
 
 
 **注意**    
-这里千万不要 千万不要 千万不要执行` sudo update-grub` .    
+这里千万不要! 千万不要! 千万不要执行` sudo update-grub` .    
 
 ---
 ## 安装NVIDIA驱动   
