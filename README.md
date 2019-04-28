@@ -86,6 +86,8 @@ AI实验环境搭建和深度学习算法安装实验
 
 4.  [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Awesome Software**](./src/linux_env_set.md#awesome-software)
+     - [**Ubuntu Library**](./src/linux_library.md#ubuntu-library)
+       - [Eigen](./src/linux_library.md#eigen)
      - [**Docker**安装与使用](./src/linux_env_set.md#docker安装与使用)
        - [Docker安装](./src/linux_env_set.md#docker安装)
        - [Docker使用](./src/linux_env_set.md#docker使用)
