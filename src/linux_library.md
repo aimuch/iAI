@@ -7,7 +7,7 @@
 
 *Eigen consists only of header files, hence there is nothing to compile before you can use it. Moreover, these header files do not depend on your platform, they are the same for everybody.*
 
-### 终端apt命令安装   
+### 安装方法1 终端apt命令安装   
 ```bash
 sudo apt-get install libeigen3-dev
 ```
@@ -15,7 +15,7 @@ Eigen只包含头文件，因此它不需要实现编译（只需要使用#inclu
 
 Eigen头文件的默认安装位置是：`/usr/include/eigen3`.    
 
-### 源码安装
+### 安装方法2 源码安装
 安装包[下载网址](http://eigen.tuxfamily.org/index.php?title=Main_Page)可以下载任意版本对应的文件，本例下载了Eigen 3.3.7版本的`tar.gz`格式压缩文件。
 
 文件名：*eigen-eigen-323c052e1731.tar.gz*
