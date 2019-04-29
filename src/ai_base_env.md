@@ -698,12 +698,27 @@ chmod 777 x.x.x.zip
 unzip x.x.x.zip
 ```
 ### 编译OpenCV   
+如果对 `CMakeLists` 文件不进行修改，那么 `Opencv` 默认的安装位置
+```bash
+/usr/local/include/opencv2/         -- 新版Opencv核心头文件
+/usr/local/include/opencv/          -- 旧Opencv核心头文件
+/usr/local/share/OpenCV/            -- 一些Opencv其他安装信息
+/usr/local/lib/                     -- Opencv中的动态链接库存放位置
+```
+
 随后解压到你要安装的位置，命令行进入已解压的文件夹 `opencv-x.x.x` 目录下，执行：
 ```shell
 cd opencv-x.x.x
 mkdir build # 创建编译的文件目录
 cd build
-cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local -DBUILD_JPEG=ON -DBUILD_TIFF=ON -DBUILD_PNG=ON ..
+cmake -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -DBUILD_JPEG=ON -DBUILD_TIFF=ON \
+      -DBUILD_PNG=ON ..
+
+# 利用下面的命令得到系统的线程数
+nproc
+
 make -j8  #编译
 ```
 **遇到一下报错信息有两种可能：**    
@@ -753,6 +768,10 @@ sudo gedit /etc/ld.so.conf
 ```
 `/user/local`是`opencv`安装路径 就是`makefile`中指定的安装路径。    
 
+**或者**不用上述方法，直接运行:   
+```bash
+sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
+```
 再运行:   
 ```bash
 sudo ldconfig
