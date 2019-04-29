@@ -98,3 +98,8 @@ m * v =
 
 ![eigen](../img/eigen.svg)     
 
+**参考资料**
+> [Eigen是个什么鬼？](https://zhuanlan.zhihu.com/p/36706885)    
+
+---
+

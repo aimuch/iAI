@@ -172,4 +172,5 @@ AI实验环境搭建和深度学习算法安装实验
 > 15. [.tmux配置](https://github.com/gpakosz/.tmux)
 > 16. [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)
 > 17. [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)
-> 18. [Anaconda官方给出的卸载方法](http://docs.anaconda.com/anaconda/install/uninstall/)    
+> 18. [Anaconda官方给出的卸载方法](http://docs.anaconda.com/anaconda/install/uninstall/)
+> 19. [Eigen是个什么鬼？](https://zhuanlan.zhihu.com/p/36706885)
