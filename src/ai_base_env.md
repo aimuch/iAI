@@ -869,8 +869,9 @@ cd $HOME/opencv-x.x.x/build
 ```shell
 sudo make uninstall
 ```
-然后把整个`opencv-x.x.x`文件夹都删掉。随后再运行：   
+然后把整个`opencv-x.x.x`文件夹都删掉 `rm -rf opencv-x.x.x` 。将shell环境切换到bash下(否则不认识命令行的 `*` 文件通配符)，随后再运行：   
 ```shell
+bash
 sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 /usr/include/opencv /usr/include/opencv2 /usr/local/share/opencv \
 /usr/local/share/OpenCV /usr/share/opencv /usr/share/OpenCV \
