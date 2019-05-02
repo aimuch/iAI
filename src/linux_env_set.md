@@ -1140,7 +1140,7 @@ cd ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 cd ~/.vim/bundle/YouCompleteMe
 mkdir cpp
 mkdir cpp/ycm
-cp ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/cpp/ycm/
+cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/cpp/ycm/
 ```
 
 (3) 修改`.vimrc`配置文件
@@ -1148,7 +1148,7 @@ cp ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle
 ```vim
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
 let g:syntastic_ignore_files=[".*\.py$"] 
@@ -1184,7 +1184,7 @@ let g:ycm_warning_symbol='>*'
 上面的内容中，除了第一句寻找全局配置文件，其他的语句可以根据自己的需要更改、删除或添加。 
 **注**：如果没有在第(3)步中自己创建`cpp/ycm`目录拷贝`.ycm_extra_conf.py`文件，则需要将第一句中的路径改为全局配置文件所在的具体路径，如下：   
 ```vim
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 ```
 
 5 保存退出`.vimrc` ,打开一个C/C++源程序，体验其自动补全效果。    
@@ -1280,7 +1280,7 @@ let g:go_version_warning = 0
 
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
 let g:syntastic_ignore_files=[".*\.py$"] 
 " 使用ctags生成的tags文件
