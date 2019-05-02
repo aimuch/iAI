@@ -174,3 +174,5 @@ AI实验环境搭建和深度学习算法安装实验
 > 17. [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)
 > 18. [Anaconda官方给出的卸载方法](http://docs.anaconda.com/anaconda/install/uninstall/)
 > 19. [Eigen是个什么鬼？](https://zhuanlan.zhihu.com/p/36706885)
+> 20. [AW 17 R5 i9 Ubuntu? Linux?](https://www.dell.com/community/Alienware/AW-17-R5-i9-Ubuntu-Linux/td-p/6109054)
+> 21. [Alienware 17 R4 Ubuntu 16.04 WiFi driver](https://askubuntu.com/questions/1016903/alienware-17-r4-ubuntu-16-04-wifi-driver)
