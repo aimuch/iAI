@@ -21,7 +21,14 @@ cd darknet
   CUDNN=1
   OPENCV=1
 ```
-然后运行一下命令：    
+
+**注意**: 这里要安装[OpenCV-3.4.0](opencv/opencv-3.4.0.zip)版本，否则在编译darknet的时候提示以下错误:    
+```bash
+./src/detector.c:30:5: error: redefinition of ‘cvRound’
+int cvRound(double value) {return(ceil(value));}
+```
+
+安装好**OpenCV-3.4.0**，然后运行一下命令：    
 ```bash
 make -j8
 ```   
