@@ -71,7 +71,7 @@
 - BIOS里及`security boot`关闭，否则会出现NVIDIA驱动安装完以后重启电脑会反复进入登录界面    
 - 启动方式为`UEFI`   
 - 硬盘分区的时候可以只分为 `swap` 、 `efi` 、 `\` 和 `\home` 四个分区，不分 `\home` 也可以，在挂载 `\` 分区的时候会自动生成 `\home` 和其他分区，但是在重装系统的时候 `\home` 无法重新挂载之前的 `\home` 分区导致数据丢失（类似于Windows的非系统盘）   
-- 安装Alienware 17r4的killer网卡驱动(驱动在[`src\linux\linux-firmware_1.169.3_all.deb`](linux/linux-firmware_1.169.3_all.deb) 
+- 安装Alienware 17r4的killer网卡驱动(驱动在[`src\linux\linux-firmware_1.169.3_all.deb`](linux/linux-firmware_1.169.3_all.deb) )
 - 重装Ubuntu系统时请在Windows下用`EasyUEFI`软件将Ubuntu的引导项删除，也可以调整启动顺序   
 
 | 分区 | 文件类型 | 分区大小 | 分区类型 |
