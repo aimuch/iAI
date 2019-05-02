@@ -13,6 +13,10 @@ AI实验环境搭建和深度学习算法安装实验
 ### 目录
 1. [**AI基础环境搭建和设置**](src/ai_base_env.md#ai基础环境搭建和设置)
    1. [安装Ubuntu和Windows双系统](src/ai_base_env.md#安装ubuntu和windows双系统)   
+       - [有关Ubuntu分区的相关问题](src/ai_base_env.md#有关ubuntu分区的相关问题)
+       - [Ubuntu与Windows双系统时间同步解决方法](src/ai_base_env.md#ubuntu与windows双系统时间同步解决方法)
+       - [调整grub引导系统顺序](src/ai_base_env.md#调整grub引导系统顺序)
+       - [设置grub引导菜单的分辨率](src/ai_base_env.md#设置grub引导菜单的分辨率)
    2. [安装**NVIDIA驱动**](src/ai_base_env.md#安装nvidia驱动)   
        - [安装NVIDIA驱动所需的依赖包](src/ai_base_env.md#安装nvidia驱动所需的依赖包)   
        - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)   
