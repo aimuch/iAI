@@ -41,7 +41,7 @@
     - [Tmux使用手册](#tmux使用手册)
   - [**Sublime Text 3**配置问题](#sublime-text-3配置问题)
   - [**VSCode**配置问题](#vscode配置问题) 
-    - [VScode推荐插件](#vscode推荐插件)
+    - [Awesome VScode Plugin](#awesome-vscode-plugin)
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
@@ -1557,20 +1557,25 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 ---
 ## VSCode配置问题
-### VScode推荐插件   
+### Awesome VScode Plugin   
 - go
 - C/C++
 - Python
 - Chinese (Simplified) Language Pack for Visual Studio Code
-- **Bracket Pair Colorizer** - 着色匹配括号
-- **Indent-Rainbow** - 对缩进显示彩虹色作色，使得更加易读
-- **Trailing Spaces** - 检测多余空格并高亮
-- **Code Spell Checker** - 代码拼写检查
-- **Document This** - doc注释自动生成
-- **Sublime Text Keymap** - 在VScode中添加Sublime Text 热门快捷键
-- **Git Lens** - 增强了内置的Visual Studio代码Git功能
-- EditorConfig for VS Code
+- **Bracket Pair Colorizer** : 着色匹配括号
+- **Indent-Rainbow** : 对缩进显示彩虹色作色，使得更加易读
+- **Trailing Spaces** : 检测多余空格并高亮
+- **Code Spell Checker** : 代码拼写检查
+- **Document This** : doc注释自动生成
+- **Sublime Text Keymap** : 在VScode中添加Sublime Text 热门快捷键
+- **Git Lens** : 增强了内置的Visual Studio代码Git功能
+- Remote - SSH : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
+- Remote - Containers : 通过打开容器来使用沙箱工具链或基于容器的应用
+- Remote - WSL : 在Windows上通过WSL来获得Linux开发体验
+- Sublime Text Keymap and Settings Importer
+- Visual Studio IntelliCode
 - Anaconda Extension Pack
+- EditorConfig for VS Code
 - Markdown All in One
 - Markdown Shortcuts
 - markdownlint
