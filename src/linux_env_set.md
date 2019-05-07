@@ -42,6 +42,7 @@
   - [**Sublime Text 3**配置问题](#sublime-text-3配置问题)
   - [**VSCode**配置问题](#vscode配置问题) 
     - [Awesome VScode Plugin](#awesome-vscode-plugin)
+    - [VScode Tips](#vscode-tips)
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
@@ -1569,9 +1570,11 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **Document This** : doc注释自动生成
 - **Sublime Text Keymap** : 在VScode中添加Sublime Text 热门快捷键
 - **Git Lens** : 增强了内置的Visual Studio代码Git功能
-- Remote - SSH : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
-- Remote - Containers : 通过打开容器来使用沙箱工具链或基于容器的应用
-- Remote - WSL : 在Windows上通过WSL来获得Linux开发体验
+- **Live Share** - 远程实时代码协同开发
+- **Remote - SSH** : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
+- **Remote - Containers** : 通过打开容器来使用沙箱工具链或基于容器的应用
+- **Remote - WSL** : 在Windows上通过WSL来获得Linux开发体验
+- **Bookmarks** - 书签
 - Sublime Text Keymap and Settings Importer
 - Visual Studio IntelliCode
 - Anaconda Extension Pack
@@ -1595,6 +1598,13 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
   - **Atom One Dark Theme**
   - One Dark Pro
   - Dracula Official
+
+### VScode Tips
+- 按下 `ctrl+K` ，再按下 `ctrl+S` ，查看快捷键列表;
+- 按下 `ctrl+P` ，弹出搜索栏，直接输入关键字，在所有文件中搜索特定符号:
+   - 在搜索栏前输入 `@` ，在当前文件中搜索特定符号;
+   - 在搜索栏前输入 `>` ，搜索所有可使用的命令;
+-  `ctrl` + `=` 和 `ctrl` + `-` 组合来进行缩放;
 
 
 ### VScode环境配置
