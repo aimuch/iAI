@@ -196,11 +196,11 @@
 ![LEDE step5](LEDE-install5.png)    
 
 #### 网卡非直通情况
-重新编辑配置LEDE虚拟机->设置添加除了最后一块虚拟网卡外的其余虚拟网卡，配置好的界面如下:    
+重新编辑配置LEDE虚拟机->设置添加**除了最后一块虚拟网卡外**的其余虚拟网卡，配置好的界面如下:    
 ![网卡非直通](LEDE-feizhitong.png)    
 
 #### 网卡直通情况
-重新编辑配置LEDE虚拟机->设置添加除了最后一块PCI设备以外的其余PCI设备，并对应其编号(最后一块给iKuai用了，假如错误的将所有PCI设备都加上了同时启动iKuai和LDDE的时候会提示设备错误)，配置好的界面如下:    
+重新编辑配置LEDE虚拟机->设置添加**除了最后一块PCI设备以外**的其余PCI设备，并对应其编号(最后一块给iKuai用了，假如错误的将所有PCI设备都加上了同时启动iKuai和LDDE的时候会提示设备错误)，配置好的界面如下:    
 ![网卡直通](LEDE-zhitong.png)   
 
 
@@ -221,10 +221,16 @@ vim /etc/config/network
 
 ### LEDE的web端设置
 电脑浏览器打开**10.10.10.10**，默认密码`koolshare`，进入iKuai的web客户端:   
-网络 -> 接口 -> 关闭WAN -> 关闭WAN6 -> 编辑LAN:    
+**网络 -> 接口 -> 关闭WAN -> 关闭WAN6 -> 编辑LAN**:    
 ![LEDE WEB1](LEDE-web1.png)    
 
-LAN -> 物理接口 -> 接口 -> **选中erspan0**以及**选中eth0-echo4**:   
+LAN -> 物理接口 -> 接口 -> **选中**:   
+- bond0
+- erspan0
+- eth0 - echo4
+- ip_vti0
+- teql0
+
 ![LEDE WEB2](LEDE-web2.png)    
 
 所要外接路由器作为AP，则需要将DHCP服务器->高级设置->强制勾选上。      
