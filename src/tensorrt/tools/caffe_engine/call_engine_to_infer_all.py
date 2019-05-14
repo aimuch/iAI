@@ -42,7 +42,7 @@ def load_image(img_path, net_input_shape):
 def test_Loader(TEST_PATH, net_input_shape):
     label_list = []
     img_list = []
-    result = []
+    pair = []
     folders = os.listdir(TEST_PATH)
     for folder in folders:
         folder_path = os.path.join(TEST_PATH, folder)
@@ -53,9 +53,9 @@ def test_Loader(TEST_PATH, net_input_shape):
             label = class_labels.index(folder)
             img_list.append(img)
             label_list.append(label)
-            result.append((img, label))
+            pair.append((img, label))
     
-    return result, (img_list, label_list)
+    return pair, (img_list, label_list)
 
 
 imgTestData = test_Loader(TEST_PATH, NET_INPUT_SHAPE)
