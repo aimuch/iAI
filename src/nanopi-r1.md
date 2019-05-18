@@ -74,7 +74,7 @@
     可以看到eMMC的盘符是`/dev/mmcblk1p1`
     用`dd`命令将`nanopi-h3_sd_lede_4.14_armhf_20190425.img`写到eMMC上:
     ```shell
-    sudo dd nanopi-h3_sd_lede_4.14_armhf_20190425.img /dev/mmcblk1p1
+    sudo dd if=nanopi-h3_sd_lede_4.14_armhf_20190425.img of=/dev/mmcblk1p1 bs=10MB
     ```
 - 烧写完成后，拔下SD卡，重启即可
 - 开启ssr服务：
