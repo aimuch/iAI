@@ -1,4 +1,4 @@
-# AI Play on Ubuntu Platform
+# AI on Ubuntu Platform
 
 AI实验环境搭建和深度学习算法安装实验     
       
