@@ -277,7 +277,12 @@ sudo update-initramfs -u
 ```shell
 lsmod | grep nouveau
 ```
+
+
 ### 安装NVIDIA官方显卡驱动     
+
+**NOTE：显卡驱动不要追求过新，够用即可.**
+
 通过`Ctrl + Alt + F1`进入文本模式，输入帐号密码登录，通过`Ctrl + Alt + F7`可返回图形化模式，在文本模式登录后首先关闭桌面服务：
 ```shell
 sudo service lightdm stop
