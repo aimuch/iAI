@@ -2124,7 +2124,7 @@ name = lily
 进入下载后的文件夹(假如下载后的文件放在了`/home/Download/`, 解压破解文件`Matlab2018aLinux64Crack.tar.gz`文件, 创建一个文件夹`Crack`来放置解压后的文件:    
 ```shell
 cd ~/Downloads
-sudo mkdir Crack
+mkdir Crack
 ```
 解压文件:
 ```shell
@@ -2144,14 +2144,14 @@ sudo mount -t auto -o loop R2018a_glnxa64_dvd1.iso /mnt/iso
 如果这个时候提示`/mnt/iso: WARNING:device write-protected, mounted read-only`,那就修改下`/mnt`的权限:    
 ```shell
 cd /
-sudo chmod 755 mnt
+sudo chmod 755 /mnt
 ```
 
 ### Matlab安装过程
 安装开始，从挂载的文件夹`iso`中:    
 ```shell
 cd ~
-sudo ./mnt/iso/install
+sudo /mnt/iso/install
 ```
 1. 选择 `Use a File Installation Key`:     
   ![matlab1](../img/matlab1.png)     
@@ -2171,7 +2171,7 @@ sudo ./mnt/iso/install
 1. 复制破解文件`Crack`中`license_standalone.lic`到安装目录中
     ```shell
     cd ~/Crack
-    sudo cp license_standalone.lic /usr/loca/MATLAB/R2018a/licenses
+    sudo cp license_standalone.lic /usr/local/MATLAB/R2018a/licenses
     ```
 2. 复制`Crack`中的`R2018a`到`安装目录`
     ```
@@ -2183,7 +2183,8 @@ sudo ./mnt/iso/install
 
 **收拾残局**, 取消挂载,删除文件:   
 ```shell
-sudo umunt /mnt/iso
+sudo umount /mnt/iso
+sudo umount /mnt/iso # 两次是因为挂在了两张光盘
 cd /mnt
 sudo rmdir iso
 ```
@@ -2191,7 +2192,7 @@ sudo rmdir iso
 ### Matlab设置
 创建命令方便在任何终端都可以打开`matlab`,采用软链接的方式在`/usr/local/bin`中创建启动命令`matlab`:    
 ```shell
-cd /usr/lcoal/bin
+cd /usr/local/bin
 sudo ln -s /usr/local/MATLAB/R2018a/bin/matlab matlab
 ```
 
