@@ -2181,7 +2181,7 @@ sudo /mnt/iso/install
 至此激活完成!    
 
 ### 创建快捷启动方式
-打开终端，输入命令 `sudo gedit /usr/share/applications/matlab.desktop` ,新建一个名为`matlab.desktop`的文件。输入以下内容:    
+打开终端，输入命令 `sudo gedit /usr/share/applications/Matlab.desktop` ,新建一个名为`Matlab.desktop`的文件。输入以下内容:    
 ```vim
 [Desktop Entry]
 Type=Application
