@@ -159,6 +159,17 @@ AI实验环境搭建和深度学习算法安装实验
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
 5.  [**参考资料**](#参考资料)
 
+---
+
+## TODO
+- [ ] Pytorch model => OONX
+- [ ] TensorFlow model => OONX
+- [ ] Caffe 源码解读
+- [ ] Darknet 源码解读
+- [ ] 语义分割
+- [ ] 目标追踪
+
+
 
 ---
 ##  参考资料  
