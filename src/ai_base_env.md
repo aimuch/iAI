@@ -2137,12 +2137,10 @@ sudo mkdir /mnt/iso
 ```
 先挂载`R2018a_glnxa64_dvd1.iso`:    
 ```shell
-cd ~
 sudo mount -t auto -o loop R2018a_glnxa64_dvd1.iso /mnt/iso
 ```
 如果这个时候提示`/mnt/iso: WARNING:device write-protected, mounted read-only`,那就修改下`/mnt`的权限:    
 ```shell
-cd /
 sudo chmod 755 /mnt
 ```
 
