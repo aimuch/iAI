@@ -2178,8 +2178,23 @@ sudo /mnt/iso/install
     cd ~/Crack
     sudo cp -r R2018a /usr/local/MATLAB
     ```
-
 至此激活完成!    
+
+### 创建快捷启动方式
+打开终端，输入命令 `sudo gedit /usr/share/applications/matlab.desktop` ,新建一个名为`matlab.desktop`的文件。输入以下内容:    
+```vim
+[Desktop Entry]
+Type=Application
+Name=Matlab
+GenericName=Matlab 2010b
+Comment=Matlab:The Language of Technical Computing
+Exec=sh /usr/local/MATLAB/R2018a/bin/matlab -desktop
+Icon=/usr/local/MATLAB/R2018a/toolbox/nnet/nnresource/icons/matlab.png
+StartupNotify=true
+Terminal=false
+Categories=Development;Matlab;
+```
+
 
 **收拾残局**, 取消挂载,删除文件:   
 ```shell
