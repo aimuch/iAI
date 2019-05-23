@@ -2123,18 +2123,17 @@ name = lily
 
 进入下载后的文件夹(假如下载后的文件放在了`/home/Download/`, 解压破解文件`Matlab2018aLinux64Crack.tar.gz`文件, 创建一个文件夹`Crack`来放置解压后的文件:    
 ```shell
-cd ~/Downloads
+cd ~/Downloads/Matlab
 mkdir Crack
 ```
 解压文件:
 ```shell
-cd ~/Downloads
+cd ~/Downloads/Matlab
 tar -xvf Matlab2018aLinux64Crack.tar.gz -C Crack
 ```
 在`/mnt`中创建一个文件夹用来挂载`R2018a_glnxa64_dvd1.iso`和`R2018a_glnxa64_dvd2.iso`:    
 ```shell
-cd /mnt
-sudo mkdir iso
+sudo mkdir /mnt/iso
 ```
 先挂载`R2018a_glnxa64_dvd1.iso`:    
 ```shell
@@ -2150,7 +2149,6 @@ sudo chmod 755 /mnt
 ### Matlab安装过程
 安装开始，从挂载的文件夹`iso`中:    
 ```shell
-cd ~
 sudo /mnt/iso/install
 ```
 1. 选择 `Use a File Installation Key`:     
@@ -2158,11 +2156,10 @@ sudo /mnt/iso/install
 2. 选择`Yes`,同意条约:     
   ![matlab2](../img/matlab2.png)     
 3. 选择默认安装目录,默认放在`/usr/local`中
-4. 选择`I have the File Installation Key for my license`,输入:
+4. 选择`I have the File Installation Key for my license`, 输入:
     `09806-07443-53955-64350-21751-41297`
-5. 安装到某个进度会提示插入`iso2`,这个时候挂载`R2018a_glnxa64_dvd2.iso`
+5. 安装到某个进度会提示插入`iso2`, 这个时候挂载`R2018a_glnxa64_dvd2.iso`
     ```shell
-    cd ~
     sudo mount -t auto -o loop R2018a_glnxa64_dvd2.iso /mnt/iso
     ```
 6. 最后安装完成选择`finsh`
@@ -2170,12 +2167,12 @@ sudo /mnt/iso/install
 ### 激活
 1. 复制破解文件`Crack`中`license_standalone.lic`到安装目录中
     ```shell
-    cd ~/Crack
+    cd ~/Downloads/Matlab/Crack
     sudo cp license_standalone.lic /usr/local/MATLAB/R2018a/licenses
     ```
 2. 复制`Crack`中的`R2018a`到`安装目录`
     ```
-    cd ~/Crack
+    cd ~/Downloads/Matlab/Crack
     sudo cp -r R2018a /usr/local/MATLAB
     ```
 至此激活完成!    
