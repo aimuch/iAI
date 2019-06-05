@@ -3,7 +3,7 @@
 AI实验环境搭建和深度学习算法安装实验     
       
 **安装环境**  
-*其他环境类似* 
+*其他平台环境类似* 
 ```
 硬件环境: Alienware 17R4 / NVIDIA GTX 1070 / ddr4 16G / SSD 512G / HDD 1T
 系统环境：Ubuntu 16.04 64bit
