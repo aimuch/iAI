@@ -1570,14 +1570,15 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **Document This** : doc注释自动生成
 - **Sublime Text Keymap** : 在VScode中添加Sublime Text 热门快捷键
 - **Git Lens** : 增强了内置的Visual Studio代码Git功能
+- **Visual Studio IntelliCode** : AI-assisted development
 - **Live Share** - 远程实时代码协同开发
 - **Remote - SSH** : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
 - **Remote - Containers** : 通过打开容器来使用沙箱工具链或基于容器的应用
 - **Remote - WSL** : 在Windows上通过WSL来获得Linux开发体验
+- **Anaconda Extension Pack** : A set of extensions that enhance the experience of Anaconda customers using Visual Studio Code
 - **Bookmarks** - 书签
 - Sublime Text Keymap and Settings Importer
 - Visual Studio IntelliCode
-- Anaconda Extension Pack
 - EditorConfig for VS Code
 - Markdown All in One
 - Markdown Shortcuts
