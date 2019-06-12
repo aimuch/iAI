@@ -90,7 +90,8 @@
 选择**Configure Management Network**进入设置:   
 ![Configure Management Network](ESXi-setting2.png)     
 
-选择**Network Adopters**将所有的网卡选中，这样任性一张网卡可以进入ESXi后台。     
+选择**Network Adopters**, 将所有的网卡选中，这样任性一张网卡可以进入ESXi后台:      
+![Network Adopters](ESXi-setting1_1.png)     
 
 选择**IPv4 Configuration**选项卡，然后回车:    
 ![IPv4 Configuration](ESXi-setting3.png)     
