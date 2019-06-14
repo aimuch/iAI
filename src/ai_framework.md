@@ -5,6 +5,7 @@
   - [TensorFlow FAQ](ai/tensorflow.md#tensorflow-faq)
 - [Pytorch](ai/pytorch.md#pytorch)
     - [将数据转换为Pytorch格式](ai/pytorch.md#将数据转换为pytorch格式)
+    - [Pytorch多GPU训练](ai/pytorch.md#pytorch多gpu训练)
 - [Caffe](ai/caffe.md#caffe)
 
 # AI框架数据结构

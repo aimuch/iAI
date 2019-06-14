@@ -1,6 +1,7 @@
 # Pytorch
 *基于Pytorch1.0*     
 - [将数据转换为Pytorch格式](#将数据转换为pytorch格式)
+- [Pytorch多GPU训练](#pytorch多gpu训练)
 
 
 ---
@@ -150,5 +151,54 @@ images = images[:4]
 imshow(torchvision.utils.make_grid(images))
 ```
 ![Tensor img show](../../img/pytorch_imgshow.png)      
+
+---
+## Pytorch多GPU训练
+利用服务器**多GPU**进行训练，需要在原单GPU基础上修改以下两处:    
+1. 网络模型 **Model**
+    ```python
+    # multi-GPU
+    import torch.nn as nn
+    new_net = nn.DataParallel(net, device_ids=[0, 1])
+    ```
+
+2. 更新参数字典 **state dict**:    
+    ```python
+    from collections import OrderedDict
+
+    checkpoint = torch.load(PATH)
+    state_dict = checkpoint['model_state_dict']
+    new_state_dict = OrderedDict()
+
+    for k, v in state_dict.items():
+        if 'module' not in k:
+            k = 'module.' + k
+        else:
+            k = k.replace('features.module.', 'module.features.')
+        new_state_dict[k]=v
+
+    model.load_state_dict(new_state_dict)
+    ```
+    或者:
+    ```python
+    #-----多GPU训练的模型读取的代码，multi-gpu training---------
+    def load_network(network, PATH):
+        state_dict = torch.load(PATH)
+        # create new OrderedDict that does not contain `module.`
+        from collections import OrderedDict
+        new_state_dict = OrderedDict()
+        for k, v in state_dict.items():
+            namekey = k[7:] # remove `module.`
+            new_state_dict[namekey] = v
+        # load params
+        network.load_state_dict(new_state_dict)
+        return network
+
+
+    #----------单GPU训练读取模型的代码，single gpu training-----------------
+    def load_network(network, PATH):
+        network.load_state_dict(torch.load(PATH))
+        return network
+    ```
 
 ---
