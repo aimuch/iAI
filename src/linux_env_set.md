@@ -1577,6 +1577,8 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **Remote - WSL** : 在Windows上通过WSL来获得Linux开发体验
 - **Anaconda Extension Pack** : A set of extensions that enhance the experience of Anaconda customers using Visual Studio Code
 - **Bookmarks** - 书签
+- Better Comments
+- Todo Tree
 - Sublime Text Keymap and Settings Importer
 - Visual Studio IntelliCode
 - EditorConfig for VS Code
