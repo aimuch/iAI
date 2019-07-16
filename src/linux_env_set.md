@@ -1563,6 +1563,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - C/C++
 - Python
 - Chinese (Simplified) Language Pack for Visual Studio Code
+- **TabNine** : All-language autocompleter — TabNine uses machine learning to help you write code faster
 - **Bracket Pair Colorizer** : 着色匹配括号
 - **Indent-Rainbow** : 对缩进显示彩虹色作色，使得更加易读
 - **Trailing Spaces** : 检测多余空格并高亮
