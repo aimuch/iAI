@@ -1435,7 +1435,7 @@ sudo apt-get install tmux
   ```
   可以修改右侧状态栏来显示天气预报:    
   ```
-  tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in?format=3) , %R , %d %b | #{username}#{root} | #{hostname} '
+  tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in/shanghai?format=3\&m) , %R , %d %b | #{username}#{root} | #{hostname} '
   ```
   效果如下:    
   ![tmux4](../img/tmux5.png)    
