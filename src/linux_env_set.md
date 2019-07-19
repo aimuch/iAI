@@ -1587,27 +1587,26 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - C/C++
 - Python
 - Chinese (Simplified) Language Pack for Visual Studio Code
-- **TabNine** : All-language autocompleter — TabNine uses machine learning to help you write code faster
+- **TabNine** : All-language autocompleter
 - **Bracket Pair Colorizer** : 着色匹配括号
 - **Indent-Rainbow** : 对缩进显示彩虹色作色，使得更加易读
 - **Trailing Spaces** : 检测多余空格并高亮
 - **Code Spell Checker** : 代码拼写检查
-- **Document This** : doc注释自动生成
 - **Sublime Text Keymap** : 在VScode中添加Sublime Text 热门快捷键
 - **Git Lens** : 增强了内置的Visual Studio代码Git功能
 - **Visual Studio IntelliCode** : AI-assisted development
-- **Live Share** - 远程实时代码协同开发
+- **Live Share** : 远程实时代码协同开发
 - **Remote - SSH** : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
 - **Remote - Containers** : 通过打开容器来使用沙箱工具链或基于容器的应用
 - **Remote - WSL** : 在Windows上通过WSL来获得Linux开发体验
 - **Anaconda Extension Pack** : A set of extensions that enhance the experience of Anaconda customers using Visual Studio Code
-- **Bookmarks** - 书签
-- Better Comments
+- **Bookmarks** : 书签
+- **Code Runner** : 代码一键运行，支持超过40种语言
 - Todo Tree
 - Sublime Text Keymap and Settings Importer
 - Visual Studio IntelliCode
 - EditorConfig for VS Code
-- Markdown All in One
+- **Markdown All in One** : 多合一的 Markdown 插件：自动补全，格式化，数学公式支持等功能以及丰富的快捷键
 - Markdown Shortcuts
 - markdownlint
 - VS Code Jupyter Notebook Previewer
@@ -1615,8 +1614,10 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - prototxt
 - GitHub Pull Requests
 - Git History
-- LaTeX Workshop
+- **LaTeX Workshop** : 提升 LaTeX 编排效率：预览，智能提示，格式化等功能以及丰富的快捷键
+- Syncing : 简单可靠的多设备间 VS Code 配置同步工具
 - vscode-cudacpp
+- Better Comments
 - **文件夹图标主题**
   - **vscode-icons**
   - Material Icon Theme
