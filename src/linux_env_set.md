@@ -31,6 +31,7 @@
     - [安装**zsh**](#安装zsh)
     - [安装**vimrc**](#安装vimrc)
     - [安装**oh-my-zsh**](#安装oh-my-zsh)
+    - [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
     - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)    
     - [安装**colorls**](#安装colorls)    
   - [**vim**配置](#vim配置)
@@ -878,45 +879,68 @@ git config --global oh-my-zsh.hide-status 1
 git config --global oh-my-zsh.hide-status 0
 ```
 
+### 安装zsh-autosuggestions    
+- **Oh My Zsh**
+    1. Clone this repository into $ZSH_CUSTOM/plugins (by default `~/.oh-my-zsh/custom/plugins`):   
+        ```shell
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        ```
+    2. Add the plugin to the list of plugins for Oh My Zsh to load (`inside ~/.zshrc`):   
+        ```vim
+        plugins=(zsh-autosuggestions)
+        ```
+    3. Start a new terminal session.
+
+- **Manual (Git Clone)**
+    1. Clone this repository somewhere on your machine. This guide will assume` ~/.zsh/zsh-autosuggestions`:    
+        ```shell
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+        ```
+    2. Add the following to your `.zshrc`:    
+        ```shell
+        source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+        ```
+    3. Start a new terminal session.
 
 
 ### 安装zsh-syntax-highlighting    
 - **Oh-my-zsh**    
   1. Clone this repository in **oh-my-zsh**'s plugins directory:
-    ```shell
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    ```
+        ```shell
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+        ```
   2. Activate the plugin in `~/.zshrc`:    
-    ```shell
-    plugins=(
-      git
-      zsh-syntax-highlighting
-    )
-    ```
+        ```shell
+        plugins=(
+        git
+        zsh-syntax-highlighting
+        )
+        ```
   3. Source `~/.zshrc` to take changes into account:   
-    ```shell
-    source ~/.zshrc
-    ```
+        ```shell
+        source ~/.zshrc
+        ```
   4. Update
-  ```shell
-  cd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git pull
-  ```
+        ```shell
+        cd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+        git pull
+        ```
 
 - **In your ~/.zshrc**    
   1. Simply clone this repository and source the script:
-    ```shell
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-    ```
+        ```shell
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+        echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+        ```
   2. Then, enable syntax highlighting in the current interactive shell:    
-    ```shell
-    source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    ```
+        ```shell
+        source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        ```
   If git is not installed, download and extract a snapshot of the latest development tree from:   
-    ```shell
-    https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
-    ```
+        ```shell
+        wget https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
+        ```
+  
   Note the `source` command must be **at the end** of `~/.zshrc`.
 
 
