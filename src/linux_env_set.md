@@ -1602,6 +1602,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **Anaconda Extension Pack** : A set of extensions that enhance the experience of Anaconda customers using Visual Studio Code
 - **Bookmarks** : 书签
 - **Code Runner** : 代码一键运行，支持超过40种语言
+- Comment Translate : VSCode 注释翻译
 - Todo Tree
 - Sublime Text Keymap and Settings Importer
 - Visual Studio IntelliCode
