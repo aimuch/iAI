@@ -82,6 +82,8 @@ AI实验环境搭建和深度学习算法安装实验
      - [**Loss Function**](src/ai/loss-function.md#loss-function)
         - [Loss Function简介](src/ai/loss-function.md#loss-function简介)
         - [Loss Function种类](src/ai/loss-function.md#loss-function种类)
+     - [网络参数量(模型大小)估计]
+     - [感受野计算]
 
 3.  [**AI Framework**](src/ai_framework.md#ai-framework)
     - [AI 常用的结构框架](src/ai_framework.md#ai框架数据结构)
@@ -173,6 +175,8 @@ AI实验环境搭建和深度学习算法安装实验
 - [ ] Darknet 源码解读
 - [ ] 语义分割
 - [ ] 目标追踪
+- [ ] 模型大小(参数量)估计
+- [ ] 感受野计算
 
 
 
