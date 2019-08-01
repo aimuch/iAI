@@ -79,6 +79,9 @@ AI实验环境搭建和深度学习算法安装实验
          - [方法1 ssh远程使用jupyter notebook](./src/ai_server_FAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./src/ai_server_FAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
      - [Transfer Learning](src/ai/transfer-learning.md#transfer-learning)
+     - [**Loss Function**](src/ai/loss-function.md#loss-function)
+        - [Loss Function简介](src/ai/loss-function.md#loss-function简介)
+        - [Loss Function种类](src/ai/loss-function.md#loss-function种类)
 
 3.  [**AI Framework**](src/ai_framework.md#ai-framework)
     - [AI 常用的结构框架](src/ai_framework.md#ai框架数据结构)
