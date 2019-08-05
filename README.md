@@ -82,8 +82,8 @@ AI实验环境搭建和深度学习算法安装实验
      - [**Loss Function**](src/ai/loss-function.md#loss-function)
         - [Loss Function简介](src/ai/loss-function.md#loss-function简介)
         - [Loss Function种类](src/ai/loss-function.md#loss-function种类)
-     - [网络参数量(模型大小)估计]
-     - [感受野计算]
+     - [**神经网络参数量(weights)计算**](src/ai/weights.md)
+     - [**特征尺寸(Feature Map)和感受野(Receptive Field)计算**](src/ai/receptive_field.md)
 
 3.  [**AI Framework**](src/ai_framework.md#ai-framework)
     - [AI 常用的结构框架](src/ai_framework.md#ai框架数据结构)
@@ -169,14 +169,14 @@ AI实验环境搭建和深度学习算法安装实验
 ---
 
 ## TODO
+- [x] 模型大小(参数量)估计
+- [x] 感受野计算
 - [ ] Pytorch model => OONX
 - [ ] TensorFlow model => OONX
 - [ ] Caffe 源码解读
 - [ ] Darknet 源码解读
 - [ ] 语义分割
 - [ ] 目标追踪
-- [ ] 模型大小(参数量)估计
-- [ ] 感受野计算
 
 
 
