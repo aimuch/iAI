@@ -1,7 +1,7 @@
 # Ubuntu FAQ
 
 [**Ubuntu FAQ**](#ubuntu-faq)
-  - [Awesome Software](#awesome-software)
+  - [Awesome Linux Software](#awesome-linux-software)
   - [**Docke**r安装与使用](#docker安装与使用)
     - [Docker安装](#docker安装)
     - [Docker使用](#docker使用)
@@ -57,14 +57,17 @@
     - [Unity环境](#unity环境)
     - [GNOME环境](#gnome环境)
 ---
-## Awesome Software
-- Visual Studio Code
-- Chrome
-- mpv media player
-- wps
-- Sublime Text
-- Beyond Compare
-- Wireshark
+## Awesome Linux Software
+- [Visual Studio Code](https://code.visualstudio.com/download)
+    ![Visual Studio Code](../img/vscode.gif)
+- [Chrome](https://www.google.com/intl/zh-CN/chrome/)
+- [mpv media player](https://mpv.io/installation/)
+- [WPS](https://www.wps.cn/)
+- [Sublime Text](https://www.sublimetext.com/)
+- [Beyond Compare](https://www.scootersoftware.com/download.php)
+- [Wireshark](https://www.wireshark.org/)
+- [kolourpaint](http://www.kolourpaint.org/)
+    ![kolourpaint](../img/kolourpaint.png)
 
 ---
 ## Docker安装与使用
