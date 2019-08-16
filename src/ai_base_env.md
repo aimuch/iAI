@@ -269,7 +269,7 @@ sudo gedit /etc/modprobe.d/blacklist-nouveau.conf
 blacklist nouveau  
 options nouveau modeset=0
 ```
-保存后关闭文件，注意此时还需执行以下命令使禁用 nouveau 真正生效：
+保存后关闭文件，注意此时还需执行以下命令使禁用 `nouveau` 真正生效：
 ```shell
 sudo update-initramfs -u
 ```
