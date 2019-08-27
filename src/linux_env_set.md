@@ -890,7 +890,10 @@ git config --global oh-my-zsh.hide-status 0
         ```
     2. Add the plugin to the list of plugins for Oh My Zsh to load (`inside ~/.zshrc`):   
         ```vim
-        plugins=(zsh-autosuggestions)
+        plugins=(
+                    git
+                    zsh-autosuggestions
+                )
         ```
     3. Start a new terminal session.
 
@@ -915,9 +918,10 @@ git config --global oh-my-zsh.hide-status 0
   2. Activate the plugin in `~/.zshrc`:    
         ```shell
         plugins=(
-        git
-        zsh-syntax-highlighting
-        )
+                    git
+                    zsh-autosuggestions
+                    zsh-syntax-highlighting
+                )
         ```
   3. Source `~/.zshrc` to take changes into account:   
         ```shell
