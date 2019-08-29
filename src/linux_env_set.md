@@ -1595,12 +1595,14 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - Python
 - Chinese (Simplified) Language Pack for Visual Studio Code
 - **TabNine** : All-language autocompleter
+- **Dash** : Dash, Zeal and Velocity integration in Visual Studio Code
+![Dash](../img/vscode-dash.gif)
 - **Bracket Pair Colorizer** : 着色匹配括号
 - **Indent-Rainbow** : 对缩进显示彩虹色作色，使得更加易读
 - **Trailing Spaces** : 检测多余空格并高亮
 - **Code Spell Checker** : 代码拼写检查
 - **Sublime Text Keymap** : 在VScode中添加Sublime Text 热门快捷键
-- **Git Lens** : 增强了内置的Visual Studio代码Git功能
+- **GitLens** : 增强了内置的Visual Studio代码Git功能
 - **Visual Studio IntelliCode** : AI-assisted development
 - **Live Share** : 远程实时代码协同开发
 - **Remote - SSH** : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
@@ -1618,7 +1620,10 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - Markdown Shortcuts
 - markdownlint
 - VS Code Jupyter Notebook Previewer
+- Project Manager
+- Path Intellisense
 - Beautify
+- ColorTabs
 - prototxt
 - GitHub Pull Requests
 - Git History
