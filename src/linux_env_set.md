@@ -1595,8 +1595,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - Python
 - Chinese (Simplified) Language Pack for Visual Studio Code
 - **TabNine** : All-language autocompleter
-- **Dash** : Dash, Zeal and Velocity integration in Visual Studio Code
-![Dash](../img/vscode-dash.gif)
+- **Dash** : Dash, Zeal and Velocity integration in Visual Studio Code, 目前只支持与Mac下的Dash关联
 - **Bracket Pair Colorizer** : 着色匹配括号
 - **Indent-Rainbow** : 对缩进显示彩虹色作色，使得更加易读
 - **Trailing Spaces** : 检测多余空格并高亮
