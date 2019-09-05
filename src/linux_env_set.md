@@ -1612,6 +1612,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **Code Runner** : 代码一键运行，支持超过40种语言
 - **Comment Translate** : VSCode 注释翻译
 - **Todo Tree** : Show TODO, FIXME, etc. comment tags in a tree view
+- **[Settings Sync](https://github.com/shanalikhan/code-settings-sync)** : Synchronize Settings
 - Sublime Text Keymap and Settings Importer
 - Visual Studio IntelliCode
 - EditorConfig for VS Code
