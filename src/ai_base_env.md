@@ -66,8 +66,10 @@
     ```vim
     # 首先调整windows至safeboot minimal模式，使用windows管理员权限运行cmd：
     bcdedit /set {current} safeboot minimal 
+    
     # 禁用raid
     进入bios，修改RAID至ACHI
+    
     # 重新进入windows，关闭safeboot minimal模式, 使用windows管理员权限运行cmd：
     bcdedit /deletevalue {current} safeboot
     ```
