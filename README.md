@@ -156,6 +156,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [LEDE](src/softRoute/softroute.md#lede)
        - [设置iKuai和LEDE开机自动启动](src/softRoute/softroute.md#设置ikuai和lede开机自动启动)
      - [NanoPi-R1烧写系统](./src/nanopi-r1.md)
+     - [GL-iNet AR750 官方固件安装SSR Plus插件](./src/GL-iNet-AR750-官方固件安装SSR-Plus-插件.md)
      - [**Shadowsocks**安装](./src/ss.md#shadowsocks安装)
        - [Shadowsocks说明](./src/ss.md#shadowsocks说明)
        - [安装Shadowsocks-qt5](./src/ss.md#安装shadowsocks-qt5)
