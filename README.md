@@ -166,7 +166,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [Unity环境](./src/linux_env_set.md#unity环境)
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
 5.  [**参考资料**](#参考资料)
-6.  [Sponsor](#sponsor)
+<!-- 6.  [Sponsor](#sponsor) -->
 ---
 
 ## TODO
@@ -180,9 +180,9 @@ AI实验环境搭建和深度学习算法安装实验
 - [ ] 目标追踪
 
 
-# Sponsor
+<!-- # Sponsor
 ![wechat](src/Sponsor/wechat.JPG)    
-![alipay](src/Sponsor/alipay.JPG)
+![alipay](src/Sponsor/alipay.JPG) -->
 
 ---
 ##  参考资料  
