@@ -62,9 +62,11 @@ AI实验环境搭建和深度学习算法安装实验
            - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
    9.  [安装**Caffe**](src/ai_base_env.md#安装caffe)   
        - [Python2下安装Caffe](src/ai_base_env.md#python2下安装cafe) 
-       - [Python3下安装Caffe](src/ai_base_env.md#python3下安装cafe )
+       - [Python3下安装Caffe](src/ai_base_env.md#python3下安装cafe)
    10. [安装Protobuf](src/ai_base_env.md#安装protobuf)
    11. [Linux MATLAB安装](src/ai_base_env.md#linux-matlab安装)
+       - [MATLAB 2018安装](src/ai_base_env.md#linux-matlab2018安装)
+       - [MATLAB 2019安装](src/ai_base_env.md#linux-matlab2019安装)
 
 2.  [**AI Algorithms**](./src/ai_algorithms.md)
      - [YOLO V3](src/ai_algorithms.md#yolo-v3)

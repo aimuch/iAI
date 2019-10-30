@@ -57,6 +57,8 @@
     - [Python3下安装Caffe](#python3下安装cafe )
 10. [安装**Protobuf**](#安装protobuf)
 11. [Linux **MATLAB**安装](#linux-matlab安装)
+    - [Linux **MATLAB 2018**安装](#linux-matlab-2018安装)
+    - [Linux **MATLAB 2019**安装](#linux-matlab-2019安装)
 
 ---
 ## 安装Ubuntu和Windows双系统  
@@ -2118,8 +2120,9 @@ name = lily
 ---
 ##  Linux MATLAB安装   
 
-### 安装前准备工作
-下载`MATLAB for Linux`文件, 这里用到的是[@晨曦月下](https://blog.csdn.net/m0_37775034/article/details/80876362)提供的百度网盘链接下载:    
+### Linux MATLAB 2018安装
+#### 安装前准备工作
+下载`MATLAB R2018a for Linux`文件, 这里用到的是[@晨曦月下](https://blog.csdn.net/m0_37775034/article/details/80876362)提供的百度网盘链接下载:    
 > 链接: https://pan.baidu.com/s/1W6jWkaXEMpMUEmIl8qmRwg    
 > 密码: igx6    
 
@@ -2146,7 +2149,7 @@ sudo mount -t auto -o loop R2018a_glnxa64_dvd1.iso /mnt/iso
 sudo chmod 755 /mnt
 ```
 
-### Matlab安装过程
+#### Matlab安装过程
 安装开始，从挂载的文件夹`iso`中:    
 ```shell
 sudo /mnt/iso/install
@@ -2177,7 +2180,7 @@ sudo /mnt/iso/install
     ```
 至此激活完成!    
 
-### 创建快捷启动方式
+#### 创建快捷启动方式
 打开终端，输入命令 `sudo gedit /usr/share/applications/Matlab.desktop` ,新建一个名为`Matlab.desktop`的文件。输入以下内容:    
 ```vim
 [Desktop Entry]
@@ -2201,12 +2204,93 @@ cd /mnt
 sudo rmdir iso
 ```
 
-### Matlab设置
+#### Matlab设置
 创建命令方便在任何终端都可以打开`matlab`,采用软链接的方式在`/usr/local/bin`中创建启动命令`matlab`:    
 ```shell
 cd /usr/local/bin
 sudo ln -s /usr/local/MATLAB/R2018a/bin/matlab matlab
 ```
+
+### Linux MATLAB 2019安装
+#### 安装前准备工作
+下载`MATLAB R2019b for Linux`文件, 进入下载后的文件夹(假如下载后的文件放在了`/home/Download/`, 解压破解文件`Matlab R2019b Linux64 Crack.tar.gz`文件, 创建一个文件夹`Crack`来放置解压后的文件:    
+```shell
+cd ~/Downloads/Matlab
+mkdir Crack
+```
+解压文件:
+```shell
+cd ~/Downloads/Matlab
+tar -xvf  Matlab\ R2019b\ Linux64\ Crack.tar.gz -C Crack
+```
+在`/mnt`中创建一个文件夹用来挂载`R2019b_Linux.iso`:    
+```shell
+sudo mkdir /mnt/iso
+```
+挂载`R2019b_Linux.iso`:    
+```shell
+sudo mount -t auto -o loop R2019b_Linux.iso /mnt/iso
+```
+如果这个时候提示`/mnt/iso: WARNING:device write-protected, mounted read-only`,那就修改下`/mnt`的权限:    
+```shell
+sudo chmod 755 /mnt
+```
+
+#### Matlab安装过程
+安装开始，从挂载的文件夹`iso`中:    
+```shell
+sudo /mnt/iso/install
+```
+1. 选择 `Use a File Installation Key`     
+2. 选择`Yes`,同意条约     
+3. 选择默认安装目录,默认安装在`/usr/local`中
+4. 选择`I have the File Installation Key for my license`, 输入:
+    `09806-07443-53955-64350-21751-41297`
+5. 最后安装完成选择`finsh`
+
+### 激活
+1. 复制破解文件`Crack`中`license_standalone.lic`到安装目录中
+    ```shell
+    cd ~/Downloads/Matlab/Crack
+    sudo cp license_standalone.lic /usr/local/Polyspace/R2019b/licenses
+    ```
+2. 复制`Crack`中的`R2019b`到`安装目录`
+    ```
+    cd ~/Downloads/Matlab/Crack
+    sudo cp -r R2019b /usr/local/Polyspace
+    ```
+至此激活完成!    
+
+#### 创建快捷启动方式
+打开终端，输入命令 `sudo gedit /usr/share/applications/matlab.desktop` ,新建一个名为`matlab.desktop`的文件。输入以下内容:    
+```vim
+[Desktop Entry]
+Type=Application
+Name=Matlab
+GenericName=Matlab R2019b
+Comment=Matlab:The Language of Technical Computing
+Exec=sh /usr/local/Polyspace/R2019b/bin/matlab -desktop
+Icon=/usr/local/Polyspace/R2019b/toolbox/nnet/nnresource/icons/matlab.png
+StartupNotify=true
+Terminal=false
+Categories=Development;Matlab;
+```
+
+
+**收拾残局**, 取消挂载,删除文件:   
+```shell
+sudo umount /mnt/iso
+cd /mnt
+sudo rmdir iso
+```
+
+#### Matlab设置
+创建命令方便在任何终端都可以打开`matlab`,采用软链接的方式在`/usr/local/bin`中创建启动命令`matlab`:    
+```shell
+cd /usr/local/bin
+sudo ln -s /usr/local/Polyspace/R2019b/bin/matlab matlab
+```
+
 
 
 **参考资料**    
