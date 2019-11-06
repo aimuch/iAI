@@ -627,6 +627,15 @@ pip3 install -U pyqt5
 ---
 ## 安装搜狗输入法
 
+0. 卸载旧版本搜狗输入法:    
+    ```bash
+    sudo apt-get purge sogoupinyin
+    
+    rm -rf ~/.config/sogou-qimpanel
+    rm -rf ~/.config/SogouPY
+    rm -rf ~/.config/SogouPY.users
+    ```
+
 1. [下载linux版搜狗输入法](https://pinyin.sogou.com/linux/?r=pinyin)    
 2. 命令行运行：    
    ```shell
@@ -1991,5 +2000,5 @@ apt-get install xserver-xorg-video-vmware
 
 
 **参考资料**    
-> [How to Install Themes in Ubuntu 18.04 and 16.04](https://itsfoss.com/install-themes-ubuntu/)    
-> [Ubuntu 16.04 - GUI freezes on login start page](https://unix.stackexchange.com/questions/368748/ubuntu-16-04-gui-freezes-on-login-start-page)
+> 1. [How to Install Themes in Ubuntu 18.04 and 16.04](https://itsfoss.com/install-themes-ubuntu/)    
+> 2. [Ubuntu 16.04 - GUI freezes on login start page](https://unix.stackexchange.com/questions/368748/ubuntu-16-04-gui-freezes-on-login-start-page)
