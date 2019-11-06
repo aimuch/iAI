@@ -20,6 +20,7 @@
   - [安装**Chrome**浏览器](#安装chrome浏览器)
   - [pip **/** pip3常见报错](#pip和pip3常见报错)
   - [Ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
+  - [安装Teamviewer](#安装teamviewer)
   - [安装搜狗输入法](#安装搜狗输入法)
   - [WPS设置](#wps设置)
     - [解决WPS启动提示字体未安装错误](#解决wps启动提示字体未安装错误)
@@ -615,6 +616,16 @@ spyder3
 ```shell
 pip3 install -U pyqt5
 ```
+---
+## 安装Teamviewer
+1. 安装依赖
+   ```shell
+   sudo apt-get install libdbus-1-3:i386 libasound2:i386 libexpat1:i386 libfontconfig1:i386 libfreetype6:i386 libjpeg62:i386 libpng12-0:i386 libsm6:i386 libxdamage1:i386 libxext6:i386 libxfixes3:i386 libxinerama1:i386 libxrandr2:i386 libxrender1:i386 libxtst6:i386 zlib1g:i386 libc6:i386
+   ```
+2. 安装Teamviewer
+   ```shell
+   sudo dpkg -i Teamviewer-xxx.deb
+   ```
 
 ---
 ## 安装搜狗输入法

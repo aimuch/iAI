@@ -119,6 +119,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [安装Chrome浏览器](./src/linux_env_set.md#安装chrome浏览器)
      - [pip **/** pip3常见报错](./src/linux_env_set.md#pip和pip3常见报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./src/linux_env_set.md#ubuntu-16下安装spyder3)
+     - [安装Teamviewer](./src/linux_env_set.md#安装teamviewer)
      - [安装搜狗输入法](./src/linux_env_set.md#安装搜狗输入法)
      - [WPS设置](./src/linux_env_set.md#wps设置)
        - [解决WPS启动提示字体未安装错误](./src/linux_env_set.md#解决wps启动提示字体未安装错误)
