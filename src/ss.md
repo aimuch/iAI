@@ -1,10 +1,11 @@
 # shadowsocks安装
 ***Ubuntu上面经常需要科学上网，为了防止忘记，故此记录***
-- [shadowsocks安装](#shadowsocks%E5%AE%89%E8%A3%85)
-  - [Shadowsocks说明](#shadowsocks%E8%AF%B4%E6%98%8E)
-  - [安装Shadowsocks-qt5](#%E5%AE%89%E8%A3%85shadowsocks-qt5)
-  - [安装electron-ssr](#%E5%AE%89%E8%A3%85electron-ssr)
-  - [配置chrome浏览器](#%E9%85%8D%E7%BD%AEchrome%E6%B5%8F%E8%A7%88%E5%99%A8)
+- [shadowsocks安装](#shadowsocks%e5%ae%89%e8%a3%85)
+  - [Shadowsocks说明](#shadowsocks%e8%af%b4%e6%98%8e)
+  - [安装Shadowsocks-qt5](#%e5%ae%89%e8%a3%85shadowsocks-qt5)
+    - [解决状态栏图标丢失问题](#%e8%a7%a3%e5%86%b3%e7%8a%b6%e6%80%81%e6%a0%8f%e5%9b%be%e6%a0%87%e4%b8%a2%e5%a4%b1%e9%97%ae%e9%a2%98)
+  - [安装electron-ssr](#%e5%ae%89%e8%a3%85electron-ssr)
+  - [配置chrome浏览器](#%e9%85%8d%e7%bd%aechrome%e6%b5%8f%e8%a7%88%e5%99%a8)
 
 ---
 ## Shadowsocks说明
@@ -59,6 +60,17 @@
     其中`icon.png`需要从网上下载也可以从`../src/ss/icon.png`找到，放入ss文件夹中：        
     ![icon](../src/ss/icon.png)    
     然后保存退出即可。
+
+### 解决状态栏图标丢失问题
+安装Qt默认库:
+```shell
+# Note, selecting 'qt5-default' instead of 'qt-default'
+sudo apt-get install qt-default
+
+sudo apt-get install qt4-default qt5-default
+```
+
+
 ---
 ## 安装electron-ssr
 **下载**    
