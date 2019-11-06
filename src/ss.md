@@ -69,7 +69,7 @@ sudo apt-get install qt-default
 
 sudo apt-get install qt4-default qt5-default
 ```
-
+![ss-status](../img/ss-status.png)    
 
 ---
 ## 安装electron-ssr
