@@ -168,6 +168,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [**Ubuntu 美化**](./src/linux_env_set.md#ubuntu-美化)
        - [Unity环境](./src/linux_env_set.md#unity环境)
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
+     - [Ubuntu启动后GUI界面卡住不动](./src/linux_env_set.md#ubuntu启动后gui界面卡住不动)
 5.  [**参考资料**](#参考资料)
 <!-- 6.  [Sponsor](#sponsor) -->
 ---

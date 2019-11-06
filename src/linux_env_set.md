@@ -57,6 +57,7 @@
   - [**Ubuntu 美化**](#ubuntu-美化)
     - [Unity环境](#unity环境)
     - [GNOME环境](#gnome环境)
+  - [Ubuntu启动后GUI界面卡住不动](#ubuntu启动后gui界面卡住不动)
 ---
 ## Awesome Linux Software
 - [Visual Studio Code](https://code.visualstudio.com/download)
@@ -1969,5 +1970,26 @@ sudo apt install gnome-shell-extensions
 
 ![Theme 8](../img/theme8.jpeg)     
 
+## Ubuntu启动后GUI界面卡住不动
+**Ubuntu 16.04 - GUI freezes on login start page**
+
+> I am unable to enter anything at the login screen; it just freezes directly after the page shows. The cursor inside the login form blinks about 10 times, then it stops. I can't move the mouse or use the keyboard.
+I already entered the secure mode and triggered update, upgrade and dist-upgrade via the root shell it made no difference.
+
+```bash
+apt-get update
+apt-get install xserver-xorg-input-all
+apt-get install ubuntu-desktop
+apt-get install ubuntu-minimal
+apt-get install xorg xserver-xorg
+apt-get install xserver-xorg-input-evdev  # I think this packet was the problem
+apt-get install xserver-xorg-video-vmware
+
+/etc/init.d/lightdm restart
+# reboot
+```
+
+
 **参考资料**    
 > [How to Install Themes in Ubuntu 18.04 and 16.04](https://itsfoss.com/install-themes-ubuntu/)    
+> [Ubuntu 16.04 - GUI freezes on login start page](https://unix.stackexchange.com/questions/368748/ubuntu-16-04-gui-freezes-on-login-start-page)
