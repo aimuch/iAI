@@ -619,7 +619,18 @@ pip3 install -U pyqt5
 ```
 ---
 ## 安装Teamviewer
-安装Teamviewer
+
+1. 卸载旧版本Teamviewer
+   ```bash
+   sudo apt-get purge teamviewer
+
+    rm -rf ~/.config/teamviewer
+
+    rm -rf ~/.local/share/teamviewer1*
+    #rm -rf ~/.local/share/teamviewer13
+    ```
+
+2. 安装Teamviewer
    ```shell
    sudo dpkg -i teamviewer_13.2.75536_amd64.deb
    ```
