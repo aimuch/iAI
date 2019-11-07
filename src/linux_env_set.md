@@ -635,10 +635,19 @@ pip3 install -U pyqt5
    sudo dpkg -i teamviewer_13.2.75536_amd64.deb
    ```
 
+3. Teamviewer安装过程中遇到的问题
+    - **Teamviewer 13 安装后Dash启动没有GUI界面**
+        进入 `/opt/teamviewer/logfiles/user` 下查看 `gui.log` 信息：
+        ```vim
+        Cannot mix incompatible Qt library (version 0x50501) with this library (version 0x50c03)
+        ```
+        进入 `/opt/` 目录下发现多了一个 **qt512** 文件夹，将其删除( `sudo rm -rf /opt/qt512` )再在Dash启动Teamviewer问题就解决了。
+
+
 ---
 ## 安装搜狗输入法
 
-0. 卸载旧版本搜狗输入法:    
+1. 卸载旧版本搜狗输入法:    
     ```bash
     sudo apt-get purge sogoupinyin
     
@@ -647,13 +656,13 @@ pip3 install -U pyqt5
     rm -rf ~/.config/SogouPY.users
     ```
 
-1. [下载linux版搜狗输入法](https://pinyin.sogou.com/linux/?r=pinyin)    
-2. 命令行运行：    
+2. [下载linux版搜狗输入法](https://pinyin.sogou.com/linux/?r=pinyin)    
+3. 命令行运行：    
    ```shell
     sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
    ```
-3. System Setting -> Language Support -> Keyboard input method system:`fcitx`    
-4. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
+4. System Setting -> Language Support -> Keyboard input method system:`fcitx`    
+5. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
 ![BundleInstall](../img/sougou.png)     
 5. 有可能重启后会出现两个输入法图标，解决方法：    
    ```shell
