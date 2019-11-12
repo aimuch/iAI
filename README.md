@@ -95,7 +95,7 @@ AI实验环境搭建和深度学习算法安装实验
     - [**Pytorch**](src/ai/pytorch.md#pytorch)
       - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
     - [**Caffe**](src/ai/caffe.md#caffe)
-      - [Caffe训练可视化](src/ai/caffe.md#caffe训练可视化)
+      - [Caffe训练模型可视化](src/ai/caffe.md#caffe训练模型可视化)
 
 4.  [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Awesome Software**](./src/linux_env_set.md#awesome-software)

@@ -1,9 +1,9 @@
 # Caffe
 
-[Caffe训练可视化](#caffe训练可视化)
+[Caffe训练模型可视化](#caffe训练模型可视化)
 
 
-## caffe训练可视化
+## caffe模型训练可视化
 ### 记录训练日志
 训练阶段需要加上`-log_dir ./log/`, 其中`./log/`为log文件存放文件文件夹：    
 ```sh
