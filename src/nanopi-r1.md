@@ -45,11 +45,11 @@
     su root # 密码fa
     eflasher
     ```
-    ![输入eflasher后的界面](./linux/nanopi-r1/Eflasher_friendlycore1.png)
+    ![输入eflasher后的界面](./linux/nanopi-r1/Eflasher_friendlycore1.png)    
     输入“１”，选择烧写friendlycore系统到eMMC上后，会提示如下信息：       
-    ![输入“１”](./linux/nanopi-r1/Eflasher_friendlycore2.png)
-    输入“yes”，确定进行烧写：
-    ![输入“yes”](./linux/nanopi-r1/Eflasher_friendlycore3.png)
+    ![输入“１”](./linux/nanopi-r1/Eflasher_friendlycore2.png)    
+    输入“yes”，确定进行烧写：    
+    ![输入“yes”](./linux/nanopi-r1/Eflasher_friendlycore3.png)    
 - 等待烧写完毕后，断电并从BOOT卡槽中取出TF卡，此时再上电就会从 eMMC 启动系统了。
 
 
@@ -59,7 +59,7 @@
 
 这里介绍我烧写成功的[nanopi-h3_sd_lede_4.14_armhf_20190425.img](./linux/nanopi-r1/nanopi-h3_sd_lede_4.14_armhf_20190425.img.zip)版本:    
 - 按照[烧写到TF卡](#烧写到TF卡)的方法先将`nanopi-r1_eflasher_friendlycore-xenial_4.14_armhf_YYYYMMDD.img`烧写到TF卡上，在这里的作用是引导将lede系统刷到emmc上；
-- 用 **DiskGenius** 将**FriendlyArm**的`exFAT分区`扩充以放下更多的安装镜像:    
+- 用 **DiskGenius** 将**FriendlyArm**的`exFAT分区`扩充以放下更多的安装镜像:   
   ![扩充FriendlyArm分区](./linux/nanopi-r1/nanopi-r1-resize.png)
 - 在Windows下的**磁盘管理**中给**FriendlyArm**分区分配一个磁盘编号。
 - 将`nanopi-h3_sd_lede_4.14_armhf_20190425.img`文件放到**friendlyarm**文件夹下:
