@@ -34,8 +34,12 @@
 ### 烧写到eMMC
 #### 烧写官方eflasher版本到eMMC
 - 按照[烧写到TF卡](#烧写到TF卡)的方法先将`nanopi-r1_eflasher_friendlycore-xenial_4.14_armhf_YYYYMMDD.img`烧写到TF卡上；
-- 用**友善USB转TTL串口线USB2UART**连接到NanoPi R1主板的debug串口，注意需要使用5V/2A电源给开发板MicroUSB供电:
+- 用**友善USB转TTL串口线USB2UART**连接到NanoPi R1主板的debug串口, 在电脑**设备管理器**中查看USB设备警告设备，右键更新驱动以后可以在**端口(COM和LPT)**中看到已经连上的设备，注意需要使用5V/2A电源给开发板MicroUSB供电:
     ![USB转串口调试模块连接主板](./linux/nanopi-r1/Matrix-USB2UART_nanopi_R1.jpg)
+
+- 用`MobaXterm`或者`Putty`的串口链接上述对应的**COM端口**，晶振频率设为`115200`：
+  ![MobaXterm串口设置界面](./linux/nanopi-r1/nanopi-r1-serial.png)
+  
 - 在命令行终端中通过执行下列命令进行烧写:
     ```shell
     su root # 密码fa
@@ -55,10 +59,18 @@
 
 这里介绍我烧写成功的[nanopi-h3_sd_lede_4.14_armhf_20190425.img](./linux/nanopi-r1/nanopi-h3_sd_lede_4.14_armhf_20190425.img.zip)版本:    
 - 按照[烧写到TF卡](#烧写到TF卡)的方法先将`nanopi-r1_eflasher_friendlycore-xenial_4.14_armhf_YYYYMMDD.img`烧写到TF卡上，在这里的作用是引导将lede系统刷到emmc上；
+- 用 **DiskGenius** 将**FriendlyArm**的`exFAT分区`扩充以放下更多的安装镜像:    
+  ![扩充FriendlyArm分区](./linux/nanopi-r1/nanopi-r1-resize.png)
+- 在Windows下的**磁盘管理**中给**FriendlyArm**分区分配一个磁盘编号。
 - 将`nanopi-h3_sd_lede_4.14_armhf_20190425.img`文件放到**friendlyarm**文件夹下:
     ![nanopi-h3_sd_lede_4.14_armhf_20190425](./linux/nanopi-r1/nanopi-h3_sd_lede_4.14_armhf_20190425.png)    
-- 用**友善USB转TTL串口线USB2UART**连接到NanoPi R1主板的debug串口，注意需要使用5V/2A电源给开发板MicroUSB供电:
+- 用**友善USB转TTL串口线USB2UART**连接到NanoPi R1主板的debug串口，在电脑**设备管理器**中查看USB设备警告设备，右键更新驱动以后可以在**端口(COM和LPT)**中看到已经连上的设备,注意需要使用5V/2A电源给开发板MicroUSB供电:
     ![USB转串口调试模块连接主板](./linux/nanopi-r1/Matrix-USB2UART_nanopi_R1.jpg)
+
+- 用`MobaXterm`或者`Putty`的串口链接上述对应的**COM端口**，晶振频率设为`115200`：
+  ![MobaXterm串口设置界面](./linux/nanopi-r1/nanopi-r1-serial.png)
+  
+
 - 在命令行终端中通过执行下列命令进行烧写:
     ```shell
     su root # 密码fa
@@ -71,10 +83,10 @@
     ```shell
     sudo fdick -l
     ```
-    可以看到eMMC的盘符是`/dev/mmcblk1p1`
+    可以看到**eMMC**的盘符是`/dev/mmcblk1`
     用`dd`命令将`nanopi-h3_sd_lede_4.14_armhf_20190425.img`写到eMMC上:
     ```shell
-    sudo dd if=nanopi-h3_sd_lede_4.14_armhf_20190425.img of=/dev/mmcblk1p1 bs=10MB
+    sudo dd if=nanopi-h3_sd_lede_4.14_armhf_20190425.img of=/dev/mmcblk1 bs=10MB
     ```
 - 烧写完成后，拔下SD卡，重启即可
 - 开启ssr服务：
