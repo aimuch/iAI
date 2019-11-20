@@ -86,13 +86,13 @@ sudo apt-get install qt4-default qt5-default
 ---
 ## 配置chrome浏览器
 1. 下载代理插件[Proxy SwitchyOmega](https://github.com/FelisCatus/SwitchyOmega)对应的chrome版本；
-2. 在chrome地址栏输入`chrome://extensions/`然后将`Developer mode`打开，然后将上面下载好的`SwitchyOmega_Chromium.crx`**拖入**该页面下：   
+2. 在chrome地址栏输入 `chrome://extensions/` 然后将 `Developer mode` 打开，然后将上面下载好的 `SwitchyOmega_Chromium.crx` **拖入** 该页面下：   
 ![chrome插件安装](../img/chrome_1.png)
 
-3. 安装好Proxy SwitchyOmega之后浏览器会自动打开配置界面，如下图所示：    
+3. 安装好 `Proxy SwitchyOmega` 之后浏览器会自动打开配置界面，如下图所示：    
 ![chrome插件安装](../img/chrome_2.png)
 
-4. 新建一个规则，名字随意，然后代理规则那里选择socks5，服务器地址填127.0.0.1，端口1080，如下图所示：   
+4. 新建一个规则，名字随意，然后代理规则那里选择 `socks5` ，服务器地址填 `127.0.0.1` ，端口`1080`，如下图所示：   
 ![chrome插件安装](../img/chrome_3.png)
 也可通过备份文件导入配置，然后保存修改，在浏览器中选择auto switch（自动切换）或者GFWed（备份文件恢复的配置，即自己添加的配置规则）。
 自动切换可以根据不同的网址来自动选择是否使用代理，现在在浏览器中应该能够流畅的科学上网了，当然，取决于你自己的shadowsocks账号配置。
