@@ -1,0 +1,4 @@
+Pillow
+pycuda
+numpy
+argparse

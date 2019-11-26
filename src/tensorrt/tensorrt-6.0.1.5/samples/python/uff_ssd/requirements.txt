@@ -1,0 +1,5 @@
+numpy
+Pillow
+pycuda
+requests
+tensorflow
