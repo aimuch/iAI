@@ -96,8 +96,10 @@ AI实验环境搭建和深度学习算法安装实验
       - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
     - [**Caffe**](src/ai/caffe.md#caffe)
       - [Caffe训练模型可视化](src/ai/caffe.md#caffe训练模型可视化)
-
-4.  [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
+4.  [**AI Model Optimization**](./src/ai_model_optimization.md)
+      - [网络量化](./src/ai_model_optimization.md#网络量化)
+      - [网络剪枝](./src/ai_model_optimization.md#网络剪枝)
+5.  [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Awesome Software**](./src/linux_env_set.md#awesome-software)
      - [**Ubuntu Library**](./src/linux_library.md#ubuntu-library)
        - [Eigen](./src/linux_library.md#eigen)
@@ -169,13 +171,15 @@ AI实验环境搭建和深度学习算法安装实验
        - [Unity环境](./src/linux_env_set.md#unity环境)
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
      - [Ubuntu启动后GUI界面卡住不动](./src/linux_env_set.md#ubuntu启动后gui界面卡住不动)
-5.  [**参考资料**](#参考资料)
+6.  [**参考资料**](#参考资料)
 <!-- 6.  [Sponsor](#sponsor) -->
 ---
 
 ## TODO
 - [x] 模型大小(参数量)估计
 - [x] 感受野计算
+- [ ] 网络优化
+- [ ] TensorRT自定义层
 - [ ] Pytorch model => OONX
 - [ ] TensorFlow model => OONX
 - [ ] Caffe 源码解读
