@@ -1,6 +1,6 @@
 # 深度学习服务器FAQ
 - [docker常用命令](#docker常用命令)
-- [多显卡训练问题](#多显卡问题)
+- [多显卡训练问题](#多显卡训练问题)
 - [远程访问服务器Jupyter Notebook](#远程访问服务器jupyter-notebook)
   - [方法1 ssh远程使用jupyter notebook](#方法1-ssh远程使用jupyter-notebook)
   - [方法2 利用jupyter notebook自带的远程访问功能](#方法2-利用jupyter-notebook自带的远程访问功能)
@@ -155,7 +155,7 @@ sh /opt/tomcat/bin/catalina.sh   run
 ---
 ## 多显卡训练问题
 若进docker时没有指定显卡，则docker默认用所有的显卡，容器中的显卡序列号与外部保持一致；   
-若进docker时指定了显卡(如-e NVIDIA_VISIBLE_DEVICES=2,3)，则docker容器中显卡的序列号从0开始编号(0,1)。   
+若进docker时指定了显卡(如 `-e NVIDIA_VISIBLE_DEVICES=2,3` )，则docker容器中显卡的序列号从`0`开始编号(0,1)。   
 
 
 ---
