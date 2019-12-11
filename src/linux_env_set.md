@@ -35,6 +35,7 @@
     - [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
     - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)    
     - [安装**colorls**](#安装colorls)    
+    - [安装**navi**](#安装navi)     
   - [**vim**配置](#vim配置)
     - [**YouCompleteMe**实现vim自动补全](#youcompleteme实现vim自动补全)
     - [vim最终配置](#vim最终配置)
@@ -1074,6 +1075,49 @@ gem uninstall colorls
 
 #### 参考资料  
 > [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
+
+
+### 安装navi    
+#### 安装fzf
+`fzf` 的GitHub仓库地址: https://github.com/junegunn/fzf
+`navi` 依赖 `fzf` , 所以需要先安装 `fzf`:    
+```sh
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+#### 安装navi     
+`navi` 的GitHub仓库地址: https://github.com/denisidoro/navi
+**Using oh-my-zsh**
+Make sure that your oh-my-zsh $ZSH_CUSTOM directory is configured, then clone navi into the plugins directory.
+```sh
+plugins_dir="$ZSH_CUSTOM/plugins"
+mkdir -p "$plugins_dir"
+cd "$plugins_dir"
+git clone https://github.com/denisidoro/navi
+```
+Then, add it to the oh-my-zsh plugin array to automatically enable the zsh widget:
+```sh
+ plugins=(
+   git
+   zsh-syntax-highlighting
+   zsh-autosuggestions
+   fzf
+   navi
+ )
+
+```
+Lastly, reload your zshrc or spawn a new terminal to load navi. Once this is done, you should be able to use it as a shell widget with no additional setup.
+
+> Please note that when installing as an oh-my-zsh plugin, navi will not be available as a command. If you also want to be able to run the command interactively, you will need to do one of the following:
+
+- Install it to /usr/bin/local (via sudo make install)   
+- Manually set $PATH so that navi can be found.    
+
+You can manually update your path by adding a line like this in your .zshrc:
+```shell
+export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
+```
+And verify that it works by running which navi after reloading your configuration.
 
 ---
 ## vim配置

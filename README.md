@@ -136,6 +136,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [安装**zsh-autosuggestions**](./src/linux_env_set.md#安装zsh-autosuggestions)
        - [安装**zsh-syntax-highlighting**](./src/linux_env_set.md#安装zsh-syntax-highlighting)
        - [安装**colorls**](./src/linux_env_set.md#安装colorls)
+       - [安装**安装navi**](./src/linux_env_set.md#安装navi)
      - [**vim**配置](./src/linux_env_set.md#vim配置)
        - [YouCompleteMe实现vim自动补全](./src/linux_env_set.md#youcompleteme实现vim自动补全)
        - [vim最终配置](./src/linux_env_set.md#vim最终配置)
