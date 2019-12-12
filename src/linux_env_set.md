@@ -1079,14 +1079,16 @@ gem uninstall colorls
 
 ### 安装navi    
 #### 安装fzf
-`fzf` 的GitHub仓库地址: https://github.com/junegunn/fzf
+`fzf` 的GitHub仓库地址: https://github.com/junegunn/fzf      
+
 `navi` 依赖 `fzf` , 所以需要先安装 `fzf`:    
 ```sh
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
+
 #### 安装navi     
-`navi` 的GitHub仓库地址: https://github.com/denisidoro/navi
+`navi` 的GitHub仓库地址: https://github.com/denisidoro/navi    
 **Using oh-my-zsh**
 Make sure that your oh-my-zsh $ZSH_CUSTOM directory is configured, then clone navi into the plugins directory.
 ```sh
