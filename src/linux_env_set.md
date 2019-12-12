@@ -1089,7 +1089,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 #### 安装navi     
 `navi` 的GitHub仓库地址: https://github.com/denisidoro/navi    
-**Using oh-my-zsh**
+
+**Using oh-my-zsh**    
+
 Make sure that your oh-my-zsh $ZSH_CUSTOM directory is configured, then clone navi into the plugins directory.
 ```sh
 plugins_dir="$ZSH_CUSTOM/plugins"
