@@ -1244,6 +1244,20 @@ cd  ~/.vim/bundle/YouCompleteMe/
 ```
 参数`–clang-completer`是为了支持C/C++的补全，不需要可以不加。编译过程比较长，耐心等待。    
 
+**上述编译支持go语言的时候，若提示以下错误，是因为在升级go版本的时候没有彻底卸载旧版本:**  
+```sh
+[100%] Built target _regex
+# runtime
+/usr/local/go/src/runtime/stubs_x86.go:10:6: stackcheck redeclared in this block
+	previous declaration at /usr/local/go/src/runtime/stubs_amd64x.go:10:6
+/usr/local/go/src/runtime/unaligned1.go:11:6: readUnaligned32 redeclared in this block
+	previous declaration at /usr/local/go/src/runtime/alg.go:321:40
+/usr/local/go/src/runtime/unaligned1.go:15:6: readUnaligned64 redeclared in this block
+	previous declaration at /usr/local/go/src/runtime/alg.go:329:40
+```
+> [golang github issue: runtime error on `go get` go1.11 #27269](https://github.com/golang/go/issues/27269)
+
+
 
 4  修改`.vimrc`配置文件       
 (1) 找到配置文件`.ycm_extra_conf.py`在~/.vim/bundle/YouCompleteMe/third_party/ycmd/下面:    
