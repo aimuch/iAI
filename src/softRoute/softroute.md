@@ -1,36 +1,36 @@
 # ESXi下安装iKuai和LEDE双软路由
 
-- [ESXi下安装iKuai和LEDE双软路由](#esxi%E4%B8%8B%E5%AE%89%E8%A3%85ikuai%E5%92%8Clede%E5%8F%8C%E8%BD%AF%E8%B7%AF%E7%94%B1)
-  - [硬件清单](#%E7%A1%AC%E4%BB%B6%E6%B8%85%E5%8D%95)
-  - [网络拓扑图](#%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E5%9B%BE)
+- [ESXi下安装iKuai和LEDE双软路由](#esxi%e4%b8%8b%e5%ae%89%e8%a3%85ikuai%e5%92%8clede%e5%8f%8c%e8%bd%af%e8%b7%af%e7%94%b1)
+  - [硬件清单](#%e7%a1%ac%e4%bb%b6%e6%b8%85%e5%8d%95)
+  - [网络拓扑图](#%e7%bd%91%e7%bb%9c%e6%8b%93%e6%89%91%e5%9b%be)
   - [ESXi](#esxi)
-    - [下载ESXi](#%E4%B8%8B%E8%BD%BDesxi)
-    - [制作启动U盘](#%E5%88%B6%E4%BD%9C%E5%90%AF%E5%8A%A8u%E7%9B%98)
-    - [软路由U盘启动安装ESXi](#%E8%BD%AF%E8%B7%AF%E7%94%B1u%E7%9B%98%E5%90%AF%E5%8A%A8%E5%AE%89%E8%A3%85esxi)
-    - [设置ESXi](#%E8%AE%BE%E7%BD%AEesxi)
-    - [ESXi的web端设置](#esxi%E7%9A%84web%E7%AB%AF%E8%AE%BE%E7%BD%AE)
-      - [设置笔记本网卡IP](#%E8%AE%BE%E7%BD%AE%E7%AC%94%E8%AE%B0%E6%9C%AC%E7%BD%91%E5%8D%A1ip)
-      - [激活ESXi](#%E6%BF%80%E6%B4%BBesxi)
-      - [打开虚拟机交换机的混杂模式](#%E6%89%93%E5%BC%80%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E6%B7%B7%E6%9D%82%E6%A8%A1%E5%BC%8F)
-      - [网卡非直通情况](#%E7%BD%91%E5%8D%A1%E9%9D%9E%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5)
-      - [网卡直通情况](#%E7%BD%91%E5%8D%A1%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5)
+    - [下载ESXi](#%e4%b8%8b%e8%bd%bdesxi)
+    - [制作启动U盘](#%e5%88%b6%e4%bd%9c%e5%90%af%e5%8a%a8u%e7%9b%98)
+    - [软路由U盘启动安装ESXi](#%e8%bd%af%e8%b7%af%e7%94%b1u%e7%9b%98%e5%90%af%e5%8a%a8%e5%ae%89%e8%a3%85esxi)
+    - [设置ESXi](#%e8%ae%be%e7%bd%aeesxi)
+    - [ESXi的web端设置](#esxi%e7%9a%84web%e7%ab%af%e8%ae%be%e7%bd%ae)
+      - [设置笔记本网卡IP](#%e8%ae%be%e7%bd%ae%e7%ac%94%e8%ae%b0%e6%9c%ac%e7%bd%91%e5%8d%a1ip)
+      - [激活ESXi](#%e6%bf%80%e6%b4%bbesxi)
+      - [打开虚拟机交换机的混杂模式](#%e6%89%93%e5%bc%80%e8%99%9a%e6%8b%9f%e6%9c%ba%e4%ba%a4%e6%8d%a2%e6%9c%ba%e7%9a%84%e6%b7%b7%e6%9d%82%e6%a8%a1%e5%bc%8f)
+      - [网卡非直通情况](#%e7%bd%91%e5%8d%a1%e9%9d%9e%e7%9b%b4%e9%80%9a%e6%83%85%e5%86%b5)
+      - [网卡直通情况](#%e7%bd%91%e5%8d%a1%e7%9b%b4%e9%80%9a%e6%83%85%e5%86%b5)
   - [iKuai](#ikuai)
-    - [安装iKuai](#%E5%AE%89%E8%A3%85ikuai)
-      - [网卡非直通情况](#%E7%BD%91%E5%8D%A1%E9%9D%9E%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5-1)
-      - [网卡直通情况](#%E7%BD%91%E5%8D%A1%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5-1)
-    - [设置iKuai](#%E8%AE%BE%E7%BD%AEikuai)
-    - [iKuai的web端设置](#ikuai%E7%9A%84web%E7%AB%AF%E8%AE%BE%E7%BD%AE)
+    - [安装iKuai](#%e5%ae%89%e8%a3%85ikuai)
+      - [网卡非直通情况](#%e7%bd%91%e5%8d%a1%e9%9d%9e%e7%9b%b4%e9%80%9a%e6%83%85%e5%86%b5-1)
+      - [网卡直通情况](#%e7%bd%91%e5%8d%a1%e7%9b%b4%e9%80%9a%e6%83%85%e5%86%b5-1)
+    - [设置iKuai](#%e8%ae%be%e7%bd%aeikuai)
+    - [iKuai的web端设置](#ikuai%e7%9a%84web%e7%ab%af%e8%ae%be%e7%bd%ae)
   - [LEDE](#lede)
-    - [安装LEDE](#%E5%AE%89%E8%A3%85lede)
-      - [网卡非直通情况](#%E7%BD%91%E5%8D%A1%E9%9D%9E%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5-2)
-      - [网卡直通情况](#%E7%BD%91%E5%8D%A1%E7%9B%B4%E9%80%9A%E6%83%85%E5%86%B5-2)
-    - [设置LEDE](#%E8%AE%BE%E7%BD%AElede)
-    - [LEDE的web端设置](#lede%E7%9A%84web%E7%AB%AF%E8%AE%BE%E7%BD%AE)
-    - [LEDE常见问题](#lede%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
-  - [设置iKuai和LEDE开机自动启动](#%E8%AE%BE%E7%BD%AEikuai%E5%92%8Clede%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8)
-    - [iKuai和LEDE虚拟机里设置](#ikuai%E5%92%8Clede%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%87%8C%E8%AE%BE%E7%BD%AE)
-    - [ESXi中设置自动启动](#esxi%E4%B8%AD%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8)
-  - [参考资料](#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
+    - [安装LEDE](#%e5%ae%89%e8%a3%85lede)
+      - [网卡非直通情况](#%e7%bd%91%e5%8d%a1%e9%9d%9e%e7%9b%b4%e9%80%9a%e6%83%85%e5%86%b5-2)
+      - [网卡直通情况](#%e7%bd%91%e5%8d%a1%e7%9b%b4%e9%80%9a%e6%83%85%e5%86%b5-2)
+    - [设置LEDE](#%e8%ae%be%e7%bd%aelede)
+    - [LEDE的web端设置](#lede%e7%9a%84web%e7%ab%af%e8%ae%be%e7%bd%ae)
+    - [LEDE常见问题](#lede%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98)
+  - [设置iKuai和LEDE开机自动启动](#%e8%ae%be%e7%bd%aeikuai%e5%92%8clede%e5%bc%80%e6%9c%ba%e8%87%aa%e5%8a%a8%e5%90%af%e5%8a%a8)
+    - [iKuai和LEDE虚拟机里设置](#ikuai%e5%92%8clede%e8%99%9a%e6%8b%9f%e6%9c%ba%e9%87%8c%e8%ae%be%e7%bd%ae)
+    - [ESXi中设置自动启动](#esxi%e4%b8%ad%e8%ae%be%e7%bd%ae%e8%87%aa%e5%8a%a8%e5%90%af%e5%8a%a8)
+  - [参考资料](#%e5%8f%82%e8%80%83%e8%b5%84%e6%96%99)
 
 
 
@@ -44,6 +44,9 @@
 
 ## 网络拓扑图
 ![网络拓扑图](network-topology.png)    
+
+- 第1个网口为管理口    
+- 第6个网口为wan口    
 
 ## ESXi
 ### 下载ESXi
