@@ -1706,6 +1706,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **Remote - SSH** : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
 - **Remote - Containers** : 通过打开容器来使用沙箱工具链或基于容器的应用
 - **Remote - WSL** : 在Windows上通过WSL来获得Linux开发体验
+- CMake Tools : Microsoft Extended CMake support in Visual Studio Code
 - **Anaconda Extension Pack** : A set of extensions that enhance the experience of Anaconda customers using VScode
 - **Bookmarks** : 书签
 - **Code Runner** : 代码一键运行，支持超过40种语言
