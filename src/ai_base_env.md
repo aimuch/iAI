@@ -238,7 +238,7 @@ sudo vim /etc/default/grub
 ```
 在 `grub` 文本中找到 `#GRUB_GFXMODE=640×480` 将 `#` 去掉并修改为正确的分辨率数值:    
 ```vim
-GRUB_GFXMODE=1920×4080
+GRUB_GFXMODE=1920×1080
 ```
 然后更新grub:    
 ```bash
