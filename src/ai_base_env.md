@@ -413,7 +413,7 @@ nvidia-smi
     
 
 ### 修改配置文件   
-安装完成后配置`CUDA`环境变量，使用`vim`配置文件：   
+安装完成后配置`CUDA`环境变量，使用`vim`配置文件(这里以`bash`为例, `zsh`配置一样)：   
 ```shell
 vim ~/.bashrc
 ```
@@ -421,6 +421,7 @@ vim ~/.bashrc
 ```shell
 # CUDA
 export PATH=/usr/local/cuda/bin:$PATH  #/usr/local/cuda是/usr/local/cuda-10.1的软连接
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ```    
 `/usr/local/cuda/` 其实是 `/usr/local/cuda-10.1` 或者 `/usr/local/cuda-9.0` 的软连接，后面讲的[切换CUDA版本](#CUDA多版本问题)其实就是修改这个软连接，将其指向需要的CUDA版本即可.    
@@ -428,7 +429,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 **使该配置生效：**   
 ```shell
-source  ~/.bashrc
+source  ~/.bashrc # source  ~/.zshrc
 ```
 **检验CUDA 是否安装成功**，输入：   
 ```shell
