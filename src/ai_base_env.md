@@ -703,6 +703,10 @@ source activate venv
 ```shell
 conda env remove -n venv
 ```
+**删除缓存的安装包**:    
+```shell
+conda clean --packages --tarballs
+```
 ### 卸载Anaconda
 直接删除anaconda文件夹。因为安装时默认是在用户的根目录下创建文件夹来放置anaconda的文件的，所以直接删除即可:      
 ```shell
