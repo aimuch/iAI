@@ -1090,7 +1090,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 #### 安装navi     
 `navi` 的GitHub仓库地址: https://github.com/denisidoro/navi    
 
-**Using oh-my-zsh**    
+<!-- **Using oh-my-zsh**    
 
 Make sure that your oh-my-zsh $ZSH_CUSTOM directory is configured, then clone navi into the plugins directory.
 ```sh
@@ -1121,7 +1121,19 @@ You can manually update your path by adding a line like this in your .zshrc:
 ```shell
 export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 ```
-And verify that it works by running which navi after reloading your configuration.
+And verify that it works by running which navi after reloading your configuration. -->
+
+- Downloading pre-compiled binaries
+  ```shell
+  bash <(curl -sL https://github.com/denisidoro/navi/blob/master/scripts/install)
+  ```
+
+- Building from source
+  ```shell
+  git clone https://github.com/denisidoro/navi ~/.navi
+  cd ~/.navi
+  make install
+  ```
 
 ---
 ## vim配置
