@@ -1712,7 +1712,14 @@ vim Makefile.config
 ```
 
 
-在`caffe`源码目录中修改`Makefile.config`内容如下：
+在`caffe`源码目录中修改`Makefile.config`内容， 要将python指定为本地的python3版本，如本地为**python3.6**， 则需要修改：
+```vim
+PYTHON_LIBRARIES := boost_python3 python3.6m
+PYTHON_INCLUDE := /usr/include/python3.6m \
+                 /usr/lib/python3.6/dist-packages/numpy/core/include
+```
+
+以下以**Python3.5**为例:    
 ```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
@@ -1786,8 +1793,8 @@ BLAS := atlas
 # Verify anaconda location, sometimes it's in root.
 # ANACONDA_HOME := $(HOME)/anaconda
 # PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
-		# $(ANACONDA_HOME)/include/python2.7 \
-		# $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include
+#                 $(ANACONDA_HOME)/include/python2.7 \
+#                 $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include
 
 # Uncomment to use Python 3 (default is Python 2)
 PYTHON_LIBRARIES := boost_python3 python3.5m

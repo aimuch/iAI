@@ -261,10 +261,53 @@ For more examples and ideas, visit:
 
 ## Docker使用
 
-- [ ] 添加介绍
+### 拉取镜像
+```shell
+docker pull nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
+```
+### 创建容器
+```shell
+docker creat --name myDocker --gpus all -it nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04 -v /home/andy/DevWorkSpace:~/DevWorkSpace /bin/bash
+```
 
+### 查看本地镜像
+```shell
+docker images
+```
 
+### 删除镜像
+```shell
+docker rmi nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
+```
+### 运行容器
+```shell
+docker exec -it myDocker /bin/bash
+```
+### 查看容器运行情况
+```shell
+docker ps # 查看运行中的容器
 
+docker ps -a # 查看所有容器
+```
+
+### 停止容器
+```shell
+docker stop myDocker
+```
+
+### 销毁容器
+```shell
+docker rm myDocker
+```
+
+## docker中常见的错误
+1. bash: nvcc: command not found
+    To get access to the CUDA development tools, you should use the devel images instead. These are the relevant tags:
+    ```vim
+    nvidia/cuda:10.2-devel-ubuntu18.04
+    nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
+    ```
+    These would then give you access to the tools such as nvcc and the cuDNN header files that are required for development.
 
 ### 参考文档
 > [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)    
