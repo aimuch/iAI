@@ -1566,7 +1566,7 @@ sudo apt-get install tmux
   cd
   git clone https://github.com/gpakosz/.tmux.git
   ln -s -f .tmux/.tmux.conf
-  cp .tmux/.tmux.conf.local .
+  ln -s .tmux/.tmux.conf.local .tmux.conf.local # cp .tmux/.tmux.conf.local .
   ```
 - 然后**配置`~/.tmux.conf.local`文件**，将下列代码取消屏蔽，并将原始的屏蔽：    
   ```
