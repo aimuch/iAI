@@ -420,9 +420,10 @@ vim ~/.bashrc
 在该文件最后加入以下两行并保存：   
 ```shell
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH  #/usr/local/cuda是/usr/local/cuda-10.1的软连接
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/cuda/bin:$PATH # cuda -> cuda10.1
+export CPATH=/usr/local/cuda/include:$CPATH #include -> targets/x86_64-linux/include
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda/lib64 #lib64 -> targets/x86_64-linux/lib
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH #lib64 -> targets/x86_64-linux/lib
 ```    
 `/usr/local/cuda/` 其实是 `/usr/local/cuda-10.1` 或者 `/usr/local/cuda-9.0` 的软连接，后面讲的[切换CUDA版本](#CUDA多版本问题)其实就是修改这个软连接，将其指向需要的CUDA版本即可.    
 
