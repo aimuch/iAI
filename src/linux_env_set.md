@@ -70,8 +70,10 @@
 - [Beyond Compare](https://www.scootersoftware.com/download.php)
 - [Wireshark](https://www.wireshark.org/)
 - [kolourpaint](http://www.kolourpaint.org/)
-    ![kolourpaint](../img/kolourpaint.png)
-- kolourpaint4: Ubuntu下优秀的图片编辑软件, 安装 `sudo apt-get install kolourpaint4`    
+    ![kolourpaint](../img/kolourpaint.png)    
+    ```shell
+    sudo apt-get install kolourpaint4
+    ```    
 
 ---
 ## Docker安装与使用
