@@ -42,6 +42,7 @@
   - [**Tmux**配置与使用](#tmux配置与使用)
     - [Tmux配置](#tmux配置)
     - [Tmux使用手册](#tmux使用手册)
+  - [远程连接Ubuntu](#远程连接ubuntu)
   - [**Sublime Text 3**配置问题](#sublime-text-3配置问题)
   - [**VSCode**配置问题](#vscode配置问题) 
     - [Awesome VScode Plugin](#awesome-vscode-plugin)
@@ -340,11 +341,11 @@ echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 source ~/.profile
 ```
 
-You’re done! Try installing a package:
+You're done! Try installing a package:
 ```bash
 brew install hello
 ```
-If you’re using an older distribution of Linux, installing your first package will also install a recent version of glibc and gcc. Use brew doctor to troubleshoot common issues.
+If you're using an older distribution of Linux, installing your first package will also install a recent version of glibc and gcc. Use brew doctor to troubleshoot common issues.
 
 ### linuxbrew必装包   
 - git
@@ -1194,7 +1195,7 @@ And verify that it works by running which navi after reloading your configuratio
 1 准备条件 
 
 (1) 最新版的`Vim(7.3.584+)`，须支持`python`。    
-终端输入命令：`vim –version` 或 打开vim用命令：version 查看版本信息，若python前有‘+’即可。    
+终端输入命令：`vim –version` 或 打开vim用命令：version 查看版本信息，若python前有'+'即可。    
 然后终端执行命令，安装相关依赖项：   
 ```shell
 sudo apt-get install python-dev
@@ -1281,7 +1282,7 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " 将你自己对非插件片段放在这行之后
 " <<<<<< vundle
 ```
-**注意**：`Bundle ‘插件名或git链接’ `表示要安装的插件     
+**注意**：`Bundle '插件名或git链接' `表示要安装的插件     
 
 (3)再次打开vim，在命令行模式中执行：
 ```vim
@@ -1291,8 +1292,8 @@ BundleInstall
 进入安装插件过程：    
 ![vim插件安装过程](../img/vim2.png)   
 
-Plugin前面有`‘>’`表示该插件正在安装，`YouCompleteMe`插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为`YouCompleteMe`需要手工编译出库文件，就像上图中的‘！’，忽略它。    
-**注**：若要卸载插件，只需将`.vimrc`中 “Bundle ‘插件’ ”这条语句删掉，然后在vim 命令行模式中执行：`BundleClean`即可。    
+Plugin前面有`'>'`表示该插件正在安装，`YouCompleteMe`插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为`YouCompleteMe`需要手工编译出库文件，就像上图中的'！'，忽略它。    
+**注**：若要卸载插件，只需将`.vimrc`中 "Bundle '插件' "这条语句删掉，然后在vim 命令行模式中执行：`BundleClean`即可。    
 
 3  编译`YouCompleteMe`     
     
@@ -1313,11 +1314,11 @@ cd  ~/.vim/bundle/YouCompleteMe/
 [100%] Built target _regex
 # runtime
 /usr/local/go/src/runtime/stubs_x86.go:10:6: stackcheck redeclared in this block
-	previous declaration at /usr/local/go/src/runtime/stubs_amd64x.go:10:6
+    previous declaration at /usr/local/go/src/runtime/stubs_amd64x.go:10:6
 /usr/local/go/src/runtime/unaligned1.go:11:6: readUnaligned32 redeclared in this block
-	previous declaration at /usr/local/go/src/runtime/alg.go:321:40
+    previous declaration at /usr/local/go/src/runtime/alg.go:321:40
 /usr/local/go/src/runtime/unaligned1.go:15:6: readUnaligned64 redeclared in this block
-	previous declaration at /usr/local/go/src/runtime/alg.go:329:40
+    previous declaration at /usr/local/go/src/runtime/alg.go:329:40
 ```
 > [golang github issue: runtime error on `go get` go1.11 #27269](https://github.com/golang/go/issues/27269)
 
@@ -1388,7 +1389,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 6 配合上面安装的`syntastic`还可以语法检测     
 ![vim语法检测](../img/vim5.png)   
 
-`‘>>’`指出有语法错误，但是检测速度太慢，没什么大用。自我感觉这个语法自动检测很烦，可以禁用它：    
+`'>>'`指出有语法错误，但是检测速度太慢，没什么大用。自我感觉这个语法自动检测很烦，可以禁用它：    
 进入 `/bundle/YouCompleteMe/plugin`，修改`youcompleteme.vim`中的：    
 ![syntastic](../img/vim6.png)   
 将如上图中的`第141行`的参数改为`0`就可以了。    
@@ -1399,7 +1400,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 ![YcmDiags效果](../img/vim8.png)   
 
 8 添加头文件     
-目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`’-isystem’`。     
+目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`'-isystem'`。     
 ![添加头文件](../img/vim9.png)   
 以后需要boost库等其他的补全，也需要将相应的路径添加进去。
 
@@ -1722,6 +1723,58 @@ sudo apt-get install tmux
 #### 参考资料    
 > [.tmux配置](https://github.com/gpakosz/.tmux)     
 > [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)    
+
+---
+## 远程连接Ubuntu
+### 通过SSH连接
+1. 需要安装ssh的客户端和服务端     
+    ```shell
+    sudo apt-get install ssh-server ssh-client
+    ```
+2. 安装完以后就可以在另一台电脑上远程连接了     
+    ```shell
+    ssh user_name@ip_address[:port]
+    ```
+
+### 通过VNC连接
+1. 在Ubuntu上首先需要安装vnc4server
+    ```shell
+    sudo apt-get install vnc4server
+    ```
+
+2. 第一次执行vncserver的时候需要为客户端连接设置6位的密码
+    ```shell
+    vncserver
+    ```
+
+3. 在vnc客户端（noVNC/vncviewer）中远程链接 `IP:1`，但是输入密码后显示灰屏并且鼠标为x型,这是因为vncserver在Ubuntu系统中找不到指定的图形化工具
+    
+    此时需要在Ubuntu中下载图形化工具:    
+    ```shell
+    apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+    ```
+
+    安装完成之后需要更改`~/.vnc/xstartup文件`,添加如下内容：
+    ```shell
+    export XKL_XMODMAP_DISABLE=1
+    unset SESSION_MANAGER
+    unset DBUS_SESSION_BUS_ADDRESS
+    gnome-panel &
+    gnmoe-settings-daemon &
+    metacity &
+    nautilus &
+    gnome-terminal &
+    ```
+
+
+4. 之后重启vncserver就OK了
+    ```shell
+    vncserver :1
+    ```
+    **注**：停止某个vnc服务
+    ```shell
+    vncserver -kill :端口号
+    ```
 
 
 ---

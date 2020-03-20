@@ -143,6 +143,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [**Tmux**配置与使用](./src/linux_env_set.md#tmux配置与使用)
        - [Tmux配置](./src/linux_env_set.md#tmux配置)
        - [Tmux使用手册](./src/linux_env_set.md#tmux使用手册)
+     - [远程连接Ubuntu](./src/linux_env_set.md#远程连接ubuntu)
      - [**Sublime Text 3**配置问题](./src/linux_env_set.md#sublime-text-3配置问题)
      - [**VSCode**配置问题](./src/linux_env_set.md#vscode配置问题)    
        - [**Awesome VScode Plugin**](./src/linux_env_set.md#awesome-vscode-plugin)
