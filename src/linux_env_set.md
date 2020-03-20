@@ -1181,7 +1181,10 @@ And verify that it works by running which navi after reloading your configuratio
   ```shell
   git clone https://github.com/denisidoro/navi ~/.navi
   cd ~/.navi
-  make install
+  make install 
+
+  # alternatively, to set install directory:
+  # make BIN_DIR=/usr/local/bin install
   ```
 
 ---
