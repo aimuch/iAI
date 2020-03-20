@@ -1172,6 +1172,9 @@ And verify that it works by running which navi after reloading your configuratio
 - Downloading pre-compiled binaries
   ```shell
   bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
+
+  # alternatively, to set directories:
+  # SOURCE_DIR=/opt/navi BIN_DIR=/usr/local/bin bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)l
   ```
 
 - Building from source
