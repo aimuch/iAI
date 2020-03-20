@@ -1171,7 +1171,7 @@ And verify that it works by running which navi after reloading your configuratio
 
 - Downloading pre-compiled binaries
   ```shell
-  bash <(curl -sL https://github.com/denisidoro/navi/blob/master/scripts/install)
+  bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
   ```
 
 - Building from source
