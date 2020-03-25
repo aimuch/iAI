@@ -1877,11 +1877,42 @@ make runtest -j $(($(nproc) + 1))
 make pycaffe -j $(($(nproc) + 1))
 ```    
 在编译的时候会提示: `cannot find -lboost_python3`:    
+```shell
+CXX src/caffe/layers/cudnn_pooling_layer.cpp
+CXX src/caffe/layers/cudnn_lcn_layer.cpp
+CXX src/caffe/layers/concat_layer.cpp
+AR -o .build_release/lib/libcaffe.a
+LD -o .build_release/lib/libcaffe.so.1.0.0
+/usr/bin/ld: cannot find -lboost_python3
+collect2: error: ld returned 1 exit status
+Makefile:582: recipe for target '.build_release/lib/libcaffe.so.1.0.0' failed
+make: *** [.build_release/lib/libcaffe.so.1.0.0] Error 1
+```
 ![编译caffe报错](../img/caffe-error5.png)     
 首先去`/usr/lib/x86_64-linux-gnu`目录下查看是否有python3版本的libboost，如果有类似`libboost_python35.so`但是没有`libboost_python3.so`则需要手动建立连接:    
 ```shell
 cd /usr/lib/x86_64-linux-gnu
-sudo ln -s libboost_python-py35.so libboost_python3.so 
+ls -al
+```
+```shell
+rwxrwxrwx   1  root  root    22 B    Tue Jun 14 16:53:34 2016 libboost_python.a  ⇒ libboost_python-py27.a
+rw-r--r--   1  root  root   657 KiB  Tue Jun 14 16:57:29 2016 libboost_python-py27.a 
+rwxrwxrwx   1  root  root    30 B    Tue Jun 14 16:53:34 2016 libboost_python-py27.so  ⇒ libboost_python-py27.so.1.58.0
+rw-r--r--   1  root  root   302 KiB  Tue Jun 14 16:57:28 2016 libboost_python-py27.so.1.58.0 
+rw-r--r--   1  root  root   649 KiB  Tue Jun 14 16:57:29 2016 libboost_python-py35.a 
+rwxrwxrwx   1  root  root    30 B    Tue Jun 14 16:53:34 2016 libboost_python-py35.so  ⇒ libboost_python-py35.so.1.58.0
+rw-r--r--   1  root  root   298 KiB  Tue Jun 14 16:57:29 2016 libboost_python-py35.so.1.58.0 
+rwxrwxrwx   1  root  root    23 B    Tue Jun 14 16:53:34 2016 libboost_python.so  ⇒ libboost_python-py27.so
+```
+
+然后建立软连接：    
+```
+cd /usr/lib/x86_64-linux-gnu 
+#/usr/lib/x86_64-linux-gnu$ sudo rm libboost_python.a                                       
+#/usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.a libboost_python.a
+#/usr/lib/x86_64-linux-gnu$ sudo rm libboost_python.so                         
+#/usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.so libboost_python.so
+/usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.so libboost_python3.so
 ```
 或者更改makefile文件:    
 ```makefile
@@ -1902,6 +1933,7 @@ export PYTHONPATH=~/caffe/python:$PYTHONPATH
 
 **常见问题 1**    
 ![编译caffe报错](../img/caffe-error4.png)      
+
 **解决方法**    
 ```shell
 git clone https://github.com/madler/zlib
