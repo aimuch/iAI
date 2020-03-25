@@ -1895,14 +1895,14 @@ cd /usr/lib/x86_64-linux-gnu
 ls -al
 ```
 ```shell
-rwxrwxrwx   1  root  root    22 B    Tue Jun 14 16:53:34 2016 libboost_python.a  ⇒ libboost_python-py27.a
-rw-r--r--   1  root  root   657 KiB  Tue Jun 14 16:57:29 2016 libboost_python-py27.a 
-rwxrwxrwx   1  root  root    30 B    Tue Jun 14 16:53:34 2016 libboost_python-py27.so  ⇒ libboost_python-py27.so.1.58.0
-rw-r--r--   1  root  root   302 KiB  Tue Jun 14 16:57:28 2016 libboost_python-py27.so.1.58.0 
-rw-r--r--   1  root  root   649 KiB  Tue Jun 14 16:57:29 2016 libboost_python-py35.a 
-rwxrwxrwx   1  root  root    30 B    Tue Jun 14 16:53:34 2016 libboost_python-py35.so  ⇒ libboost_python-py35.so.1.58.0
-rw-r--r--   1  root  root   298 KiB  Tue Jun 14 16:57:29 2016 libboost_python-py35.so.1.58.0 
-rwxrwxrwx   1  root  root    23 B    Tue Jun 14 16:53:34 2016 libboost_python.so  ⇒ libboost_python-py27.so
+rwxrwxrwx   Tue Jun 14 16:53:34 2016 libboost_python.a  ⇒ libboost_python-py27.a
+rw-r--r--   Tue Jun 14 16:57:29 2016 libboost_python-py27.a 
+rwxrwxrwx   Tue Jun 14 16:53:34 2016 libboost_python-py27.so  ⇒ libboost_python-py27.so.1.58.0
+rw-r--r--   Tue Jun 14 16:57:28 2016 libboost_python-py27.so.1.58.0 
+rw-r--r--   Tue Jun 14 16:57:29 2016 libboost_python-py35.a 
+rwxrwxrwx   Tue Jun 14 16:53:34 2016 libboost_python-py35.so  ⇒ libboost_python-py35.so.1.58.0
+rw-r--r--   Tue Jun 14 16:57:29 2016 libboost_python-py35.so.1.58.0 
+rwxrwxrwx   Tue Jun 14 16:53:34 2016 libboost_python.so  ⇒ libboost_python-py27.so
 ```
 
 然后建立软连接：    
