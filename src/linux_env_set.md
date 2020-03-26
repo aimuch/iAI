@@ -271,7 +271,7 @@ docker pull nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 ```
 ### 创建容器
 ```shell
-docker creat --name myDocker --gpus all -it nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04 -v /home/andy/DevWorkSpace:~/DevWorkSpace /bin/bash
+docker creat --name myDocker --gpus all -it --shm-size=1gb -v /home/andy/DevWorkSpace:~/DevWorkSpace nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04 /bin/bash
 ```
 
 ### 查看本地镜像
