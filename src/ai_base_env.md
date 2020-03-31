@@ -831,7 +831,7 @@ sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
 ```bash
 sudo ldconfig
 ```
-若遇到以下问题**[Package opencv was not found in the pkg-config search path](https://stackoverflow.com/questions/15320267/package-opencv-was-not-found-in-the-pkg-config-search-path)**:    
+若遇到以下问题[Package opencv was not found in the pkg-config search path](https://stackoverflow.com/questions/15320267/package-opencv-was-not-found-in-the-pkg-config-search-path):    
 ```shell
 $ pkg-config --modversion opencv
 ```
