@@ -747,6 +747,11 @@ wget https://github.com/opencv/opencv/archive/x.x.x.zip
 chmod 777 x.x.x.zip
 unzip x.x.x.zip
 ```
+### 安装依赖
+```bash
+sudo apt-get install cmake pkg-config vim
+```
+
 ### 编译OpenCV   
 如果对 `CMakeLists` 文件不进行修改，那么 `Opencv` 默认的安装位置
 ```bash
