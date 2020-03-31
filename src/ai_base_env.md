@@ -831,6 +831,35 @@ sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
 ```bash
 sudo ldconfig
 ```
+若遇到以下问题**[Package opencv was not found in the pkg-config search path](https://stackoverflow.com/questions/15320267/package-opencv-was-not-found-in-the-pkg-config-search-path)**:    
+```shell
+$ pkg-config --modversion opencv
+```
+```vim
+Package opencv was not found in the pkg-config search path.
+Perhaps you should add the directory containing `opencv.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'opencv' found
+```
+
+则需要安装:    
+```shell
+sudo apt-get install libopencv-dev
+```
+
+Stackoverflow原文的解决方案是:    
+From your question I guess you are using Ubuntu (or a derivate). If you use:
+```shell
+sudo apt-get install apt-file
+apt update
+apt-file search opencv.pc
+```
+then you see that you have to install `libopencv-dev`.    
+```shell
+sudo apt-get install libopencv-dev
+```
+After you do so, `pkg-config --cflags opencv` and `pkg-config --libs opencv` should work as expected.
+
 - **bash**    
   - **所有用户**    
     修改`/etc/bash.bashrc`文件:
