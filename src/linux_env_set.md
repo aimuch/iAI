@@ -1879,7 +1879,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 1. `CMakeLists.txt`中设置`set(CMAKE_BUILD_TYPE "Debug")`；    
 2. vscode中安装C++插件；
 3. 点击运行按钮会弹出配置C++环境，需要修改`launch.json`文件:    
-   ```json
+   ```JavaScript
    {
         // Use IntelliSense to learn about possible attributes.
         // Hover to view descriptions of existing attributes.
@@ -1907,15 +1907,15 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
             }
         ]
     }
-  ```
-  只需修改其中的一行`"program": "enter program name, for example ${workspaceFolder}/a.out"`
-将`enter program name, for example`删除，`a.out`修改为自己的生成的可执行文件名即可。    
+    ```
+    只需修改其中的一行`"program": "enter program name, for example ${workspaceFolder}/a.out"`, 将`enter program name, for example`删除，`a.out`修改为自己的生成的可执行文件名即可。    
 
-![vscode c++ 配置1](../img/vscode_c1.gif)    
+    ![vscode c++ 配置1](../img/vscode_c1.gif)    
+    
+    ![vscode c++ 配置2](../img/vscode_c2.gif)    
+    
+    ![vscode c++ 配置3](../img/vscode_c3.gif)    
 
-![vscode c++ 配置2](../img/vscode_c2.gif)    
-
-![vscode c++ 配置3](../img/vscode_c3.gif)    
 
 ### VScode环境配置
 
