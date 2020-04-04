@@ -149,6 +149,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [**VSCode**配置问题](./src/linux_env_set.md#vscode配置问题)    
        - [**Awesome VScode Plugin**](./src/linux_env_set.md#awesome-vscode-plugin)
        - [VScode Tips](./src/linux_env_set.md#vscode-tips)
+       - [Ubuntu VScode配置C++](./src/linux_env_set.md#ubuntu-vscode配置c++)
        - [VScode环境配置](./src/linux_env_set.md#vscode环境配置)
      - [Ubuntu查看和关闭进程](./src/linux_env_set.md#ubuntu查看和关闭进程)
      - [Ubuntu后台执行命令](./src/linux_env_set.md#ubuntu后台执行命令)   

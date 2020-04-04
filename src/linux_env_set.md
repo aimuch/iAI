@@ -45,8 +45,9 @@
   - [远程连接Ubuntu](#远程连接ubuntu)
   - [**Sublime Text 3**配置问题](#sublime-text-3配置问题)
   - [**VSCode**配置问题](#vscode配置问题) 
-    - [Awesome VScode Plugin](#awesome-vscode-plugin)
+    - [**Awesome VScode Plugin**](#awesome-vscode-plugin)
     - [VScode Tips](#vscode-tips)
+    - [Ubuntu VScode配置C++](#bbuntu-vscode配置c++)
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
@@ -1873,6 +1874,48 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
    - 在搜索栏前输入 `>` ，搜索所有可使用的命令;
 -  `ctrl` + `=` 和 `ctrl` + `-` 组合来进行缩放;
 
+### Ubuntu VScode配置C++
+
+1. `CMakeLists.txt`中设置`set(CMAKE_BUILD_TYPE "Debug")`；    
+2. vscode中安装C++插件；
+3. 点击运行按钮会弹出配置C++环境，需要修改`launch.json`文件:    
+   ```json
+   {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "(gdb) Launch",
+                "type": "cppdbg",
+                "request": "launch",
+                "program": "enter program name, for example ${workspaceFolder}/a.out",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${workspaceFolder}",
+                "environment": [],
+                "externalConsole": true,
+                "MIMode": "gdb",
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            }
+        ]
+    }
+  ```
+  只需修改其中的一行`"program": "enter program name, for example ${workspaceFolder}/a.out"`
+将`enter program name, for example`删除，`a.out`修改为自己的生成的可执行文件名即可。    
+
+![vscode c++ 配置1](../img/vscode_c1.gif)    
+
+![vscode c++ 配置2](../img/vscode_c2.gif)    
+
+![vscode c++ 配置3](../img/vscode_c3.gif)    
 
 ### VScode环境配置
 
