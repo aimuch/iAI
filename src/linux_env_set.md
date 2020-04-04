@@ -47,7 +47,7 @@
   - [**VSCode**配置问题](#vscode配置问题) 
     - [**Awesome VScode Plugin**](#awesome-vscode-plugin)
     - [VScode Tips](#vscode-tips)
-    - [Ubuntu VScode配置C++](#bbuntu-vscode配置c++)
+    - [Ubuntu VScode配置Cpp编译环境](#ubuntu-vscode配置cpp编译环境)
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
@@ -1874,7 +1874,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
    - 在搜索栏前输入 `>` ，搜索所有可使用的命令;
 -  `ctrl` + `=` 和 `ctrl` + `-` 组合来进行缩放;
 
-### Ubuntu VScode配置C++
+### Ubuntu VScode配置Cpp编译环境
 
 1. `CMakeLists.txt`中设置`set(CMAKE_BUILD_TYPE "Debug")`；    
 2. vscode中安装C++插件；
