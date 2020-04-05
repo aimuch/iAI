@@ -1826,6 +1826,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **GitLens** : 增强了内置的Visual Studio代码Git功能
 - **Visual Studio IntelliCode** : AI-assisted development
 - **Live Share** : 远程实时代码协同开发
+- **Remote Development**    
 - **Remote - SSH** : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
 - **Remote - Containers** : 通过打开容器来使用沙箱工具链或基于容器的应用
 - **Remote - WSL** : 在Windows上通过WSL来获得Linux开发体验
