@@ -1925,18 +1925,33 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 ![vscode](../img/vscode.png)     
 ```json
 {
-    "python.pythonPath": "/home/andy/anaconda3/envs/tensorflow/bin/python",
-    "window.zoomLevel": 0,
-    "ai.homepage.openOnStartup": false,
-    "vsicons.presets.foldersAllDefaultIcon": true,
-    "git.autofetch": true,
-    "git.enableSmartCommit": true,
-    "editor.fontFamily": "'Monaco', 'Dank Mono', 'Fira Code'",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 15,
-    "workbench.iconTheme": "vscode-icons",
-    "terminal.integrated.fontFamily": "'mononoki Nerd Font'",
-    "terminal.integrated.fontSize": 15,
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "g++ - 生成和调试活动文件",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "g++ build active file",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
 }
 ```
 其中:    
