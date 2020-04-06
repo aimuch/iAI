@@ -1881,30 +1881,32 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 2. vscode中安装C++插件；
 3. 点击运行按钮会弹出配置C++环境，需要修改`launch.json`文件:    
    ```JavaScript
-   {
-        // Use IntelliSense to learn about possible attributes.
-        // Hover to view descriptions of existing attributes.
-        // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    {
+        // 使用 IntelliSense 了解相关属性。 
+        // 悬停以查看现有属性的描述。
+        // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
         "version": "0.2.0",
         "configurations": [
             {
-                "name": "(gdb) Launch",
+                "name": "g++ - 生成和调试活动文件",
                 "type": "cppdbg",
                 "request": "launch",
-                "program": "enter program name, for example ${workspaceFolder}/a.out",
+                "program": "${fileDirname}/${fileBasenameNoExtension}",
                 "args": [],
                 "stopAtEntry": false,
                 "cwd": "${workspaceFolder}",
                 "environment": [],
-                "externalConsole": true,
+                "externalConsole": false,
                 "MIMode": "gdb",
                 "setupCommands": [
                     {
-                        "description": "Enable pretty-printing for gdb",
+                        "description": "为 gdb 启用整齐打印",
                         "text": "-enable-pretty-printing",
                         "ignoreFailures": true
                     }
-                ]
+                ],
+                "preLaunchTask": "g++ build active file",
+                "miDebuggerPath": "/usr/bin/gdb"
             }
         ]
     }
