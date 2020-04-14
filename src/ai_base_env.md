@@ -502,7 +502,7 @@ sudo service lightdm start
 `cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`格式的文件**, 不推荐下载安装`.deb`格式，若误装了`.deb`格式的cuDNN请用以下命令进行卸载:
 ```shell
 dpkg -l |grep -i libcudnn* # 查看.deb安装的cudnn
-sudo apt-get purge libcudnn×
+sudo apt-get purge libcudnn*
 ```    
 下面以安装**cuDNN v7.5.0**为例安装，其他版本类似，只需要将版本号改一下即可:    
 ![cuDNN Download](../img/cudnn.png)      
