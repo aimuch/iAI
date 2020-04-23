@@ -1877,7 +1877,10 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 ### Ubuntu VScode配置Cpp编译环境
 
-1. `CMakeLists.txt`中设置`set(CMAKE_BUILD_TYPE "Debug")`；    
+1. `CMakeLists.txt`中设置:    
+   ```
+   set(CMAKE_BUILD_TYPE "Debug")
+   ```
 2. vscode中安装C++插件；
 3. 点击运行按钮会弹出配置C++环境，需要修改`launch.json`文件:    
    ```JavaScript
