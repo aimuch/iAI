@@ -1745,16 +1745,71 @@ vim Makefile.config
 
 # 或者用右键选择gedit/vscode打开该文件
 ```
+修改 `Makefile.config` 文件内容：   
+- **应用 cudnn**   
+  将：`#USE_CUDNN := 1`修改为：`USE_CUDNN := 1`   
 
+- **应用 opencv 3 版本**   
+  将：`#OPENCV_VERSION := 3 `修改为：`OPENCV_VERSION := 3`   
+- **使用 python 接口**
+  将： `#WITH_PYTHON_LAYER := 1`修改为`WITH_PYTHON_LAYER := 1`   
+- **修改 python 路径**
+  将：   
+  ```vim
+  INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include
+  LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib
+  ```
+  修改为：         
+  ```vim
+  INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
+  LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
+  ```
+  此python路径为系统自带python的路径，假如想使用`Anaconda`的python的话需要在其他地方修改。
 
-在`caffe`源码目录中修改`Makefile.config`内容， 要将python指定为本地的python3版本，如本地为**python3.6**， 则需要修改：
+- **去掉compute_20**
+  找到
+  ```shell
+  # CUDA architecture setting: going with all of them.
+  # For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+  # For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+  # For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+  CUDA_ARCH := -gencode arch=compute_20,code=sm_20 \
+              -gencode arch=compute_20,code=sm_21 \
+              -gencode arch=compute_30,code=sm_30 \
+              -gencode arch=compute_35,code=sm_35 \
+              -gencode arch=compute_50,code=sm_50 \
+              -gencode arch=compute_52,code=sm_52 \
+              -gencode arch=compute_60,code=sm_60 \
+              -gencode arch=compute_61,code=sm_61 \
+              -gencode arch=compute_61,code=compute_61
+  ```
+  改为：
+  ```shell
+  # CUDA architecture setting: going with all of them.
+  # For CUDA < 6.0, comment the *_50 through *_61 lines for compatibility.
+  # For CUDA < 8.0, comment the *_60 and *_61 lines for compatibility.
+  # For CUDA >= 9.0, comment the *_20 and *_21 lines for compatibility.
+  CUDA_ARCH := -gencode arch=compute_30,code=sm_30 \
+              -gencode arch=compute_35,code=sm_35 \
+              -gencode arch=compute_50,code=sm_50 \
+              -gencode arch=compute_52,code=sm_52 \
+              -gencode arch=compute_60,code=sm_60 \
+              -gencode arch=compute_61,code=sm_61 \
+              -gencode arch=compute_61,code=compute_61
+  ```
+  由于**CUDA 9.x +并不支持compute_20**，此处不修改的话编译`caffe`时会报错：    
+  ```shell
+  nvcc fatal  : Unsupported gpu architecture 'compute_20'
+  ```
+
+相比较`Python2`特别的是，要将python指定为本地的`Python3`版本，如本地为**python3.6**， 则需要修改：
 ```vim
 PYTHON_LIBRARIES := boost_python3 python3.6m
 PYTHON_INCLUDE := /usr/include/python3.6m \
                  /usr/lib/python3.6/dist-packages/numpy/core/include
 ```
 
-以下以**Python3.5**为例:    
+以下以**Python3.6**为例:    
 ```shell
 ## Refer to http://caffe.berkeleyvision.org/installation.html
 # Contributions simplifying and improving our build system are welcome!
@@ -1832,9 +1887,9 @@ BLAS := atlas
 #                 $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include
 
 # Uncomment to use Python 3 (default is Python 2)
-PYTHON_LIBRARIES := boost_python3 python3.5m
-PYTHON_INCLUDE := /usr/include/python3.5m \
-                 /usr/lib/python3.5/dist-packages/numpy/core/include
+PYTHON_LIBRARIES := boost_python3 python3.6m
+PYTHON_INCLUDE := /usr/include/python3.6m \
+                 /usr/lib/python3.6/dist-packages/numpy/core/include
 
 # We need to be able to find libpythonX.X.so or .dylib.
 PYTHON_LIB := /usr/lib
