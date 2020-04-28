@@ -1951,6 +1951,15 @@ LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
 ```vim
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
+将:    
+```vim
+PYTHON_LIBRARIES ?= boost_python python2.7
+```
+改为:   
+```vim
+PYTHON_LIBRARIES ?= boost_python-py35 #py35需要改为本地目前python版本
+```
+
 至此caffe配置文件修改完毕，可以开始编译了。假如显卡不是feimi架构的可以输入如下命令防止出现`Unsupported gpu architecture 'compute_20'`的问题：    
 ```shell
 cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CUDA_GENERATION=Kepler ..
