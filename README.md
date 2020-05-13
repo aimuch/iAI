@@ -231,3 +231,4 @@ AI实验环境搭建和深度学习算法安装实验
 > 29. [经典神经网络参数的计算](https://zhuanlan.zhihu.com/p/49842046)
 > 30. [Ubuntu 18.04 NVIDIA驱动安装总结](https://blog.csdn.net/tjuyanming/article/details/80862290)
 > 31. [解决Linux双系统安装卡在启动Logo](https://blog.csdn.net/tjuyanming/article/details/79267984)
+> 32. [Ubuntu 18.04 安装 NVIDIA 显卡驱动](https://zhuanlan.zhihu.com/p/59618999)

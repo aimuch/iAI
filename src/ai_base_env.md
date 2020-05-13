@@ -314,9 +314,10 @@ nvidia-settings
 
 ## Ubuntu18TLS安装NVIDIA驱动   
 在Ubuntu 18.04上安装NVIDIA有三种方法：   
-- 使用标准Ubuntu仓库进行自动化安装    
-- 使用PPA仓库进行自动化安装    
-- 使用官方的NVIDIA驱动进行手动安装    
+1. 使用标准Ubuntu仓库进行自动化安装    
+2. 使用PPA仓库进行自动化安装    
+3. 使用官方的NVIDIA驱动进行手动安装    
+
 上述三种方法均可用，更推荐使用手动安装。    
 
 **注意**：   
@@ -389,6 +390,13 @@ $ sudo apt install nvidia-390
 
 这种方式是最为推荐的方式。    
 
+需要先安装一些 `NVIDIA` 显卡依赖的软件，在终端依次执行如下命令：    
+```shell
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install build-essential libc6:i386
+```
+
 首先识别NVIDIA显卡型号，输入一下命令：    
 ```shell
 $  lshw -numeric -C display
@@ -407,7 +415,7 @@ $ sudo telinit 3
 
 在相应路径下安装NVIDIA驱动(安装文件也可为.sh后缀，如果提示没有权限使用sudo)：    
 ```shell
-$ bash NVIDIA-Linux-x86_64-384.111.bin
+$ bash NVIDIA-Linux-x86_64-384.111.run
 ```
 按照以下步骤：    
 ```shell
@@ -415,9 +423,13 @@ Accept License
 The distribution-provided pre-install script failed! Are you sure you want to continue? -> CONTINUE INSTALLATION
 Would you like to run the nvidia-xconfig utility? -> YES
 ```
-在安装结束后，在命令行输入一下命令重启，NVIDIA驱动即可安装成功：    
+安装完成后重启系统就可以点击软件列表中的 `NVIDIA` 的配置软件配置显卡驱动了，如果你遇到如下报错，请依次在终端输入如下命令解决：   
+**报错**： `WARNING: Unable to find suitable destination to install 32-bit compatibility libraries`    
+**解决办法**：    
 ```shell
-$ sudo reboot
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install libc6:i386
 ```
 
 **注意Ubuntu18.04进tty**   
