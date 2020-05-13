@@ -7,7 +7,7 @@ AI实验环境搭建和深度学习算法安装实验
 ```
 硬件环境: Alienware 17R4 / NVIDIA GTX 1070 / ddr4 16G / SSD 1T / HDD 1T
 系统环境：Ubuntu 16.04 64bit
-安装软件：CUDA9.0 / CUDA9.0 / caffe / YOLO V3 / Protobuf / Matlab / VIM
+安装软件：CUDA9.0 / cudnn / OpenCV / caffe / YOLO V3 / Protobuf / Matlab / VIM 
 ````
 ---
 ### 目录
