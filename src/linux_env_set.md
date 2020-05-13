@@ -953,6 +953,11 @@ let g:go_version_warning = 0
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 ```
 **插件**   
 
