@@ -16,6 +16,7 @@
     - [Ubuntu18TLS安装NVIDIA驱动](#ubuntu18tls安装nvidia驱动)   
     - [配置NVIDIA环境变量](#配置nvidia环境变量)   
     - [查看NVIDIA驱动版本](#查看nvidia驱动版本)    
+    - [解决Linux双系统安装卡在启动Logo](#解决linux双系统安装卡在启动logo)
 3. [安装**CUDA**](#安装cuda)   
     - [安装CUDA步骤](#安装cuda步骤)    
     - [修改配置文件](#修改配置文件)    
@@ -309,34 +310,7 @@ sudo apt-get install nvidia-418 nvidia-settings nvidia-prime  # CUDA 10.1
 **重启电脑**，通过下面命令查看显卡信息：   
 ```shell
 nvidia-settings
-```
-
-### 配置NVIDIA环境变量  
-使用 `vim` 命令打开配置文件：      
-```shell
-sudo apt-get install vim
-vim ~/.bashrc
-```
-然后在**文件最后**追加以下内容：   
-```shell
-# NVIDIA
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-```
-`wq` 保存并退出，运行以下内容使环境变量生效：   
-```shell
-source  ~/.bashrc
-```
-### 查看NVIDIA驱动版本    
-```bash
-cat /proc/driver/nvidia/version
-```
-![nvidia driver](../img/nvidia-driver.png)    
-或者   
-```shell
-nvidia-smi
-```
-![nvidia smi](../img/nvidia-smi.png)    
+```    
 
 ## Ubuntu18TLS安装NVIDIA驱动   
 在Ubuntu 18.04上安装NVIDIA有三种方法：   
@@ -445,6 +419,96 @@ Would you like to run the nvidia-xconfig utility? -> YES
 ```shell
 $ sudo reboot
 ```
+
+**注意Ubuntu18.04进tty**   
+If you are already in the TTY environment, you can use the shortcut to get out from TTY.
+```shell
+CTRL + ALT + F1 or F2
+```
+F1 is for my locked login screen. F2 is for my unlocked screen.
+However, if you’re in the GUI environment and you want to access with TTY, you can try
+```shell
+CTRL + ALT + F3 ~ F6
+```
+Ubuntu按下`Ctrl + Alt + Fn`键会进入tty界面（虚拟终端），电脑键盘有`F1-F12`，所以有12个tty。
+注意：有时候开机的时候也会进入tty界面
+在**Ubuntu18.04**系统下:    
+- 按下`Ctrl + Alt + Fn1`进入图形化用户登录界面
+- 按下`Ctrl + Alt + Fn2`进入当前图形化界面
+- 按下`Ctrl + Alt + Fn3-Fn6`进入命令行虚拟终端
+- 按下`Ctrl + Alt + Fn7-Fn12`进入另外的虚拟终端，这些虚拟终端没有任何程序执行，所以只能看到一个闪烁的光标
+要退出`Fn3-Fn12`虚拟终端，按下`Ctrl + Alt + F1`，或者`Ctrl + Alt + F2`就行了。
+注意：如果开机后进入`tty`界面（我的进入过tty1），先尝试上面的退出方法，如果不行，输入以下命令：
+```shell
+sudo apt install ubuntu-desktop
+```
+注意：输入后，没有提示输入密码，可能会出现以下命令：
+```shell
+[sudo] usrname(这里是你的用户名) 四个小白方块
+```
+接着在四个小白方块后面输入密码就可以了，然后会自动安装ubunu-desktop。
+
+
+### 配置NVIDIA环境变量  
+使用 `vim` 命令打开配置文件：      
+```shell
+sudo apt-get install vim
+vim ~/.bashrc
+```
+然后在**文件最后**追加以下内容：   
+```shell
+# NVIDIA
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+```
+`wq` 保存并退出，运行以下内容使环境变量生效：   
+```shell
+source  ~/.bashrc
+```
+### 查看NVIDIA驱动版本    
+```bash
+cat /proc/driver/nvidia/version
+```
+![nvidia driver](../img/nvidia-driver.png)    
+或者   
+```shell
+nvidia-smi
+```
+![nvidia smi](../img/nvidia-smi.png)
+
+### 解决Linux双系统安装卡在启动Logo
+在安装Linux 双系统时，经常会出现卡在安装logo的问题，这种原因一般是由于linux发行商收录的nouveau 的开源显卡的问题。针对这种情况，解决方案如下：    
+1 最重要的话放在前面：**安装Linux之前先关闭Security Boot**！！（不同主板引导界面中该选项的位置可能不太一致，但是大多数都是在boot 选项中的）    
+
+2 在进入grub安装界面的时候，在Install Ubuntu选项，按`e`,进入命令行模式，然后在quiet slash -- 后面(也可能没有 – )，添加以下内容，然后按F10重新引导
+    ```vim
+    acpi_osi=linux nomodeset
+    ```
+修改上述选项可以在开机的时候，禁用 `nouveau` 显卡      
+重新引导之后，你可能会发现，安装的窗口有一部分屏幕下方，导致部分按钮无法点击。此时，按下`Alt+F7`，鼠标会变成手指图标，即将窗口向上拖动即可。    
+
+3 安装完成，重启。在电脑重启黑屏的时候，拔出U盘。    
+(重启的时候也可能卡在logo ，所以在要求选择引导选项的时候，重复上述操作)    
+
+4 成功进入linux以后,要立即安装nvidia的显卡驱动。可以通过两种方式安装
+4.1 在设置->软件和更新->附加驱动(倒数第二个选项)里面选择安装(可能显卡驱动版本比较老)    
+4.2 或者去nvidia官网查看合适驱动安装
+
+
+ubuntu16.04进入tty 命令行登录模式(`Ctrl+Alt+F1`)，而ubuntu18.04则需要用`Ctrl+Alt+F3`,执行下列语句：
+```shell
+sudo apt-get purge nvidia-*  //删除可能存在的已有驱动
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-384   
+sudo reboot //重启
+```
+测试nvidia 驱动是否成功安装，使用以下命令：
+```shell
+nvidia-smi   
+nvidia-settings 
+```
+
 
 ---
 ## 安装CUDA    
