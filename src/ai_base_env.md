@@ -501,11 +501,11 @@ nvidia-smi
 
 ubuntu16.04进入tty 命令行登录模式(`Ctrl+Alt+F1`)，而ubuntu18.04则需要用`Ctrl+Alt+F3`,执行下列语句：
 ```shell
-sudo apt-get purge nvidia-*  //删除可能存在的已有驱动
+sudo apt-get purge nvidia-*  #删除可能存在的已有驱动
 sudo add-apt-repository ppa:graphics-drivers/ppa
 sudo apt-get update
 sudo apt-get install nvidia-384   
-sudo reboot //重启
+sudo reboot #重启
 ```
 测试nvidia 驱动是否成功安装，使用以下命令：
 ```shell
