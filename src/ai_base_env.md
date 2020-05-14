@@ -411,9 +411,19 @@ $ sudo telinit 3
 ```
 之后会进入一个新的命令行会话，使用当前的用户名密码登录。    
 
-在相应路径下安装NVIDIA驱动(安装文件也可为.sh后缀，如果提示没有权限使用sudo)：    
+如果原来安装过，需要先卸载：    
 ```shell
-$ bash NVIDIA-Linux-x86_64-384.111.run
+sudo apt-get --purge remove nvidia-*
+```
+或者:    
+```shell
+sudo ./NVIDIA-Linux-x86_64-440.82.run -uninstall
+```
+
+在相应路径下安装NVIDIA驱动：    
+```shell
+$ sudo chmod a+x NVIDIA-Linux-x86_64-440.82.run
+$ sudo ./NVIDIA-Linux-x86_64-440.82.run
 ```
 按照以下步骤：    
 ```shell
@@ -421,6 +431,15 @@ Accept License
 The distribution-provided pre-install script failed! Are you sure you want to continue? -> CONTINUE INSTALLATION
 Would you like to run the nvidia-xconfig utility? -> YES
 ```
+让后，更新内核，重启电脑：    
+```shell
+sudo update-initramfs -u
+sudo reboot now
+```
+**注意**    
+- 采用这种方法安装的驱动，每次内核更新后，都要按照上面的方法搞一遍才能启用新的驱动。    
+- 原来的方法通过添加PPA，可以自动更新，但是没有最新的驱动程序版本（Ubuntu18.04上最高390，Ubuntu16.04上为396），目前还不能支持2080Ti显卡。    
+
 安装完成后重启系统就可以点击软件列表中的 `NVIDIA` 的配置软件配置显卡驱动了，如果你遇到如下报错，请依次在终端输入如下命令解决：   
 **报错**： `WARNING: Unable to find suitable destination to install 32-bit compatibility libraries`    
 **解决办法**：    
