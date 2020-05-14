@@ -484,10 +484,8 @@ nvidia-smi
 在安装Linux 双系统时，经常会出现卡在安装logo的问题，这种原因一般是由于linux发行商收录的nouveau 的开源显卡的问题。针对这种情况，解决方案如下：    
 1 最重要的话放在前面：**安装Linux之前先关闭Security Boot**！！（不同主板引导界面中该选项的位置可能不太一致，但是大多数都是在boot 选项中的）    
 
-2 在进入grub安装界面的时候，在Install Ubuntu选项，按`e`,进入命令行模式，然后在quiet slash -- 后面(也可能没有 – )，添加以下内容，然后按F10重新引导
-    ```vim
-    acpi_osi=linux nomodeset
-    ```
+2 在进入grub安装界面的时候，在Install Ubuntu选项，按`e`,进入命令行模式，然后在`quiet slash`，添加`acpi_osi=linux nomodeset`，然后按`F10`重新引导。     
+
 修改上述选项可以在开机的时候，禁用 `nouveau` 显卡      
 重新引导之后，你可能会发现，安装的窗口有一部分屏幕下方，导致部分按钮无法点击。此时，按下`Alt+F7`，鼠标会变成手指图标，即将窗口向上拖动即可。    
 
