@@ -9,6 +9,7 @@
     - [Ubuntu与Windows双系统时间同步解决方法](#ubuntu与windows双系统时间同步解决方法)
     - [调整grub引导系统顺序](#调整grub引导系统顺序)
     - [设置grub引导菜单的分辨率](#设置grub引导菜单的分辨率)
+    - [设置grub Menu显示](#设置grub-menu显示)
 2. [安装**NVIDIA驱动**](#安装nvidia驱动)   
     - [安装NVIDIA驱动所需的依赖包](#安装nvidia驱动所需的依赖包)   
     - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)   
@@ -246,7 +247,12 @@ GRUB_GFXMODE=1920×1080
 ```bash
 sudo update-grub
 ```
-
+### 设置grub Menu显示
+1. `ctrl+alt+t`打开终端
+2. 键入  `sudo vim /etc/default/grub`  ，使用vim打开grub文件，或者使用其他文本编辑器亦可
+3. 在`GRUB-TIMEOUT_STYLE=hidden`行首添加#注释掉该行    
+4. (可选)将`GRUB_TIMEOUT=10`改为`3`，减少“自动选择默认项”等待时间    
+5. `sudo update-grub` 更新grub即可
 ---
 ## Ubuntu16TLS安装NVIDIA驱动   
 ### 安装驱动NVIDIA所需的依赖包   

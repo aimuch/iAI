@@ -17,6 +17,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [Ubuntu与Windows双系统时间同步解决方法](src/ai_base_env.md#ubuntu与windows双系统时间同步解决方法)
        - [调整grub引导系统顺序](src/ai_base_env.md#调整grub引导系统顺序)
        - [设置grub引导菜单的分辨率](src/ai_base_env.md#设置grub引导菜单的分辨率)
+       - [设置grub Menu显示](src/ai_base_env.md#设置grub-menu显示)
    2. [安装**NVIDIA驱动**](src/ai_base_env.md#安装nvidia驱动)   
        - [安装NVIDIA驱动所需的依赖包](src/ai_base_env.md#安装nvidia驱动所需的依赖包)   
        - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)   
