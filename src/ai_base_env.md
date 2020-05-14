@@ -336,17 +336,14 @@ $ sudo gedit /boot/grub/grub.cfg
 这种方法几乎是所有的示例中最简单的方法，也是该教程最为推荐的方法。首先，检测你的NVIDIA显卡型号和推荐的驱动程序的模型。在命令行中输入如下命令：
 ```shell
 $ ubuntu-drivers devices
-== /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0 ==
-modalias : pci:v000010DEd00001180sv00001458sd0000353Cbc03sc00i00
+== /sys/devices/pci0000:00/0000:00:01.1/0000:02:00.0 ==
+modalias : pci:v000010DEd00001E04sv00001458sd000037C4bc03sc00i00
 vendor   : NVIDIA Corporation
-model    : GK104 [GeForce GTX 680]
-driver   : nvidia-304 - distro non-free
-driver   : nvidia-340 - distro non-free
-driver   : nvidia-384 - distro non-free recommended
+driver   : nvidia-driver-440 - third-party free recommended
+driver   : nvidia-driver-410 - third-party free
+driver   : nvidia-driver-415 - third-party free
+driver   : nvidia-driver-435 - distro non-free
 driver   : xserver-xorg-video-nouveau - distro free builtin
- 
-== cpu-microcode.py ==
-driver   : intel-microcode - distro free
 ```
 从输出结果可以看到，目前系统已连接Nvidia GeFrand GTX 680显卡，建议安装驱动程序是 nvidia-384版本的驱动。如果您同意该建议，请再次使用Ubuntu驱动程序命令来安装所有推荐的驱动程序。    
 
@@ -366,23 +363,18 @@ $ sudo apt update
 接下来，识别显卡模型和推荐的驱动程序：    
 ```shell
 $ ubuntu-drivers devices
-== /sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0 ==
-modalias : pci:v000010DEd00001180sv00001458sd0000353Cbc03sc00i00
+== /sys/devices/pci0000:00/0000:00:01.1/0000:02:00.0 ==
+modalias : pci:v000010DEd00001E04sv00001458sd000037C4bc03sc00i00
 vendor   : NVIDIA Corporation
-model    : GK104 [GeForce GTX 680]
-driver   : nvidia-340 - third-party free
-driver   : nvidia-390 - third-party free recommended
-driver   : nvidia-387 - third-party free
-driver   : nvidia-304 - distro non-free
-driver   : nvidia-384 - third-party free
+driver   : nvidia-driver-440 - third-party free recommended
+driver   : nvidia-driver-410 - third-party free
+driver   : nvidia-driver-415 - third-party free
+driver   : nvidia-driver-435 - distro non-free
 driver   : xserver-xorg-video-nouveau - distro free builtin
-
-== cpu-microcode.py ==
-driver   : intel-microcode - distro free
 ```
 输入以下命令：    
 ```shell
-$ sudo apt install nvidia-390
+$ sudo apt install nvidia-dirver-440
 ```
 一旦完成，即可重新启动系统。    
 
@@ -502,9 +494,9 @@ nvidia-smi
 3 安装完成，重启。在电脑重启黑屏的时候，拔出U盘。    
 (重启的时候也可能卡在logo ，所以在要求选择引导选项的时候，重复上述操作)    
 
-4 成功进入linux以后,要立即安装nvidia的显卡驱动。可以通过两种方式安装
+4 成功进入linux以后,要立即安装nvidia的显卡驱动。可以通过两种方式安装       
 4.1 在设置->软件和更新->附加驱动(倒数第二个选项)里面选择安装(可能显卡驱动版本比较老)    
-4.2 或者去nvidia官网查看合适驱动安装
+4.2 或者去nvidia官网查看合适驱动安装    
 
 
 ubuntu16.04进入tty 命令行登录模式(`Ctrl+Alt+F1`)，而ubuntu18.04则需要用`Ctrl+Alt+F3`,执行下列语句：
