@@ -423,7 +423,7 @@ sudo ./NVIDIA-Linux-x86_64-440.82.run -uninstall
 在相应路径下安装NVIDIA驱动：    
 ```shell
 $ sudo chmod a+x NVIDIA-Linux-x86_64-440.82.run
-$ sudo ./NVIDIA-Linux-x86_64-440.82.run
+$ sudo ./NVIDIA-Linux-x86_64-440.82.run --no-x-check
 ```
 按照以下步骤：    
 ```shell
