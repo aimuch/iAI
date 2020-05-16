@@ -948,7 +948,7 @@ unzip x.x.x.zip
 ```
 ### 安装依赖
 ```bash
-sudo apt-get install cmake pkg-config vim
+sudo apt-get install cmake pkg-config vim gtk+-3.0
 ```
 
 ### 编译OpenCV   
