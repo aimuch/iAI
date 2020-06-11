@@ -2590,6 +2590,13 @@ sudo /mnt/iso/install
     `09806-07443-53955-64350-21751-41297`
 5. 最后安装完成选择`finsh`
 
+#### Matlab设置
+创建命令方便在任何终端都可以打开`matlab`,采用软链接的方式在`/usr/local/bin`中创建启动命令`matlab`:    
+```shell
+cd /usr/local/bin
+sudo ln -s /usr/local/Polyspace/R2019b/bin/matlab matlab
+```
+
 ### 激活
 1. 复制破解文件`Crack`中`license_standalone.lic`到安装目录中
     ```shell
@@ -2601,6 +2608,7 @@ sudo /mnt/iso/install
     cd ~/Downloads/Matlab/Crack
     sudo cp -r R2019b /usr/local/Polyspace
     ```
+3. 在命令行执行`sudo matlab` 然后选择`license_standalone.lic`完成激活。    
 至此激活完成!    
 
 #### 创建快捷启动方式
@@ -2625,14 +2633,6 @@ sudo umount /mnt/iso
 cd /mnt
 sudo rmdir iso
 ```
-
-#### Matlab设置
-创建命令方便在任何终端都可以打开`matlab`,采用软链接的方式在`/usr/local/bin`中创建启动命令`matlab`:    
-```shell
-cd /usr/local/bin
-sudo ln -s /usr/local/Polyspace/R2019b/bin/matlab matlab
-```
-
 
 
 **参考资料**    
