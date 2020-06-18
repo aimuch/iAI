@@ -2205,10 +2205,10 @@ rwxrwxrwx   Tue Jun 14 16:53:34 2016 libboost_python.so  ⇒ libboost_python-py2
 然后建立软连接：    
 ```shell
 cd /usr/lib/x86_64-linux-gnu 
-#/usr/lib/x86_64-linux-gnu$ sudo rm libboost_python.a                                       
-#/usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.a libboost_python.a
-#/usr/lib/x86_64-linux-gnu$ sudo rm libboost_python.so                         
-#/usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.so libboost_python.so
+/usr/lib/x86_64-linux-gnu$ sudo rm libboost_python.a                                       
+/usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.a libboost_python.a
+/usr/lib/x86_64-linux-gnu$ sudo rm libboost_python.so                         
+/usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.so libboost_python.so
 /usr/lib/x86_64-linux-gnu$ sudo ln -s libboost_python-py35.so libboost_python3.so
 ```
 或者更改makefile文件:    
