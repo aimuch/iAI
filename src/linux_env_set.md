@@ -1060,7 +1060,8 @@ git config --global oh-my-zsh.hide-status 0
    ```
     安装`Rbenv`:    
     ```shell
-    curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+    # curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
     ```
     配置`Rbenv`环境:    
     ```shell
@@ -1069,17 +1070,24 @@ git config --global oh-my-zsh.hide-status 0
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(rbenv init -)"' >> ~/.bashrc
     source ~/.bashrc
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+    exec $SHELL
     
     # Zsh
     echo '\n# Rbenv' >> ~/.zsh
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     source ~/.zshrc
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.zshrc
+    exec $SHELL
     ```
     安装`Ruby`:    
     ```shell
     rbenv install 2.5.1
     rbenv global 2.5.1
+    ruby -v
     ```
 
 2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`中的`Mononoki`字体。可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
