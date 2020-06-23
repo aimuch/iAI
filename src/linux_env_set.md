@@ -1066,7 +1066,7 @@ git config --global oh-my-zsh.hide-status 0
     配置`Rbenv`环境:    
     ```shell
     # Bash
-    echo '\n# Rbenv' >> ~/.bashrc
+    echo '# Rbenv' >> ~/.bashrc
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(rbenv init -)"' >> ~/.bashrc
     source ~/.bashrc
@@ -1076,7 +1076,7 @@ git config --global oh-my-zsh.hide-status 0
     exec $SHELL
     
     # Zsh
-    echo '\n# Rbenv' >> ~/.zsh
+    echo '# Rbenv' >> ~/.zsh
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     source ~/.zshrc
