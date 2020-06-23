@@ -61,6 +61,7 @@
     - [Unity环境](#unity环境)
     - [GNOME环境](#gnome环境)
   - [Ubuntu启动后GUI界面卡住不动](#ubuntu启动后gui界面卡住不动)
+  - [Ubuntu1804使用过程中常遇到的问题](#ubuntu1804使用过程中长遇到的问题)
 ---
 ## Awesome Linux Software
 - [Visual Studio Code](https://code.visualstudio.com/download)
@@ -1087,10 +1088,42 @@ git config --global oh-my-zsh.hide-status 0
     ```
     安装`Ruby`:    
     ```shell
-    rbenv install 2.7.1
-    rbenv global 2.7.1
+    rbenv install 2.6.6
+    rbenv global 2.6.6
     ruby -v
     ```
+
+    **安装过程中遇到的问题（build fails on Ubuntu 18.04 with libssl-dev installed）:**   
+    ```shell
+    andy@ROG:~$ rbenv install 2.6.6
+    Downloading ruby-2.6.6.tar.bz2...
+    -> https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.6.tar.bz2
+    Installing ruby-2.6.6...
+
+    BUILD FAILED (Ubuntu 18.04 using ruby-build 20200520-10-g157c719)
+
+    Inspect or clean up the working tree at /tmp/ruby-build.20200624010548.2257.GjCp3V
+    Results logged to /tmp/ruby-build.20200624010548.2257.log
+
+    Last 10 log lines:
+    The Ruby openssl extension was not compiled.
+    The Ruby readline extension was not compiled.
+    ERROR: Ruby install aborted due to missing extensions
+    Try running `apt-get install -y libssl-dev libreadline-dev` to fetch missing dependencies.
+
+    Configure options used:
+    --prefix=/home/andy/.rbenv/versions/2.6.6
+    --enable-shared
+    LDFLAGS=-L/home/andy/.rbenv/versions/2.6.6/lib 
+    CPPFLAGS=-I/home/andy/.rbenv/versions/2.6.6/include 
+    ```
+
+    解决方法:   
+    ```shell
+    sudo apt purge libssl-dev && sudo apt install libssl1.0-dev
+    ```
+
+
 
 2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`中的`Mononoki`字体。可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
 
@@ -2286,6 +2319,12 @@ apt-get install xserver-xorg-video-vmware
 
 /etc/init.d/lightdm restart
 # reboot
+```
+
+# Ubuntu1804使用过程中长遇到的问题
+1. libdvd-pkg: `apt-get check` failed, you may have broken packages. Aborting...
+```shell
+sudo dpkg-reconfigure libdvd-pkg
 ```
 
 

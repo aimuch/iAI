@@ -178,6 +178,7 @@ AI实验环境搭建和深度学习算法安装实验
        - [Unity环境](./src/linux_env_set.md#unity环境)
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
      - [Ubuntu启动后GUI界面卡住不动](./src/linux_env_set.md#ubuntu启动后gui界面卡住不动)
+     - [Ubuntu1804使用过程中常遇到的问题](./src/linux_env_set.md#ubuntu1804使用过程中长遇到的问题)
 6.  [**参考资料**](#参考资料)
 <!-- 6.  [Sponsor](#sponsor) -->
 ---
