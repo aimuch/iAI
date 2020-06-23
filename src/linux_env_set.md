@@ -1087,8 +1087,8 @@ git config --global oh-my-zsh.hide-status 0
     ```
     安装`Ruby`:    
     ```shell
-    rbenv install 2.5.1
-    rbenv global 2.5.1
+    rbenv install 2.7.1
+    rbenv global 2.7.1
     ruby -v
     ```
 
