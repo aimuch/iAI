@@ -35,6 +35,7 @@
     - [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
     - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)    
     - [安装**colorls**](#安装colorls)    
+    - [安装**fzf**](#安装fzf)
     - [安装**navi**](#安装navi)     
   - [**vim**配置](#vim配置)
     - [**YouCompleteMe**实现vim自动补全](#youcompleteme实现vim自动补全)
@@ -1178,8 +1179,9 @@ gem uninstall colorls
 > [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
 
 
-### 安装navi    
-#### 安装fzf
+### 安装fzf
+fzf是通用命令行模糊查找器.   
+
 `fzf` 的GitHub仓库地址: https://github.com/junegunn/fzf      
 
 `navi` 依赖 `fzf` , 所以需要先安装 `fzf`:    
@@ -1188,7 +1190,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
-#### 安装navi     
+### 安装navi     
 `navi` 的GitHub仓库地址: https://github.com/denisidoro/navi    
 
 <!-- **Using oh-my-zsh**    
