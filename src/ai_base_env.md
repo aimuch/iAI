@@ -1163,7 +1163,7 @@ vim ~/.bashrc # 打开环境变量文件
 # zsh
 vim ~/.zshrc # 打开环境变量文件
 ```
-将下面三个环境变量写入环境变量文件并保存:    
+将下面三个变量写入**环境变量文件**中并保存:    
 ```shell
 # TensorRT
 export LD_LIBRARY_PATH=~/TensorRT/lib:$LD_LIBRARY_PATH
