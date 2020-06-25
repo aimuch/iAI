@@ -43,8 +43,9 @@
       - [TensorRT环境变量设置](#tensorrt1)
       - [安装Python的TensorRT包](#tensorrt2)
       - [安装**uff**](#tensorrt3)
-      - [验证TensorRT是否安装成功](#tensorrt4)
-      - [TensorRT安装过程中遇到的问题以及解决方法](#tensorrt5)
+      - [安装**graphsurgeon**](#tensorrt4)
+      - [验证TensorRT是否安装成功](#tensorrt5)
+      - [TensorRT安装过程中遇到的问题以及解决方法](#tensorrt6)
     - [TensorRT生成**Engine**](#tensorrt生成engine)
       - [**Caffe**模型用TensorRT生成**Engine**](#caffe模型用tensorrt生成engine)
       - [**TensorFlow**模型用TensorRT生成**Engine**](#tensorflow模型用tensorrt生成engine)
@@ -1185,20 +1186,20 @@ source ~/.zshrc
 ```bash
 cd ~/TensorRT/python/
 
-# 对于python2
+# Python 2.7:
 sudo pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
 
-# 对于python3
+# Python 3.x:
 sudo pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```
 或者：
 ```bash
 cd TensorRT/python/
 
-# 对于python2
+# Python 2.7:
 pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl --user
 
-# 对于python3
+# Python 3.x:
 pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl --user
 ```
 
@@ -1207,10 +1208,10 @@ pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl --user
 source  activate venv
 cd TensorRT/python/
 
-# 对于python2
+# Python 2.7:
 pip install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
 
-# 对于python3
+# Python 3.x:
 pip install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```
 
@@ -1224,37 +1225,71 @@ pip install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 ```bash
 cd ~/TensorRT/uff/
 
-# 对于python2
+# Python 2.7:
 sudo pip2 install uff-XXX-py2.py3-none-any.whl
 
-# 对于python3
+# Python 3.x:
 sudo pip3 install uff-XXX-py2.py3-none-any.whl
 ```
 或者：
 ```bash
 cd TensorRT/uff/
 
-# 对于python2
+# Python 2.7:
 pip2 install uff-XXX-py2.py3-none-any --user
 
-# 对于python3
+# Python 3.x:
 pip3 install uff-XXX-py2.py3-none-any --user
 ```
 
 **3.2 虚拟环境下**   
 ```bash
-source  activate venv
+source activate venv
 cd TensorRT/uff/
 
-# 对于python2
+# Python 2.7:
 pip install uff-XXX-py2.py3-none-any.whl
 
-# 对于python3
+# Python 3.x:
 pip install uff-XXX-py2.py3-none-any.whl
 ```
 
-<!-- #### 4. 验证TensorRT是否安装成功     -->
-#### <span id="tensorrt4">4. 验证TensorRT是否安装成功</span> 
+#### <span id="tensorrt4">4. 安装graphsurgeon</span> 
+转到**graphsurgeon**目录下安装`graphsurgeon`文件夹下安装：    
+**4.1 非虚拟环境下**   
+```shell
+cd TensorRT/graphsurgeon/
+# Python 2.7:
+$ sudo pip2 install graphsurgeon-X.X.X-py2.py3-none-any.whl
+
+# Python 3.x:
+$ sudo pip3 install graphsurgeon-X.X.X-py2.py3-none-any.whl
+```
+或者:    
+```shell
+cd TensorRT/graphsurgeon/
+
+# Python 2.7:
+pip2 install graphsurgeon-X.X.X-py2.py3-none-any.whl --user
+
+# Python 3.x:
+pip3 install graphsurgeon-X.X.X-py2.py3-none-any.whl --user
+```
+
+**4.2 虚拟环境下**     
+```bash
+source activate venv
+cd TensorRT/graphsurgeon/
+
+# Python 2.7:
+pip install graphsurgeon-X.X.X-py2.py3-none-any.whl
+
+# Python 3.x:
+pip install graphsurgeon-X.X.X-py2.py3-none-any.whl
+```
+
+<!-- #### 5. 验证TensorRT是否安装成功     -->
+#### <span id="tensorrt5">5. 验证TensorRT是否安装成功</span> 
 **测试TensorRT是否安装成功**：   
 ```bash
 which tensorrt
@@ -1284,8 +1319,8 @@ cd /TensorRT/bin  #（转到bin目录下面，make后的可执行文件在此目
 ```
 命令执行顺利即安装成功。   
    
-<!-- #### 5. TensorRT安装过程中遇到的问题以及解决方法 -->
-#### <span id="tensorrt5">5. TensorRT安装过程中遇到的问题以及解决方法</span>
+<!-- #### 6. TensorRT安装过程中遇到的问题以及解决方法 -->
+#### <span id="tensorrt6">6. TensorRT安装过程中遇到的问题以及解决方法</span>
 5.1 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```bash
 In file included from src/cpp/cuda.cpp:1:0:
