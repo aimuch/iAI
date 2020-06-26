@@ -256,7 +256,7 @@ sudo update-grub
 5. `sudo update-grub` 更新grub即可
 ---
 ## Ubuntu16TLS安装NVIDIA驱动   
-### 安装驱动NVIDIA所需的依赖包   
+### 安装NVIDIA驱动所需的依赖包   
 *在终端里依次输入以下命令安装驱动所需的依赖包*    
 ```shell
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
