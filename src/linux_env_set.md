@@ -2,6 +2,7 @@
 
 [**Ubuntu FAQ**](#ubuntu-faq)
   - [Awesome Linux Software](#awesome-linux-software)
+  - [Linux环境变量初始化与对应文件的生效顺序](#linux环境变量初始化与对应文件的生效顺序)
   - [**Docke**r安装与使用](#docker安装与使用)
     - [Docker安装](#docker安装)
     - [Docker使用](#docker使用)
@@ -86,6 +87,93 @@
 `Docker CE` 分为 `stable`, `test`, 和 `nightly` 三个更新频道。每六个月发布一个 `stable` 版本 (18.09, 19.03, 19.09...)。
 
 官方网站上有各种环境下的安装指南，这里主要介绍 `Docker CE` 在 Linux 、Windows 10 (PC) 和 macOS 上的安装。
+
+
+## Linux环境变量初始化与对应文件的生效顺序
+### Linux的变量种类
+按变量的生存周期划分：      
+- `永久的`：需要修改配置文件，变量永久生效。    
+- `临时的`：使用export命令声明即可，变量在关闭shell时失效。    
+
+在配置永久环境变量时，又可以按照作用范围分为:
+- `用户环境变量`
+- `系统环境变量`    
+
+系统环境变量对所有系统用户都有效，用户环境变量仅仅对当前的用户有效。  
+
+### 设置环境变量
+#### 直接运行`export`命令定义变量     
+  在shell的命令行下直接使用[export 变量名=变量值] 定义变量。该变量只在当前的shell（BASH）或其子shell（BASH）下是有效的，shell关闭了，变量也就失效了，再打开新shell时就没有这个变量，需要使用的话还需要重新定义。
+
+####  修改系统环境变量  
+  系统环境变量一般保存在下面的文件中
+
+- `/etc/profile` : 全局（公有）配置，不管是哪个用户，登录时都会读取该文件。    
+- `/etc/bash.bashrc` : 它也是全局（公有）的 bash执行时，不管是何种方式，都会读取此文件。    
+- `/etc/environment` : 不要轻易修改此文件
+
+#### 修改用户环境变量
+用户环境变量通常被存储在下面的文件中：
+
+- `~/.profile`    
+  若bash是以login方式执行时，读取~/.bash_profile，若它不存在，则读取~/.bash_login，若前两者不存在，读取~/.profile。
+
+- `~/.bash_profile` 或者 `~./bash_login`    
+  若bash是以login方式执行时，读取`~/.bash_profile`，若它不存,则读取`~/.bash_login`，若前两者不存在，读取 `~/.profile`。
+  只有bash是以login形式执行时，才会读取`.bash_profile`，Unbutu默认没有此文件，可新建。 通常该配置文件还会配置成去读取`~/.bashrc`。
+
+- `~/.bashrc`    
+  当bash是以non-login形式执行时，读取此文件。若是以login形式执行，则不会读取此文件。
+
+`~/.bash_profile` 是交互式、login 方式进入 bash 运行的    
+`~/.bashrc` 是交互式 non-login 方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。    
+
+#### 修改环境变量配置文件
+
+如想将一个路径加入到环境变量（例如`$PATH`）中，可以像下面这样做（修改`/etc/profile`）：   
+```shell
+sudo vi /etc/profile
+```
+以环境变量PATH为例子，环境变量的声明格式：    
+```shell
+PATH=$PATH:PATH_1:PATH_2:PATH_3:...:PATH_N 
+export PATH
+```    
+你可以自己加上指定的路径，中间用冒号隔开。环境变量更改后，在用户下次登陆时生效，如果想立刻生效，则可执行下面的语句：    
+```shell
+$source /etc/profile
+```
+
+### 环境配置文件的区别
+#### `profile`、 `bashrc`、`.bash_profile`、 `.bashrc`介绍
+bash会在用户登录时，读取下列四个环境配置文件：
+
+- 全局环境变量设置文件：`/etc/profile`、`/etc/bashrc`。    
+- 用户环境变量设置文件：`~/.bash_profile`、`~/.bashrc`。    
+
+**读取顺序：①` /etc/profile` 、② `~/.bash_profile` 、③ `~/.bashrc` 、④ `/etc/bashrc`** 。
+
+- ① `/etc/profile`：此文件为系统的每个用户设置环境信息，系统中每个用户登录时都要执行这个脚本，如果系统管理员希望某个设置对所有用户都生效，可以写在这个脚本里，该文件也会从`/etc/profile.d`目录中的配置文件中搜集shell的设置。
+- ② `~/.bash_profile`：每个用户都可使用该文件设置专用于自己的shell信息，当用户登录时，该文件仅执行一次。默认情况下，他设置一些环境变量，执行用户的`.bashrc`文件。
+- ③ `~/.bashrc`：该文件包含专用于自己的shell信息，当登录时以及每次打开新shell时，该文件被读取。
+- ④ `/etc/bashrc`：为每一个运行bash shell的用户执行此文件，当bash shell被打开时，该文件被读取。   
+
+![shell](./linux/shell/shell.png)    
+
+#### `.bashrc`和`.bash_profile`的区别
+
+- `.bash_profile`会用在登陆shell， `.bashrc` 使用在交互式非登陆 shell 。简单说来，它们的区别主要是`.bash_profile`是在你每次登录的时候执行的；`.bashrc`是在你新开了一个命令行窗口时执行的。    
+- 当通过控制台进行登录（输入用户名和密码）：在初始化命令行提示符的时候会执行`.bash_profile` 来配置你的shell环境。但是如果已经登录到机器，在Gnome或者是KDE也开了一个新的终端窗口（xterm），这时，`.bashrc`会在窗口命令行提示符出现前被执行。当你在终端敲入`/bin/bash`时`.bashrc`也会在这个新的bash实例启动的时候执行。
+
+#### 建议
+   大多数的时候你不想维护两个独立的配置文件，一个登录的一个非登录的shell。当你设置PATH时，你想在两个文件都适用。可以在`.bash_profile`中调用`.bashrc`，然后将PATH和其他通用的设置放到`.bashrc`中。
+   要做到这几点，添加以下几行到`.bash_profile`中：
+```vim
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+```
+  现在，当你从控制台登录机器的时候，`.bashrc`就会被执行。
 
 
 ## Docker安装   

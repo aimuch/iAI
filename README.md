@@ -105,6 +105,7 @@ AI实验环境搭建和深度学习算法安装实验
       - [网络剪枝](./src/ai_model_optimization.md#网络剪枝)
 5.  [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Awesome Software**](./src/linux_env_set.md#awesome-software)
+     - [Linux环境变量初始化与对应文件的生效顺序](./src/linux_env_set.md#linux环境变量初始化与对应文件的生效顺序)
      - [**Ubuntu Library**](./src/linux_library.md#ubuntu-library)
        - [Eigen](./src/linux_library.md#eigen)
      - [**Docker**安装与使用](./src/linux_env_set.md#docker安装与使用)
