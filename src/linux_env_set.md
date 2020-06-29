@@ -1314,6 +1314,21 @@ export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 ```
 And verify that it works by running which navi after reloading your configuration. -->
 
+- Using cargo
+[Install Rust and Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html):   
+```shell
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+```
+然后在`.bashrc`或者`.zshrc`中添加:    
+```vim
+# Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+```
+安装navi:   
+```shell
+cargo install navi
+```
+
 - Downloading pre-compiled binaries
   ```shell
   bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
