@@ -56,11 +56,13 @@
         - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
         - [TensorRT Tensorflow Engine](tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
         - [Manually Construct Tensorrt Engine](tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
-9.  [安装**Caffe**](#安装caffe)   
-    - [Python2下安装Caffe](#python2下安装cafe) 
-    - [Python3下安装Caffe](#python3下安装cafe )
-10. [安装**Protobuf**](#安装protobuf)
-11. [Linux **MATLAB**安装](#linux-matlab安装)
+9. [安装**Pytorch**](#安装pytorch)
+10. [安装**TensorFlow**](#安装tensorflow)
+11. [安装**Caffe**](#安装caffe)
+    - [Python2下安装Caffe](#python2下安装cafe)
+    - [Python3下安装Caffe](#python3下安装cafe)
+12. [安装**Protobuf**](#安装protobuf)
+13. [Linux **MATLAB**安装](#linux-matlab安装)
     - [Linux **MATLAB 2018**安装](#linux-matlab-2018安装)
     - [Linux **MATLAB 2019**安装](#linux-matlab-2019安装)
 
@@ -1569,6 +1571,34 @@ pip install -U numpy
 ### 参考资料    
 > [TensorRT官方安装指南](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)    
 
+---
+## 安装Pytorch
+`Pytorch` 官网地址：https://pytorch.org/    
+按照官方的指导安装就可以：   
+![Pytorch Installation Guide](../img/pytorch_install.png)
+
+
+---
+
+## 安装TensorFlow
+`Tensorflow`官网地址: https://www.tensorflow.org/    
+安装方法:   
+```shell
+pip install [tensorflow_whl_URl]
+```
+其中, `tensorflow_whl_URl` 需要根据自己的系统环境来选择官方给出tensorflow的whl地址:    
+![Tensorflow whl](../img/tensorflow_whl.png)   
+
+**NOTE**    
+在`Ubuntu`中用`CUDA10.2`和`TensorFlow2.2.0`的时候，提示以下错误:    
+```shell
+Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+```
+解决方法是，软连接一个`libcudart.so.10.1`到`libcudart.so.10.2`:    
+```shell
+ sudo ln -s /usr/local/cuda/lib64/libcudart.so.10.2 /usr/local/cuda/lib64/libcudart.so.10.1
+```
+> [tensorflow-gpu: Could not load dynamic library 'libcudart.so.10.1'](https://github.com/tensorflow/tensorflow/issues/39132#issuecomment-650565521)
 ---
 ## 安装caffe  
 
