@@ -1573,7 +1573,7 @@ pip install -U numpy
 
 ---
 ## 安装Pytorch
-`Pytorch` 官网地址：https://pytorch.org/    
+**Pytorch** 官网地址：https://pytorch.org/    
 按照官方的指导安装就可以：   
 ![Pytorch Installation Guide](../img/pytorch_install.png)
 
@@ -1581,24 +1581,26 @@ pip install -U numpy
 ---
 
 ## 安装TensorFlow
-`Tensorflow`官网地址: https://www.tensorflow.org/    
+**Tensorflow** 官网地址: https://www.tensorflow.org/    
 安装方法:   
 ```shell
 pip install [tensorflow_whl_URl]
 ```
-其中, `tensorflow_whl_URl` 需要根据自己的系统环境来选择官方给出tensorflow的whl地址:    
+其中, **tensorflow_whl_URl** 需要根据自己的系统环境来选择官方给出`Tensorflow`的`whl`地址:    
 ![Tensorflow whl](../img/tensorflow_whl.png)   
 
-**NOTE**    
-在`Ubuntu`中用`CUDA10.2`和`TensorFlow2.2.0`的时候，提示以下错误:    
-```shell
-Could not load dynamic library 'libcudart.so.10.1'; dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
-```
-解决方法是，软连接一个`libcudart.so.10.1`到`libcudart.so.10.2`:    
-```shell
- sudo ln -s /usr/local/cuda/lib64/libcudart.so.10.2 /usr/local/cuda/lib64/libcudart.so.10.1
-```
-> [tensorflow-gpu: Could not load dynamic library 'libcudart.so.10.1'](https://github.com/tensorflow/tensorflow/issues/39132#issuecomment-650565521)
+- **NOTE**    
+  在`Ubuntu`中用`CUDA10.2`和`TensorFlow2.2.0`的时候，提示以下错误:    
+  ```shell
+  Could not load dynamic library 'libcudart.so.10.1'; 
+  dlerror: libcudart.so.10.1: cannot open shared object file: No such file or directory
+  ```
+  
+  解决方法是，软连接一个`libcudart.so.10.1`到`libcudart.so.10.2`:    
+  ```shell
+  sudo ln -s /usr/local/cuda/lib64/libcudart.so.10.2 /usr/local/cuda/lib64/libcudart.so.10.1
+  ```
+  > [tensorflow-gpu: Could not load dynamic library 'libcudart.so.10.1'](https://github.com/tensorflow/tensorflow/issues/39132#issuecomment-650565521)
 ---
 ## 安装caffe  
 
