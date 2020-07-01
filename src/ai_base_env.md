@@ -951,7 +951,7 @@ unzip x.x.x.zip
 ```
 ### 安装依赖
 ```shell
-sudo apt-get install ffmpeg cmake pkg-config vim libgtk-3-dev libgtk2.0-dev libpng-dev libjpeg-dev libopenexr-dev libtiff-dev libwebp-dev libavcodec-dev libavformat-dev libavdevice-dev
+sudo apt-get install ffmpeg cmake pkg-config vim libx264-dev libatlas-base-dev gfortran libgtk-3-dev libgtk2.0-dev libpng-dev libjpeg-dev libswscale-dev libxvidcore-dev  libopenexr-dev libtiff-dev libwebp-dev libavcodec-dev libavformat-dev libavdevice-dev
 ```
 
 ### 编译OpenCV   
