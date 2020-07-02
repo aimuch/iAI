@@ -978,6 +978,15 @@ nproc
 
 make -j8  #编译
 ```
+若要用到`opencv_contrib`扩展模块一起编译，则需要下载跟**opencv版本一致**的`opencv_contrib-x.x.x`解压咋跟`opencv-x.x.x`同目录下，然后软连接到`opencv_contrib`:   
+```shell
+cmake -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+      -DBUILD_JPEG=ON \
+      -DBUILD_TIFF=ON \
+      -DBUILD_PNG=ON ..
+```
 **遇到一下报错信息有两种可能：**    
 ![编译报错](../img/opencv-error1.png)    
 - 在编译`opencv3.4.0`源码的时候，会下载诸如`ippicv_2017u3_lnx_intel64_20170822.tgz`的压缩包，如果下载失败，请[下载离线包](opencv/opencv-3.4.0-dev.cache.zip)，解压该文件，会得到`.cache`文件夹，用此文件夹覆盖`opencv`源码文件夹下的`.cache`文件夹，再重新编译即可。`.cahce`文件夹为隐藏文件，可用`ctrl+h`查看。
