@@ -1006,7 +1006,14 @@ cmake -D CMAKE_BUILD_TYPE=Release \
 ```bash
 sudo make install #安装
 ```
-
+### 配置OpenCV
+```shell
+sudo gedit /etc/ld.so.conf.d/opencv.conf
+```
+添加以下内容:    
+```vim
+/usr/local/lib
+```
 运行以下命令刷新`opencv`动态链接库：    
 ```bash
 sudo ldconfig
