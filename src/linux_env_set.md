@@ -2013,7 +2013,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **LaTeX Workshop** : 提升 LaTeX 编排效率：预览，智能提示，格式化等功能以及丰富的快捷键
 - Syncing : 简单可靠的多设备间 VS Code 配置同步工具
 - vscode-cudacpp
-- Better Comments
+- **Better Comments** 
 - **文件夹图标主题**
   - **vscode-icons**
   - Material Icon Theme
