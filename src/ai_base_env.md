@@ -897,7 +897,7 @@ source deactivate
 ### Anaconda虚拟环境    
 **创建新的虚拟环境**：    
 ```shell
-conda create -n venv python=3.6 # select python version
+conda create -n venv python=3.6 pip # select python version and pip
 ```
 **激活虚拟环境**:    
 ```shell
@@ -905,7 +905,7 @@ source activate venv
 ```
 **删除虚拟环境**:   
 ```shell
-conda env remove -n venv
+conda env remove -n venv  # conda remove -n venv --all
 ```
 **删除缓存的安装包**:    
 ```shell
