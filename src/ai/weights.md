@@ -1,4 +1,4 @@
-# 神经网络参数量(weights)计算
+# 神经网络参数量(weights)和计算量(FLOPs)
 
 <!-- <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
@@ -18,6 +18,7 @@
    1 int  = 4 Byte = 4x2^8    
    **1 float = 4 Byte = 4x2^8**    
 
+## 神经网络参数量(weights)
 ### 网络知识储备
 1. **卷积层**: <!-- \\(K^2 \times C_i \times C_o + C_o\\) --> ![](../../img/weights/math1.svg)
 
@@ -43,6 +44,8 @@
 
 根据上表计算得到的参数量大概为60M, **每个参数按每个`4 bytes`算**，总共有60 x 4 = 240M, 这与实际上训练产生的model大小一致。
 
+## 计算量(FLOPs)
+[TODO]
 
 ## 参考资料
 > 1. [神经网络参数量的计算: 以UNet为例](https://zhuanlan.zhihu.com/p/57437131)
