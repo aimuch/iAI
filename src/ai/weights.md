@@ -11,12 +11,12 @@
 
 ## 理论公式部分
 ### 存储单位转换
-   1 bit = 2^8
-   1 Byte = 8 bits = 2^8
-   1 word = 2 Byte = 2x2^8
-   1 char = 1 Byte = 2^8
-   1 int  = 4 Byte = 4x2^8
-   **1 float = 4 Byte = 4x2^8**
+   1 bit = 2^8    
+   1 Byte = 8 bits = 2^8    
+   1 word = 2 Byte = 2x2^8    
+   1 char = 1 Byte = 2^8    
+   1 int  = 4 Byte = 4x2^8    
+   **1 float = 4 Byte = 4x2^8**    
 
 ### 网络知识储备
 1. **卷积层**: <!-- \\(K^2 \times C_i \times C_o + C_o\\) --> ![](../../img/weights/math1.svg)
