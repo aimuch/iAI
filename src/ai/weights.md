@@ -21,17 +21,17 @@
 ## 神经网络参数量(weights)
 ### 网络知识储备
 1. **卷积层**: <!-- \\(K^2 \times C_i \times C_o + C_o\\) -->    
-   ![](../../img/weights/math1.svg)
+   ![](../../img/weights/math1.svg)    
 
    其中 `K` 为卷积核大小， `Ci` 为输入channel数， `Co` 为输出的channel数(也是filter的数量)，算式第二项是偏置项的参数量 。(虽然一般不写偏置项，因为不会影响总参数量的数量级，但是我们为了准确起见，把偏置项的参数量也考虑进来）
 
 2. **BN层**:  <!-- \\(2 \times C_i\\) -->    
-   ![](../../img/weights/math2.svg) 
+   ![](../../img/weights/math2.svg)     
 
    其中 `Ci` 为输入的channel数（BN层有两个需要学习的参数，**平移因子**和**缩放因子**）
 
 3. **全连接层**:  <!-- \\(T_i \times T_o + T_o\\) -->  
-   ![](../../img/weights/math3.svg)
+   ![](../../img/weights/math3.svg)    
 
    其中 `Ti` 为输入向量的长度， `To` 为输出向量的长度，其中第二项为偏置项参数量。 (不过目前全连接层已经逐渐被Global Average Pooling层取代了)
 
@@ -39,28 +39,28 @@
 
 ## 以AlexNet为例
 
-得到的结果为：
+得到的结果为：   
 
-![AlexNet](../../img/weights/AlexNet.png)
+![AlexNet](../../img/weights/AlexNet.png)   
 
-![AlexNet 60M](../../img/weights/AlexNet_60M.png)
+![AlexNet 60M](../../img/weights/AlexNet_60M.png)   
 
-根据上表计算得到的参数量大概为60M, **每个参数按每个`4 bytes`算**，总共有60 x 4 = 240M, 这与实际上训练产生的model大小一致。
+根据上表计算得到的参数量大概为60M, **每个参数按每个`4 bytes`算**，总共有60 x 4 = 240M, 这与实际上训练产生的model大小一致。   
 
-## 计算量(FLOPs)
-- **FLOPs**(Floating Point Operations)，浮点运算次数，用来衡量算法的时间复杂度    
-- **FLOPS**(Floating Point Operations per Seconds)，单位时间浮点运算次数，用来衡量硬件计算性能。    
+## 计算量(FLOPs)     
+- **FLOPs**(Floating Point Operations)，浮点运算次数，用来衡量算法的时间复杂度       
+- **FLOPS**(Floating Point Operations per Seconds)，单位时间浮点运算次数，用来衡量硬件计算性能。      
 
-1. **卷积层的FLOPs**
-   ![Convolution layer FLOPs](../../img/weights/convolution_FLOPs.png)
+1. **卷积层的FLOPs**    
+   ![Convolution layer FLOPs](../../img/weights/convolution_FLOPs.png)    
 
-   `Kw`和`Kh`分别表示卷积核的宽和高，其中 `Cin X Kw X Kh` 表示乘法计算量， `Cin X Kw X Kh + 1` 表示加法计算量，`+1`表示偏置， `Cout X w X h` 表示 `feature map` 中的所有元素， `w, h` 表示 `feature map` 的宽和高。
+   `Kw`和`Kh`分别表示卷积核的宽和高，其中 `Cin X Kw X Kh` 表示乘法计算量， `Cin X Kw X Kh + 1` 表示加法计算量，`+1`表示偏置， `Cout X w X h` 表示 `feature map` 中的所有元素， `w, h` 表示 `feature map` 的宽和高。    
 
 
-2. **全连接层的FLOPs**
-   ![full connected layer FLOPs](../../img/weights/fullconnected_FLOPs.png)
-   `In`和`Out`分别表示输入的特征数和输出的特征数。
-   其中 `In` 表示乘法运算量， `In-1` 表示加法运算量，`+1表`示偏置.
+2. **全连接层的FLOPs**    
+   ![full connected layer FLOPs](../../img/weights/fullconnected_FLOPs.png)    
+   `In`和`Out`分别表示输入的特征数和输出的特征数。    
+   其中 `In` 表示乘法运算量， `In-1` 表示加法运算量，`+1表`示偏置.    
 
 
 ## 参考资料
