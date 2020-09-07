@@ -90,7 +90,7 @@ AI实验环境搭建和深度学习算法安装实验
      - [**Loss Function**](src/ai/loss-function.md#loss-function)
         - [Loss Function简介](src/ai/loss-function.md#loss-function简介)
         - [Loss Function种类](src/ai/loss-function.md#loss-function种类)
-     - [**神经网络参数量(weights)计算**](src/ai/weights.md)
+     - [**神经网络参数量(weights)和计算量(FLOPs)**](src/ai/weights.md)
      - [**特征尺寸(Feature Map)和感受野(Receptive Field)计算**](src/ai/receptive_field.md)
 
 3. [**AI Framework**](src/ai_framework.md#ai-framework)
