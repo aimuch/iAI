@@ -1,7 +1,7 @@
 # Ubuntu FAQ
 
 [**Ubuntu FAQ**](#ubuntu-faq)
-  - [Awesome Linux Software](#awesome-linux-software)
+  - [**Awesome Linux Software**](#awesome-linux-software)
   - [Linux环境变量初始化与对应文件的生效顺序](#linux环境变量初始化与对应文件的生效顺序)
   - [**Docke**r安装与使用](#docker安装与使用)
     - [Docker安装](#docker安装)
@@ -79,6 +79,28 @@
     ```shell
     sudo apt-get install kolourpaint4
     ```    
+- **tree**    
+  ```sh
+  $ tree
+  .
+  ├── training
+  │   ├── image_2
+  │   │   ├── 000000.jpeg
+  │   │   ├── 000001.jpeg
+  │   │   ├── 000002.jpeg
+  │   │   ├── 000003.jpeg
+  │   │   ├── 000004.jpeg
+  │   │   └── 000005.jpeg
+  │   └── label_2
+  │       ├── 000000.txt
+  │       ├── 000001.txt
+  │       ├── 000002.txt
+  │       ├── 000003.txt
+  │       ├── 000004.txt
+  │       └── 000005.txt
+  ├── train.txt
+  └── val.txt
+  ```
 
 ---
 ## Docker安装与使用
