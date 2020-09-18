@@ -1188,7 +1188,7 @@ git config --global oh-my-zsh.hide-status 0
     exec $SHELL
     
     # Zsh
-    echo '# Rbenv' >> ~/.zsh
+    echo '# Rbenv' >> ~/.zshrc
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     source ~/.zshrc
