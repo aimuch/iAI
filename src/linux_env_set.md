@@ -1910,7 +1910,7 @@ sudo apt-get install tmux
 ### 通过SSH连接
 1. 需要安装ssh的客户端和服务端     
     ```shell
-    sudo apt-get install ssh-server ssh-client
+    sudo apt-get install openssh-server openssh-client
     ```
 2. 安装完以后就可以在另一台电脑上远程连接了     
     ```shell
