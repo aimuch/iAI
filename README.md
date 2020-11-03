@@ -5,7 +5,7 @@ AI实验环境搭建和深度学习算法安装实验
 **安装环境**  
 *其他平台环境类似* 
 ```vim
-硬件环境: ROG MAXIMUS XII HERO(WI-FI) / NVIDIA GTX 2080TI / DDR4 32G 3600 / SSD 2T / HDD 4T
+硬件环境: ROG MAXIMUS XII HERO(WI-FI) / NVIDIA GTX 2080TI / DDR4 64G 3600 / SSD 2T / HDD 4T
 系统环境：Ubuntu-16.04-64bit / Ubuntu-18.04-64bit
 安装软件：CUDA9.0-CUDA10.2 / cuDNN / TensorRT / OpenCV / caffe / YOLO-V3 / Protobuf / Matlab / VIM 
 ````
