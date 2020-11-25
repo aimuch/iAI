@@ -101,6 +101,8 @@
   ├── train.txt
   └── val.txt
   ```
+- **silversearcher-ag** : 比grep更快
+- **cloc** ： 统计代码
 
 ---
 ## Docker安装与使用
