@@ -547,7 +547,7 @@ nvidia-settings
 **[推荐下载安装`.run`格式文件](https://developer.nvidia.com/cuda-toolkit)。**  
 
 
-- **安装CUDA9.0以及之前版本**    
+- **Ubuntu16.04安装CUDA9.0以及之前版本**    
     安装完显卡驱动后，`CUDA Toolkit` 和 `samples` 可单独安装，直接在终端运行安装，无需进入文本模式：   
     ```shell
     chmod 777 cuda_9.0.176_384.81_linux.run
@@ -572,7 +572,27 @@ nvidia-settings
     sudo sh cuda_9.0.176.3_linux.run
     sudo sh cuda_9.0.176.4_linux.run
     ```
-
+- **Ubuntu18.04安装CUDA9.0以及之前版本**    
+  步骤跟Ubuntu16.04类似，只需要**将gcc和g++版本降级**，ubuntu18.04默认gcc7.3，降级为gcc5，则ubuntu17.04和ubuntu16.04的cuda9.0都能编译.    
+    ```shell
+    sudo apt-get install gcc-5 gcc-5-multilib g++-5 g++-5-multilib
+    ```
+    将gcc和g++版本切换成gcc5和g++5:
+    ```shell
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 40
+    sudo update-alternatives --config gcc
+    ```
+    输入想要使用的gcc编号:
+    ```shell
+    sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 50
+    sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 40
+    sudo update-alternatives --config g++
+    ```
+    输入想要使用的g++编号，查看gcc版本，已经切换到了gcc5:
+    ```shell
+    gcc -v
+    ```
 - **安装CUDA10.1**    
   *按照前面安装[NVIDIA驱动](#安装NVIDIA官方显卡驱动)方法安装**NVIDIA-418**驱动*    
     ```shell
