@@ -730,6 +730,16 @@ sudo apt-get purge libcudnn*
 该方法安装的前提是`/usr/local/cuda`已经连接到正确的`CUDA`版本上。    
 
 将`cudnn-xxx.tgz`复制到`/usr/local/`目录下，用`sudo tar -xvf cudnn-xxx.tgz`进行解压，然后删除`sudo rm cudnn-xxx.tgz`即可， 由于`cudnn-xxx.tgz`解压后的目录就是`cuda`文件夹，所以将会自动放在`cuda`软连接下面对应的文件夹里。    
+```shell
+sudo cp cudnn-xxx.tgz /usr/local
+sudo chmod a+x cudnn-xxx.tgz
+sudo tar -xvf cudnn-xxx.tgz
+sudo rm /usr/local/cudnn-xxx.tgz
+cd /usr/local/cuda/lib64
+sudo chmod a+x *
+cd /usr/local/cuda/include
+sudo chmod a+x *
+```
 
 
 ### 分布安装
