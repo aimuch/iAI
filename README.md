@@ -190,14 +190,14 @@ AI实验环境搭建和深度学习算法安装实验
 
 ## TODO
 - [x] 模型大小(参数量)估计
-- [x] 感受野计算
+- [x] 感受野计
+- [ ] 语义分割
 - [ ] 网络优化
 - [ ] TensorRT自定义层
 - [ ] Pytorch model => OONX
 - [ ] TensorFlow model => OONX
 - [ ] Caffe 源码解读
 - [ ] Darknet 源码解读
-- [ ] 语义分割
 - [ ] 目标追踪
 
 
