@@ -1996,6 +1996,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **TabNine** : All-language autocompleter
 - **Dash** : Dash, Zeal and Velocity integration in Visual Studio Code, 目前只支持与Mac下的Dash关联
 - **Bracket Pair Colorizer** : 着色匹配括号
+- **comment-divider** : 行内容生成注释包装的分隔符
 - **Indent-Rainbow** : 对缩进显示彩虹色作色，使得更加易读
 - **Trailing Spaces** : 检测多余空格并高亮
 - **Code Spell Checker** : 代码拼写检查
