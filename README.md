@@ -106,7 +106,9 @@ AI实验环境搭建和深度学习算法
 4. [**AI Model Optimization**](./src/ai_model_optimization.md)
       - [网络量化](./src/ai_model_optimization.md#网络量化)
       - [网络剪枝](./src/ai_model_optimization.md#网络剪枝)
-5. [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
+5. [**AI Tools**](./src/ai_tools.md)
+     - [Netron](./src/ai_tools.md#Netron)
+6. [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Awesome Software**](./src/linux_env_set.md#awesome-linux-software)
      - [Linux环境变量初始化与对应文件的生效顺序](./src/linux_env_set.md#linux环境变量初始化与对应文件的生效顺序)
      - [**Ubuntu Library**](./src/linux_library.md#ubuntu-library)
@@ -185,8 +187,8 @@ AI实验环境搭建和深度学习算法
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
      - [Ubuntu启动后GUI界面卡住不动](./src/linux_env_set.md#ubuntu启动后gui界面卡住不动)
      - [Ubuntu1804使用过程中常遇到的问题](./src/linux_env_set.md#ubuntu1804使用过程中长遇到的问题)
-6. [**参考资料**](#参考资料)
-<!-- 6.  [Sponsor](#sponsor) -->
+7. [**参考资料**](#参考资料)
+<!-- 8.  [Sponsor](#sponsor) -->
 ---
 
 ## TODO
@@ -241,3 +243,4 @@ AI实验环境搭建和深度学习算法
 > 31. [解决Linux双系统安装卡在启动Logo](https://blog.csdn.net/tjuyanming/article/details/79267984)
 > 32. [Ubuntu 18.04 安装 NVIDIA 显卡驱动](https://zhuanlan.zhihu.com/p/59618999)
 > 33. [windows下同一个显卡配置多个CUDA工具包以及它们之间的切换](https://blog.csdn.net/qq_27825451/article/details/89135592)   
+> 34. [Netron](https://github.com/lutzroeder/netron)
