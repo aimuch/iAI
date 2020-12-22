@@ -7,7 +7,7 @@ AI实验环境搭建和深度学习算法安装实验
 ```vim
 硬件： ROG MAXIMUS XII HERO(WI-FI) / NVIDIA GTX 2080TI / DDR4 64G 3600 / SSD 2T / HDD 4T      
 系统： Ubuntu-16.04-64bit / Ubuntu-18.04-64bit / Windows 10 Professional      
-软件： CUDA9.0-CUDA10.2 / cuDNN / TensorRT / OpenCV / caffe / YOLO-V3 / Protobuf / Matlab / VIM       
+软件： CUDA9.0-CUDA10.2/cuDNN/TensorRT/OpenCV/caffe/YOLO/Protobuf/Matlab/VIM  
 ```
 ---
 ### 目录
