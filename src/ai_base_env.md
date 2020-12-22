@@ -26,19 +26,20 @@
 4. [安装**cuDNN**](#安装cudnn)    
    - [下载安装**cuDNN**](#下载安装cudnn)    
    - [**cuDNN**常见问题](#cudnn常见问题)    
-5. [**CUDA多版本**问题](#cuda多版本问题)
-6. [**Anaconda**](#anaconda)    
+5. [**Ubuntu CUDA多版本**问题](#ubuntu-cuda多版本问题)
+6. [**Windows CUDA多版本**问题](#windows-cuda多版本问题)
+7. [**Anaconda**](#anaconda)    
    - [安装Anaconda](#安装anaconda)    
    - [屏蔽Anaconda](#屏蔽anaconda)    
    - [重建Anaconda软连接](#重建anaconda软连接)    
    - [Anaconda虚拟环境](#anaconda虚拟环境)
    - [卸载Anaconda](#卸载anaconda)
-7. [安装**OpenCV**](#安装opencv)   
+8. [安装**OpenCV**](#安装opencv)   
     - [下载OpenCV](#下载opencv)
     - [编译OpenCV](#编译opencv)
     - [安装OpenCV](#安装opencv)
     - [卸载OpenCV](#卸载opencv)
-8. [**TensorRT**](#tensorrt) 
+9. [**TensorRT**](#tensorrt) 
     - [安装TensorRT](#安装tensorrt)    
       - [TensorRT环境变量设置](#tensorrt1)
       - [安装Python的TensorRT包](#tensorrt2)
@@ -56,9 +57,9 @@
         - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
         - [TensorRT Tensorflow Engine](tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
         - [Manually Construct Tensorrt Engine](tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
-9. [安装**Pytorch**](#安装pytorch)
-10. [安装**TensorFlow**](#安装tensorflow)
-11. [安装**Caffe**](#安装caffe)
+10. [安装**Pytorch**](#安装pytorch)
+11. [安装**TensorFlow**](#安装tensorflow)
+12. [安装**Caffe**](#安装caffe)
     - [Python2下安装Caffe](#python2下安装cafe)
     - [Python3下安装Caffe](#python3下安装cafe)
 12. [安装**Protobuf**](#安装protobuf)
@@ -811,7 +812,7 @@ so try looking to see if a warning log message was printed above.
 **参考资料**    
 > [cuDNN官方安装指导](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installlinux)     
 ---
-## CUDA多版本问题
+## Ubuntu CUDA多版本问题
 在实验的时候有些算法跟当前生效(安装)的`CUDA`和`cuDNN`版本不一致，所以需要同时安装多个版本，这里就是解决同时管理多个`CUDA`版本问题。   
 
 1. 首先按照上述介绍的[安装CUDA](#安装cuda)和对应版本的[安装cuDNN](#安装cudnn)，安装实验环境依赖的版本；    
@@ -830,6 +831,136 @@ so try looking to see if a warning log message was printed above.
     cat /usr/local/cuda/version.txt
     ```
     ![cuda](../img/cuda9.0-version.png)     
+---
+## Windows CUDA多版本问题
+前面的一片文章里面讲到了tensorflow、NVIDIA显卡驱动、CUDA工具包、cudnn之间的一些关系，详情请[参考原文](https://blog.csdn.net/qq_27825451/article/details/89082978)    
+
+tensorflow最大的问题就是版本问题，各个版本之间差异比较明显，我们有时候需要不同的tensorflow版本，而不同的版本对于CUDA toolKit的版本要求和cudnn的要求又不一样，我们肯定不能每次使用一个版本都重新安装，前面的那篇文章明确了几个基本观点：
+
+（1）NVIDIA显卡驱动和CUDA ToolKit不是一一对应的，我们一般保持最新的驱动程序，安装其他不同版本的CUDA即可；
+
+（2）CUDA和cudnn也不是严格的一一对应关系，但是这个官网上有着明确的对应连接，即很么版本的cuda配置什么样的cudnn；
+
+所以如果需要在一台电脑上安装多个版本的CUDA和cudnn是完全可行的，由于Linux上面的配置教程很多，这里就不讲了，本文以windows为例来说明，
+
+1、多版本的CUDA以及cudnn安装
+
+由于里显得CUDA会默认捆绑NVIDIA驱动程序，所以在安装的时候不要默认安装，一定要自定义安装，只选择安装CUDA即可，其他的那些就不要安装了，我的电脑上安装的版本如下：    
+![Cuda multi version](../img/CUDA_win_multi_version.png)    
+我们一般安装CUDA的时候就使用默认路径，安装到C盘即可，这样方便管理。
+
+然后在NVIDIA官网上面下载CUDA对应的cudnn版本，解压之后将cudnn对应的三个文件拷贝到CUDA对应的文件夹之下，这个时候我们的环境变量应该如下所示：    
+![Cuda multi version](../img/CUDA_win_path.png)    
+
+现在多个版本的CUDA就安装完成了。
+
+2、不同版本的tensorflow在CUDA之间的切换
+
+网上有很多在Linux下面的CUDA的切换，其实都是通过环境变量的设置与配置来实现的，但是window这一点坐的很方便，
+
+不需要切换，不需要切换，不需要切换，只要环境变量PATH中有相应的CUDA路径即可，无需手动切换了。
+
+比如我的电脑上同事安装了
+
+tensorflow1.9，它对应于CUDA9.0
+
+tensorflow1.13，它对应于CUDA10.0
+
+tensorflow2.0.0 alpha0，它对应于CUDA10.0
+
+我可以使用任何一个版本，只要在环境变量中有对应的CUDA路径即可，
+
+本人也是通过实验得出来的，首先我删除了CUDA10.0的环境变量,重启之后，发现tensorflow1.13和tensorflow2.0.0都不能使用了，但是tensorflow1.9还可以用；然后我又删除了CUDA9.0的环境变量，重启，这个时候tensorflow1.9也不能使用了；
+
+接下来我又添加CUDA10.0的环境变量，重启，此时tensorflow1.13和tensorflow2.0.0又可以1使用了，然后我又通过添加CUDA9.0环境变量，重启，这时tensorflow1.9又可以使用了。
+
+总结：windows多个不同版本的CUDA使用时不需要切换，只要环境变量PATH中有相应的CUDA路径即可，无需手动切换了。tensorflow在运行的时候会自动在环境变量中寻找合适的CUDA版本，直到找到为止，如果没有，则会报错。
+
+3、验证自己的CUDA是否安装成功
+
+每一个版本的CUDA配置完成后，我们可以验证是否配置成功，主要使用CUDA内置的deviceQuery.exe 和 bandwithTest.exe这两个程序来验证。
+首先win+R启动cmd，cd到安装目录下的 ，比如我的安装目录是（以CUDA 10.1为例）：
+
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\extras\demo_suite
+
+执行bandwidthTest.exe和deviceQuery.exe这两个应用程序，得到下面的结果：   
+```vim
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\extras\demo_suite>deviceQuery
+deviceQuery Starting...
+ 
+ CUDA Device Query (Runtime API) version (CUDART static linking)
+ 
+Detected 1 CUDA Capable device(s)
+ 
+Device 0: "GeForce GTX 1070"
+  CUDA Driver Version / Runtime Version          10.1 / 10.1
+  CUDA Capability Major/Minor version number:    6.1
+  Total amount of global memory:                 8192 MBytes (8589934592 bytes)
+  (15) Multiprocessors, (128) CUDA Cores/MP:     1920 CUDA Cores
+  GPU Max Clock rate:                            1785 MHz (1.78 GHz)
+  Memory Clock rate:                             4004 Mhz
+  Memory Bus Width:                              256-bit
+  L2 Cache Size:                                 2097152 bytes
+  Maximum Texture Dimension Size (x,y,z)         1D=(131072), 2D=(131072, 65536), 3D=(16384, 16384, 16384)
+  Maximum Layered 1D Texture Size, (num) layers  1D=(32768), 2048 layers
+  Maximum Layered 2D Texture Size, (num) layers  2D=(32768, 32768), 2048 layers
+  Total amount of constant memory:               zu bytes
+  Total amount of shared memory per block:       zu bytes
+  Total number of registers available per block: 65536
+  Warp size:                                     32
+  Maximum number of threads per multiprocessor:  2048
+  Maximum number of threads per block:           1024
+  Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
+  Max dimension size of a grid size    (x,y,z): (2147483647, 65535, 65535)
+  Maximum memory pitch:                          zu bytes
+  Texture alignment:                             zu bytes
+  Concurrent copy and kernel execution:          Yes with 2 copy engine(s)
+  Run time limit on kernels:                     Yes
+  Integrated GPU sharing Host Memory:            No
+  Support host page-locked memory mapping:       Yes
+  Alignment requirement for Surfaces:            Yes
+  Device has ECC support:                        Disabled
+  CUDA Device Driver Mode (TCC or WDDM):         WDDM (Windows Display Driver Model)
+  Device supports Unified Addressing (UVA):      Yes
+  Device supports Compute Preemption:            No
+  Supports Cooperative Kernel Launch:            No
+  Supports MultiDevice Co-op Kernel Launch:      No
+  Device PCI Domain ID / Bus ID / location ID:   0 / 1 / 0
+  Compute Mode:
+     < Default (multiple host threads can use ::cudaSetDevice() with device simultaneously) >
+ 
+deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 10.1, CUDA Runtime Version = 10.1, NumDevs = 1, Device0 = GeForce GTX 1070
+Result = PASS
+```
+和
+```vim
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\extras\demo_suite>bandwidthTest
+[CUDA Bandwidth Test] - Starting...
+Running on...
+ 
+ Device 0: GeForce GTX 1070
+ Quick Mode
+ 
+ Host to Device Bandwidth, 1 Device(s)
+ PINNED Memory Transfers
+   Transfer Size (Bytes)        Bandwidth(MB/s)
+   33554432                     12180.7
+ 
+ Device to Host Bandwidth, 1 Device(s)
+ PINNED Memory Transfers
+   Transfer Size (Bytes)        Bandwidth(MB/s)
+   33554432                     12782.8
+ 
+ Device to Device Bandwidth, 1 Device(s)
+ PINNED Memory Transfers
+   Transfer Size (Bytes)        Bandwidth(MB/s)
+   33554432                     191225.0
+ 
+Result = PASS
+```
+当两个 Result=PASS 的时候，说明我们的安装配置是没有问题的。
+
+
 ---
 ## Anaconda
 ### 安装Anaconda
@@ -2758,3 +2889,4 @@ sudo rmdir iso
 
 **参考资料**    
 > [linux安装MATLAB R2018a步骤](https://blog.csdn.net/m0_37775034/article/details/80876362)    
+> [windows下同一个显卡配置多个CUDA工具包以及它们之间的切换](https://blog.csdn.net/qq_27825451/article/details/89135592)    

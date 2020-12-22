@@ -1,53 +1,54 @@
 # AI on Ubuntu Platform
 
-AI实验环境搭建和深度学习算法     
-      
-**安装环境**  
-*其他平台环境类似* 
+AI实验环境搭建和深度学习算法
+
+**安装环境**
+*其他平台环境类似*
 ```vim
-硬件： ROG MAXIMUS XII HERO(WI-FI) / NVIDIA GTX 2080TI / DDR4 64G 3600 / SSD 2T / HDD 4T      
-系统： Ubuntu-16.04-64bit / Ubuntu-18.04-64bit / Windows 10 Professional      
-软件： CUDA9.0-CUDA10.2/cuDNN/TensorRT/OpenCV/caffe/YOLO/Protobuf/Matlab/VIM  
+硬件： ROG MAXIMUS XII HERO(WI-FI) / NVIDIA GTX 2080TI / DDR4 64G 3600 / SSD 2T / HDD 4T
+系统： Ubuntu-16.04-64bit / Ubuntu-18.04-64bit / Windows 10 Professional
+软件： CUDA9.0-CUDA10.2/cuDNN/TensorRT/OpenCV/caffe/YOLO/Protobuf/Matlab/VIM
 ```
 ---
 ### 目录
 1. [**AI基础环境搭建和设置**](src/ai_base_env.md#ai基础环境搭建和设置)
-   1. [安装Ubuntu和Windows双系统](src/ai_base_env.md#安装ubuntu和windows双系统)   
+   1. [安装Ubuntu和Windows双系统](src/ai_base_env.md#安装ubuntu和windows双系统)
        - [有关Ubuntu分区的相关问题](src/ai_base_env.md#有关ubuntu分区的相关问题)
        - [Ubuntu与Windows双系统时间同步解决方法](src/ai_base_env.md#ubuntu与windows双系统时间同步解决方法)
        - [调整grub引导系统顺序](src/ai_base_env.md#调整grub引导系统顺序)
        - [设置grub引导菜单的分辨率](src/ai_base_env.md#设置grub引导菜单的分辨率)
        - [设置grub Menu显示](src/ai_base_env.md#设置grub-menu显示)
-   2. [安装**NVIDIA驱动**](src/ai_base_env.md#安装nvidia驱动)   
-       - [安装NVIDIA驱动所需的依赖包](src/ai_base_env.md#安装nvidia驱动所需的依赖包)   
-       - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)   
-       - [Ubuntu16TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu16tls安装nvidia驱动)   
-       - [Ubuntu18TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu18tls安装nvidia驱动)   
-       - [配置NVIDIA环境变量](src/ai_base_env.md#配置环境变量)   
-       - [查看NVIDIA显卡驱动版本](src/ai_base_env.md#查看nvidia驱动版本)  
+   2. [安装**NVIDIA驱动**](src/ai_base_env.md#安装nvidia驱动)
+       - [安装NVIDIA驱动所需的依赖包](src/ai_base_env.md#安装nvidia驱动所需的依赖包)
+       - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)
+       - [Ubuntu16TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu16tls安装nvidia驱动)
+       - [Ubuntu18TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu18tls安装nvidia驱动)
+       - [配置NVIDIA环境变量](src/ai_base_env.md#配置环境变量)
+       - [查看NVIDIA显卡驱动版本](src/ai_base_env.md#查看nvidia驱动版本)
        - [解决Linux双系统安装卡在启动Logo](src/ai_base_env.md#解决linux双系统安装卡在启动logo)
-   3. [安装**CUDA**](src/ai_base_env.md#安装cuda)   
-       - [安装CUDA步骤](src/ai_base_env.md#安装cuda步骤)    
-       - [修改配置文件](src/ai_base_env.md#修改配置文件)    
+   3. [安装**CUDA**](src/ai_base_env.md#安装cuda)
+       - [安装CUDA步骤](src/ai_base_env.md#安装cuda步骤)
+       - [修改配置文件](src/ai_base_env.md#修改配置文件)
        - [查看CUDA版本](src/ai_base_env.md#查看cuda版本)
-       - [卸载CUDA的方法](src/ai_base_env.md#卸载cuda的方法)    
-   4. [安装**cuDNN**](src/ai_base_env.md#安装cudnn)    
-       - [下载安装**cuDNN**](src/ai_base_env.md#下载安装cudnn)    
-       - [**cuDNN**常见问题](src/ai_base_env.md#cudnn常见问题)    
-   5. [**CUDA多版本**问题](src/ai_base_env.md#cuda多版本问题)
-   6. [**Anaconda**](src/ai_base_env.md#anaconda)    
-       - [安装Anaconda](src/ai_base_env.md#安装anaconda)    
-       - [屏蔽Anaconda](src/ai_base_env.md#屏蔽anaconda)    
+       - [卸载CUDA的方法](src/ai_base_env.md#卸载cuda的方法)
+   4. [安装**cuDNN**](src/ai_base_env.md#安装cudnn)
+       - [下载安装**cuDNN**](src/ai_base_env.md#下载安装cudnn)
+       - [**cuDNN**常见问题](src/ai_base_env.md#cudnn常见问题)
+   5. [**Ubuntu CUDA多版本**问题](src/ai_base_env.md#ubuntu-cuda多版本问题)
+   6. [**Windows CUDA多版本**问题](src/ai_base_env.md#windows-cuda多版本问题)
+   7. [**Anaconda**](src/ai_base_env.md#anaconda)
+       - [安装Anaconda](src/ai_base_env.md#安装anaconda)
+       - [屏蔽Anaconda](src/ai_base_env.md#屏蔽anaconda)
        - [重建Anaconda软连接](src/ai_base_env.md#重建anaconda软连接)
        - [Anaconda虚拟环境](src/ai_base_env.md#anaconda虚拟环境)
        - [卸载Anaconda](src/ai_base_env.md#卸载anaconda)
-   7. [安装**OpenCV**](src/ai_base_env.md#安装opencv)   
+   8. [安装**OpenCV**](src/ai_base_env.md#安装opencv)
        - [下载OpenCV](src/ai_base_env.md#下载opencv)
        - [编译OpenCV](src/ai_base_env.md#编译opencv)
        - [安装OpenCV](src/ai_base_env.md#安装opencv)
        - [卸载OpenCV](src/ai_base_env.md#卸载opencv)
-   8. [**TensorRT**](src/ai_base_env.md#tensorrt) 
-       - [安装TensorRT](src/ai_base_env.md#安装tensorrt)    
+   9. [**TensorRT**](src/ai_base_env.md#tensorrt)
+       - [安装TensorRT](src/ai_base_env.md#安装tensorrt)
          - [TensorRT环境变量设置](src/ai_base_env.md#tensorrt1)
          - [安装Python的TensorRT包](src/ai_base_env.md#tensorrt2)
          - [安装uff](src/ai_base_env.md#tensorrt3)
@@ -64,13 +65,13 @@ AI实验环境搭建和深度学习算法
            - [TensorRT Caffe Engine](./src/tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
            - [TensorRT Tensorflow Engine](./src/tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
            - [Manually Construct Tensorrt Engine](./src/tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
-   9. [安装**Pytorch**](src/ai_base_env.md#安装pytorch)
-   10. [安装**TensorFlow**](src/ai_base_env.md#安装tensorflow)
-   11. [安装**Caffe**](src/ai_base_env.md#安装caffe)   
-       - [Python2下安装Caffe](src/ai_base_env.md#python2下安装cafe) 
+   10. [安装**Pytorch**](src/ai_base_env.md#安装pytorch)
+   11. [安装**TensorFlow**](src/ai_base_env.md#安装tensorflow)
+   12. [安装**Caffe**](src/ai_base_env.md#安装caffe)
+       - [Python2下安装Caffe](src/ai_base_env.md#python2下安装cafe)
        - [Python3下安装Caffe](src/ai_base_env.md#python3下安装cafe)
-   12. [安装Protobuf](src/ai_base_env.md#安装protobuf)
-   13. [Linux MATLAB安装](src/ai_base_env.md#linux-matlab安装)
+   13. [安装Protobuf](src/ai_base_env.md#安装protobuf)
+   14. [Linux MATLAB安装](src/ai_base_env.md#linux-matlab安装)
        - [MATLAB 2018安装](src/ai_base_env.md#linux-matlab2018安装)
        - [MATLAB 2019安装](src/ai_base_env.md#linux-matlab2019安装)
 
@@ -81,8 +82,8 @@ AI实验环境搭建和深度学习算法
        - [Anaconda环境下TensorFlow和Pytorch共存问题](./src/ai_algorithms.md#anaconda环境下tensorflow和pytorch共存问题)
        - [Anaconda环境下Python下导入正常Jupyter Notebook中导入莫名出错](./src/ai_algorithms.md#anaconda环境下python下导入正常jupyter-notebook中导入莫名出错)
      - [深度学习服务器FAQ](./src/ai_server_FAQ.md#深度学习服务器faq)
-       - [docker常用命令](./src/ai_server_FAQ.md#docker常用命令) 
-       - [多显卡训练问题](./src/ai_server_FAQ.md#多显卡训练问题) 
+       - [docker常用命令](./src/ai_server_FAQ.md#docker常用命令)
+       - [多显卡训练问题](./src/ai_server_FAQ.md#多显卡训练问题)
        - [远程访问服务器**Jupyter Notebook**](./src/ai_server_FAQ.md#远程访问服务器jupyter-notebook)
          - [方法1 ssh远程使用jupyter notebook](./src/ai_server_FAQ.md#方法1-ssh远程使用jupyter-notebook)
          - [方法2 利用jupyter notebook自带的远程访问功能](./src/ai_server_FAQ.md#方法2-利用jupyter-notebook自带的远程访问功能)
@@ -124,7 +125,7 @@ AI实验环境搭建和深度学习算法
      - [文件夹打开缓慢](./src/linux_env_set.md#文件夹打开缓慢)
      - [安装Python依赖库](./src/linux_env_set.md#安装python依赖库)
        - [Python基础库安装](./src/linux_env_set.md#python基础库安装)
-       - [Python项目requirements文件的生成和使用](./src/linux_env_set.md#python项目requirements文件的生成和使用) 
+       - [Python项目requirements文件的生成和使用](./src/linux_env_set.md#python项目requirements文件的生成和使用)
      - [安装Chrome浏览器](./src/linux_env_set.md#安装chrome浏览器)
      - [pip **/** pip3常见报错](./src/linux_env_set.md#pip和pip3常见报错)
      - [关于Ubuntu 16.04LTS下安装Spyder3的问题](./src/linux_env_set.md#ubuntu-16下安装spyder3)
@@ -154,13 +155,13 @@ AI实验环境搭建和深度学习算法
      - [**FFmpeg的使用教程**](./src/ffmpeg.md)
      - [远程连接Ubuntu](./src/linux_env_set.md#远程连接ubuntu)
      - [**Sublime Text 3**配置问题](./src/linux_env_set.md#sublime-text-3配置问题)
-     - [**VSCode**配置问题](./src/linux_env_set.md#vscode配置问题)    
+     - [**VSCode**配置问题](./src/linux_env_set.md#vscode配置问题)
        - [**Awesome VScode Plugin**](./src/linux_env_set.md#awesome-vscode-plugin)
        - [VScode Tips](./src/linux_env_set.md#vscode-tips)
        - [Ubuntu VScode配置Cpp编译环境](./src/linux_env_set.md#ubuntu-vscode配置cpp编译环境)
        - [VScode环境配置](./src/linux_env_set.md#vscode环境配置)
      - [Ubuntu查看和关闭进程](./src/linux_env_set.md#ubuntu查看和关闭进程)
-     - [Ubuntu后台执行命令](./src/linux_env_set.md#ubuntu后台执行命令)   
+     - [Ubuntu后台执行命令](./src/linux_env_set.md#ubuntu后台执行命令)
      - [Ubuntu程序开机自启](./src/linux_env_set.md#ubunt程序开机自启)
         - [修改系统启动文件](./src/linux_env_set.md#修改系统启动文件)
         - [Startup Applications](./src/linux_env_set.md#startup-applications)
@@ -202,17 +203,17 @@ AI实验环境搭建和深度学习算法
 
 
 <!-- # Sponsor
-![wechat](src/Sponsor/wechat.JPG)    
+![wechat](src/Sponsor/wechat.JPG)
 ![alipay](src/Sponsor/alipay.JPG) -->
 
 ---
-##  参考资料  
+##  参考资料
 > 1. [win10下安装Ubuntu16.04双系统](https://blog.csdn.net/s717597589/article/details/79117112/)
 > 2. [Ubuntu 16.04+CUDA 9.1+cuDNN v7+OpenCV 3.4.0+Caffe+PyCharm 完全安装指南](https://blog.csdn.net/balixiaxuetian/article/details/79154013)
 > 3. [cuDNN官方安装指导](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html#installlinux)
 > 4. [ubuntu16.04+caffe+cpu+Anaconda3(python3)](https://blog.csdn.net/m0_38116269/article/details/85098640)
 > 5. [caffe编译遇到的问题](https://blog.csdn.net/m0_37407756/article/details/70789271)
-> 6. [linux安装MATLAB R2018a步骤](https://blog.csdn.net/m0_37775034/article/details/80876362) 
+> 6. [linux安装MATLAB R2018a步骤](https://blog.csdn.net/m0_37775034/article/details/80876362)
 > 7. [关于Ubuntu16.04LTS下Python版本和安装Spyder3的问题？](https://www.zhihu.com/question/51248022/answer/142596984)
 > 8. [zsh + oh-my-zsh 默认shell的最佳替代品](https://blog.phpgao.com/oh-my-zsh.html)
 > 9. [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
@@ -239,3 +240,4 @@ AI实验环境搭建和深度学习算法
 > 30. [Ubuntu 18.04 NVIDIA驱动安装总结](https://blog.csdn.net/tjuyanming/article/details/80862290)
 > 31. [解决Linux双系统安装卡在启动Logo](https://blog.csdn.net/tjuyanming/article/details/79267984)
 > 32. [Ubuntu 18.04 安装 NVIDIA 显卡驱动](https://zhuanlan.zhihu.com/p/59618999)
+> 33. [windows下同一个显卡配置多个CUDA工具包以及它们之间的切换](https://blog.csdn.net/qq_27825451/article/details/89135592)   
