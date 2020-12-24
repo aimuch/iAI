@@ -70,6 +70,11 @@
     ![Visual Studio Code](../img/vscode.gif)
 - [Chrome](https://www.google.com/intl/zh-CN/chrome/)
 - [mpv media player](https://mpv.io/installation/)
+  ```shell
+  sudo add-apt-repository ppa:mc3man/mpv-tests
+  sudo apt-get update
+  sudo apt-get install mpv
+  ```
 - [WPS](https://www.wps.cn/)
 - [Sublime Text](https://www.sublimetext.com/)
 - [Beyond Compare](https://www.scootersoftware.com/download.php)
