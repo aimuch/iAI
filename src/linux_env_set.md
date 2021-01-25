@@ -1450,7 +1450,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
 "Plugin 'ascenator/L9', {'name': 'newL9'}
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'yggdroot/indentline'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'zxqfl/tabnine-vim'
@@ -1626,9 +1626,10 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
 "Plugin 'ascenator/L9', {'name': 'newL9'}
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'yggdroot/indentline'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'zxqfl/tabnine-vim'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
