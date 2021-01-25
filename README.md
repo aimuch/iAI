@@ -245,3 +245,5 @@ AI实验环境搭建和深度学习算法
 > 32. [Ubuntu 18.04 安装 NVIDIA 显卡驱动](https://zhuanlan.zhihu.com/p/59618999)
 > 33. [windows下同一个显卡配置多个CUDA工具包以及它们之间的切换](https://blog.csdn.net/qq_27825451/article/details/89135592)   
 > 34. [Netron](https://github.com/lutzroeder/netron)
+> 35. [Ubuntu 18.04安装Docker CE及NVIDIA Container Toolkit流程](https://www.cnblogs.com/journeyonmyway/p/11234572.html)    
+> 36. [NVIDIA Installing on Ubuntu and Debian](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-on-ubuntu-and-debian)

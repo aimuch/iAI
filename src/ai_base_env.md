@@ -3007,3 +3007,5 @@ sudo rmdir iso
 **参考资料**    
 > [linux安装MATLAB R2018a步骤](https://blog.csdn.net/m0_37775034/article/details/80876362)    
 > [windows下同一个显卡配置多个CUDA工具包以及它们之间的切换](https://blog.csdn.net/qq_27825451/article/details/89135592)    
+> [Ubuntu 18.04安装Docker CE及NVIDIA Container Toolkit流程](https://www.cnblogs.com/journeyonmyway/p/11234572.html)    
+> [NVIDIA Installing on Ubuntu and Debian](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#installing-on-ubuntu-and-debian)
