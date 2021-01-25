@@ -39,7 +39,8 @@
     - [编译OpenCV](#编译opencv)
     - [安装OpenCV](#安装opencv)
     - [卸载OpenCV](#卸载opencv)
-9. [**TensorRT**](#tensorrt) 
+9. [安装**Docker**](#安装docker)
+10. [**TensorRT**](#tensorrt) 
     - [安装TensorRT](#安装tensorrt)    
       - [TensorRT环境变量设置](#tensorrt1)
       - [安装Python的TensorRT包](#tensorrt2)
@@ -57,13 +58,13 @@
         - [TensorRT Caffe Engine](tensorrt/tensorrt-4.0.1.6/caffe_to_tensorrt.ipynb)
         - [TensorRT Tensorflow Engine](tensorrt/tensorrt-4.0.1.6/tf_to_tensorrt.ipynb)
         - [Manually Construct Tensorrt Engine](tensorrt/tensorrt-4.0.1.6/manually_construct_tensorrt_engine.ipynb)
-10. [安装**Pytorch**](#安装pytorch)
-11. [安装**TensorFlow**](#安装tensorflow)
-12. [安装**Caffe**](#安装caffe)
+11. [安装**Pytorch**](#安装pytorch)
+12. [安装**TensorFlow**](#安装tensorflow)
+13. [安装**Caffe**](#安装caffe)
     - [Python2下安装Caffe](#python2下安装cafe)
     - [Python3下安装Caffe](#python3下安装cafe)
-12. [安装**Protobuf**](#安装protobuf)
-13. [Linux **MATLAB**安装](#linux-matlab安装)
+14. [安装**Protobuf**](#安装protobuf)
+15. [Linux **MATLAB**安装](#linux-matlab安装)
     - [Linux **MATLAB 2018**安装](#linux-matlab-2018安装)
     - [Linux **MATLAB 2019**安装](#linux-matlab-2019安装)
 
@@ -1315,6 +1316,122 @@ sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
 把一些残余的动态链接文件和空文件夹删掉。有些文件夹已经被删掉了所以会找不到路径。    
 
 ---
+
+## 安装Docker
+
+为了在**docker**中支持**GPU**，`NVidia`之前是弄了个`nvidia-docker2`，现在升级为`NVIDIA Container Toolkit`了。官方说法是"Usage of nvidia-docker2 packages are deprecated since NVIDIA GPUs are now natively supported as devices in the Docker runtime"。
+
+![NVIDIA Container Runtime for Docker](../img/nvidia_docker.png)
+
+### 安装环境
+- OS：Ubuntu 18.04 64 bit
+- 显卡：NVidia GTX 2080 Ti x 2
+- CUDA：10.0
+- cnDNN：7.4
+
+### 配置Docker源
+```sh
+# 更新源
+$ sudo apt update
+
+# 启用HTTPS
+$ sudo apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+# 添加GPG key
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# 添加稳定版的源
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+```
+### 安装Docker CE
+此刻Docker版本需要19.03，此后可能需要更新。
+```sh
+# 更新源
+$ sudo apt update
+
+# 安装Docker CE
+$ sudo apt install -y docker-ce
+```
+如果这种方式安装失败，也有解决方案。
+报错时屏幕上会显示下载失败的deb文件，想办法下载下来，然后挨个手动安装就好。
+
+此刻我需要下载的是下面三个文件，此后更新为当时最新版本即可：
+
+- containerd.io_1.2.6-3_amd64.deb
+- docker-ce-cli_19.03.03-0ubuntu-bionic_amd64.deb
+- docker-ce_19.03.03-0ubuntu-bionic_amd64.deb
+手动依次安装：
+```sh
+$ sudo dpkg -i containerd.io_1.2.6-3_amd64.deb
+$ sudo dpkg -i docker-ce-cli_19.03.0~3-0~ubuntu-bionic_amd64.deb
+$ sudo dpkg -i docker-ce_19.03.0~3-0~ubuntu-bionic_amd64.deb
+```
+### 验证Docker CE
+如果出现下面的内容，说明安装成功。
+```sh
+$ sudo docker run hello-world
+
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull complete 
+Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586f744621577a99efb77324b0fe535
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
+
+###  配置nvidia-docker源
+```sh
+# 添加源
+$ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+$ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+# 安装并重启docker
+$ sudo apt update && sudo apt install -y nvidia-container-toolkit
+$ sudo systemctl restart docker
+```
+### 使用
+```sh
+# 在官方CUDA镜像上测试 nvidia-smi
+$ sudo docker run --gpus all nvidia/cuda:9.0-base nvidia-smi
+
+# 启动支持双GPU的容器
+$ sudo docker run --gpus 2 nvidia/cuda:9.0-base nvidia-smi
+
+# 指定GPU 1，运行容器
+$ sudo docker run --gpus device=0 nvidia/cuda:9.0-base nvidia-smi
+```
+能看到显卡信息就说明OK了，当前image是基于Ubuntu 16.04的。
+
+
 ## TensorRT
 
 ### 安装TensorRT

@@ -111,12 +111,91 @@
 
 ---
 ## Docker安装与使用
-`Docker`分为`CE`和`EE`两大版本。`CE`即社区版（免费，支持周期 7 个月），`EE`即企业版，强调安全，付费使用，支持周期 24 个月。
+### 安装环境
+```
+OS：Ubuntu 18.04 64 bit
+显卡：NVidia GTX 2080 Ti x 2
+CUDA：10.0
+cnDNN：7.4
+```
+### 配置Docker源
+```sh
+# 更新源
+$ sudo apt update
 
-`Docker CE` 分为 `stable`, `test`, 和 `nightly` 三个更新频道。每六个月发布一个 `stable` 版本 (18.09, 19.03, 19.09...)。
+# 启用HTTPS
+$ sudo apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
 
-官方网站上有各种环境下的安装指南，这里主要介绍 `Docker CE` 在 Linux 、Windows 10 (PC) 和 macOS 上的安装。
+# 添加GPG key
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
+# 添加稳定版的源
+$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+```
+### 安装Docker CE
+此刻Docker版本需要19.03，此后可能需要更新。
+```sh
+# 更新源
+$ sudo apt update
+
+# 安装Docker CE
+$ sudo apt install -y docker-ce
+```
+如果这种方式安装失败，也有解决方案。
+报错时屏幕上会显示下载失败的deb文件，想办法下载下来，然后挨个手动安装就好。
+
+此刻我需要下载的是下面三个文件，此后更新为当时最新版本即可：
+```sh
+containerd.io_1.2.6-3_amd64.deb
+docker-ce-cli_19.03.03-0ubuntu-bionic_amd64.deb
+docker-ce_19.03.03-0ubuntu-bionic_amd64.deb
+```
+手动依次安装：
+```sh
+$ sudo dpkg -i containerd.io_1.2.6-3_amd64.deb
+$ sudo dpkg -i docker-ce-cli_19.03.0~3-0~ubuntu-bionic_amd64.deb
+$ sudo dpkg -i docker-ce_19.03.0~3-0~ubuntu-bionic_amd64.deb
+```
+### 验证Docker CE
+如果出现下面的内容，说明安装成功。
+```sh
+$ sudo docker run hello-world
+
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+1b930d010525: Pull complete 
+Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586f744621577a99efb77324b0fe535
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
 
 ## Linux环境变量初始化与对应文件的生效顺序
 ### Linux的变量种类
