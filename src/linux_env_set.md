@@ -1708,7 +1708,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'yggdroot/indentline'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'zxqfl/tabnine-vim'
+Plugin 'codota/tabnine-vim'
 
 " 你的所有插件需要在下面这行之前
 call vundle#end()            " 必须
