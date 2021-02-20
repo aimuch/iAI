@@ -33,6 +33,7 @@
     - [安装**zsh**](#安装zsh)
     - [安装**vimrc**](#安装vimrc)
     - [安装**oh-my-zsh**](#安装oh-my-zsh)
+    - [安装**autojump**](#安装autojump)
     - [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
     - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)    
     - [安装**colorls**](#安装colorls)    
@@ -1175,7 +1176,17 @@ git config --global oh-my-zsh.hide-status 1
 ```shell
 git config --global oh-my-zsh.hide-status 0
 ```
-
+### 安装autojump
+```sh
+sudo apt-get install autojump
+```
+添加`autojump`到`~/.zshrc`:
+```vim
+plugins=(
+            git
+            autojump
+        )
+```
 ### 安装zsh-autosuggestions    
 - **Oh My Zsh**
     1. Clone this repository into $ZSH_CUSTOM/plugins (by default `~/.oh-my-zsh/custom/plugins`):   
@@ -1186,6 +1197,7 @@ git config --global oh-my-zsh.hide-status 0
         ```vim
         plugins=(
                     git
+                    autojump
                     zsh-autosuggestions
                 )
         ```
@@ -1213,6 +1225,7 @@ git config --global oh-my-zsh.hide-status 0
         ```shell
         plugins=(
                     git
+                    autojump
                     zsh-autosuggestions
                     zsh-syntax-highlighting
                 )
