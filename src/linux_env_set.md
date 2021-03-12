@@ -2243,8 +2243,8 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
   ![vscode terminal](../img/vscode-terminal.png)    
 
 ### vscode编辑器默认字体
-- Linux: 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'
-- Windows: Consolas, 'Courier New', monospace
+- **Linux**: `'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'`
+- **Windows**: `Consolas, 'Courier New', monospace`
 
 ### vscode遇到的问题
 1. 在安装插件的时候提示`cannot read property local of undefined vscode`    
