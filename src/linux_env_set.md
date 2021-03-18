@@ -17,7 +17,7 @@
   - [文件夹打开缓慢](#文件夹打开缓慢)
   - [安装python依赖库](#安装python依赖库)
     - [Python基础库安装](#python基础库安装)
-    - [Python项目requirements文件的生成和使用](#python项目requirements文件的生成和使用) 
+    - [Python项目requirements文件的生成和使用](#python项目requirements文件的生成和使用)
   - [安装**Chrome**浏览器](#安装chrome浏览器)
   - [pip **/** pip3常见报错](#pip和pip3常见报错)
   - [Ubuntu 16下安装spyder3](#ubuntu-16下安装spyder3)
@@ -35,10 +35,10 @@
     - [安装**oh-my-zsh**](#安装oh-my-zsh)
     - [安装**autojump**](#安装autojump)
     - [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
-    - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)    
-    - [安装**colorls**](#安装colorls)    
+    - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)
+    - [安装**colorls**](#安装colorls)
     - [安装**fzf**](#安装fzf)
-    - [安装**navi**](#安装navi)     
+    - [安装**navi**](#安装navi)
   - [**vim**配置](#vim配置)
     - [**YouCompleteMe**实现vim自动补全](#youcompleteme实现vim自动补全)
     - [vim最终配置](#vim最终配置)
@@ -47,14 +47,14 @@
     - [Tmux使用手册](#tmux使用手册)
   - [远程连接Ubuntu](#远程连接ubuntu)
   - [**Sublime Text 3**配置问题](#sublime-text-3配置问题)
-  - [**VSCode**配置问题](#vscode配置问题) 
+  - [**VSCode**配置问题](#vscode配置问题)
     - [**Awesome VScode Plugin**](#awesome-vscode-plugin)
     - [VScode Tips](#vscode-tips)
     - [Ubuntu VScode配置Cpp编译环境](#ubuntu-vscode配置cpp编译环境)
     - [VScode环境配置](#vscode环境配置)
-  - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)   
-  - [Ubuntu后台执行命令](#ubuntu后台执行命令)   
-  - [Ubuntu程序开机自启](#ubuntu程序开机自启)    
+  - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)
+  - [Ubuntu后台执行命令](#ubuntu后台执行命令)
+  - [Ubuntu程序开机自启](#ubuntu程序开机自启)
     - [修改系统启动文件](#修改系统启动文件)
     - [Startup Applications](#startup-applications)
   - [查看系统状态](#查看系统状态)
@@ -81,11 +81,11 @@
 - [Beyond Compare](https://www.scootersoftware.com/download.php)
 - [Wireshark](https://www.wireshark.org/)
 - [kolourpaint](http://www.kolourpaint.org/)
-    ![kolourpaint](../img/kolourpaint.png)    
+    ![kolourpaint](../img/kolourpaint.png)
     ```shell
     sudo apt-get install kolourpaint4
-    ```    
-- **tree**    
+    ```
+- **tree**
   ```sh
   $ tree
   .
@@ -172,7 +172,7 @@ $ sudo docker run hello-world
 
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
-1b930d010525: Pull complete 
+1b930d010525: Pull complete
 Digest: sha256:2557e3c07ed1e38f26e389462d03ed943586f744621577a99efb77324b0fe535
 Status: Downloaded newer image for hello-world:latest
 
@@ -200,55 +200,55 @@ For more examples and ideas, visit:
 
 ## Linux环境变量初始化与对应文件的生效顺序
 ### Linux的变量种类
-按变量的生存周期划分：      
-- `永久的`：需要修改配置文件，变量永久生效。    
-- `临时的`：使用export命令声明即可，变量在关闭shell时失效。    
+按变量的生存周期划分：
+- `永久的`：需要修改配置文件，变量永久生效。
+- `临时的`：使用export命令声明即可，变量在关闭shell时失效。
 
 在配置永久环境变量时，又可以按照作用范围分为:
 - `用户环境变量`
-- `系统环境变量`    
+- `系统环境变量`
 
-系统环境变量对所有系统用户都有效，用户环境变量仅仅对当前的用户有效。  
+系统环境变量对所有系统用户都有效，用户环境变量仅仅对当前的用户有效。
 
 ### 设置环境变量
-#### 直接运行`export`命令定义变量     
+#### 直接运行`export`命令定义变量
   在shell的命令行下直接使用[export 变量名=变量值] 定义变量。该变量只在当前的shell（BASH）或其子shell（BASH）下是有效的，shell关闭了，变量也就失效了，再打开新shell时就没有这个变量，需要使用的话还需要重新定义。
 
-####  修改系统环境变量  
+####  修改系统环境变量
   系统环境变量一般保存在下面的文件中
 
-- `/etc/profile` : 全局（公有）配置，不管是哪个用户，登录时都会读取该文件。    
-- `/etc/bash.bashrc` : 它也是全局（公有）的 bash执行时，不管是何种方式，都会读取此文件。    
+- `/etc/profile` : 全局（公有）配置，不管是哪个用户，登录时都会读取该文件。
+- `/etc/bash.bashrc` : 它也是全局（公有）的 bash执行时，不管是何种方式，都会读取此文件。
 - `/etc/environment` : 不要轻易修改此文件
 
 #### 修改用户环境变量
 用户环境变量通常被存储在下面的文件中：
 
-- `~/.profile`    
+- `~/.profile`
   若bash是以login方式执行时，读取~/.bash_profile，若它不存在，则读取~/.bash_login，若前两者不存在，读取~/.profile。
 
-- `~/.bash_profile` 或者 `~./bash_login`    
+- `~/.bash_profile` 或者 `~./bash_login`
   若bash是以login方式执行时，读取`~/.bash_profile`，若它不存,则读取`~/.bash_login`，若前两者不存在，读取 `~/.profile`。
   只有bash是以login形式执行时，才会读取`.bash_profile`，Unbutu默认没有此文件，可新建。 通常该配置文件还会配置成去读取`~/.bashrc`。
 
-- `~/.bashrc`    
+- `~/.bashrc`
   当bash是以non-login形式执行时，读取此文件。若是以login形式执行，则不会读取此文件。
 
-`~/.bash_profile` 是交互式、login 方式进入 bash 运行的    
-`~/.bashrc` 是交互式 non-login 方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。    
+`~/.bash_profile` 是交互式、login 方式进入 bash 运行的
+`~/.bashrc` 是交互式 non-login 方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。
 
 #### 修改环境变量配置文件
 
-如想将一个路径加入到环境变量（例如`$PATH`）中，可以像下面这样做（修改`/etc/profile`）：   
+如想将一个路径加入到环境变量（例如`$PATH`）中，可以像下面这样做（修改`/etc/profile`）：
 ```shell
 sudo vi /etc/profile
 ```
-以环境变量PATH为例子，环境变量的声明格式：    
+以环境变量PATH为例子，环境变量的声明格式：
 ```shell
-PATH=$PATH:PATH_1:PATH_2:PATH_3:...:PATH_N 
+PATH=$PATH:PATH_1:PATH_2:PATH_3:...:PATH_N
 export PATH
-```    
-你可以自己加上指定的路径，中间用冒号隔开。环境变量更改后，在用户下次登陆时生效，如果想立刻生效，则可执行下面的语句：    
+```
+你可以自己加上指定的路径，中间用冒号隔开。环境变量更改后，在用户下次登陆时生效，如果想立刻生效，则可执行下面的语句：
 ```shell
 $source /etc/profile
 ```
@@ -257,21 +257,21 @@ $source /etc/profile
 #### `profile`、 `bashrc`、`.bash_profile`、 `.bashrc`介绍
 bash会在用户登录时，读取下列四个环境配置文件：
 
-- 全局环境变量设置文件：`/etc/profile`、`/etc/bashrc`。    
-- 用户环境变量设置文件：`~/.bash_profile`、`~/.bashrc`。    
+- 全局环境变量设置文件：`/etc/profile`、`/etc/bashrc`。
+- 用户环境变量设置文件：`~/.bash_profile`、`~/.bashrc`。
 
 **读取顺序：①` /etc/profile` 、② `~/.bash_profile` 、③ `~/.bashrc` 、④ `/etc/bashrc`** 。
 
 - ① `/etc/profile`：此文件为系统的每个用户设置环境信息，系统中每个用户登录时都要执行这个脚本，如果系统管理员希望某个设置对所有用户都生效，可以写在这个脚本里，该文件也会从`/etc/profile.d`目录中的配置文件中搜集shell的设置。
 - ② `~/.bash_profile`：每个用户都可使用该文件设置专用于自己的shell信息，当用户登录时，该文件仅执行一次。默认情况下，他设置一些环境变量，执行用户的`.bashrc`文件。
 - ③ `~/.bashrc`：该文件包含专用于自己的shell信息，当登录时以及每次打开新shell时，该文件被读取。
-- ④ `/etc/bashrc`：为每一个运行bash shell的用户执行此文件，当bash shell被打开时，该文件被读取。   
+- ④ `/etc/bashrc`：为每一个运行bash shell的用户执行此文件，当bash shell被打开时，该文件被读取。
 
-![shell](./linux/shell/shell.png)    
+![shell](./linux/shell/shell.png)
 
 #### `.bashrc`和`.bash_profile`的区别
 
-- `.bash_profile`会用在登陆shell， `.bashrc` 使用在交互式非登陆 shell 。简单说来，它们的区别主要是`.bash_profile`是在你每次登录的时候执行的；`.bashrc`是在你新开了一个命令行窗口时执行的。    
+- `.bash_profile`会用在登陆shell， `.bashrc` 使用在交互式非登陆 shell 。简单说来，它们的区别主要是`.bash_profile`是在你每次登录的时候执行的；`.bashrc`是在你新开了一个命令行窗口时执行的。
 - 当通过控制台进行登录（输入用户名和密码）：在初始化命令行提示符的时候会执行`.bash_profile` 来配置你的shell环境。但是如果已经登录到机器，在Gnome或者是KDE也开了一个新的终端窗口（xterm），这时，`.bashrc`会在窗口命令行提示符出现前被执行。当你在终端敲入`/bin/bash`时`.bashrc`也会在这个新的bash实例启动的时候执行。
 
 #### 建议
@@ -285,7 +285,7 @@ fi
   现在，当你从控制台登录机器的时候，`.bashrc`就会被执行。
 
 
-## Docker安装   
+## Docker安装
 >警告：切勿在没有配置 Docker APT 源的情况下直接使用 apt 命令安装 Docker.
 
 ### 准备工作
@@ -514,25 +514,25 @@ docker rm myDocker
     These would then give you access to the tools such as nvcc and the cuDNN header files that are required for development.
 
 ### 参考文档
-> [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)    
-> [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)    
+> [Docker — 从入门到实践](https://github.com/yeasy/docker_practice)
+> [Docker 官方 Ubuntu 安装文档](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
 
 
 
 ---
 ## Linuxbrew安装
-[*The Homebrew package manager for Linux*](https://linuxbrew.sh/)    
+[*The Homebrew package manager for Linux*](https://linuxbrew.sh/)
 
-### 安装linuxbrew    
+### 安装linuxbrew
 
-将以下命令粘贴到命令行中运行:    
+将以下命令粘贴到命令行中运行:
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 ```
-The installation script installs Linuxbrew to `/home/linuxbrew/.linuxbrew` using sudo if possible and in your home directory at` ~/.linuxbrew` otherwise. Linuxbrew does not use sudo after installation. Using `/home/linuxbrew/.linuxbrew` allows the use of more binary packages (bottles) than installing in your personal home directory.   
+The installation script installs Linuxbrew to `/home/linuxbrew/.linuxbrew` using sudo if possible and in your home directory at` ~/.linuxbrew` otherwise. Linuxbrew does not use sudo after installation. Using `/home/linuxbrew/.linuxbrew` allows the use of more binary packages (bottles) than installing in your personal home directory.
 
-Follow the Next steps instructions to add Linuxbrew to your `PATH` and to your bash shell profile script, either `~/.profile` on Debian/Ubuntu or `~/.bash_profile` on CentOS/Fedora/RedHat.    
+Follow the Next steps instructions to add Linuxbrew to your `PATH` and to your bash shell profile script, either `~/.profile` on Debian/Ubuntu or `~/.bash_profile` on CentOS/Fedora/RedHat.
 ```bash
 test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -547,13 +547,13 @@ brew install hello
 ```
 If you're using an older distribution of Linux, installing your first package will also install a recent version of glibc and gcc. Use brew doctor to troubleshoot common issues.
 
-### linuxbrew必装包   
+### linuxbrew必装包
 - git
 - wget
 - vim
 
-### brew常用命令    
-- `brew shellenv`    
+### brew常用命令
+- `brew shellenv`
   Prints export statements - run them in a shell and this installation of Homebrew will be included into your PATH, MANPATH and INFOPATH.
 
   HOMEBREW_PREFIX, HOMEBREW_CELLAR and HOMEBREW_REPOSITORY are also exported to save multiple queries of those variables.
@@ -571,42 +571,42 @@ If you're using an older distribution of Linux, installing your first package wi
   export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
   export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
   ```
-- `brew install xxx`    
-  安装xxx软件    
-- `brew uninstall xxx`    
-  卸载xxx软件    
-- `brew search xxx`    
-  搜索xxx软件     
+- `brew install xxx`
+  安装xxx软件
+- `brew uninstall xxx`
+  卸载xxx软件
+- `brew search xxx`
+  搜索xxx软件
 
 ### linuxbrew注意事项
-假如用`linuxbrew`安装的`Python`会替换系统默认的`Python`。若需要还原则需要将`~/.profile`文件中的`eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)`这一行屏蔽:    
+假如用`linuxbrew`安装的`Python`会替换系统默认的`Python`。若需要还原则需要将`~/.profile`文件中的`eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)`这一行屏蔽:
 ```shell
 # linuxbrew
-#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv) 
-```    
-然后重启电脑.   
+#eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+```
+然后重启电脑.
 
 ---
 
 ## 监视GPU和CPU资源利用情况
-**监视GPU资源利用情况：**   
+**监视GPU资源利用情况：**
 ```shell
 watch -n 1 nvidia-smi #每隔一秒刷新一下GPU资源情况
 ```
 ![png](../img/nvidia-smi.png)
-**或者**   
+**或者**
 ```shell
 nvtop
 ```
-`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。   
+`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。
 ![png](../img/nvtop.png)
 
-**监视CPU资源利用情况**    
-CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:    
+**监视CPU资源利用情况**
+CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:
 ```shell
 sudo apt-get install htop
 ```
-然后输入以下命令显示CPU资源利用情况:    
+然后输入以下命令显示CPU资源利用情况:
 ```shell
 htop
 ```
@@ -615,47 +615,47 @@ htop
 
 ---
 ## Ubuntu每次开机后提示检测到系统程序出现问题的解决方法
-首先，错误报告存放位置:   
+首先，错误报告存放位置:
 ```bash
 cd /var/crash/
 ls #可以查看错误报告
 sudo rm /var/crash/* #删除该目录下的所有文件
 ```
-但是，这只是删除掉的是错误报告，如果系统再有什么崩溃，又会再报错。   
+但是，这只是删除掉的是错误报告，如果系统再有什么崩溃，又会再报错。
 
 ---
 ## Ubuntu循环登陆问题
 ### 问题描述
-登录Ubuntu的时候在输入密码和登录桌面之间反复循环。   
+登录Ubuntu的时候在输入密码和登录桌面之间反复循环。
 
 ### 原因
-安装软件的时候破坏了NVIDIA驱动导致。   
+安装软件的时候破坏了NVIDIA驱动导致。
 
 ### 解决方法
-1. 进入linux的shell    
-在登录界面进入linux的shell（`ctrl + Alt + F1`），输入用户名、密码，进入shell。   
-关闭图形界面，命令为:    
+1. 进入linux的shell
+在登录界面进入linux的shell（`ctrl + Alt + F1`），输入用户名、密码，进入shell。
+关闭图形界面，命令为:
 ```bash
 sudo service lightdm stop #或者 sudo /etc/init.d/lightdm stop
 #sudo apt-get autoremove #有可能需要
 ```
-2. 卸载NVIDIA驱动:    
+2. 卸载NVIDIA驱动:
 ```bash
 sudo apt-get purge nvidia*
 ```
-或者:   
+或者:
 ```bash
 sudo PATH_TO_NVIDIA_DRIVE/NVIDIA-Linux-x86_64-xxx.run --uninstall
 ```
-3. 重新安装NVIDIA驱动:    
+3. 重新安装NVIDIA驱动:
 ```bash
 sudo apt-get install nvidia-390 nvidia-settings nvidia-prime #nvidia-390可以替换为其他版本
 ```
-或者:   
+或者:
 ```bash
 sudo PATH_TO_NVIDIA_DRIVER/NVIDIA-Linux-x86_64-xxx.run --no-opengl-files
 ```
-**.run**安装过程选项为:    
+**.run**安装过程选项为:
 ```vim
 在NVIDIA驱动安装过程中，依次的选项为：
 1 accept
@@ -666,13 +666,13 @@ NO
 4 Install 32-Bit compatibility libraries?
 NO
 ```
-4. 打开图形界面，命令为:   
+4. 打开图形界面，命令为:
 ```bash
 sudo service lightdm start #或者sudo /etc/init.d/lightdm start
 ```
 ---
 ## 文件夹打开缓慢
-经常会遇到打开Ubuntu文件夹资源管理器的时候卡住，必须得重启才能解决，现在临时的解决方法是:    
+经常会遇到打开Ubuntu文件夹资源管理器的时候卡住，必须得重启才能解决，现在临时的解决方法是:
 ```shell
 sudo apt-get install thunar thunar-archive-plugin
 ```
@@ -681,7 +681,7 @@ sudo apt-get install thunar thunar-archive-plugin
 ## 安装python依赖库
 
 ### Python基础库安装
-**注意**：`Python2` 的话用`pip`安装，`Python3`用`pip3`安装（总之要知道安装在哪里，有的系统将`python`软连接到`Python3`上了）    
+**注意**：`Python2` 的话用`pip`安装，`Python3`用`pip3`安装（总之要知道安装在哪里，有的系统将`python`软连接到`Python3`上了）
 ```shell
 pip install scipy \
             pandas \
@@ -691,9 +691,9 @@ pip install scipy \
             matplotlib \
             pandas \
             tqdm \
-            Pillow     
-```   
-`Anaconda`虚拟环境中首先激活虚拟环境，然后用`conda`安装依赖包:     
+            Pillow
+```
+`Anaconda`虚拟环境中首先激活虚拟环境，然后用`conda`安装依赖包:
 ```shell
 conda install jupyter notebook \
               scipy \
@@ -715,51 +715,51 @@ apt-get install python-skimage(install skimage)
 ```
 
 ### Python项目requirements文件的生成和使用
-我们做开发时为何需要对依赖库进行管理？当依赖类库过多时，如何管理类库的版本？    
-`Python`提供通过`requirements.txt`文件来进行项目中依赖的三方库进行整体安装导入。   
+我们做开发时为何需要对依赖库进行管理？当依赖类库过多时，如何管理类库的版本？
+`Python`提供通过`requirements.txt`文件来进行项目中依赖的三方库进行整体安装导入。
 
-首先看一下`requirements.txt`的格式:    
+首先看一下`requirements.txt`的格式:
 ```vim
 requests==1.2.0
 Flask==0.10.1
 ```
-Python安装依赖库使用pip可以很方便的安装，如果我们需要迁移一个项目，那我们就需要导出项目中依赖的所有三方类库的版本、名称等信息。   
+Python安装依赖库使用pip可以很方便的安装，如果我们需要迁移一个项目，那我们就需要导出项目中依赖的所有三方类库的版本、名称等信息。
 
-接下来就看Python项目如何根据`requirements.txt`文件来安装三方类库    
+接下来就看Python项目如何根据`requirements.txt`文件来安装三方类库
 
-#### 1. 生成requirements.txt    
-- #### 方法一：pip freeze    
-*使用`pip freeze`生成`requirements.txt`*    
+#### 1. 生成requirements.txt
+- #### 方法一：pip freeze
+*使用`pip freeze`生成`requirements.txt`*
 ```bash
 pip freeze > requirements.txt
 ```
-`pip freeze`命令输出的格式和`requirements.txt`文件内容格式完全一样，因此我们可以将`pip freeze`的内容输出到文件`requirements.txt`中。在其他机器上可以根据导出的`requirements.txt`进行包安装。    
+`pip freeze`命令输出的格式和`requirements.txt`文件内容格式完全一样，因此我们可以将`pip freeze`的内容输出到文件`requirements.txt`中。在其他机器上可以根据导出的`requirements.txt`进行包安装。
 
-**注意**：`pip freeze`输出的是本地环境中所有三方包信息，但是会比`pip list`少几个包，因为`pip，wheel，setuptools`等包，是自带的而无法`(un)install`的，如果要显示所有包可以加上参数`-all`，即`pip freeze -all`。    
+**注意**：`pip freeze`输出的是本地环境中所有三方包信息，但是会比`pip list`少几个包，因为`pip，wheel，setuptools`等包，是自带的而无法`(un)install`的，如果要显示所有包可以加上参数`-all`，即`pip freeze -all`。
 
 - #### 方法二：pipreqs
-*使用`pipreqs`生成`requirements.txt`*    
+*使用`pipreqs`生成`requirements.txt`*
 
-首先先安装`pipreqs`:    
+首先先安装`pipreqs`:
 ```bash
 pip install pipreqs
 ```
-使用`pipreqs`生成`requirements.txt`:   
+使用`pipreqs`生成`requirements.txt`:
 ```bash
 pipreqs ./
 ```
 **注意**：pipreqs生成指定目录下的依赖类库
 
-**上面两个方法的区别？**    
-使用`pip freeze`保存的是**当前Python环境**下**所有**的类库，如果你没有用`virtualenv`来对`Python`环境做虚拟化的话，类库就会很杂很多，在对项目进行迁移的时候我们只需关注项目中使用的类库，没有必要导出所有安装过的类库，因此我们一般迁移项目不会使用`pipreqs`，`pip freeze`更加适合迁移**整个python环境**下安装过的类库时使用。(不知道`virtualenv`是什么或者不会使用它的可以查看：《构建`Python`多个虚拟环境来进行不同版本开发之神器-virtualenv》)。    
+**上面两个方法的区别？**
+使用`pip freeze`保存的是**当前Python环境**下**所有**的类库，如果你没有用`virtualenv`来对`Python`环境做虚拟化的话，类库就会很杂很多，在对项目进行迁移的时候我们只需关注项目中使用的类库，没有必要导出所有安装过的类库，因此我们一般迁移项目不会使用`pipreqs`，`pip freeze`更加适合迁移**整个python环境**下安装过的类库时使用。(不知道`virtualenv`是什么或者不会使用它的可以查看：《构建`Python`多个虚拟环境来进行不同版本开发之神器-virtualenv》)。
 
-使用`pipreqs`它会根据**当前目录**下的项目的依赖来导出三方类库，因此常用与项目的迁移中。    
+使用`pipreqs`它会根据**当前目录**下的项目的依赖来导出三方类库，因此常用与项目的迁移中。
 
 **这就是pip freeze、pipreqs的区别，前者是导出Python环境下所有安装的类库，后者导出项目中使用的类库。**
 
 
-#### 2. 根据requirements.txt安装依赖库    
-如果要安装`requirements.txt`中的类库内容，那么你可以执行:    
+#### 2. 根据requirements.txt安装依赖库
+如果要安装`requirements.txt`中的类库内容，那么你可以执行:
 ```bash
 pip install -r requirements.txt
 ```
@@ -768,15 +768,15 @@ pip install -r requirements.txt
 ## 安装chrome浏览器
 ***[参考地址](https://blog.csdn.net/qq_30164225/article/details/54632634)***
 
-将下载源加入系统源列表:    
+将下载源加入系统源列表:
 ```shell
 sudo wget http://www.linuxidc.com/files/repo/google-chrome.list -P /etc/apt/sources.list.d/
 ```
-导入谷歌软件公钥:   
+导入谷歌软件公钥:
 ```shell
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 ```
-更新源:   
+更新源:
 ```shell
 sudo apt-get update
 ```
@@ -806,7 +806,7 @@ pkg_resources.DistributionNotFound: pip==1.5.6
 sudo python3 get-pip.py
 sudo python3 ez_setup.py
 ```
-其中[get-pip.py](./fix_pip/get-pip.py)和[ez_setup.py](./fix_pip/ez_setup-pip.py)文件在[`src/fix_pip`](./fix_pip/)文件夹中。    
+其中[get-pip.py](./fix_pip/get-pip.py)和[ez_setup.py](./fix_pip/ez_setup-pip.py)文件在[`src/fix_pip`](./fix_pip/)文件夹中。
 
 ### **问题描述 2**
 ```shell
@@ -831,20 +831,20 @@ Traceback (most recent call last):
     raise ValueError(tmpl % self.PKG_INFO, self)
 ValueError: ("Missing 'Version:' header and/or METADATA file", Unknown [unknown version] (/home/andy/.local/lib/python3.5/site-packages))
 ```
-![pip error](../img/pip-error.png)    
+![pip error](../img/pip-error.png)
 
-**解决方法**    
-运行以下代码，查看`site-packages`下的文件夹， 删除以 `-` 开头的文件夹:    
+**解决方法**
+运行以下代码，查看`site-packages`下的文件夹， 删除以 `-` 开头的文件夹:
 ```shell
 python3 -c "import site; print(site.getsitepackages())"
 ```
 
-到报错文件夹下(这里是`/home/andy/.local/lib/python3.5/site-packages`)删除 `-` 开头的文件夹，然后重新执行 `pip3 list` .    
+到报错文件夹下(这里是`/home/andy/.local/lib/python3.5/site-packages`)删除 `-` 开头的文件夹，然后重新执行 `pip3 list` .
 我这里是 `-pencv_python-3.4.3.18.dist-info` ：
 ```shell
 rm -rf  ./-pencv_python-3.4.3.18.dist-info
 ```
-然后 `pip3 list` 正常了.     
+然后 `pip3 list` 正常了.
 
 ---
 ## Ubuntu 16下安装spyder3
@@ -861,7 +861,7 @@ pip3 install -U spyder
 spyder3
 ```
 若运行时发现报错：`qtpy.PythonQtError: No Qt bindings could be found`
-那就安装 pyqt5（目前最新为5）……：$ 
+那就安装 pyqt5（目前最新为5）……：$
 ```shell
 pip3 install -U pyqt5
 ```
@@ -895,29 +895,29 @@ pip3 install -U pyqt5
 ---
 ## 安装搜狗输入法
 
-1. 卸载旧版本搜狗输入法:    
+1. 卸载旧版本搜狗输入法:
     ```bash
     sudo apt-get purge sogoupinyin
-    
+
     rm -rf ~/.config/sogou-qimpanel
     rm -rf ~/.config/SogouPY
     rm -rf ~/.config/SogouPY.users
     ```
 
-2. [下载linux版搜狗输入法](https://pinyin.sogou.com/linux/?r=pinyin)    
-3. 命令行运行：    
+2. [下载linux版搜狗输入法](https://pinyin.sogou.com/linux/?r=pinyin)
+3. 命令行运行：
    ```shell
     sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
    ```
-4. System Setting -> Language Support -> Keyboard input method system:`fcitx`    
-5. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
-![BundleInstall](../img/sougou.png)     
-5. 有可能重启后会出现两个输入法图标，解决方法：    
+4. System Setting -> Language Support -> Keyboard input method system:`fcitx`
+5. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。
+![BundleInstall](../img/sougou.png)
+5. 有可能重启后会出现两个输入法图标，解决方法：
    ```shell
    sudo apt-get remove fcitx-ui-qimpanel
    ```
 
-6. 搜狗拼音输入法候选栏乱码解决方法    
+6. 搜狗拼音输入法候选栏乱码解决方法
    ```shell
    cd ~/.config
    sudo rm -rf SogouPY* sogou*
@@ -925,12 +925,12 @@ pip3 install -U pyqt5
 
 
 ---
-## WPS设置  
+## WPS设置
 ### 解决WPS启动提示字体未安装错误
 
-首先[下载字体库](wps/wps_symbol_fonts.zip)到本地，然后以下方式任选一个安装字体:    
+首先[下载字体库](wps/wps_symbol_fonts.zip)到本地，然后以下方式任选一个安装字体:
 
-1、解压    
+1、解压
 ```shell
 sudo unzip wps_symbol_fonts.zip -d /usr/share/fonts/wps-office
 ```
@@ -944,41 +944,41 @@ sudo mkfontdir
 #运行fc-cache命令更新字体缓存
 sudo fc-cache
 ```
-重启WPS即可。    
+重启WPS即可。
 
-3、这种方式是直接双击字体进行安装，进入到解压出的文件，双击即可。         
+3、这种方式是直接双击字体进行安装，进入到解压出的文件，双击即可。
 
 ### WPS切换显示语言
-修改WPS的配置文件: `~/.config/Kingsoft/Office.conf`:    
+修改WPS的配置文件: `~/.config/Kingsoft/Office.conf`:
 ```shell
 vim ~/.config/Kingsoft/Office.conf
 ```
-在文件开头添加以下内容:    
+在文件开头添加以下内容:
 ```vim
 languages=zh_CN
 ```
-![WPS Config](../img/wps-config1.png)    
+![WPS Config](../img/wps-config1.png)
 
-![WPS Config](../img/wps-config2.png)    
+![WPS Config](../img/wps-config2.png)
 
-### WPS不能输入中文   
-**原因**：环境变量未正确设置。 
-**解决办法**:    
+### WPS不能输入中文
+**原因**：环境变量未正确设置。
+**解决办法**:
 #### WPS文字
 打开终端输入：
 ```shell
 sudo vim /usr/bin/wps
-```    
-添加一下文字到打开的文本中（添加到`#!/bin/bash`下面）：   
+```
+添加一下文字到打开的文本中（添加到`#!/bin/bash`下面）：
 ```shell
 export XMODIFIERS="@im=fcitx"
-export QT_IM_MODULE="fcitx"    
-```    
+export QT_IM_MODULE="fcitx"
+```
 #### WPS表格
 打开终端输入：
 ```shell
 sudo vim /usr/bin/et
-```    
+```
 添加一下文字到打开的文本中（添加到`#!/bin/bash`下面）：
 ```shell
 export XMODIFIERS="@im=fcitx"
@@ -988,7 +988,7 @@ export QT_IM_MODULE="fcitx"
 打开终端输入：
 ```shell
 sudo vim /usr/bin/wpp
-``` 
+```
 添加一下文字到打开的文本中（添加到`#!/bin/bash`下面）：
 ```shell
 export XMODIFIERS="@im=fcitx"
@@ -998,57 +998,57 @@ export QT_IM_MODULE="fcitx"
 
 ---
 ## 安装赛睿霜冻之蓝v2驱动
-先安装依赖项：   
+先安装依赖项：
 ```shell
 sudo apt-get install build-essential python-dev libusb-1.0-0-dev libudev-dev
 ```
-接着安装驱动：   
+接着安装驱动：
 ```shell
 sudo pip install rivalcfg
 ```
 
 ---
 ## zsh oh-my-zsh默认shell的最佳替代品
-### 项目地址   
-- **[zsh](http://www.zsh.org)**     
+### 项目地址
+- **[zsh](http://www.zsh.org)**
 - **[vimrc](https://github.com/amix/vimrc)**
-- **[oh-my-zsh](http://ohmyz.sh)**      
-- **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)**    
-- **[colorls](https://github.com/athityakumar/colorls)**    
+- **[oh-my-zsh](http://ohmyz.sh)**
+- **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)**
+- **[colorls](https://github.com/athityakumar/colorls)**
 
 
-### 查看系统shell环境     
-查看当前发行版可以使用的`shell`:    
+### 查看系统shell环境
+查看当前发行版可以使用的`shell`:
 ```shell
-cat /etc/shells 
+cat /etc/shells
 ```
-查看当前使用的`shell`:    
+查看当前使用的`shell`:
 ```shell
 echo $0
 ```
-查看当前用户(默认)使用的`shell`:    
+查看当前用户(默认)使用的`shell`:
 ```shell
 echo $SHELL
 ```
 
-### 安装zsh   
-```shell   
+### 安装zsh
+```shell
 sudo apt-get install zsh
 ```
 
-#### 设置zsh为系统默认shell:   
-- **为root用户修改默认shell为zsh**   
+#### 设置zsh为系统默认shell:
+- **为root用户修改默认shell为zsh**
   ```shell
   chsh -s /bin/zsh root
   ```
-- **为当前用户修改默认shell为zsh**   
+- **为当前用户修改默认shell为zsh**
   ```shell
   chsh -s /bin/zsh
   # or
   chsh -s `which zsh`
   ```
 
-**重启电脑**后打开 `Terminal` 提示以下内容:  
+**重启电脑**后打开 `Terminal` 提示以下内容:
 ```shell
 This is the Z Shell configuration function for new users,
 zsh-newuser-install.
@@ -1072,41 +1072,41 @@ You can:
 
 --- Type one of the keys in parentheses ---
 ```
-![zsh install](../img/zsh-install.png)      
+![zsh install](../img/zsh-install.png)
 - q: 啥也不做，下次打开终端还提示；
 - 0: 退出，创建只包含一条命令的`~/.zshrc`文件，下次打开终端不会提示
 - 1: 继续主菜单
-- 2: 创建系统推荐的`~/.zshrc`文件配置    
+- 2: 创建系统推荐的`~/.zshrc`文件配置
 
-一般情况下输入 `0` 即可，`~/.zshrc` 的配置文件用 `oh-my-zsh` 的配置.    
+一般情况下输入 `0` 即可，`~/.zshrc` 的配置文件用 `oh-my-zsh` 的配置.
 
 
-#### 恢复bash为系统默认：   
+#### 恢复bash为系统默认：
 ```shell
 chsh -s /bin/bash
 ```
 
 
 
-### 安装vimrc    
-- **Install for your own user only**    
+### 安装vimrc
+- **Install for your own user only**
   The awesome version includes a lot of great plugins, configurations and color schemes that make Vim a lot better. To install it simply do following from your terminal:
   ```shell
-  git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime 
+  git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
   sh ~/.vim_runtime/install_awesome_vimrc.sh
   ```
-- **Install for multiple users**    
-  To install for multiple users, the repository needs to be cloned to a location accessible for all the intended users.    
+- **Install for multiple users**
+  To install for multiple users, the repository needs to be cloned to a location accessible for all the intended users.
   ```shell
   git clone --depth=1 https://github.com/amix/vimrc.git /opt/vim_runtime
   sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime user0 user1 user2
   # to install for all users with home directories
   sh ~/.vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
   ```
-Naturally, `/opt/vim_runtime` can be any directory, as long as all the users specified have read access.   
+Naturally, `/opt/vim_runtime` can be any directory, as long as all the users specified have read access.
 
-**错误处理**    
-在运行vim的时候提示如下错误：    
+**错误处理**
+在运行vim的时候提示如下错误：
 ```vim
 vim-go requires Vim 7.4.2009 or Neovim 0.3.1, but you're using an older version.
 Please update your Vim for the best vim-go experience.
@@ -1115,39 +1115,39 @@ If you really want to continue you can set this to make the error go away:
 Note that some features may error out or behave incorrectly.
 Please do not report bugs unless you're using Vim 7.4.2009 or newer or Neovim 0.3.1.
 ```
-***解决方法***：    
-编辑`.vimrc`    
+***解决方法***：
+编辑`.vimrc`
 ```shell
 vim ~/.vimrc
 ```
-添加一行    
+添加一行
 ```vim
 let g:go_version_warning = 0
 ```
-保存退出 问题解决   
-        
-    
-    
-### 安装oh-my-zsh   
-- **via curl**   
+保存退出 问题解决
+
+
+
+### 安装oh-my-zsh
+- **via curl**
   ```shell
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   ```
-- **via wget**   
+- **via wget**
   ```shell
   sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-  ```   
-- **Manual inspection**     
-  It's a good idea to inspect the install script from projects you don't yet know. You can do that by downloading the install script first, looking through it so everything looks normal, then running it:    
+  ```
+- **Manual inspection**
+  It's a good idea to inspect the install script from projects you don't yet know. You can do that by downloading the install script first, looking through it so everything looks normal, then running it:
   ```shell
   curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
   sh install.sh
   ```
 
-**在 `~/.zshrc` 配置文件追加以下内容**   
+**在 `~/.zshrc` 配置文件追加以下内容**
 ```shell
 # GO PATH
-#export PATH=$PATH:/usr/local/go/bin
+#export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 #export GOROOT=/usr/local/go
 #export GOPATH=$HOME/go
 #export GOBIN=$GOROOT/bin
@@ -1160,21 +1160,21 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 ```
-**插件**   
+**插件**
 
-[Plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)   
+[Plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)
 
-**升级**   
+**升级**
 ```shell
 upgrade_oh_my_zsh
 ```
 
-**使用oh-my-zsh后导致的卡顿问题**    
-现象是每次cd和ll时都会被卡住很长时间根本受不了，最后在官方github查明原因是使用的主题会自动获取git信息，可以使用以下命令禁止zsh自动获取git信息，解决卡顿问题:    
+**使用oh-my-zsh后导致的卡顿问题**
+现象是每次cd和ll时都会被卡住很长时间根本受不了，最后在官方github查明原因是使用的主题会自动获取git信息，可以使用以下命令禁止zsh自动获取git信息，解决卡顿问题:
 ```shell
 git config --global oh-my-zsh.hide-status 1
 ```
-若想恢复则：    
+若想恢复则：
 ```shell
 git config --global oh-my-zsh.hide-status 0
 ```
@@ -1189,13 +1189,13 @@ plugins=(
             autojump
         )
 ```
-### 安装zsh-autosuggestions    
+### 安装zsh-autosuggestions
 - **Oh My Zsh**
-    1. Clone this repository into $ZSH_CUSTOM/plugins (by default `~/.oh-my-zsh/custom/plugins`):   
+    1. Clone this repository into $ZSH_CUSTOM/plugins (by default `~/.oh-my-zsh/custom/plugins`):
         ```shell
         git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         ```
-    2. Add the plugin to the list of plugins for Oh My Zsh to load (`inside ~/.zshrc`):   
+    2. Add the plugin to the list of plugins for Oh My Zsh to load (`inside ~/.zshrc`):
         ```vim
         plugins=(
                     git
@@ -1206,24 +1206,24 @@ plugins=(
     3. Start a new terminal session.
 
 - **Manual (Git Clone)**
-    1. Clone this repository somewhere on your machine. This guide will assume` ~/.zsh/zsh-autosuggestions`:    
+    1. Clone this repository somewhere on your machine. This guide will assume` ~/.zsh/zsh-autosuggestions`:
         ```shell
         git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
         ```
-    2. Add the following to your `.zshrc`:    
+    2. Add the following to your `.zshrc`:
         ```shell
         source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
         ```
     3. Start a new terminal session.
 
 
-### 安装zsh-syntax-highlighting    
-- **Oh-my-zsh**    
+### 安装zsh-syntax-highlighting
+- **Oh-my-zsh**
   1. Clone this repository in **oh-my-zsh**'s plugins directory:
         ```shell
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
         ```
-  2. Activate the plugin in `~/.zshrc`:    
+  2. Activate the plugin in `~/.zshrc`:
         ```shell
         plugins=(
                     git
@@ -1232,7 +1232,7 @@ plugins=(
                     zsh-syntax-highlighting
                 )
         ```
-  3. Source `~/.zshrc` to take changes into account:   
+  3. Source `~/.zshrc` to take changes into account:
         ```shell
         source ~/.zshrc
         ```
@@ -1242,70 +1242,70 @@ plugins=(
         git pull
         ```
 
-- **In your ~/.zshrc**    
+- **In your ~/.zshrc**
   1. Simply clone this repository and source the script:
         ```shell
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
         echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
         ```
-  2. Then, enable syntax highlighting in the current interactive shell:    
+  2. Then, enable syntax highlighting in the current interactive shell:
         ```shell
         source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         ```
-  If git is not installed, download and extract a snapshot of the latest development tree from:   
+  If git is not installed, download and extract a snapshot of the latest development tree from:
         ```shell
         wget https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz
         ```
-  
+
   Note the `source` command must be **at the end** of `~/.zshrc`.
 
 
-### 安装colorls    
-先看效果:    
-![colorls](../img/colorls.png)    
+### 安装colorls
+先看效果:
+![colorls](../img/colorls.png)
 
-#### 安装    
+#### 安装
 1. 用`Rbenv`安装`Ruby` (preferably, version > 2.1)
-  安装依赖包:   
+  安装依赖包:
    ```shell
    sudo apt update
    sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-devCopy
    ```
-    安装`Rbenv`:    
+    安装`Rbenv`:
     ```shell
     # curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
     git clone https://github.com/rbenv/rbenv.git ~/.rbenv
     ```
-    配置`Rbenv`环境:    
+    配置`Rbenv`环境:
     ```shell
     # Bash
     echo '# Rbenv' >> ~/.bashrc
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(rbenv init -)"' >> ~/.bashrc
     source ~/.bashrc
-    
+
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
     echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
     exec $SHELL
-    
+
     # Zsh
     echo '# Rbenv' >> ~/.zshrc
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
     echo 'eval "$(rbenv init -)"' >> ~/.zshrc
     source ~/.zshrc
-    
+
     git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
     echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.zshrc
     exec $SHELL
     ```
-    安装`Ruby`:    
+    安装`Ruby`:
     ```shell
     rbenv install 2.6.6
     rbenv global 2.6.6
     ruby -v
     ```
 
-    **安装过程中遇到的问题（build fails on Ubuntu 18.04 with libssl-dev installed）:**   
+    **安装过程中遇到的问题（build fails on Ubuntu 18.04 with libssl-dev installed）:**
     ```shell
     andy@ROG:~$ rbenv install 2.6.6
     Downloading ruby-2.6.6.tar.bz2...
@@ -1326,24 +1326,24 @@ plugins=(
     Configure options used:
     --prefix=/home/andy/.rbenv/versions/2.6.6
     --enable-shared
-    LDFLAGS=-L/home/andy/.rbenv/versions/2.6.6/lib 
-    CPPFLAGS=-I/home/andy/.rbenv/versions/2.6.6/include 
+    LDFLAGS=-L/home/andy/.rbenv/versions/2.6.6/lib
+    CPPFLAGS=-I/home/andy/.rbenv/versions/2.6.6/include
     ```
 
-    解决方法:   
+    解决方法:
     ```shell
     sudo apt purge libssl-dev && sudo apt install libssl1.0-dev
     ```
 
 
 
-2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`中的`Mononoki`字体。可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
+2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`中的`Mononoki`字体。可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。
 
-    *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
+    *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*
     ![colorls1](../img/colorls1.png)
-    ![colorls2](../img/colorls2.png)     
+    ![colorls2](../img/colorls2.png)
 
-3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：   
+3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：
     ```shell
     gem install colorls
     ```
@@ -1360,51 +1360,51 @@ plugins=(
     source $(dirname $(gem which colorls))/tab_complete.sh
     ```
 #### 配置colorls
-在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**别名**来替代`colorls`:         
-配置`Bash`或`Zsh`环境，这里以`Zsh`配置为例:    
-进入`~/.zshrc`配置文件:    
+在命令行可以使用`colorls`来代替`ls`，也可以通过下面配置**别名**来替代`colorls`:
+配置`Bash`或`Zsh`环境，这里以`Zsh`配置为例:
+进入`~/.zshrc`配置文件:
 ```shell
 vim ~/.zshrc
 ```
-在文件末追加以下内容:    
+在文件末追加以下内容:
 ```shell
 # Colorls
 alias ls='colorls'
 alias ll='colorls -lA --report'
 alias lc='colorls -lA --sd'
 ```
-使其生效:    
+使其生效:
 ```shell
 source ~/.zshrc
-```   
+```
 #### 升级colorls
 ```shell
 gem update colorls
-```    
+```
 #### 卸载colorls
 ```shell
 gem uninstall colorls
-```   
+```
 
-#### 参考资料  
+#### 参考资料
 > [Terminal Experience](https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7)
 
 
 ### 安装fzf
-fzf是通用命令行模糊查找器.   
+fzf是通用命令行模糊查找器.
 
-`fzf` 的GitHub仓库地址: https://github.com/junegunn/fzf      
+`fzf` 的GitHub仓库地址: https://github.com/junegunn/fzf
 
-`navi` 依赖 `fzf` , 所以需要先安装 `fzf`:    
+`navi` 依赖 `fzf` , 所以需要先安装 `fzf`:
 ```sh
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
-### 安装navi     
-`navi` 的GitHub仓库地址: https://github.com/denisidoro/navi    
+### 安装navi
+`navi` 的GitHub仓库地址: https://github.com/denisidoro/navi
 
-<!-- **Using oh-my-zsh**    
+<!-- **Using oh-my-zsh**
 
 Make sure that your oh-my-zsh $ZSH_CUSTOM directory is configured, then clone navi into the plugins directory.
 ```sh
@@ -1428,8 +1428,8 @@ Lastly, reload your zshrc or spawn a new terminal to load navi. Once this is don
 
 > Please note that when installing as an oh-my-zsh plugin, navi will not be available as a command. If you also want to be able to run the command interactively, you will need to do one of the following:
 
-- Install it to /usr/bin/local (via sudo make install)   
-- Manually set $PATH so that navi can be found.    
+- Install it to /usr/bin/local (via sudo make install)
+- Manually set $PATH so that navi can be found.
 
 You can manually update your path by adding a line like this in your .zshrc:
 ```shell
@@ -1438,16 +1438,16 @@ export PATH=$PATH:"$ZSH_CUSTOM/plugins/navi"
 And verify that it works by running which navi after reloading your configuration. -->
 
 - Using cargo
-[Install Rust and Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html):   
+[Install Rust and Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html):
 ```shell
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
-然后在`.bashrc`或者`.zshrc`中添加:    
+然后在`.bashrc`或者`.zshrc`中添加:
 ```vim
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 ```
-安装navi:   
+安装navi:
 ```shell
 cargo install navi
 ```
@@ -1464,7 +1464,7 @@ cargo install navi
   ```shell
   git clone https://github.com/denisidoro/navi ~/.navi
   cd ~/.navi
-  make install 
+  make install
 
   # alternatively, to set install directory:
   # make BIN_DIR=/usr/local/bin install
@@ -1472,46 +1472,46 @@ cargo install navi
 
 ---
 ## vim配置
-### YouCompleteMe实现vim自动补全    
+### YouCompleteMe实现vim自动补全
 
-1 准备条件 
+1 准备条件
 
-(1) 最新版的`Vim(7.3.584+)`，须支持`python`。    
-终端输入命令：`vim –version` 或 打开vim用命令：version 查看版本信息，若python前有'+'即可。    
-然后终端执行命令，安装相关依赖项：   
+(1) 最新版的`Vim(7.3.584+)`，须支持`python`。
+终端输入命令：`vim –version` 或 打开vim用命令：version 查看版本信息，若python前有'+'即可。
+然后终端执行命令，安装相关依赖项：
 ```shell
 sudo apt-get install python-dev
 ```
-装的过程中若遇到问题，依次执行以下命令：    
+装的过程中若遇到问题，依次执行以下命令：
 ```shell
 sudo apt-get update
 sudo apt-get install -f
 ```
-之后重试安装：    
+之后重试安装：
 ```shell
 sudo apt-get install python-dev
 ```
 
-(2) 安装`cmake`    
+(2) 安装`cmake`
 ```shell
 sudo apt-get install cmake
 ```
 
-(3) 安装`clang`   
+(3) 安装`clang`
 ```
 sudo apt-get install clang
 ```
-**或者跳过这步**，后面编译**YCM**(YouCompleteMe)时，如果没有`clang`会自动安装。   
+**或者跳过这步**，后面编译**YCM**(YouCompleteMe)时，如果没有`clang`会自动安装。
 
 
-2 安装**Vundle**   
-*这个是用来管理`vim`插件的，安装和卸载都特别方便，各个插件是一个文件夹，放在目录`bunble`下。*    
-(1) 下载`Vundle`源码到本地    
+2 安装**Vundle**
+*这个是用来管理`vim`插件的，安装和卸载都特别方便，各个插件是一个文件夹，放在目录`bunble`下。*
+(1) 下载`Vundle`源码到本地
 ```shell
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-(2) 在 `.vimrc` 的文件起始处，插入以下内容并保存：   
+(2) 在 `.vimrc` 的文件起始处，插入以下内容并保存：
 ```vim
 " >>>>>> vundle
 set nocompatible              " 去除VI一致性,必须
@@ -1565,34 +1565,34 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 " 将你自己对非插件片段放在这行之后
 " <<<<<< vundle
 ```
-**注意**：`Bundle '插件名或git链接' `表示要安装的插件     
+**注意**：`Bundle '插件名或git链接' `表示要安装的插件
 
 (3)再次打开vim，在命令行模式中执行：
 ```vim
 BundleInstall
 ```
-![BundleInstall](../img/vim1.png)   
-进入安装插件过程：    
-![vim插件安装过程](../img/vim2.png)   
+![BundleInstall](../img/vim1.png)
+进入安装插件过程：
+![vim插件安装过程](../img/vim2.png)
 
-Plugin前面有`'>'`表示该插件正在安装，`YouCompleteMe`插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为`YouCompleteMe`需要手工编译出库文件，就像上图中的'！'，忽略它。    
-**注**：若要卸载插件，只需将`.vimrc`中 "Bundle '插件' "这条语句删掉，然后在vim 命令行模式中执行：`BundleClean`即可。    
+Plugin前面有`'>'`表示该插件正在安装，`YouCompleteMe`插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为`YouCompleteMe`需要手工编译出库文件，就像上图中的'！'，忽略它。
+**注**：若要卸载插件，只需将`.vimrc`中 "Bundle '插件' "这条语句删掉，然后在vim 命令行模式中执行：`BundleClean`即可。
 
-3  编译`YouCompleteMe`     
-    
-(1) 进入YouCompleteMe文件夹下    
+3  编译`YouCompleteMe`
+
+(1) 进入YouCompleteMe文件夹下
 ```shell
 cd  ~/.vim/bundle/YouCompleteMe/
 ```
-![YouCompleteMe文件夹内容](../img/vim3.png)   
+![YouCompleteMe文件夹内容](../img/vim3.png)
 
-(2) 编译    
+(2) 编译
 ```shell
 ./install.py  --clang-completer --go-completer --ts-completer
 ```
-参数`–clang-completer`是为了支持C/C++的补全，不需要可以不加。编译过程比较长，耐心等待。    
+参数`–clang-completer`是为了支持C/C++的补全，不需要可以不加。编译过程比较长，耐心等待。
 
-**上述编译支持go语言的时候，若提示以下错误，是因为在升级go版本的时候没有彻底卸载旧版本:**  
+**上述编译支持go语言的时候，若提示以下错误，是因为在升级go版本的时候没有彻底卸载旧版本:**
 ```sh
 [100%] Built target _regex
 # runtime
@@ -1607,14 +1607,14 @@ cd  ~/.vim/bundle/YouCompleteMe/
 
 
 
-4  修改`.vimrc`配置文件       
-(1) 找到配置文件`.ycm_extra_conf.py`在~/.vim/bundle/YouCompleteMe/third_party/ycmd/下面:    
+4  修改`.vimrc`配置文件
+(1) 找到配置文件`.ycm_extra_conf.py`在~/.vim/bundle/YouCompleteMe/third_party/ycmd/下面:
 ```shell
 cd ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 ```
-`ls -a` 即可看到。    
+`ls -a` 即可看到。
 
-(2) 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:    
+(2) 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:
 ```shell
 cd ~/.vim/bundle/YouCompleteMe
 mkdir cpp
@@ -1623,21 +1623,21 @@ cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle
 ```
 
 (3) 修改`.vimrc`配置文件
-将下面的内容添加到`.vimrc`里面:    
+将下面的内容添加到`.vimrc`里面:
 ```vim
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
-let g:syntastic_ignore_files=[".*\.py$"] 
+let g:syntastic_ignore_files=[".*\.py$"]
 " 使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1
 " 开启语义补全
 " 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
 "let g:ycm_key_invoke_completion = '<M-;>'
 " 设置转到定义处的快捷键为ALT+G，未测出效果
-"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR> 
+"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
 "关键字补全
 "let g:ycm_seed_identifiers_with_syntax = 1
 " 在接受补全后不分裂出一个窗口显示接受的项
@@ -1660,31 +1660,31 @@ let g:ycm_warning_symbol='>*'
 " let g:ycm_use_ultisnips_completer=0
 " <<<<<< YouCompleteMe
 ```
-上面的内容中，除了第一句寻找全局配置文件，其他的语句可以根据自己的需要更改、删除或添加。 
-**注**：如果没有在第(3)步中自己创建`cpp/ycm`目录拷贝`.ycm_extra_conf.py`文件，则需要将第一句中的路径改为全局配置文件所在的具体路径，如下：   
+上面的内容中，除了第一句寻找全局配置文件，其他的语句可以根据自己的需要更改、删除或添加。
+**注**：如果没有在第(3)步中自己创建`cpp/ycm`目录拷贝`.ycm_extra_conf.py`文件，则需要将第一句中的路径改为全局配置文件所在的具体路径，如下：
 ```vim
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 ```
 
-5 保存退出`.vimrc` ,打开一个C/C++源程序，体验其自动补全效果。    
-![vim提示](../img/vim4.png)   
+5 保存退出`.vimrc` ,打开一个C/C++源程序，体验其自动补全效果。
+![vim提示](../img/vim4.png)
 
-6 配合上面安装的`syntastic`还可以语法检测     
-![vim语法检测](../img/vim5.png)   
+6 配合上面安装的`syntastic`还可以语法检测
+![vim语法检测](../img/vim5.png)
 
-`'>>'`指出有语法错误，但是检测速度太慢，没什么大用。自我感觉这个语法自动检测很烦，可以禁用它：    
-进入 `/bundle/YouCompleteMe/plugin`，修改`youcompleteme.vim`中的：    
-![syntastic](../img/vim6.png)   
-将如上图中的`第141行`的参数改为`0`就可以了。    
+`'>>'`指出有语法错误，但是检测速度太慢，没什么大用。自我感觉这个语法自动检测很烦，可以禁用它：
+进入 `/bundle/YouCompleteMe/plugin`，修改`youcompleteme.vim`中的：
+![syntastic](../img/vim6.png)
+将如上图中的`第141行`的参数改为`0`就可以了。
 
-7 `YcmDiags`插件可以显示错误或警告信息，可以设置`F9`为打开窗口的快捷键，在`.vimrc`中添加语句：   
-![YcmDiags](../img/vim7.png)   
-显示效果：   
-![YcmDiags效果](../img/vim8.png)   
+7 `YcmDiags`插件可以显示错误或警告信息，可以设置`F9`为打开窗口的快捷键，在`.vimrc`中添加语句：
+![YcmDiags](../img/vim7.png)
+显示效果：
+![YcmDiags效果](../img/vim8.png)
 
-8 添加头文件     
-目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`'-isystem'`。     
-![添加头文件](../img/vim9.png)   
+8 添加头文件
+目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`'-isystem'`。
+![添加头文件](../img/vim9.png)
 以后需要boost库等其他的补全，也需要将相应的路径添加进去。
 
 # vim最终配置
@@ -1762,14 +1762,14 @@ let g:go_version_warning = 0
 " 寻找全局配置文件
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 " 禁用syntastic来对python检查
-let g:syntastic_ignore_files=[".*\.py$"] 
+let g:syntastic_ignore_files=[".*\.py$"]
 " 使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1
 " 开启语义补全
 " 修改对C语言的补全快捷键，默认是CTRL+space，修改为ALT+;未测出效果
 "let g:ycm_key_invoke_completion = '<M-;>'
 " 设置转到定义处的快捷键为ALT+G，未测出效果
-"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR> 
+"nmap <M-g> :YcmCompleter GoToDefinitionElseDeclaration <C-R>=expand("<cword>")<CR><CR>
 "关键字补全
 "let g:ycm_seed_identifiers_with_syntax = 1
 " 在接受补全后不分裂出一个窗口显示接受的项
@@ -1880,69 +1880,69 @@ set scrolloff=3
 ```
 ---
 ## Tmux配置与使用
-**先上配置好的效果图**:     
-![tmux1](../img/tmux1.gif)    
-![tmux2](../img/tmux2.gif)    
-![tmux3](../img/tmux3.gif)    
+**先上配置好的效果图**:
+![tmux1](../img/tmux1.gif)
+![tmux2](../img/tmux2.gif)
+![tmux3](../img/tmux3.gif)
 
 ### Tmux安装
 ```shell
 sudo apt-get install tmux
 ```
 
-### Tmux配置    
-安装`.tmux`配置文件，官方github地址: https://github.com/gpakosz/.tmux    
+### Tmux配置
+安装`.tmux`配置文件，官方github地址: https://github.com/gpakosz/.tmux
 
-- **`.tmux`安装要求**:    
-  - tmux **`>= 2.1`** 
-  - outside of tmux, `$TERM` must be set to `xterm-256color`    
+- **`.tmux`安装要求**:
+  - tmux **`>= 2.1`**
+  - outside of tmux, `$TERM` must be set to `xterm-256color`
 
-- **`.tmux`安装** 
-  按照下面命令安装: (安装之前首先备份一下 `~/.tmux.conf` 文件)    
+- **`.tmux`安装**
+  按照下面命令安装: (安装之前首先备份一下 `~/.tmux.conf` 文件)
   ```shell
   cd
   git clone https://github.com/gpakosz/.tmux.git
   ln -s -f .tmux/.tmux.conf
   ln -s .tmux/.tmux.conf.local .tmux.conf.local # cp .tmux/.tmux.conf.local .
   ```
-- 然后**配置`~/.tmux.conf.local`文件**，将下列代码取消屏蔽，并将原始的屏蔽：    
+- 然后**配置`~/.tmux.conf.local`文件**，将下列代码取消屏蔽，并将原始的屏蔽：
   ```
   tmux_conf_theme_left_separator_main=''
   tmux_conf_theme_left_separator_sub=''
   tmux_conf_theme_right_separator_main=''
   tmux_conf_theme_right_separator_sub=''
   ```
-  可以修改右侧状态栏来显示天气预报:    
+  可以修改右侧状态栏来显示天气预报:
   ```
   tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in/shanghai?format=3\&m) , %R , %d %b | #{username}#{root} | #{hostname} '
   ```
-  效果如下:    
-  ![tmux4](../img/tmux5.png)    
+  效果如下:
+  ![tmux4](../img/tmux5.png)
 
-  **更详细配置介绍[请看](tmux/tmux_conf.md)**    
-  
-- 官方推荐安装[`Source Code Pro`](tmux/source-code-pro-2.030R-ro-1.050R-it.zip)字体，官方[GitHub地址](https://github.com/adobe-fonts/source-code-pro/releases)或者[Powerline](https://github.com/powerline/fonts)中提供的`Source Code Pro`字体，解压后文件夹`source-code-pro/TTF/`下直接安装即可。但是安装了`Source Code Pro`字体后[安装colorls](#安装colorls)显示会有问题，所以为了兼容性**推荐 `powerline nerd-font`字体 —— `mononoki Nerd Font Regular`**。具体可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。    
-  *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
-      
-  ![colorls1](../img/colorls1.png)    
-  ![colorls2](../img/colorls2.png)     
-  ![tmux7](../img/tmux7.png)    
-  
-  
+  **更详细配置介绍[请看](tmux/tmux_conf.md)**
+
+- 官方推荐安装[`Source Code Pro`](tmux/source-code-pro-2.030R-ro-1.050R-it.zip)字体，官方[GitHub地址](https://github.com/adobe-fonts/source-code-pro/releases)或者[Powerline](https://github.com/powerline/fonts)中提供的`Source Code Pro`字体，解压后文件夹`source-code-pro/TTF/`下直接安装即可。但是安装了`Source Code Pro`字体后[安装colorls](#安装colorls)显示会有问题，所以为了兼容性**推荐 `powerline nerd-font`字体 —— `mononoki Nerd Font Regular`**。具体可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。
+  *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*
+
+  ![colorls1](../img/colorls1.png)
+  ![colorls2](../img/colorls2.png)
+  ![tmux7](../img/tmux7.png)
+
+
 - 安装[Powerline symbols](https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf).
 
-- 使`~/.tmux.conf.local`配置文件生效:    
+- 使`~/.tmux.conf.local`配置文件生效:
   ```shell
   tmux # 启动tmux
 
   #然后`Ctrl+b`再按`:`进入`tmux`命令行模式
   source ~/.tmux.conf
   ```
-  ![tmux6](../img/tmux6.png)    
+  ![tmux6](../img/tmux6.png)
 
-### Tmux使用手册   
+### Tmux使用手册
 
-**常用命令**    
+**常用命令**
 
 启动新会话：
 
@@ -1989,7 +1989,7 @@ sudo apt-get install tmux
     swap-window -t 1       交换当前和 1 号窗口
     move-window -t 1       移动当前窗口到 1 号
 
-**<a name="PanesSplits"></a>窗格（分割窗口**） 
+**<a name="PanesSplits"></a>窗格（分割窗口**）
 
     %  垂直分割
     "  水平分割
@@ -2002,20 +2002,20 @@ sudo apt-get install tmux
     z 切换窗格最大化/最小化
 
 
-**更多详情请[移步](tmux/tmux_cheatsheet.md)**     
+**更多详情请[移步](tmux/tmux_cheatsheet.md)**
 
-#### 参考资料    
-> [.tmux配置](https://github.com/gpakosz/.tmux)     
-> [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)    
+#### 参考资料
+> [.tmux配置](https://github.com/gpakosz/.tmux)
+> [Tmux 快捷键 & 速查表](https://gist.github.com/ryerh/14b7c24dfd623ef8edc7)
 
 ---
 ## 远程连接Ubuntu
 ### 通过SSH连接
-1. 需要安装ssh的客户端和服务端     
+1. 需要安装ssh的客户端和服务端
     ```shell
     sudo apt-get install openssh-server openssh-client
     ```
-2. 安装完以后就可以在另一台电脑上远程连接了     
+2. 安装完以后就可以在另一台电脑上远程连接了
     ```shell
     ssh user_name@ip_address[:port]
     ```
@@ -2032,8 +2032,8 @@ sudo apt-get install tmux
     ```
 
 3. 在vnc客户端（noVNC/vncviewer）中远程链接 `IP:1`，但是输入密码后显示灰屏并且鼠标为x型,这是因为vncserver在Ubuntu系统中找不到指定的图形化工具
-    
-    此时需要在Ubuntu中下载图形化工具:    
+
+    此时需要在Ubuntu中下载图形化工具:
     ```shell
     apt-get install gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
     ```
@@ -2063,8 +2063,8 @@ sudo apt-get install tmux
 
 ---
 ## Sublime Text 3配置问题
-**安装Control Package**:   
-通过按下`Ctrl+'` 然后输入以下命令：   
+**安装Control Package**:
+通过按下`Ctrl+'` 然后输入以下命令：
 ```
 import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee'
 + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package
@@ -2078,7 +2078,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 ```
 
 
-**环境配置**:   
+**环境配置**:
 ```json
 {
     "font_face": "Monaco",
@@ -2089,7 +2089,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 ---
 ## VSCode配置问题
-### Awesome VScode Plugin   
+### Awesome VScode Plugin
 - go
 - C/C++
 - Python
@@ -2105,22 +2105,22 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **GitLens** : 增强了内置的Visual Studio代码Git功能
 - **Visual Studio IntelliCode** : AI-assisted development
 - **Live Share** : 远程实时代码协同开发
-- **Remote Development**    
+- **Remote Development**
 - **Remote - SSH** : 通过使用 SSH 来连接远程机器/虚拟机以打开任何文件
 - **Remote - Containers** : 通过打开容器来使用沙箱工具链或基于容器的应用
 - **Remote - WSL** : 在Windows上通过WSL来获得Linux开发体验
-- **Visual Studio Codespaces**    
+- **Visual Studio Codespaces**
 - **CMake Tools** : Microsoft Extended CMake support in Visual Studio Code
 - **ROS** : Visual Studio Code Extension for ROS
 - **Anaconda Extension Pack** : A set of extensions that enhance the experience of Anaconda customers using VScode
 - **Bookmarks** : 书签
-- koroFileHeader : 用于生成文件头部注释和函数注释的插件    
+- koroFileHeader : 用于生成文件头部注释和函数注释的插件
 - **Code Runner** : 代码一键运行，支持超过40种语言
 - **Comment Translate** : VSCode 注释翻译
 - **Todo Tree** : Show TODO, FIXME, etc. comment tags in a tree view
-- **Todo+** 
-- Kanban  
-- TODO.md Kanban Board    
+- **Todo+**
+- Kanban
+- TODO.md Kanban Board
 - **[Settings Sync](https://github.com/shanalikhan/code-settings-sync)** : Synchronize Settings
 - Sublime Text Keymap and Settings Importer
 - Visual Studio IntelliCode
@@ -2139,7 +2139,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **LaTeX Workshop** : 提升 LaTeX 编排效率：预览，智能提示，格式化等功能以及丰富的快捷键
 - Syncing : 简单可靠的多设备间 VS Code 配置同步工具
 - vscode-cudacpp
-- **Better Comments** 
+- **Better Comments**
 - **文件夹图标主题**
   - **vscode-icons**
   - Material Icon Theme
@@ -2159,15 +2159,15 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 ### Ubuntu VScode配置Cpp编译环境
 
-1. `CMakeLists.txt`中设置:    
+1. `CMakeLists.txt`中设置:
    ```
    set(CMAKE_BUILD_TYPE "Debug")
    ```
 2. vscode中安装C++插件；
-3. 点击运行按钮会弹出配置C++环境，需要修改`launch.json`文件:    
+3. 点击运行按钮会弹出配置C++环境，需要修改`launch.json`文件:
    ```JavaScript
     {
-        // 使用 IntelliSense 了解相关属性。 
+        // 使用 IntelliSense 了解相关属性。
         // 悬停以查看现有属性的描述。
         // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
         "version": "0.2.0",
@@ -2196,21 +2196,21 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
         ]
     }
     ```
-    只需修改其中的一行`"program": "enter program name, for example ${workspaceFolder}/a.out"`, 将`enter program name, for example`删除，`a.out`修改为自己的生成的可执行文件名即可。    
+    只需修改其中的一行`"program": "enter program name, for example ${workspaceFolder}/a.out"`, 将`enter program name, for example`删除，`a.out`修改为自己的生成的可执行文件名即可。
 
-    ![vscode c++ 配置1](../img/vscode_c1.gif)    
-    
-    ![vscode c++ 配置2](../img/vscode_c2.gif)    
-    
-    ![vscode c++ 配置3](../img/vscode_c3.gif)    
+    ![vscode c++ 配置1](../img/vscode_c1.gif)
+
+    ![vscode c++ 配置2](../img/vscode_c2.gif)
+
+    ![vscode c++ 配置3](../img/vscode_c3.gif)
 
 
 ### VScode环境配置
 
-![vscode](../img/vscode.png)     
+![vscode](../img/vscode.png)
 ```json
 {
-    // 使用 IntelliSense 了解相关属性。 
+    // 使用 IntelliSense 了解相关属性。
     // 悬停以查看现有属性的描述。
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
@@ -2239,10 +2239,10 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
     ]
 }
 ```
-其中:    
-- `"editor.fontFamily"`优先使用第一个字体，当第一个字体没有的时候依次使用后面的。    
-- `"terminal.integrated.fontFamily": "'mononoki Nerd Font'"`, 终端显示字体，首先要安装 `powerline nerd-font`中的`Mononoki`字体，可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
-  ![vscode terminal](../img/vscode-terminal.png)    
+其中:
+- `"editor.fontFamily"`优先使用第一个字体，当第一个字体没有的时候依次使用后面的。
+- `"terminal.integrated.fontFamily": "'mononoki Nerd Font'"`, 终端显示字体，首先要安装 `powerline nerd-font`中的`Mononoki`字体，可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。
+  ![vscode terminal](../img/vscode-terminal.png)
 
 ### vscode编辑器默认字体
 - **Linux**: `'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'`
@@ -2250,7 +2250,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **Mac**: `Menlo, Monaco, 'Courier New', monospace`
 
 ### vscode遇到的问题
-1. 在安装插件的时候提示`cannot read property local of undefined vscode`    
+1. 在安装插件的时候提示`cannot read property local of undefined vscode`
     解决方法:
     ```shell
     sudo chown -R [用户名]  ~/.vscode
@@ -2258,38 +2258,38 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 
 ---
 ## ubuntu查看和关闭进程
-根据进程名查看进程PID：   
+根据进程名查看进程PID：
 ```shell
 ps -aux | grep [Process name]
 ```
-关闭进程：   
+关闭进程：
 ```shell
 kill -9 [Process_PID]
 ```
 
 ---
-## Ubuntu后台执行命令   
+## Ubuntu后台执行命令
 
-*当我们在终端或控制台工作时，可能不希望由于运行一个作业而占住了屏幕，因为可能还有更重要的事情要做，比如阅读电子邮件。对于密集访问磁盘的进程，我们更希望它能够在每天的非负荷高峰时间段运行(例如凌晨)。为了使这些进程能够在后台运行，也就是说不在终端屏幕上运行，有几种选择方法可供使用。*   
+*当我们在终端或控制台工作时，可能不希望由于运行一个作业而占住了屏幕，因为可能还有更重要的事情要做，比如阅读电子邮件。对于密集访问磁盘的进程，我们更希望它能够在每天的非负荷高峰时间段运行(例如凌晨)。为了使这些进程能够在后台运行，也就是说不在终端屏幕上运行，有几种选择方法可供使用。*
 
 ### 1、&
-当在前台运行某个作业时，终端被该作业占据,可以在命令后面加上`&`实现后台运行。例如：`sh test.sh &`   
+当在前台运行某个作业时，终端被该作业占据,可以在命令后面加上`&`实现后台运行。例如：`sh test.sh &`
 适合在后台运行的命令有**find**、费时的排序及一些**shell**脚本。在后台运行作业时要当心：需要用户交互的命令不要放在后台执行，因为这样你的机器就会在那里傻等。不过，作业在后台运行一样会将结果输出到屏幕上，干扰你的工作。如果放在后台运行的作业会产生大量的输出，最好使用下面的方法把它的输出重定向到某个文件中：
 ```shell
 command > out.file 2>&1 &
 ```
-这样，所有的标准输出和错误输出都将被重定向到一个叫做`out.file`的文件中。PS：当你成功地提交进程以后，就会显示出一个进程号，可以用它来监控该进程，或杀死它。(`ps -ef | grep 进程号 `或者 `kill -9 进程号`）   
+这样，所有的标准输出和错误输出都将被重定向到一个叫做`out.file`的文件中。PS：当你成功地提交进程以后，就会显示出一个进程号，可以用它来监控该进程，或杀死它。(`ps -ef | grep 进程号 `或者 `kill -9 进程号`）
 
 ### 2、nohup
-使用&命令后，作业被提交到后台运行，当前控制台没有被占用，但是一但把当前控制台关掉(退出帐户时)，作业就会停止运行。nohup命令可以在你退出帐户之后继续运行相应的进程。nohup就是不挂起的意思( no hang up)。该命令的一般形式为：   
+使用&命令后，作业被提交到后台运行，当前控制台没有被占用，但是一但把当前控制台关掉(退出帐户时)，作业就会停止运行。nohup命令可以在你退出帐户之后继续运行相应的进程。nohup就是不挂起的意思( no hang up)。该命令的一般形式为：
 ```shell
 nohup command &
-```   
-如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为nohup.out的文件中，除非另外指定了输出文件：   
+```
+如果使用nohup命令提交作业，那么在缺省情况下该作业的所有输出都被重定向到一个名为nohup.out的文件中，除非另外指定了输出文件：
 ```shell
 nohup command > myout.file 2>&1 &
-```   
-使用了nohup之后，很多人就这样不管了，其实这样有可能在当前账户非正常退出或者结束的时候，命令还是自己结束了。所以在使用nohup命令后台运行命令之后，需要使用exit正常退出当前账户，这样才能保证命令一直在后台运行。   
+```
+使用了nohup之后，很多人就这样不管了，其实这样有可能在当前账户非正常退出或者结束的时候，命令还是自己结束了。所以在使用nohup命令后台运行命令之后，需要使用exit正常退出当前账户，这样才能保证命令一直在后台运行。
 ```shell
 ctrl + z #可以将一个正在前台执行的命令放到后台，并且处于暂停状态。
 ```
@@ -2315,25 +2315,25 @@ command >out.file 2>&1 &
 ## Ubuntu程序开机自启
 
 ### 修改系统启动文件
-打开系统的自动启动配置文件 `/etc/rc.local` :    
+打开系统的自动启动配置文件 `/etc/rc.local` :
 ```shell
 sudo vim /etc/rc.local
 ```
-如要开机自动启动`frpc`，则 `/etc/rc.local` 添加的内容如下:    
+如要开机自动启动`frpc`，则 `/etc/rc.local` 添加的内容如下:
 ```vim
 nohup /home/andy/frp/frpc -c /home/andy/frp/frpc.ini &
 ```
-保存退出，运行 `source /etc/rc.local` 或者重启电脑即可。    
+保存退出，运行 `source /etc/rc.local` 或者重启电脑即可。
 
 ### Startup Applications
 
-`Ubuntu`中在 `Application` 中打开 `Startup Applications` :    
+`Ubuntu`中在 `Application` 中打开 `Startup Applications` :
 
-![Startup Applications](../img/startupapplications1.png)      
+![Startup Applications](../img/startupapplications1.png)
 
-![Startup Applications](../img/startupapplications2.png)      
+![Startup Applications](../img/startupapplications2.png)
 
-![Startup Applications](../img/startupapplications3.png)      
+![Startup Applications](../img/startupapplications3.png)
 
 
 ---
@@ -2355,18 +2355,18 @@ cmake .. -DNVML_RETRIEVE_HEADER_ONLINE=True
 
 make
 make install # You may need sufficient permission for that (root)
-```   
+```
 
 运行一下命令：　　　　
 ```shell
 nvtop
 ```
-![png](../img/nvtop.png)   
+![png](../img/nvtop.png)
 
 
-从上图可以看出**F1**被默认设置为关掉进程的快捷键，会跟系统的帮助快捷键冲突，所里这里需要修改３处源码，重新编译安装:    
+从上图可以看出**F1**被默认设置为关掉进程的快捷键，会跟系统的帮助快捷键冲突，所里这里需要修改３处源码，重新编译安装:
 ```c
-case KEY_F(1): //在nvtop.c#L297 
+case KEY_F(1): //在nvtop.c#L297
 //改为:
 case KEY_F(9):
 ```
@@ -2382,22 +2382,22 @@ wprintw(win, "F%zu", i + 1);  //在interface.c#L1435
 //改为：
 if(i==0)
 {
-    wprintw(win, "F%zu", i + 9); 
+    wprintw(win, "F%zu", i + 9);
 }
 else
 {
     wprintw(win, "F%zu", i + 1);
 }
-```   
+```
 **重新编译安装后的效果：**　　　
-![png](../img/nvtop_new.png)   
+![png](../img/nvtop_new.png)
 
-**注意**：https://github.com/Syllo/nvtop/commit/b126abb63f38d50e8fbb961ad0aedc11b51b3911 之后修复这个问题。    
+**注意**：https://github.com/Syllo/nvtop/commit/b126abb63f38d50e8fbb961ad0aedc11b51b3911 之后修复这个问题。
 
 ### 2. htop　　　
 *代替传统top命令*　　　
 
-CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:    
+CPU监视可以用自带的`top`命令查看，但是推荐使用`htop`来显示，首先需要安装`htop`:
 ```shell
 sudo apt-get install htop
 ```
@@ -2406,44 +2406,44 @@ sudo apt-get install htop
 git clone https://github.com/hishamhm/htop.git
 cd htop
 ./autogen.sh && ./configure && make
-```   
-然后输入以下命令显示CPU资源利用情况:    
+```
+然后输入以下命令显示CPU资源利用情况:
 ```shell
 htop
 ```
-![png](../img/htop.png)   
+![png](../img/htop.png)
 
 ### 3. glances　　　
-*查看系统全部信息*   
+*查看系统全部信息*
 
 ```shell
 curl -L https://bit.ly/glances | /bin/bash
-```   
+```
 然后运行：
 ```shell
 glances
-```   
-![png](../img/glances.png)    
+```
+![png](../img/glances.png)
 
 ---
 ## 彻底卸载软件
-彻底卸载软件，下面以卸载`Firefox`为例:    
-先列出来与`Firefox`相关的软件:    
+彻底卸载软件，下面以卸载`Firefox`为例:
+先列出来与`Firefox`相关的软件:
 ```shell
 dpkg --get-selections | grep firefox
 ```
-列出来为:    
+列出来为:
 ```shell
 firefox
 firefox-locale-en
 unity-scope-firefoxbookmarks
 ```
 
-卸载上述列出来跟`Firefox`相关的软件:   
+卸载上述列出来跟`Firefox`相关的软件:
 ```shell
 sudo apt-get purge  firefox firefox-locale-en unity-scope-firefoxbookmarks
 ```
-或者:    
+或者:
 ```shell
 sudo apt-get purge firefox* unity-scope-firefoxbookmarks
 ```
@@ -2451,21 +2451,21 @@ sudo apt-get purge firefox* unity-scope-firefoxbookmarks
 ---
 ## 截图快捷键
 
-System Settings -> Keyboard -> Shortcuts -> Custom Shortcuts:   
+System Settings -> Keyboard -> Shortcuts -> Custom Shortcuts:
 
-在自定义栏创建一个名字为"截图"的快捷键，在弹出窗口的命令栏填入:    
+在自定义栏创建一个名字为"截图"的快捷键，在弹出窗口的命令栏填入:
 ```shell
 gnome-screenshot -a
 ```
-保存后在该快捷键的右侧点击，然后按下需要设置的快捷键即可.    
-![Shortcut](../img/shortcut1.png)    
+保存后在该快捷键的右侧点击，然后按下需要设置的快捷键即可.
+![Shortcut](../img/shortcut1.png)
 
 
 ---
 ## Ubuntu 美化
 
 ### Unity环境
-Ubuntu 16.04是Unity环境, 安装 `Unity Tweak Tool` :    
+Ubuntu 16.04是Unity环境, 安装 `Unity Tweak Tool` :
 ```shell
 sudo apt-get install unity-tweak-tool
 ```
@@ -2482,24 +2482,24 @@ sudo apt-get update
 sudo apt-get install flatabulous-theme ultra-flat-icons
 ```
 
-通过 `Unity Tweak Tool` 设置主题:    
-![Theme 1](../img/theme1.png)    
+通过 `Unity Tweak Tool` 设置主题:
+![Theme 1](../img/theme1.png)
 
-![Theme 2](../img/theme2.png)    
+![Theme 2](../img/theme2.png)
 
-![Theme 3](../img/theme3.png)    
+![Theme 3](../img/theme3.png)
 
-![Theme 4](../img/theme4.png)     
+![Theme 4](../img/theme4.png)
 
-**参考资料**     
-> [How To Install Numix Theme And Icons In Ubuntu 14.04 & 16.04.](https://itsfoss.com/install-numix-ubuntu/)     
-> [Numix Gtk Theme](https://github.com/numixproject/numix-gtk-theme)    
-> [Numix Circle](https://github.com/numixproject/numix-icon-theme-circle)    
+**参考资料**
+> [How To Install Numix Theme And Icons In Ubuntu 14.04 & 16.04.](https://itsfoss.com/install-numix-ubuntu/)
+> [Numix Gtk Theme](https://github.com/numixproject/numix-gtk-theme)
+> [Numix Circle](https://github.com/numixproject/numix-icon-theme-circle)
 
 
 
 ### GNOME环境
-Ubuntu 17+ 以上是GNOME环境。    
+Ubuntu 17+ 以上是GNOME环境。
 如果没有`gnome tweak tool`，运行下面的指令
 ```shell
 sudo apt install gnome-tweak-tool
@@ -2520,7 +2520,7 @@ sudo apt install gnome-shell-extensions
     sudo dpkg -i theme-x.deb
     ```
 3. Using archive files to install themes
-    在home目录下创建 `.themes` 和 `.icons` 两个文件夹:    
+    在home目录下创建 `.themes` 和 `.icons` 两个文件夹:
     ```shell
     cd
     mkdir ~/.themes
@@ -2529,13 +2529,13 @@ sudo apt install gnome-shell-extensions
     - `.themes` – for GTK and GNOME Shell themes
     - `.icons` – for icon themes
 
-![Theme 5](../img/theme5.jpeg)       
+![Theme 5](../img/theme5.jpeg)
 
-![Theme 6](../img/theme6.jpeg)       
+![Theme 6](../img/theme6.jpeg)
 
-![Theme 7](../img/theme7.jpeg)       
+![Theme 7](../img/theme7.jpeg)
 
-![Theme 8](../img/theme8.jpeg)     
+![Theme 8](../img/theme8.jpeg)
 
 ## Ubuntu启动后GUI界面卡住不动
 **Ubuntu 16.04 - GUI freezes on login start page**
@@ -2563,6 +2563,6 @@ sudo dpkg-reconfigure libdvd-pkg
 ```
 
 
-**参考资料**    
-> 1. [How to Install Themes in Ubuntu 18.04 and 16.04](https://itsfoss.com/install-themes-ubuntu/)    
+**参考资料**
+> 1. [How to Install Themes in Ubuntu 18.04 and 16.04](https://itsfoss.com/install-themes-ubuntu/)
 > 2. [Ubuntu 16.04 - GUI freezes on login start page](https://unix.stackexchange.com/questions/368748/ubuntu-16-04-gui-freezes-on-login-start-page)
