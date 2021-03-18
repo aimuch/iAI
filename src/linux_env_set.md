@@ -2090,10 +2090,10 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 ---
 ## VSCode配置问题
 ### Awesome VScode Plugin
-- go
-- C/C++
-- Python
-- Chinese (Simplified) Language Pack for Visual Studio Code
+- **C/C++**
+- **go**
+- **Python**
+- **Chinese (Simplified) Language Pack for Visual Studio Code**
 - **TabNine** : All-language autocompleter
 - **Dash** : Dash, Zeal and Velocity integration in Visual Studio Code, 目前只支持与Mac下的Dash关联
 - **Bracket Pair Colorizer** : 着色匹配括号
@@ -2139,7 +2139,9 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 - **LaTeX Workshop** : 提升 LaTeX 编排效率：预览，智能提示，格式化等功能以及丰富的快捷键
 - Syncing : 简单可靠的多设备间 VS Code 配置同步工具
 - vscode-cudacpp
-- **Better Comments**
+- **Better Comments** : 注释高亮
+- **Auto Comment Blocks**
+- **Comment Divider**
 - **文件夹图标主题**
   - **vscode-icons**
   - Material Icon Theme
