@@ -1148,7 +1148,9 @@ let g:go_version_warning = 0
 ```shell
 # GO PATH
 #export PATH=$PATH:/usr/local/go/bin
-#export GOBIN=$GOPATH/bin
+#export GOROOT=/usr/local/go
+#export GOPATH=$HOME/go
+#export GOBIN=$GOROOT/bin
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
