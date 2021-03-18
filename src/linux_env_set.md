@@ -1147,10 +1147,9 @@ let g:go_version_warning = 0
 **在 `~/.zshrc` 配置文件追加以下内容**
 ```shell
 # GO PATH
-#export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-#export GOROOT=/usr/local/go
-#export GOPATH=$HOME/go
-#export GOBIN=$GOROOT/bin
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
