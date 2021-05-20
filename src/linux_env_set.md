@@ -1754,6 +1754,7 @@ catch
 endtry
 
 let g:go_version_warning = 0
+let g:snipMate = { 'snippet_version' : 1 }
 " <<<<<<<< Vimrc
 
 
