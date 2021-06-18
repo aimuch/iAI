@@ -1127,23 +1127,27 @@ let g:go_version_warning = 0
 保存退出 问题解决
 
 
-
 ### 安装oh-my-zsh
 - **via curl**
   ```shell
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   ```
 - **via wget**
   ```shell
-  sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+  	sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ```
+- **via fetch**
+  ```shell
+  	sh -c "$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   ```
 - **Manual inspection**
   It's a good idea to inspect the install script from projects you don't yet know. You can do that by downloading the install script first, looking through it so everything looks normal, then running it:
   ```shell
-  curl -Lo install.sh https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+  wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
   sh install.sh
   ```
-**主题**
+**[主题](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)**
+以安装powerlevel10k为例:    
 ```sh
 git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
@@ -1167,11 +1171,11 @@ alias l='ls -CF'
 ```
 **插件**
 
-[Plugins](https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins)
+[Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 
 **升级**
 ```shell
-upgrade_oh_my_zsh
+omz update
 ```
 
 **使用oh-my-zsh后导致的卡顿问题**
