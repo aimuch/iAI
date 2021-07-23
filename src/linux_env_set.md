@@ -41,6 +41,7 @@
     - [安装**navi**](#安装navi)
   - [**vim**配置](#vim配置)
     - [**YouCompleteMe**实现vim自动补全](#youcompleteme实现vim自动补全)
+    - [**TabNine**实现vim自动补全](#tabnine实现vim自动补全)
     - [vim最终配置](#vim最终配置)
   - [**Tmux**配置与使用](#tmux配置与使用)
     - [Tmux配置](#tmux配置)
@@ -1687,6 +1688,13 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 ![添加头文件](../img/vim9.png)
 以后需要boost库等其他的补全，也需要将相应的路径添加进去。
 
+# TabNine实现vim自动补全
+将上述的`YouCompleteMe`屏蔽，`TabNine`打开，重新运行:
+```vim
+BundleInstall
+```
+
+
 # vim最终配置
 ```vim
 " >>>>>>>> Vundle
@@ -1720,7 +1728,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突
 "Plugin 'ascenator/L9', {'name': 'newL9'}
 " YouCompleteMe
-Plugin 'ycm-core/YouCompleteMe'
+"Plugin 'ycm-core/YouCompleteMe'
 Plugin 'yggdroot/indentline'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'codota/tabnine-vim'
