@@ -190,7 +190,10 @@ AI实验环境搭建和深度学习算法
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
      - [Ubuntu启动后GUI界面卡住不动](./src/linux_env_set.md#ubuntu启动后gui界面卡住不动)
      - [Ubuntu1804使用过程中常遇到的问题](./src/linux_env_set.md#ubuntu1804使用过程中长遇到的问题)
-7. [**参考资料**](#参考资料)
+7. [OpenWRT](./src/openwrt.md#openwrt)
+    - [Proxifier使用](./src/openwrt.md#Proxifier使用)
+
+8. [**参考资料**](#参考资料)
 <!-- 8.  [Sponsor](#sponsor) -->
 ---
 
