@@ -102,6 +102,8 @@ AI实验环境搭建和深度学习算法
       - [TensorFlow FAQ](src/ai/tensorflow.md#tensorflow-faq)
     - [**Pytorch**](src/ai/pytorch.md#pytorch)
       - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
+      - [Pytorch多GPU训练](src/ai/pytorch.md#pytorch多gpu训练)
+      - [Pytorch断点续训](src/ai/pytorch.md#pytorch断点续训)
     - [**Caffe**](src/ai/caffe.md#caffe)
       - [Caffe训练模型可视化](src/ai/caffe.md#caffe训练模型可视化)
 4. [**AI Model Optimization**](./src/ai_model_optimization.md)
