@@ -1,6 +1,6 @@
 # AI on Ubuntu Platform
 
-AI实验环境搭建和深度学习算法
+🎯 AI实验环境搭建和深度学习算法
 
 **安装环境**
 *其他平台环境类似*
@@ -11,7 +11,7 @@ AI实验环境搭建和深度学习算法
 ```
 ---
 ### 目录
-1. [**AI基础环境搭建和设置**](src/ai_base_env.md#ai基础环境搭建和设置)
+1. [**🔬 AI基础环境搭建和设置**](src/ai_base_env.md#ai基础环境搭建和设置)
    1. [安装Ubuntu和Windows双系统](src/ai_base_env.md#安装ubuntu和windows双系统)
        - [有关Ubuntu分区的相关问题](src/ai_base_env.md#有关ubuntu分区的相关问题)
        - [Ubuntu与Windows双系统时间同步解决方法](src/ai_base_env.md#ubuntu与windows双系统时间同步解决方法)
@@ -76,7 +76,7 @@ AI实验环境搭建和深度学习算法
        - [MATLAB 2018安装](src/ai_base_env.md#linux-matlab2018安装)
        - [MATLAB 2019安装](src/ai_base_env.md#linux-matlab2019安装)
 
-2. [**AI Algorithms**](./src/ai_algorithms.md)
+2. [**🍻 AI Algorithms**](./src/ai_algorithms.md)
      - [YOLO V3](src/ai_algorithms.md#yolo-v3)
      - [Faster R-CNN](./src/ai_algorithms.md#faster-r-cnn)
      - [Anaconda FAQ](./src/ai_algorithms.md#anaconda-faq)
@@ -95,21 +95,23 @@ AI实验环境搭建和深度学习算法
      - [**神经网络参数量(weights)和计算量(FLOPs)**](src/ai/weights.md)
      - [**特征尺寸(Feature Map)和感受野(Receptive Field)计算**](src/ai/receptive_field.md)
 
-3. [**AI Framework**](src/ai_framework.md#ai-framework)
+3. [**🖥 AI Framework**](src/ai_framework.md#ai-framework)
     - [AI 常用的结构框架](src/ai_framework.md#ai框架数据结构)
     - [**TensorFlow**](src/ai/tensorflow.md#tensorflow)
       - [Tensorflow to TensorRT Image Classification](src/ai/tensorflow.md#tensorflow-to-tensorrt-image-classification)
       - [TensorFlow FAQ](src/ai/tensorflow.md#tensorflow-faq)
     - [**Pytorch**](src/ai/pytorch.md#pytorch)
       - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
+      - [Pytorch多GPU训练](src/ai/pytorch.md#pytorch多gpu训练)
+      - [Pytorch断点续训](src/ai/pytorch.md#pytorch断点续训)
     - [**Caffe**](src/ai/caffe.md#caffe)
       - [Caffe训练模型可视化](src/ai/caffe.md#caffe训练模型可视化)
-4. [**AI Model Optimization**](./src/ai_model_optimization.md)
+4. [**📐 AI Model Optimization**](./src/ai_model_optimization.md)
       - [网络量化](./src/ai_model_optimization.md#网络量化)
       - [网络剪枝](./src/ai_model_optimization.md#网络剪枝)
-5. [**AI Tools**](./src/ai_tools.md)
+5. [**🛠 AI Tools**](./src/ai_tools.md)
      - [Netron](./src/ai_tools.md#Netron)
-6. [**Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
+6. [**💻 Ubuntu FAQ**](./src/linux_env_set.md#ubuntu-faq)
      - [**Awesome Software**](./src/linux_env_set.md#awesome-linux-software)
      - [Linux环境变量初始化与对应文件的生效顺序](./src/linux_env_set.md#linux环境变量初始化与对应文件的生效顺序)
      - [**Ubuntu Library**](./src/linux_library.md#ubuntu-library)
@@ -190,10 +192,10 @@ AI实验环境搭建和深度学习算法
        - [GNOME环境](./src/linux_env_set.md#gnome环境)
      - [Ubuntu启动后GUI界面卡住不动](./src/linux_env_set.md#ubuntu启动后gui界面卡住不动)
      - [Ubuntu1804使用过程中常遇到的问题](./src/linux_env_set.md#ubuntu1804使用过程中长遇到的问题)
-7. [OpenWRT](./src/openwrt.md#openwrt)
+7. [📡 OpenWRT](./src/openwrt.md#openwrt)
     - [Proxifier使用](./src/openwrt.md#Proxifier使用)
 
-8. [**参考资料**](#参考资料)
+8. [**📚 参考资料**](#参考资料)
 <!-- 8.  [Sponsor](#sponsor) -->
 ---
 
