@@ -104,6 +104,7 @@
       - [将数据转换为Pytorch格式](src/ai/pytorch.md#将数据转换为pytorch格式)
       - [Pytorch多GPU训练](src/ai/pytorch.md#pytorch多gpu训练)
       - [Pytorch断点续训](src/ai/pytorch.md#pytorch断点续训)
+      - [Best way to save a trained model in PyTorch](src/ai/pytorch.md#best-way-to-save-a-trained-model-in-pyTorch)   
     - [**Caffe**](src/ai/caffe.md#caffe)
       - [Caffe训练模型可视化](src/ai/caffe.md#caffe训练模型可视化)
 4. [**📐 AI Model Optimization**](./src/ai_model_optimization.md)

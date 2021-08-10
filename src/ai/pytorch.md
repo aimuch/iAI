@@ -3,6 +3,7 @@
 - [将数据转换为Pytorch格式](#将数据转换为pytorch格式)   
 - [Pytorch多GPU训练](#pytorch多gpu训练)   
 - [Pytorch断点续训](#pytorch断点续训)   
+- [Best way to save a trained model in PyTorch](#best-way-to-save-a-trained-model-in-pyTorch)   
 
 
 ---
@@ -281,6 +282,53 @@ for epoch in range(start_epoch ,EPOCH):
         optimizer.step()
 ```
 
+---
+## Best way to save a trained model in PyTorch
+It depends on what you want to do.    
+
+### Case # 1: Save the model to use it yourself for inference
+
+You save the model, you restore it, and then you change the model to evaluation mode. This is done because you usually have **BatchNorm** and **Dropout** layers that by default are in train mode on construction:    
+
+```python
+torch.save(model.state_dict(), filepath)
+
+#Later to restore:
+model.load_state_dict(torch.load(filepath))
+model.eval()
+```
+### Case # 2: Save model to resume training later
+
+If you need to keep training the model that you are about to save, you need to save more than just the model. You also need to save the state of the `optimizer`, `epochs`, `score`, etc. You would do it like this:   
+
+```python
+state = {
+    'epoch': epoch,
+    'state_dict': model.state_dict(),
+    'optimizer': optimizer.state_dict(),
+    ...
+}
+torch.save(state, filepath)
+```
+To resume training you would do things like: `state = torch.load(filepath)`, and then, to restore the state of each individual object, something like this: 
+
+```python
+model.load_state_dict(state['state_dict'])
+optimizer.load_state_dict(state['optimizer'])
+```
+Since you are resuming training, **DO NOT call model.eval() once you restore the states when loading**.
+
+### Case # 3: Model to be used by someone else with no access to your code
+In `Tensorflow` you can create a `.pb` file that defines both the architecture and the weights of the model. This is very handy, specially when using `Tensorflow` serve. The equivalent way to do this in `Pytorch` would be:   
+
+```python
+torch.save(model, filepath)
+
+# Then later:
+model = torch.load(filepath)
+```
+This way is still not bullet proof and since pytorch is still undergoing a lot of changes, I wouldn't recommend it.   
 
 ## 参考文件
-> 1. [PyTorch实现断点继续训练](https://zhuanlan.zhihu.com/p/133250753)
+> 1. [PyTorch实现断点继续训练](https://zhuanlan.zhihu.com/p/133250753)    
+> 2. [Best way to save a trained model in PyTorch?](https://stackoverflow.com/questions/42703500/best-way-to-save-a-trained-model-in-pytorch)   
