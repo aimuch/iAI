@@ -1086,7 +1086,13 @@ You can:
 ```shell
 chsh -s /bin/bash
 ```
-
+#### Zsh不支持通配符(* )匹配和正则表达式解决方法   
+在`~/.zshrc`中添加以下内容:    
+```vim
+# ignore no matches
+set -o nonomatch
+#setopt nonomatch
+```
 
 
 ### 安装vimrc
