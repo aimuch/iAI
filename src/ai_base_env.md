@@ -5,11 +5,13 @@
 ---
 ### 目录
 1. [安装Ubuntu和Windows双系统](#安装ubuntu和windows双系统)   
-    - [有关Ubuntu分区的相关问题](#有关ubuntu分区的相关问题)
-    - [Ubuntu与Windows双系统时间同步解决方法](#ubuntu与windows双系统时间同步解决方法)
-    - [调整grub引导系统顺序](#调整grub引导系统顺序)
-    - [设置grub引导菜单的分辨率](#设置grub引导菜单的分辨率)
-    - [设置grub Menu显示](#设置grub-menu显示)
+    - [CPU有集成显卡](#cpu有集成显卡)
+      - [有关Ubuntu分区的相关问题](#有关ubuntu分区的相关问题)
+      - [Ubuntu与Windows双系统时间同步解决方法](#ubuntu与windows双系统时间同步解决方法)
+      - [调整grub引导系统顺序](#调整grub引导系统顺序)
+      - [设置grub引导菜单的分辨率](#设置grub引导菜单的分辨率)
+      - [设置grub Menu显示](#设置grub-menu显示)
+    - [CPU无集成显卡](#cpu无集成显卡)
 2. [安装**NVIDIA驱动**](#安装nvidia驱动)   
     - [安装NVIDIA驱动所需的依赖包](#安装nvidia驱动所需的依赖包)   
     - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)   
@@ -70,6 +72,7 @@
 
 ---
 ## 安装Ubuntu和Windows双系统  
+### CPU有集成显卡    
 详细的安装双系统就不过多介绍了，可以参考[这篇文章](https://blog.csdn.net/s717597589/article/details/79117112/)，但是在安装过程中有几个问题需要说明：      
 - BIOS里修改硬盘模式从`RAID` 至 `ACHI` :    
     如果不修改raid至achi，我们采用UEFI启动的u盘安装盘将不能识别nvme驱动。会导致安装系统的过程中看不到硬盘。
@@ -98,7 +101,7 @@
 
 **下方「安装引导器设备」要选择 `efi` 分区**   
 
-### 有关Ubuntu分区的相关问题    
+#### 有关Ubuntu分区的相关问题    
 > swap交换空间，这个也就是虚拟内存的地方，选择主分区和空间起始位置。如果你给Ubuntu系统分区容量足够的话，最好是能给到你物理内存的2倍大小，像我8GB内存，就可以给个16GB的空间给它，这个看个人使用情况，太小也不好，太大也没用。（其实我只给了8GB，没什么问题）
 
 > 新建efi系统分区，选中逻辑分区（这里不是主分区，请勿怀疑，老式的boot挂载才是主分区）和空间起始位置，大小最好不要小于256MB，系统引导文件都会在里面，我给的512MB，它的作用和boot引导分区一样，但是boot引导是默认grub引导的，而efi显然是UEFI引导的。不要按照那些老教程去选boot引导分区，也就是最后你的挂载点里没有“/boot”这一项，否则你就没办法UEFI启动两个系统了。
@@ -113,7 +116,7 @@
 因为除了home和usr还有很多别的目录，但那些都不是最重要的，“/”就把除了之前你挂载的home和usr外的全部杂项囊括了，大小也不要太小，最好不低于8GB。如果你非要挨个仔细分配空间，那么你需要知道这些各个分区的含义
 不过就算你把所有目录都自定义分配了空间也必须要给“/”挂载点分配一定的空间。    
 
-### Ubuntu与Windows双系统时间同步解决方法
+#### Ubuntu与Windows双系统时间同步解决方法
 安装`ntpdate`:    
 ```shell
 sudo apt-get install ntpdate
@@ -124,8 +127,8 @@ sudo ntpdate time.windows.com
 sudo hwclock --localtime --systohc
 ```
 
-### 调整grub引导系统顺序   
-#### 方法一: 只更改默认选项
+#### 调整grub引导系统顺序   
+##### 方法一: 只更改默认选项
 只更改默认选项，修改`/etc/default/grub`文件:    
 ```bash
 sudo vim /etc/default/grub
@@ -176,7 +179,7 @@ sudo update-grub
 
 这样的操作对于强迫症人来说是绝对不能忍的。必须把 `Windows boot manger` 放到第一位，下面就是第二种方法.    
 
-#### 方法二: 彻底解决
+##### 方法二: 彻底解决
 
 修改`/boot/grub/grub.cfg`文件，首先讲原始的`grub.cfg`备份一份:    
 ```bash
@@ -233,7 +236,7 @@ menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menu
 这里千万不要! 千万不要! 千万不要执行` sudo update-grub` .    
 
 
-### 设置grub引导菜单的分辨率
+#### 设置grub引导菜单的分辨率
 开机长按 `shift` 或者 `GRUB` 菜单按 `C` 进入 `GRUB` 命令行:
 ```
 videoinfo
@@ -252,12 +255,17 @@ GRUB_GFXMODE=1920×1080
 ```bash
 sudo update-grub
 ```
-### 设置grub Menu显示
+#### 设置grub Menu显示
 1. `ctrl+alt+t`打开终端
 2. 键入  `sudo vim /etc/default/grub`  ，使用vim打开grub文件，或者使用其他文本编辑器亦可
 3. 在`GRUB-TIMEOUT_STYLE=hidden`行首添加#注释掉该行    
 4. (可选)将`GRUB_TIMEOUT=10`改为`3`，减少“自动选择默认项”等待时间    
 5. `sudo update-grub` 更新grub即可
+
+### CPU无集成显卡
+建议使用Windows下的**WSL**系统，WSL下也可以安装**CUDA**。
+
+
 ---
 ## Ubuntu16TLS安装NVIDIA驱动   
 ### 安装NVIDIA驱动所需的依赖包   
