@@ -144,8 +144,13 @@ nvidia-smi --gpu-reset -i [gpu_id]
 ```python
 tensor = torch.randn(3,4,5)
 print(tensor.type())  # 数据类型
+tensor.type()
+
 print(tensor.size())  # 张量的shape, 是个元组
+tensor.shape
+
 print(tensor.dim())   # 维度的数量
+tensor.dim()
 ```
 
 ### 命名张量
