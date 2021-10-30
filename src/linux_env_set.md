@@ -1527,7 +1527,7 @@ sudo apt-get install clang
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-(2) 在 `.vimrc` 的文件起始处，插入以下内容并保存：
+(2) 编辑`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)，插入以下内容并保存：
 ```vim
 " >>>>>> vundle
 set nocompatible              " 去除VI一致性,必须
