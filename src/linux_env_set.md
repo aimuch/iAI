@@ -1278,7 +1278,7 @@ plugins=(
 
   Note the `source` command must be **at the end** of `~/.zshrc`.
 
-### 安装scm_breeze
+### 安装scm-breeze
 ```bash
 git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
 ~/.scm_breeze/install.sh
