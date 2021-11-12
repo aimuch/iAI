@@ -36,6 +36,7 @@
     - [安装**autojump**](#安装autojump)
     - [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
     - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)
+    - [安装**scm_breeze**](#安装scm-breeze)
     - [安装**colorls**](#安装colorls)
     - [安装**fzf**](#安装fzf)
     - [安装**navi**](#安装navi)
@@ -1014,7 +1015,9 @@ sudo pip install rivalcfg
 - **[zsh](http://www.zsh.org)**
 - **[vimrc](https://github.com/amix/vimrc)**
 - **[oh-my-zsh](http://ohmyz.sh)**
+- **[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)**
 - **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)**
+- **[scm_breeze](https://github.com/scmbreeze/scm_breeze)**
 - **[colorls](https://github.com/athityakumar/colorls)**
 
 
@@ -1274,6 +1277,18 @@ plugins=(
         ```
 
   Note the `source` command must be **at the end** of `~/.zshrc`.
+
+### 安装scm_breeze
+```bash
+git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze
+~/.scm_breeze/install.sh
+source ~/.bashrc   # or source "${ZDOTDIR:-$HOME}/.zshrc"
+```
+The install script creates required default configs and adds the following line to your `.bashrc` or `.zshrc`:
+```bash
+[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+```
+**Note**: You need to install ruby for some SCM Breeze commands to work. This also improves performance. See `ruby-lang.org` for installation information.
 
 
 ### 安装colorls
