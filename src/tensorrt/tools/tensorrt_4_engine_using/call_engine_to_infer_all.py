@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+# TensorRT Version <= 4
+
 import os
 # import tensorflow as tf
 import tensorrt as trt
