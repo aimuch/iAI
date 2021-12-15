@@ -1638,14 +1638,14 @@ cd  ~/.vim/bundle/YouCompleteMe/
 
 
 
-4  修改`.vimrc`配置文件
-(1) 找到配置文件`.ycm_extra_conf.py`在~/.vim/bundle/YouCompleteMe/third_party/ycmd/下面:
+4  修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件    
+(1) 找到配置文件`.ycm_extra_conf.py`在`~/.vim/bundle/YouCompleteMe/third_party/ycmd/`下面:
 ```shell
 cd ~/.vim/bundle/YouCompleteMe/thrid_party/ycmd/
 ```
 `ls -a` 即可看到。
 
-(2) 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:
+(2) 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:    
 ```shell
 cd ~/.vim/bundle/YouCompleteMe
 mkdir cpp
@@ -1653,8 +1653,7 @@ mkdir cpp/ycm
 cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/cpp/ycm/
 ```
 
-(3) 修改`.vimrc`配置文件
-将下面的内容添加到`.vimrc`里面:
+(3) 修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件, 将下面的内容添加到里面:    
 ```vim
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
@@ -1697,7 +1696,7 @@ let g:ycm_warning_symbol='>*'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 ```
 
-5 保存退出`.vimrc` ,打开一个C/C++源程序，体验其自动补全效果。
+5 保存退出 ,打开一个C/C++源程序，体验其自动补全效果。
 ![vim提示](../img/vim4.png)
 
 6 配合上面安装的`syntastic`还可以语法检测
