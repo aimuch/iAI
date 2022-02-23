@@ -17,6 +17,7 @@
     - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)   
     - [Ubuntu16TLS安装NVIDIA驱动](#ubuntu16tls安装nvidia驱动)   
     - [Ubuntu18TLS安装NVIDIA驱动](#ubuntu18tls安装nvidia驱动)   
+    - [Ubuntu20TLS安装NVIDIA驱动](#ubuntu20tls安装nvidia驱动)   
     - [配置NVIDIA环境变量](#配置nvidia环境变量)   
     - [查看NVIDIA驱动版本](#查看nvidia驱动版本)    
     - [解决Linux双系统安装卡在启动Logo](#解决linux双系统安装卡在启动logo)
@@ -548,6 +549,160 @@ sudo reboot #重启
 nvidia-smi   
 nvidia-settings 
 ```
+
+## Ubuntu20TLS安装NVIDIA驱动
+**Ubuntu20.04**推荐使用官方的NVIDIA驱动进行手动安装    
+
+这种方式是最为推荐的方式。    
+
+需要先安装一些 `NVIDIA` 显卡依赖的软件，在终端依次执行如下命令：    
+```shell
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install build-essential libc6:i386
+```
+
+首先识别NVIDIA显卡型号，输入一下命令：    
+```shell
+$  lshw -numeric -C display
+```
+或者    
+```shell
+$ lspci -vnn | grep VGA
+```
+下载NVIDIA官方显卡驱动，然后存储到相应路径。    
+
+停止可视化桌面：    
+```shell
+$ sudo telinit 3		
+```
+之后会进入一个新的命令行会话，使用当前的用户名密码登录。    
+
+如果原来安装过，需要先卸载：    
+```shell
+sudo apt-get --purge remove nvidia-*
+```
+或者:    
+```shell
+sudo sh NVIDIA-Linux-x86_64-440.82.run -uninstall
+```
+
+在相应路径下安装NVIDIA驱动：    
+```shell
+$ sudo chmod a+x NVIDIA-Linux-x86_64-440.82.run
+$ sudo sh NVIDIA-Linux-x86_64-440.82.run --no-x-check
+```
+按照以下步骤：    
+```shell
+Accept License
+The distribution-provided pre-install script failed! Are you sure you want to continue? -> CONTINUE INSTALLATION
+Would you like to run the nvidia-xconfig utility? -> YES
+```
+让后，更新内核，重启电脑：    
+```shell
+sudo update-initramfs -u
+sudo reboot now
+```
+**注意**    
+- 采用这种方法安装的驱动，每次内核更新后，都要按照上面的方法搞一遍才能启用新的驱动。    
+- 原来的方法通过添加PPA，可以自动更新，但是没有最新的驱动程序版本（Ubuntu18.04上最高390，Ubuntu16.04上为396），目前还不能支持2080Ti显卡。    
+
+安装完成后重启系统就可以点击软件列表中的 `NVIDIA` 的配置软件配置显卡驱动了，如果你遇到如下报错，请依次在终端输入如下命令解决：   
+**报错**： `WARNING: Unable to find suitable destination to install 32-bit compatibility libraries`    
+**解决办法**：    
+```shell
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install libc6:i386
+```
+
+**注意Ubuntu18.04进tty**   
+If you are already in the TTY environment, you can use the shortcut to get out from TTY.
+```shell
+CTRL + ALT + F1 or F2
+```
+F1 is for my locked login screen. F2 is for my unlocked screen.
+However, if you’re in the GUI environment and you want to access with TTY, you can try
+```shell
+CTRL + ALT + F3 ~ F6
+```
+Ubuntu按下`Ctrl + Alt + Fn`键会进入tty界面（虚拟终端），电脑键盘有`F1-F12`，所以有12个tty。
+注意：有时候开机的时候也会进入tty界面
+在**Ubuntu18.04**系统下:    
+- 按下`Ctrl + Alt + Fn1`进入图形化用户登录界面
+- 按下`Ctrl + Alt + Fn2`进入当前图形化界面
+- 按下`Ctrl + Alt + Fn3-Fn6`进入命令行虚拟终端
+- 按下`Ctrl + Alt + Fn7-Fn12`进入另外的虚拟终端，这些虚拟终端没有任何程序执行，所以只能看到一个闪烁的光标
+要退出`Fn3-Fn12`虚拟终端，按下`Ctrl + Alt + F1`，或者`Ctrl + Alt + F2`就行了。
+注意：如果开机后进入`tty`界面（我的进入过tty1），先尝试上面的退出方法，如果不行，输入以下命令：
+```shell
+sudo apt install ubuntu-desktop
+```
+注意：输入后，没有提示输入密码，可能会出现以下命令：
+```shell
+[sudo] usrname(这里是你的用户名) 四个小白方块
+```
+接着在四个小白方块后面输入密码就可以了，然后会自动安装ubunu-desktop。
+
+
+### 配置NVIDIA环境变量  
+使用 `vim` 命令打开配置文件：      
+```shell
+sudo apt-get install vim
+vim ~/.bashrc
+```
+然后在**文件最后**追加以下内容：   
+```shell
+# NVIDIA
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+```
+`wq` 保存并退出，运行以下内容使环境变量生效：   
+```shell
+source  ~/.bashrc
+```
+### 查看NVIDIA驱动版本    
+```bash
+cat /proc/driver/nvidia/version
+```
+![nvidia driver](../img/nvidia-driver.png)    
+或者   
+```shell
+nvidia-smi
+```
+![nvidia smi](../img/nvidia-smi.png)
+
+### 解决Linux双系统安装卡在启动Logo
+在安装Linux 双系统时，经常会出现卡在安装logo的问题，这种原因一般是由于linux发行商收录的nouveau 的开源显卡的问题。针对这种情况，解决方案如下：    
+1 最重要的话放在前面：**安装Linux之前先关闭Security Boot**！！（不同主板引导界面中该选项的位置可能不太一致，但是大多数都是在boot 选项中的）    
+
+2 在进入grub安装界面的时候，在Install Ubuntu选项，按`e`,进入命令行模式，然后在`quiet slash`，添加`acpi_osi=linux nomodeset`，然后按`F10`重新引导。     
+
+修改上述选项可以在开机的时候，禁用 `nouveau` 显卡      
+重新引导之后，你可能会发现，安装的窗口有一部分屏幕下方，导致部分按钮无法点击。此时，按下`Alt+F7`，鼠标会变成手指图标，即将窗口向上拖动即可。    
+
+3 安装完成，重启。在电脑重启黑屏的时候，拔出U盘。    
+(重启的时候也可能卡在logo ，所以在要求选择引导选项的时候，重复上述操作)    
+
+4 成功进入linux以后,要立即安装nvidia的显卡驱动。可以通过两种方式安装       
+4.1 在设置->软件和更新->附加驱动(倒数第二个选项)里面选择安装(可能显卡驱动版本比较老)    
+4.2 或者去nvidia官网查看合适驱动安装    
+
+
+ubuntu16.04进入tty 命令行登录模式(`Ctrl+Alt+F1`)，而ubuntu18.04则需要用`Ctrl+Alt+F3`,执行下列语句：
+```shell
+sudo apt-get purge nvidia-*  #删除可能存在的已有驱动
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-384   
+sudo reboot #重启
+```
+测试nvidia 驱动是否成功安装，使用以下命令：
+```shell
+nvidia-smi   
+nvidia-settings 
+```
+
 
 
 ---

@@ -6,9 +6,9 @@
 *其他平台环境类似*
 
 ```vim
-硬件： Intel 12900K / ROG MAXIMUS Z690 HERO / NVIDIA RTX 3090(Ti) / DDR5 32G 5600 / SSD 4T / HDD 4T
+硬件： Intel 12900K / ROG MAXIMUS Z690 HERO / NVIDIA RTX 3090 / DDR5 32G 5600 / SSD 4T / HDD 4T
 系统： Ubuntu-20.04-64bit / Ubuntu-18.04-64bit / Windows 11 Professional
-软件： CUDA9.0-CUDA11.2 /cuDNN/TensorRT/OpenCV/caffe/YOLO/Protobuf/Matlab/VIM
+软件： CUDA9.0-CUDA11.3/cuDNN/TensorRT/OpenCV/caffe/YOLO/Protobuf/Matlab/VIM
 ```
 
 ---
@@ -30,6 +30,7 @@
       - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)
       - [Ubuntu16TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu16tls安装nvidia驱动)
       - [Ubuntu18TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu18tls安装nvidia驱动)
+      - [Ubuntu20TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu20tls安装nvidia驱动)
       - [配置NVIDIA环境变量](src/ai_base_env.md#配置环境变量)
       - [查看NVIDIA显卡驱动版本](src/ai_base_env.md#查看nvidia驱动版本)
       - [解决Linux双系统安装卡在启动Logo](src/ai_base_env.md#解决linux双系统安装卡在启动logo)

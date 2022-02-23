@@ -1649,7 +1649,7 @@ cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 ```
 `ls -a` 即可看到。
 
-(2) 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:    
+(2) [可选] 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:    
 ```shell
 cd ~/.vim/bundle/YouCompleteMe
 mkdir cpp
