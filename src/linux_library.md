@@ -15,9 +15,9 @@ sudo apt-get install libeigen3-dev
 
 Eigen头文件的默认安装位置是：`/usr/include/eigen3` .    
 
-这样在 `include` 的时候需要 `#include "eigen/Eigen/Dense"` 比较麻烦，将 `/usr/include/eigen3` 文件夹下的 `Eigen` 复制到 `/usr/include/` 下就可以直接用 `#include "Eigen/Dense"`:    
+这样在 `include` 的时候需要 `#include "eigen/Eigen/Dense"` 比较麻烦，将 `/usr/include/eigen3` 文件夹下的 `Eigen` 软连接到 `/usr/include/` 下就可以直接用 `#include "Eigen/Dense"`:    
 ```bash
-sudo cp -rf /usr/include/eigen3/Eigen  /usr/include
+sudo ln -s /usr/include/eigen3/Eigen  /usr/include/Eigen
 ```
 
 ### 安装方法2 源码安装
@@ -102,4 +102,3 @@ m * v =
 > [Eigen是个什么鬼？](https://zhuanlan.zhihu.com/p/36706885)    
 
 ---
-
