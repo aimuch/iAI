@@ -30,7 +30,7 @@
       - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)
       - [Ubuntu16TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu16tls安装nvidia驱动)
       - [Ubuntu18TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu18tls安装nvidia驱动)
-      - [Ubuntu20TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu20tls安装nvidia驱动)
+      - [➤ Ubuntu20TLS安装NVIDIA驱动](src/ai_base_env.md#ubuntu20tls安装nvidia驱动)
       - [配置NVIDIA环境变量](src/ai_base_env.md#配置环境变量)
       - [查看NVIDIA显卡驱动版本](src/ai_base_env.md#查看nvidia驱动版本)
       - [解决Linux双系统安装卡在启动Logo](src/ai_base_env.md#解决linux双系统安装卡在启动logo)
