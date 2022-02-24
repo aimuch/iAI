@@ -36,6 +36,8 @@
     - [安装**autojump**](#安装autojump)
     - [安装**zsh-autosuggestions**](#安装zsh-autosuggestions)
     - [安装**zsh-syntax-highlighting**](#安装zsh-syntax-highlighting)
+    - [安装**zsh-completions**](#安装zsh-completions)
+    - [安装**zsh-history-substring-search**](#安装zsh-history-substring-search)
     - [安装**scm_breeze**](#安装scm-breeze)
     - [安装**colorls**](#安装colorls)
     - [安装**fzf**](#安装fzf)
@@ -1017,6 +1019,8 @@ sudo pip install rivalcfg
 - **[oh-my-zsh](http://ohmyz.sh)**
 - **[zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)**
 - **[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)**
+- **[zsh-completions](https://github.com/zsh-users/zsh-completions)**
+- **[zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search)**
 - **[scm_breeze](https://github.com/scmbreeze/scm_breeze)**
 - **[colorls](https://github.com/athityakumar/colorls)**
 
@@ -1282,6 +1286,30 @@ plugins=(
 
   Note the `source` command must be **at the end** of `~/.zshrc`.
 
+### 安装zsh-completions
+Clone the repository inside your `oh-my-zsh` repo:
+```shell
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+```
+Add it to `FPATH` in your `.zshrc` by adding the following line before `source "$ZSH/oh-my-zsh.sh`":
+```vim
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+```
+### 安装zsh-history-substring-search
+1. Clone this repository in `oh-my-zsh's plugins` directory:
+  ```shell
+  git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+  ```
+2. Activate the plugin in `~/.zshrc`:
+  ```vim
+  plugins=( [plugins...]
+            zsh-history-substring-search
+          )
+  ```
+3. Source `~/.zshrc` to take changes into account:
+  ```shell
+  source ~/.zshrc
+  ```
 ### 安装scm-breeze
 ```bash
 git clone git://github.com/scmbreeze/scm_breeze.git ~/.scm_breeze

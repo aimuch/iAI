@@ -221,6 +221,8 @@
      - [安装**autojump**](./src/linux_env_set.md#安装autojump)
      - [安装**zsh-autosuggestions**](./src/linux_env_set.md#安装zsh-autosuggestions)
      - [安装**zsh-syntax-highlighting**](./src/linux_env_set.md#安装zsh-syntax-highlighting)
+     - [安装**zsh-zsh-completions**](./src/linux_env_set.md#安装zsh-zsh-completions)
+     - [安装**zsh-history-substring-search**](./src/linux_env_set.md#安装zsh-history-substring-search)
      - [安装**scm_breeze**](./src/linux_env_set.md#安装scm-breeze)
      - [安装**colorls**](./src/linux_env_set.md#安装colorls)
      - [安装**fzf**](./src/linux_env_set.md#安装fzf)
