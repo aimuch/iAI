@@ -283,12 +283,12 @@
 - [ ] 语义分割
 - [ ] 网络优化
 - [ ] TensorRT自定义层
-- [ ] Pytorch model => OONX
+- [x] Pytorch model => OONX
 - [ ] TensorFlow model => OONX
 - [ ] Caffe 源码解读
 - [ ] Darknet 源码解读
 - [ ] 目标追踪
-- [ ] 更新3090(Ti), 适配Ubuntu20.04系统
+- [x] 更新3090, 适配Ubuntu20.04系统
 
 <!-- # Sponsor
 ![wechat](src/Sponsor/wechat.JPG)
