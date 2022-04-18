@@ -54,6 +54,7 @@
   - [**VSCode**配置问题](#vscode配置问题)
     - [**Awesome VScode Plugin**](#awesome-vscode-plugin)
     - [VScode Tips](#vscode-tips)
+    - [VScode远程免密登陆](#vscode远程免密登陆)
     - [Ubuntu VScode配置Cpp编译环境](#ubuntu-vscode配置cpp编译环境)
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)
@@ -71,7 +72,7 @@
   - [Ubuntu1804使用过程中常遇到的问题](#ubuntu1804使用过程中长遇到的问题)
 ---
 ## Awesome Linux Software
-- [Visual Studio Code](https://code.visualstudio.com/download)    
+- [Visual Studio Code](https://code.visualstudio.com/download)
     ![Visual Studio Code](../img/vscode.gif)
 - [Chrome](https://www.google.com/intl/zh-CN/chrome/)
 - [mpv media player](https://mpv.io/installation/)
@@ -84,7 +85,7 @@
 - [Sublime Text](https://www.sublimetext.com/)
 - [Beyond Compare](https://www.scootersoftware.com/download.php)
 - [Wireshark](https://www.wireshark.org/)
-- [kolourpaint](http://www.kolourpaint.org/)    
+- [kolourpaint](http://www.kolourpaint.org/)
     ![kolourpaint](../img/kolourpaint.png)
     ```shell
     sudo apt-get install kolourpaint4
@@ -269,7 +270,7 @@ bash会在用户登录时，读取下列四个环境配置文件：
 - ① `/etc/profile`：此文件为系统的每个用户设置环境信息，系统中每个用户登录时都要执行这个脚本，如果系统管理员希望某个设置对所有用户都生效，可以写在这个脚本里，该文件也会从`/etc/profile.d`目录中的配置文件中搜集shell的设置。
 - ② `~/.bash_profile`：每个用户都可使用该文件设置专用于自己的shell信息，当用户登录时，该文件仅执行一次。默认情况下，他设置一些环境变量，执行用户的`.bashrc`文件。
 - ③ `~/.bashrc`：该文件包含专用于自己的shell信息，当登录时以及每次打开新shell时，该文件被读取。
-- ④ `/etc/bashrc`：为每一个运行bash shell的用户执行此文件，当bash shell被打开时，该文件被读取。    
+- ④ `/etc/bashrc`：为每一个运行bash shell的用户执行此文件，当bash shell被打开时，该文件被读取。
 
 ![shell](./linux/shell/shell.png)
 
@@ -602,7 +603,7 @@ watch -n 1 nvidia-smi #每隔一秒刷新一下GPU资源情况
 ```shell
 nvtop
 ```
-`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。    
+`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。
 ![png](../img/nvtop.png)
 
 **监视CPU资源利用情况**
@@ -613,7 +614,7 @@ sudo apt-get install htop
 然后输入以下命令显示CPU资源利用情况:
 ```shell
 htop
-```    
+```
 ![png](../img/htop.png)
 
 
@@ -834,7 +835,7 @@ Traceback (most recent call last):
   File "/home/andy/.local/lib/python3.5/site-packages/pip/_vendor/pkg_resources/__init__.py", line 2589, in version
     raise ValueError(tmpl % self.PKG_INFO, self)
 ValueError: ("Missing 'Version:' header and/or METADATA file", Unknown [unknown version] (/home/andy/.local/lib/python3.5/site-packages))
-```    
+```
 ![pip error](../img/pip-error.png)
 
 **解决方法**
@@ -914,7 +915,7 @@ pip3 install -U pyqt5
     sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
    ```
 4. System Setting -> Language Support -> Keyboard input method system:`fcitx`
-5. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
+5. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。
 ![BundleInstall](../img/sougou.png)
 5. 有可能重启后会出现两个输入法图标，解决方法：
    ```shell
@@ -960,10 +961,10 @@ vim ~/.config/Kingsoft/Office.conf
 在文件开头添加以下内容:
 ```vim
 languages=zh_CN
-```    
-![WPS Config](../img/wps-config1.png)    
+```
+![WPS Config](../img/wps-config1.png)
 
-![WPS Config](../img/wps-config2.png)    
+![WPS Config](../img/wps-config2.png)
 
 ### WPS不能输入中文
 **原因**：环境变量未正确设置。
@@ -1079,7 +1080,7 @@ You can:
      the file by hand, if so desired).
 
 --- Type one of the keys in parentheses ---
-```    
+```
 ![zsh install](../img/zsh-install.png)
 - q: 啥也不做，下次打开终端还提示；
 - 0: 退出，创建只包含一条命令的`~/.zshrc`文件，下次打开终端不会提示
@@ -1093,8 +1094,8 @@ You can:
 ```shell
 chsh -s /bin/bash
 ```
-#### Zsh不支持通配符(* )匹配和正则表达式解决方法   
-在`~/.zshrc`中添加以下内容:    
+#### Zsh不支持通配符(* )匹配和正则表达式解决方法
+在`~/.zshrc`中添加以下内容:
 ```shell
 # ignore no matches
 set -o nonomatch
@@ -1161,12 +1162,12 @@ let g:go_version_warning = 0
   sh install.sh
   ```
 **[主题](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes)**
-以安装[powerlevel10k为例](https://github.com/romkatv/powerlevel10k):    
+以安装[powerlevel10k为例](https://github.com/romkatv/powerlevel10k):
 ```sh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
-Set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc`.    
-配置**powerlevel10k**:    
+Set `ZSH_THEME="powerlevel10k/powerlevel10k"` in `~/.zshrc`.
+配置**powerlevel10k**:
 ```sh
 p10k configure
 ```
@@ -1324,7 +1325,7 @@ The install script creates required default configs and adds the following line 
 
 
 ### 安装colorls
-先看效果:    
+先看效果:
 ![colorls](../img/colorls.png)
 
 #### 安装
@@ -1402,9 +1403,9 @@ The install script creates required default configs and adds the following line 
 
 2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`中的`Mononoki`字体。可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。
 
-    *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
-    ![colorls1](../img/colorls1.png)    
-    ![colorls2](../img/colorls2.png)    
+    *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*
+    ![colorls1](../img/colorls1.png)
+    ![colorls2](../img/colorls2.png)
 
 3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：
     ```shell
@@ -1630,12 +1631,12 @@ filetype plugin indent on    " 必须 加载vim自带和插件相应的语法和
 ```
 **注意**：`Bundle '插件名或git链接' `表示要安装的插件
 
-(3)再次打开vim，在命令行模式中执行：    
+(3)再次打开vim，在命令行模式中执行：
 ```vim
 BundleInstall
-```    
+```
 ![BundleInstall](../img/vim1.png)
-进入安装插件过程：    
+进入安装插件过程：
 ![vim插件安装过程](../img/vim2.png)
 
 Plugin前面有`'>'`表示该插件正在安装，`YouCompleteMe`插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为`YouCompleteMe`需要手工编译出库文件，就像上图中的'！'，忽略它。
@@ -1646,7 +1647,7 @@ Plugin前面有`'>'`表示该插件正在安装，`YouCompleteMe`插件安装的
 (1) 进入YouCompleteMe文件夹下
 ```shell
 cd  ~/.vim/bundle/YouCompleteMe/
-```    
+```
 ![YouCompleteMe文件夹内容](../img/vim3.png)
 
 (2) 编译
@@ -1670,14 +1671,14 @@ cd  ~/.vim/bundle/YouCompleteMe/
 
 
 
-4  修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件    
+4  修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件
 (1) 找到配置文件`.ycm_extra_conf.py`在`~/.vim/bundle/YouCompleteMe/third_party/ycmd/`下面:
 ```shell
 cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 ```
 `ls -a` 即可看到。
 
-(2) [可选] 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:    
+(2) [可选] 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:
 ```shell
 cd ~/.vim/bundle/YouCompleteMe
 mkdir cpp
@@ -1685,7 +1686,7 @@ mkdir cpp/ycm
 cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/cpp/ycm/
 ```
 
-(3) 修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件, 将下面的内容添加到里面:    
+(3) 修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件, 将下面的内容添加到里面:
 ```vim
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
@@ -1728,26 +1729,26 @@ let g:ycm_warning_symbol='>*'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 ```
 
-5 保存退出 ,打开一个C/C++源程序，体验其自动补全效果。       
+5 保存退出 ,打开一个C/C++源程序，体验其自动补全效果。
 ![vim提示](../img/vim4.png)
 
-6 配合上面安装的`syntastic`还可以语法检测     
+6 配合上面安装的`syntastic`还可以语法检测
 ![vim语法检测](../img/vim5.png)
 
 `'>>'`指出有语法错误，但是检测速度太慢，没什么大用。自我感觉这个语法自动检测很烦，可以禁用它：
-进入 `/bundle/YouCompleteMe/plugin`，修改`youcompleteme.vim`中的：     
+进入 `/bundle/YouCompleteMe/plugin`，修改`youcompleteme.vim`中的：
 ![syntastic](../img/vim6.png)
 将如上图中的`第141行`的参数改为`0`就可以了。
 
-7 `YcmDiags`插件可以显示错误或警告信息，可以设置`F9`为打开窗口的快捷键，在`.vimrc`中添加语句：     
-![YcmDiags](../img/vim7.png)    
-显示效果：        
+7 `YcmDiags`插件可以显示错误或警告信息，可以设置`F9`为打开窗口的快捷键，在`.vimrc`中添加语句：
+![YcmDiags](../img/vim7.png)
+显示效果：
 ![YcmDiags效果](../img/vim8.png)
 
 8 添加头文件
-目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`'-isystem'`。    
+目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`'-isystem'`。
 ![添加头文件](../img/vim9.png)
-以后需要boost库等其他的补全，也需要将相应的路径添加进去。    
+以后需要boost库等其他的补全，也需要将相应的路径添加进去。
 
 # TabNine实现vim自动补全
 将上述的`YouCompleteMe`屏蔽，`TabNine`打开，重新运行:
@@ -1932,10 +1933,10 @@ set scrolloff=3
 ```
 ---
 ## Tmux配置与使用
-**先上配置好的效果图**:    
-![tmux1](../img/tmux1.gif)    
-![tmux2](../img/tmux2.gif)    
-![tmux3](../img/tmux3.gif)    
+**先上配置好的效果图**:
+![tmux1](../img/tmux1.gif)
+![tmux2](../img/tmux2.gif)
+![tmux3](../img/tmux3.gif)
 
 ### Tmux安装
 ```shell
@@ -1968,17 +1969,17 @@ sudo apt-get install tmux
   ```
   tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #(curl wttr.in/shanghai?format=3\&m) , %R , %d %b | #{username}#{root} | #{hostname} '
   ```
-  效果如下:    
+  效果如下:
   ![tmux4](../img/tmux5.png)
 
   **更详细配置介绍[请看](tmux/tmux_conf.md)**
 
 - 官方推荐安装[`Source Code Pro`](tmux/source-code-pro-2.030R-ro-1.050R-it.zip)字体，官方[GitHub地址](https://github.com/adobe-fonts/source-code-pro/releases)或者[Powerline](https://github.com/powerline/fonts)中提供的`Source Code Pro`字体，解压后文件夹`source-code-pro/TTF/`下直接安装即可。但是安装了`Source Code Pro`字体后[安装colorls](#安装colorls)显示会有问题，所以为了兼容性**推荐 `powerline nerd-font`字体 —— `mononoki Nerd Font Regular`**。具体可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。
-  *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Text Appearance > Custom font > mononoki Nerd Font Regular`.*     
+  *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Text Appearance > Custom font > mononoki Nerd Font Regular`.*
 
-  ![colorls1](../img/colorls1.png)    
-  ![colorls2](../img/colorls2.png)    
-  ![tmux7](../img/tmux7.png)    
+  ![colorls1](../img/colorls1.png)
+  ![colorls2](../img/colorls2.png)
+  ![tmux7](../img/tmux7.png)
 
 
 - 安装[Powerline symbols](https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf).
@@ -1989,7 +1990,7 @@ sudo apt-get install tmux
 
   #然后`Ctrl+b`再按`:`进入`tmux`命令行模式
   source ~/.tmux.conf
-  ```    
+  ```
   ![tmux6](../img/tmux6.png)
 
 ### Tmux使用手册
@@ -2211,6 +2212,29 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
    - 在搜索栏前输入 `>` ，搜索所有可使用的命令;
 -  `ctrl` + `=` 和 `ctrl` + `-` 组合来进行缩放;
 
+### VScode远程免密登陆
+#### 本地生成公私密钥
+```shell
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/vscode_remote_rsa
+cd ~/.ssh
+cat vscode_remote_rsa.pub >> authorized_keys
+```
+
+#### 远程服务器配置
+1. 将本地生成的`~/.ssh/authorized_key`上传到服务器的`~/.ssh`/下;
+2. 重启`sshd`进程 `sudo service sshd restart`
+
+#### 配置本地vscode
+1. vscode安装`Remote-SSH`插件;
+2. 打开`Remote-SSH` 插件，打开`~/.ssh/config` 文件；
+3. `~/.ssh/config` 文件中追加：
+  ```vim
+  Host [Custom_Name]
+	HostName [Remote_Server_IP]
+	User [User_Name]
+	IdentityFile [~/.ssh/vscode_remote_rsa]
+  ```
+
 ### Ubuntu VScode配置Cpp编译环境
 
 1. `CMakeLists.txt`中设置:
@@ -2250,17 +2274,17 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
         ]
     }
     ```
-    只需修改其中的一行`"program": "enter program name, for example ${workspaceFolder}/a.out"`, 将`enter program name, for example`删除，`a.out`修改为自己的生成的可执行文件名即可。    
+    只需修改其中的一行`"program": "enter program name, for example ${workspaceFolder}/a.out"`, 将`enter program name, for example`删除，`a.out`修改为自己的生成的可执行文件名即可。
 
-    ![vscode c++ 配置1](../img/vscode_c1.gif)    
+    ![vscode c++ 配置1](../img/vscode_c1.gif)
 
-    ![vscode c++ 配置2](../img/vscode_c2.gif)    
+    ![vscode c++ 配置2](../img/vscode_c2.gif)
 
-    ![vscode c++ 配置3](../img/vscode_c3.gif)    
+    ![vscode c++ 配置3](../img/vscode_c3.gif)
 
 
-### VScode环境配置    
-    
+### VScode环境配置
+
 ![vscode](../img/vscode.png)
 ```json
 {
@@ -2295,7 +2319,7 @@ open(os.path.join( ipp, pf), 'wb' ).write(by)
 ```
 其中:
 - `"editor.fontFamily"`优先使用第一个字体，当第一个字体没有的时候依次使用后面的。
-- `"terminal.integrated.fontFamily": "'mononoki Nerd Font'"`, 终端显示字体，首先要安装 `powerline nerd-font`中的`Mononoki`字体，可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。    
+- `"terminal.integrated.fontFamily": "'mononoki Nerd Font'"`, 终端显示字体，首先要安装 `powerline nerd-font`中的`Mononoki`字体，可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。
   ![vscode terminal](../img/vscode-terminal.png)
 
 ### vscode编辑器默认字体
@@ -2381,13 +2405,13 @@ nohup /home/andy/frp/frpc -c /home/andy/frp/frpc.ini &
 
 ### Startup Applications
 
-`Ubuntu`中在 `Application` 中打开 `Startup Applications` :     
+`Ubuntu`中在 `Application` 中打开 `Startup Applications` :
 
-![Startup Applications](../img/startupapplications1.png)    
+![Startup Applications](../img/startupapplications1.png)
 
-![Startup Applications](../img/startupapplications2.png)    
+![Startup Applications](../img/startupapplications2.png)
 
-![Startup Applications](../img/startupapplications3.png)    
+![Startup Applications](../img/startupapplications3.png)
 
 
 ---
@@ -2411,10 +2435,10 @@ make
 make install # You may need sufficient permission for that (root)
 ```
 
-运行一下命令：    
+运行一下命令：
 ```shell
 nvtop
-```    
+```
 ![png](../img/nvtop.png)
 
 
@@ -2443,7 +2467,7 @@ else
     wprintw(win, "F%zu", i + 1);
 }
 ```
-**重新编译安装后的效果：**    
+**重新编译安装后的效果：**
 ![png](../img/nvtop_new.png)
 
 **注意**：https://github.com/Syllo/nvtop/commit/b126abb63f38d50e8fbb961ad0aedc11b51b3911 之后修复这个问题。
@@ -2464,7 +2488,7 @@ cd htop
 然后输入以下命令显示CPU资源利用情况:
 ```shell
 htop
-```    
+```
 ![png](../img/htop.png)
 
 ### 3. glances　　　
@@ -2476,7 +2500,7 @@ curl -L https://bit.ly/glances | /bin/bash
 然后运行：
 ```shell
 glances
-```    
+```
 ![png](../img/glances.png)
 
 ---
@@ -2511,7 +2535,7 @@ System Settings -> Keyboard -> Shortcuts -> Custom Shortcuts:
 ```shell
 gnome-screenshot -a
 ```
-保存后在该快捷键的右侧点击，然后按下需要设置的快捷键即可.    
+保存后在该快捷键的右侧点击，然后按下需要设置的快捷键即可.
 ![Shortcut](../img/shortcut1.png)
 
 
@@ -2536,14 +2560,14 @@ sudo apt-get update
 sudo apt-get install flatabulous-theme ultra-flat-icons
 ```
 
-通过 `Unity Tweak Tool` 设置主题:    
-![Theme 1](../img/theme1.png)    
+通过 `Unity Tweak Tool` 设置主题:
+![Theme 1](../img/theme1.png)
 
-![Theme 2](../img/theme2.png)    
+![Theme 2](../img/theme2.png)
 
-![Theme 3](../img/theme3.png)    
+![Theme 3](../img/theme3.png)
 
-![Theme 4](../img/theme4.png)    
+![Theme 4](../img/theme4.png)
 
 **参考资料**
 > [How To Install Numix Theme And Icons In Ubuntu 14.04 & 16.04.](https://itsfoss.com/install-numix-ubuntu/)
@@ -2583,13 +2607,13 @@ sudo apt install gnome-shell-extensions
     - `.themes` – for GTK and GNOME Shell themes
     - `.icons` – for icon themes
 
-![Theme 5](../img/theme5.jpeg)    
+![Theme 5](../img/theme5.jpeg)
 
-![Theme 6](../img/theme6.jpeg)    
+![Theme 6](../img/theme6.jpeg)
 
-![Theme 7](../img/theme7.jpeg)    
+![Theme 7](../img/theme7.jpeg)
 
-![Theme 8](../img/theme8.jpeg)    
+![Theme 8](../img/theme8.jpeg)
 
 ## Ubuntu启动后GUI界面卡住不动
 **Ubuntu 16.04 - GUI freezes on login start page**
