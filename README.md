@@ -254,6 +254,8 @@
      - [ESXi](src/softRoute/softroute.md#esxi)
      - [iKuai](src/softRoute/softroute.md#ikuai)
      - [LEDE](src/softRoute/softroute.md#lede)
+        - [LEDE作为旁路由](src/softRoute/softroute.md##lede作为旁路由)
+        - [LEDE作为二级路由](src/softRoute/softroute.md##lede作为二级路由)
      - [设置iKuai和LEDE开机自动启动](src/softRoute/softroute.md#设置ikuai和lede开机自动启动)
    - [NanoPi-R1烧写系统](./src/nanopi-r1.md)
    - [GL-iNet AR750 官方固件安装SSR Plus插件](./src/GL-iNet-AR750-官方固件安装SSR-Plus-插件.md)
