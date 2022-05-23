@@ -240,6 +240,7 @@
    - [**VSCode**配置问题](./src/linux_env_set.md#vscode配置问题)
      - [**Awesome VScode Plugin**](./src/linux_env_set.md#awesome-vscode-plugin)
      - [VScode Tips](./src/linux_env_set.md#vscode-tips)
+     - [VScode远程免密登陆](./src/linux_env_set.md#vscode远程免密登陆)
      - [Ubuntu VScode配置Cpp编译环境](./src/linux_env_set.md#ubuntu-vscode配置cpp编译环境)
      - [VScode环境配置](./src/linux_env_set.md#vscode环境配置)
    - [Ubuntu查看和关闭进程](./src/linux_env_set.md#ubuntu查看和关闭进程)
