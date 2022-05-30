@@ -17,7 +17,7 @@
 
 感受野表示输入空间中一个特定CNN特征的范围区域(*The receptive field is defined as the region in the input space that a particular CNN’s feature is looking at*)。一个特征的感受野可以采用区域的中心位置和特征大小进行描述。图1展示了一些感受野的例子，采用核大小(kernel size) k=3x3，填充大小(padding size) p=1x1，步长(stride)s=2x2的卷积核C对5x5大小的输入图进行卷积操作，将输出3x3大小的特征图(绿色图)。对3x3大小的特征图进行相同的卷积操作，将输出2x2的特征图(橙色)。[输出特征图在每个维度上的大小可以采用下面的公式进行计算](https://arxiv.org/pdf/1603.07285.pdf)：    
 
-$n_{out}=[\frac{n_{in}+2p-k}{s}]+1$    
+$$n_{out}=[\frac{n_{in}+2p-k}{s}]+1$$    
 
 - $n_{in}$: number of input features    
 - $n_{out}$: number of output features    
@@ -37,10 +37,10 @@ $n_{out}=[\frac{n_{in}+2p-k}{s}]+1$
 
 除了每个维度上特征图的个数，还需要计算每一层的感受野大小，因此我们需要了解每一层的额外信息，包括：当前感受野的尺寸**r**，相邻特征之间的距离(或者*jump*) **j**，左上角(起始) 特征的中心坐标*start*，其中特征的中心坐标定义为其感受野的中心坐标(如上述固定大小CNN特征图所述) 。假设卷积核大小**k**，填充大小**p**，步长大小**s**，则其输出层的相关属性计算如下：
 
-$n_{out}=[\frac{n_{in}+2p-k}{s}]+1$    
-$j_{out}=j_{in}*s$    
-$r_{out}=r_{in}+(k-1)*j_{in}$    
-$start_{out}=start_{in}+(\frac{k-1}{2}-p)*j_{in}$    
+$$n_{out}=[\frac{n_{in}+2p-k}{s}]+1$$    
+$$j_{out}=j_{in}*s$$    
+$$r_{out}=r_{in}+(k-1)*j_{in}$$    
+$$start_{out}=start_{in}+(\frac{k-1}{2}-p)*j_{in}$$    
 
 <!-- ![](../../img/receptive_field/math2.png) -->
 
