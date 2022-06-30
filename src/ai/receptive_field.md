@@ -80,7 +80,7 @@ CNN的第一层是输入层，**n = image size**，**r = 1**，**j = 1**，**sta
 # - start_i: position of the first feature's receptive field in layer i (idx start from 0, negative means the center fall into padding)
 
 import math
-convnet =   [[11,4,0],[3,2,0],[5,1,2],[3,2,0],[3,1,1],[3,1,1],[3,1,1],[3,2,0],[6,1,0], [1, 1, 0]]
+convnet =   [[11,4,0], [3,2,0], [5,1,2], [3,2,0], [3,1,1], [3,1,1], [3,1,1], [3,2,0], [6,1,0], [1, 1, 0]]
 layer_names = ['conv1','pool1','conv2','pool2','conv3','conv4','conv5','pool5','fc6-conv', 'fc7-conv']
 imsize = 227
 

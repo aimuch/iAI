@@ -892,6 +892,7 @@ dpkg -l |grep -i libcudnn* # 查看.deb安装的cudnn
 sudo apt-get purge libcudnn*
 ```    
 ### 一步安装
+*该方法不适用于CUDA11*    
 该方法安装的前提是`/usr/local/cuda`已经连接到正确的`CUDA`版本上。    
 
 将`cudnn-xxx.tgz`复制到`/usr/local/`目录下，用`sudo tar -xvf cudnn-xxx.tgz`进行解压，然后删除`sudo rm cudnn-xxx.tgz`即可， 由于`cudnn-xxx.tgz`解压后的目录就是`cuda`文件夹，所以将会自动放在`cuda`软连接下面对应的文件夹里。    
@@ -919,17 +920,20 @@ sudo chmod a+x *
 命令行进入其中的`include`文件夹路径下，然后进行以下操作：
 ```shell
 cd ~/Downloads/cuda/include/
-sudo cp cudnn.h /usr/local/cuda/include/ #复制头文件
+sudo cp -av cudnn.h /usr/local/cuda/include/ #cp加上-a会复制软连接
 ```
 然后命令行进入`cuda/lib64`文件夹路径下(其实`cuda/lib64`文件夹下通过`Beyond Compare`查看，`libcudnn.so`、`libcudnn.so.7`和`libcudnn.so.7.5.0`是同一个文件的不同扩展名)，运行以下命令：    
 ```shell
-cd ~/Downloads/cuda/lib64/
-sudo cp lib* /usr/local/cuda/lib64/ #复制动态链接库
+cd ~/Downloads/cuda/lib64/  # CUDA <= 10    
+cd ~/Downloads/cuda/lib/    # CUDA >= 11   
+sudo cp -av lib* /usr/local/cuda/lib64/ #复制动态链接库, cp加上-a会复制软连接关系就不需要手动连接了
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
-cd /usr/local/cuda/lib64/
-sudo rm -rf libcudnn.so libcudnn.so.7  #删除原有动态文件
-sudo ln -s libcudnn.so.7.5.0 libcudnn.so.7  #生成软链接
-sudo ln -s libcudnn.so.7 libcudnn.so  #生成软链接
+
+## 因为上述cp加上了-a(不加会在cp的时候将原来的软连接文件进行复制)会复制软连接关系, 所以就不需要下面手动建立软连接到方式了
+# cd /usr/local/cuda/lib64/
+# sudo rm -rf libcudnn.so libcudnn.so.7  #删除原有动态文件
+# sudo ln -s libcudnn.so.7.5.0 libcudnn.so.7  #生成软链接
+# sudo ln -s libcudnn.so.7 libcudnn.so  #生成软链接
 ```
 
 ![cudnn1](../img/cudnn1.png)    
