@@ -963,10 +963,17 @@ Built on Fri_Feb__8_19:08:17_PST_2019
 Cuda compilation tools, release 10.1, V10.1.105
 ```
 查看`cuDNN`版本:    
-```shell
-cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
-```
-![cudnn2](../img/cudnn2.png)     
+- cudnn < 7
+  ```shell
+  cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+  ```
+  ![cudnn2](../img/cudnn2.png)     
+
+- cudnn >=7
+  ```shell
+  cat /usr/local/cuda/include/cudnn_version.h  | grep CUDNN_MAJOR -A 2
+  ```
+  ![cudnn8](../img/cudnn8.png)     
 
 ### cuDNN常见问题
 ```shell
