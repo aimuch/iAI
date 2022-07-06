@@ -34,8 +34,10 @@
 7. [**Anaconda**](#anaconda)    
    - [安装Anaconda](#安装anaconda)    
    - [屏蔽Anaconda](#屏蔽anaconda)    
-   - [重建Anaconda软连接](#重建anaconda软连接)    
-   - [Anaconda虚拟环境](#anaconda虚拟环境)
+   - [Anaconda环境配置](#anaconda环境配置)
+      - [重建Anaconda软连接](#重建anaconda软连接)    
+      - [关闭conda自动进入base虚拟环境](#关闭conda自动进入base虚拟环境)    
+      - [修复无名字环境](#修复无名字环境)    
    - [卸载Anaconda](#卸载anaconda)
 8. [安装**OpenCV**](#安装opencv)   
     - [下载OpenCV](#下载opencv)
@@ -1198,7 +1200,29 @@ source ~/.bashrc
 **必须重启电脑**    
 
 
-### 重建Anaconda软连接   
+### Anaconda环境配置    
+**创建新的虚拟环境**：    
+```shell
+conda create -n venv python=3.6 pip # select python version and pip
+```
+若需要指定环境的路径，可以使用以下命令：    
+```shell
+conda create --prefix=~/.conda/envs/venv python=3.8 pip
+# conda create -p ~/.conda/envs/venv python=3.8 pip
+```
+**激活虚拟环境**:    
+```shell
+source activate venv
+```
+**删除虚拟环境**:   
+```shell
+conda env remove -n venv  # conda remove -n venv --all
+```
+**删除缓存的安装包**:    
+```shell
+conda clean --packages --tarballs
+```
+#### 重建Anaconda软连接   
 **重建原理**   
 由于linux系统默认搜索可执行文件的顺序为`/bin` -> `/usr/bin` -> `/usr/local/bin` ，而前两个为系统的可执行文件存放的地方，`/usr/local/bin`为用户自定义的可执行文件存放区，所以只需要将`Anaconda`的`~/anaconda3/bin/可执行文件`**软连接**到`/usr/local/bin`即可。    
 
@@ -1236,24 +1260,28 @@ source deactivate
 ```
 ![conda list](../img/conda3.png)    
 
+#### 关闭conda自动进入base虚拟环境   
+```shell
+conda config --set auto_activate_base false
+```
 
-### Anaconda虚拟环境    
-**创建新的虚拟环境**：    
+#### 修复无名字环境   
+环境没有名字的情况如下:    
 ```shell
-conda create -n venv python=3.6 pip # select python version and pip
+❯ conda env list
+# conda environments:
+#
+base                  *  /Users/andy/opt/anaconda3
+ai                       /opt/anaconda3/envs/ai
+                         /opt/anaconda3/envs/openmmlab
+                         /opt/anaconda3/envs/pytorch
 ```
-**激活虚拟环境**:    
+修复命令如下:    
 ```shell
-source activate venv
+conda config --append envs_dirs /path/to/the/parent_dir
+# conda config --append envs_dirs /opt/anaconda3/envs/
 ```
-**删除虚拟环境**:   
-```shell
-conda env remove -n venv  # conda remove -n venv --all
-```
-**删除缓存的安装包**:    
-```shell
-conda clean --packages --tarballs
-```
+
 ### 卸载Anaconda
 直接删除anaconda文件夹。因为安装时默认是在用户的根目录下创建文件夹来放置anaconda的文件的，所以直接删除即可:      
 ```shell
