@@ -6,7 +6,7 @@
 *其他平台环境类似*
 
 ```vim
-硬件： Intel 12900K / ROG MAXIMUS Z690 HERO / NVIDIA RTX 3090 / DDR5 32G 5600 / SSD 4T / HDD 4T
+硬件： Intel 12900K / ROG MAXIMUS Z690 HERO / NVIDIA RTX 3090 / DDR5 32G 5600 / SSD 1T * 4 / HDD 16T * 2
 系统： Ubuntu-20.04-64bit / Ubuntu-18.04-64bit / Windows 11 Professional
 软件： CUDA9.0-CUDA11.3/cuDNN/TensorRT/OpenCV/caffe/YOLO/Protobuf/Matlab/VIM
 ```
