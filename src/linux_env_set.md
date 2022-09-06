@@ -55,6 +55,7 @@
     - [**Awesome VScode Plugin**](#awesome-vscode-plugin)
     - [VScode Tips](#vscode-tips)
     - [VScode远程免密登陆](#vscode远程免密登陆)
+    - [VScode远程显示界面](#vscode远程显示界面)
     - [Ubuntu VScode配置Cpp编译环境](#ubuntu-vscode配置cpp编译环境)
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)
@@ -2234,6 +2235,50 @@ cat vscode_remote_rsa.pub >> authorized_keys
 	User [User_Name]
 	IdentityFile [~/.ssh/vscode_remote_rsa]
   ```
+
+### VScode远程显示界面
+#### 服务器端设置
+编辑`sudo vim /etc/ssh/sshd_config`文件中找到如下两个参数    
+```vim
+X11Forwarding yes
+X11DisplayOffset 10
+```
+![sshd_config](../img/sshd_config.png)    
+更改后需要重启服务, Linux运行如下命令重新启动ssh服务:    
+```shell
+service ssh restart
+```
+#### Mac下设置
+编辑Mac上的配置，编辑`vim /private/etc/ssh/ssh_config`文件，设置如下参数为yes:    
+```vim
+ForwardX11 yes
+```
+![Mac sshd_config](../img/mac_ssh_config.png)    
+
+#### Mac下安装XQuartz:
+- 从官网安装   
+  https://www.xquartz.org/index.html 下载XQuartz-2.8.2.dmg
+- brew安装
+  ```shell
+  brew install xquartz
+  ```
+#### Mac下配置~/.ssh/config
+```vim
+Host 10.10.0.6
+	HostName 10.10.0.6
+	ForwardX11 yes
+	ForwardX11Trusted yes
+	ForwardAgent yes
+  User andy
+  IdentityFile ~/.ssh/vscode_remote_rsa
+```
+#### VSCode设置
+需要安装的插件   
+- Remote Development   
+- Remote X11    
+- Remove X11 (SSH)    
+
+
 
 ### Ubuntu VScode配置Cpp编译环境
 
