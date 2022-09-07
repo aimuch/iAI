@@ -1339,9 +1339,20 @@ sudo apt-get install ffmpeg cmake pkg-config vim libx264-dev libatlas-base-dev g
 cd opencv-x.x.x
 mkdir build # 创建编译的文件目录
 cd build
-cmake -D CMAKE_BUILD_TYPE=Release \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \
-      -DBUILD_JPEG=ON -DBUILD_TIFF=ON \
+cmake -D CMAKE_BUILD_TYPE=RELEASE  \
+      -D CMAKE_INSTALL_PREFIX=/usr/local  \
+      -D INSTALL_C_EXAMPLES=ON  \
+      -D INSTALL_PYTHON_EXAMPLES=ON  \
+      -D WITH_TBB=ON -D WITH_EIGEN=ON  \
+      -D WITH_V4L=ON  \
+      -D OPENCV_SKIP_PYTHON_LOADER=ON  \
+      -D OPENCV_GENERATE_PKGCONFIG=ON  \
+      -D WITH_QT=ON  \
+      -D WITH_OPENGL=ON  \
+      -D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3  \
+      -D ENABLE_CXX11=ON  \
+      -DBUILD_JPEG=ON \
+      -DBUILD_TIFF=ON \
       -DBUILD_PNG=ON ..
 
 # 利用下面的命令得到系统的线程数
@@ -1351,12 +1362,22 @@ make -j8  #编译
 ```
 若要用到`opencv_contrib`扩展模块一起编译，则需要下载跟**opencv版本一致**的`opencv_contrib-x.x.x`解压咋跟`opencv-x.x.x`同目录下，然后软连接到`opencv_contrib`:   
 ```shell
-cmake -D CMAKE_BUILD_TYPE=Release \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \
-      -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
-      -DBUILD_JPEG=ON \
-      -DBUILD_TIFF=ON \
-      -DBUILD_PNG=ON ..
+cmake3 -D CMAKE_BUILD_TYPE=RELEASE  \
+       -D CMAKE_INSTALL_PREFIX=/usr/local  \
+       -D INSTALL_C_EXAMPLES=ON  \
+       -D INSTALL_PYTHON_EXAMPLES=ON  \
+       -D WITH_TBB=ON -D WITH_EIGEN=ON  \
+       -D WITH_V4L=ON  \
+       -D OPENCV_SKIP_PYTHON_LOADER=ON  \
+       -D OPENCV_GENERATE_PKGCONFIG=ON  \
+       -D WITH_QT=ON  \
+       -D WITH_OPENGL=ON  \
+       -D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3  \
+       -D ENABLE_CXX11=ON  \
+       -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
+       -DBUILD_JPEG=ON \
+       -DBUILD_TIFF=ON \
+       -DBUILD_PNG=ON ..
 ```
 **遇到一下报错信息有两种可能：**    
 ![编译报错](../img/opencv-error1.png)    
