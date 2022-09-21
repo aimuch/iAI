@@ -57,6 +57,7 @@
     - [VScode远程免密登陆](#vscode远程免密登陆)
     - [VScode远程显示界面](#vscode远程显示界面)
     - [Ubuntu VScode配置Cpp编译环境](#ubuntu-vscode配置cpp编译环境)
+    - [VScode配置Google代码风格](#vscode配置google代码风格)
     - [VScode环境配置](#vscode环境配置)
   - [Ubuntu查看和关闭进程](#ubuntu查看和关闭进程)
   - [Ubuntu后台执行命令](#ubuntu后台执行命令)
@@ -2238,25 +2239,25 @@ cat vscode_remote_rsa.pub >> authorized_keys
 
 ### VScode远程显示界面
 #### 服务器端设置
-编辑`sudo vim /etc/ssh/sshd_config`文件中找到如下两个参数    
+编辑`sudo vim /etc/ssh/sshd_config`文件中找到如下两个参数
 ```vim
 X11Forwarding yes
 X11DisplayOffset 10
 ```
-![sshd_config](../img/sshd_config.png)    
-更改后需要重启服务, Linux运行如下命令重新启动ssh服务:    
+![sshd_config](../img/sshd_config.png)
+更改后需要重启服务, Linux运行如下命令重新启动ssh服务:
 ```shell
 service ssh restart
 ```
 #### Mac下设置
-编辑Mac上的配置，编辑`vim /private/etc/ssh/ssh_config`文件，设置如下参数为yes:    
+编辑Mac上的配置，编辑`vim /private/etc/ssh/ssh_config`文件，设置如下参数为yes:
 ```vim
 ForwardX11 yes
 ```
-![Mac sshd_config](../img/mac_ssh_config.png)    
+![Mac sshd_config](../img/mac_ssh_config.png)
 
 #### Mac下安装XQuartz:
-- 从官网安装   
+- 从官网安装
   https://www.xquartz.org/index.html 下载XQuartz-2.8.2.dmg
 - brew安装
   ```shell
@@ -2273,10 +2274,10 @@ Host 10.10.0.6
   IdentityFile ~/.ssh/vscode_remote_rsa
 ```
 #### VSCode设置
-需要安装的插件   
-- Remote Development   
-- Remote X11    
-- Remove X11 (SSH)    
+需要安装的插件
+- Remote Development
+- Remote X11
+- Remove X11 (SSH)
 
 
 
@@ -2326,6 +2327,52 @@ Host 10.10.0.6
     ![vscode c++ 配置2](../img/vscode_c2.gif)
 
     ![vscode c++ 配置3](../img/vscode_c3.gif)
+
+### VScode配置Google代码风格
+1. 安装C/C++插件
+  [ms-vscode.cpptools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+2. 配置C/C++插件
+  使用快捷键`Ctrl/CMD + ,`打开设置界面，搜索以下设置进行配置:
+
+  | 设置ID | 建议值 | 说明 |
+  | :--- | :--- | :--- |
+  | C_Cpp.clang_format_fallbackStyle | Google | 当不指定风格配置文件时，默认使用的代码风格 |
+  | C_Cpp.clang_format_style | file | 从根目录`~/.clang-format`加载格式化配置 |
+  | C_Cpp.clang_format_sortIncludes | false | 格式化代码时将include分组并排序 |
+  | editor.formatOnSave | true | 在保存文件时执行格式化 |
+
+  或者将下面的配置直接复制到vscode的`settings.json`中:
+  ```json
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.clang_format_sortIncludes": false,
+    "editor.formatOnSave": true,
+  ```
+  至此，在编写代码的过程中，在使用`Ctrl/CMD + S`保存代码的同时，也就自动完成了代码的格式化操作，达到事半功倍的效果。
+3. 配置`~/.clang-format`文件
+  `clang-format`有很多控制代码格式的选项，详见：**[CLANG-FORMAT STYLE OPTIONS](https://link.zhihu.com/?target=https%3A//clang.llvm.org/docs/ClangFormatStyleOptions.html)**。
+
+  其配置文件为`~/.clang-format`，其格式示例如下：
+  ```shell
+  ---
+  # 语言: None, Cpp, Java, JavaScript, ObjC, Proto, TableGen, TextProto
+  Language: Cpp
+  # 基于某一主题上的修改
+  BasedOnStyle: Google
+  # 缩进宽度
+  IndentWidth: 4
+  # 缩进case标签
+  IndentCaseLabels: true
+  # 访问说明符(public、private等)的偏移
+  AccessModifierOffset: -4
+  ```
+  实际开发中，开发者可以使用`clang-format`命令生成一个模板：
+
+  ```bash
+  clang-format -style=google -dump-config > .clang-format
+  ```
+
+  然后在此基础上做一些自定义的配置。
 
 
 ### VScode环境配置
