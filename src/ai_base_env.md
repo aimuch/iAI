@@ -1533,10 +1533,12 @@ sudo make uninstall
 然后把整个`opencv-x.x.x`文件夹都删掉 `rm -rf opencv-x.x.x` 。将shell环境切换到bash下(否则不认识命令行的 `*` 文件通配符)，随后再运行：   
 ```shell
 bash
-sudo rm -r /usr/local/include/opencv2 /usr/local/include/opencv \
-/usr/include/opencv /usr/include/opencv2 /usr/local/share/opencv \
-/usr/local/share/OpenCV /usr/share/opencv /usr/share/OpenCV \
-/usr/local/bin/opencv* /usr/local/lib/libopencv
+sudo rm -r /usr/local/include/opencv*
+sudo rm -r /usr/local/share/opencv*
+sudo rm -r /usr/local/bin/opencv*
+sudo rm -r /usr/local/lib/libopencv*
+sudo rm -r /usr/bin/opencv*
+sudo rm -r /bin/opencv*
 ```
 把一些残余的动态链接文件和空文件夹删掉。有些文件夹已经被删掉了所以会找不到路径。    
 
