@@ -1305,7 +1305,11 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
   ```
 2. Activate the plugin in `~/.zshrc`:
   ```vim
-  plugins=( [plugins...]
+  plugins=( 
+  	    git
+            autojump
+            zsh-autosuggestions
+            zsh-syntax-highlighting
             zsh-history-substring-search
           )
   ```
