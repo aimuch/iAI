@@ -25,6 +25,7 @@
         - [设置grub引导菜单的分辨率](src/ai_base_env.md#设置grub引导菜单的分辨率)
         - [设置grub Menu显示](src/ai_base_env.md#设置grub-menu显示)
       - [CPU无集成显卡](src/ai_base_env.md#cpu无集成显卡)
+      - [远程切换双系统](src/ai_base_env.md#远程切换双系统)
    2. [安装**NVIDIA驱动**](src/ai_base_env.md#安装nvidia驱动)
       - [安装NVIDIA驱动所需的依赖包](src/ai_base_env.md#安装nvidia驱动所需的依赖包)
       - [禁用Ubuntu自带的显卡驱动](src/ai_base_env.md#禁用ubuntu自带的显卡驱动)
