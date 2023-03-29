@@ -80,7 +80,7 @@
 详细的安装双系统就不过多介绍了，可以参考[这篇文章](https://blog.csdn.net/s717597589/article/details/79117112/)，但是在安装过程中有几个问题需要说明：
 - BIOS里修改硬盘模式从`RAID` 至 `ACHI` :
     如果不修改raid至achi，我们采用UEFI启动的u盘安装盘将不能识别nvme驱动。会导致安装系统的过程中看不到硬盘。
-    ```vim
+    ```bash
     # 首先调整windows至safeboot minimal模式，使用windows管理员权限运行cmd：
     bcdedit /set {current} safeboot minimal
 
@@ -139,7 +139,7 @@ sudo vim /etc/default/grub
 ```
 ![grub](../img/grub.png)
 
-```vim
+```bash
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
 # For full documentation of the options in this file, see:
@@ -194,7 +194,7 @@ sudo cp /boot/grub/grub.cfg /boot/grub/grub.cfg.backup
 sudo gedit /boot/grub/grub.cfg
 ```
 在用gedit打开的文件里里搜索`menuentry`，找到以下位置:
-```vim
+```bash
 ### BEGIN /etc/grub.d/30_os-prober ###
 menuentry 'Windows Boot Manager (on /dev/nvme1n1p1)' --class windows --class os $menuentry_id_option 'osprober-efi-00ED-6F44' {
 	insmod part_gpt
@@ -214,7 +214,7 @@ fi
 ```
 ![grub.cfg](../img/grub.cfg.png)
 剪切该段，放到以下位置的前面:
-```vim
+```bash
 menuentry 'Ubuntu' --class ubuntu --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-0a4a1e2a-292f-43d2-bd28-97cc6bee3b02' {
 	recordfail
 	load_video
@@ -252,7 +252,7 @@ videoinfo
 sudo vim /etc/default/grub
 ```
 在 `grub` 文本中找到 `#GRUB_GFXMODE=640×480` 将 `#` 去掉并修改为正确的分辨率数值:
-```vim
+```bash
 GRUB_GFXMODE=1920×1080
 ```
 然后更新grub:
@@ -283,7 +283,7 @@ sudo grub-reboot 2 #指定选择Windows系统
 sudo reboot
 ```
 为了快捷方便，可以在桌面创建快捷方式，并写一个可执行脚本来实现重启。
-```vim
+```bash
 [Desktop Entry]
 Encoding=UTF-8
 Name=Reboot to Windows
@@ -1094,7 +1094,7 @@ tensorflow2.0.0 alpha0，它对应于CUDA10.0
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\extras\demo_suite
 
 执行bandwidthTest.exe和deviceQuery.exe这两个应用程序，得到下面的结果：
-```vim
+```bash
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\extras\demo_suite>deviceQuery
 deviceQuery Starting...
 
@@ -1143,7 +1143,7 @@ deviceQuery, CUDA Driver = CUDART, CUDA Driver Version = 10.1, CUDA Runtime Vers
 Result = PASS
 ```
 和
-```vim
+```bash
 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\extras\demo_suite>bandwidthTest
 [CUDA Bandwidth Test] - Starting...
 Running on...
@@ -1194,21 +1194,21 @@ sudo chown -R 你的用户名 /home/你的用户名/anaconda3
 vim ~/.bashrc
 ```
 然后屏蔽后的结果如下：
-```vim
+```bash
 # added by Anaconda3 5.3.1 installer
 #export PATH="/home/andy/anaconda3/bin:$PATH"
 #export LD_LIBRARY_PATH=~/anaconda3/lib:$LD_LIBRARY_PATH
 #export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
 ```
 其实这里涉及到`linux可执行程序搜索路径`的问题，上述`PATH="/home/andy/anaconda3/bin:$PATH"`将`/home/andy/anaconda3/bin`放在了原始的`$PATH`前面，这样系统在执行的时候首先检查要可执行文件是否在`/home/andy/anaconda3/bin`中，然后再从`$PATH`中搜索，理解了这个关系，上述代码可以改为，这样改了以后将不需要[重建Anaconda软连接](#重建anaconda软连接)这一步操作了:
-```vim
+```bash
 # added by Anaconda3 5.3.1 installer
 export PATH="$PATH：/home/andy/anaconda3/bin"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH：~/anaconda3/lib
 export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
 ```
 **Anaconda最新版屏蔽如下**
-```vim
+```bash
 # added by Anaconda3 5.3.1 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -1438,7 +1438,7 @@ sudo make install #安装
 sudo gedit /etc/ld.so.conf.d/opencv.conf
 ```
 添加以下内容:
-```vim
+```bash
 /usr/local/lib
 ```
 运行以下命令刷新`opencv`动态链接库：
@@ -1480,7 +1480,7 @@ sudo ldconfig
 ```shell
 $ pkg-config --modversion opencv
 ```
-```vim
+```bash
 Package opencv was not found in the pkg-config search path.
 Perhaps you should add the directory containing `opencv.pc'
 to the PKG_CONFIG_PATH environment variable
@@ -1536,7 +1536,7 @@ After you do so, `pkg-config --cflags opencv` and `pkg-config --libs opencv` sho
     vim /etc/zsh/zprofile
     ```
     然后加入以下内容:
-    ```vim
+    ```bash
     PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
     export PKG_CONFIG_PATH
     ```
@@ -1547,7 +1547,7 @@ After you do so, `pkg-config --cflags opencv` and `pkg-config --libs opencv` sho
     vim ~/.zshrc
     ```
     然后加入以下内容:
-    ```vim
+    ```bash
     PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
     export PKG_CONFIG_PATH
     ```
@@ -2228,12 +2228,12 @@ vim Makefile.config
   将： `#WITH_PYTHON_LAYER := 1`修改为`WITH_PYTHON_LAYER := 1`
 - **修改 python 路径**
   将：
-  ```vim
+  ```shell
   INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include
   LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib
   ```
   修改为：
-  ```vim
+  ```shell
   INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
   LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
   ```
@@ -2409,16 +2409,16 @@ Q ?= @
 NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)
 ```
 替换为：
-```vim
+```shell
 NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
 ```
 
 将：
-```vim
+```shell
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
 ```
 改为：
-```vim
+```shell
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
 至此caffe配置文件修改完毕，可以开始编译了。假如显卡不是feimi架构的可以输入如下命令防止出现`Unsupported gpu architecture 'compute_20'`的问题：
@@ -2583,12 +2583,12 @@ vim Makefile.config
   将： `#WITH_PYTHON_LAYER := 1`修改为`WITH_PYTHON_LAYER := 1`
 - **修改 python 路径**
   将：
-  ```vim
+  ```shell
   INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include
   LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib
   ```
   修改为：
-  ```vim
+  ```shell
   INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
   LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
   ```
@@ -2631,7 +2631,7 @@ vim Makefile.config
   ```
 
 相比较`Python2`特别的是，要将python指定为本地的`Python3`版本，如本地为**python3.6**， 则需要修改：
-```vim
+```shell
 PYTHON_LIBRARIES := boost_python3 python3.6m
 PYTHON_INCLUDE := /usr/include/python3.6m \
                  /usr/lib/python3.6/dist-packages/numpy/core/include
@@ -2767,24 +2767,24 @@ Q ?= @
 NVCCFLAGS +=-ccbin=$(CXX) -Xcompiler-fPIC $(COMMON_FLAGS)
 ```
 替换为：
-```vim
+```shell
 NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
 ```
 
 将：
-```vim
+```shell
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_hl hdf5
 ```
 改为：
-```vim
+```shell
 LIBRARIES += glog gflags protobuf boost_system boost_filesystem m hdf5_serial_hl hdf5_serial
 ```
 <!-- 将:
-```vim
+```shell
 PYTHON_LIBRARIES ?= boost_python python2.7
 ```
 改为:
-```vim
+```shell
 PYTHON_LIBRARIES ?= boost_python-py35 #py35需要改为本地目前python版本
 ``` -->
 
@@ -3028,7 +3028,7 @@ protoc-c --c_out=. test.proto
 touch person.proto
 ```
 输入如下内容：
-```vim
+```shell
 message Person {
   required string name = 1;
   required int32 id = 2;
@@ -3153,7 +3153,7 @@ sudo /mnt/iso/install
 
 #### 创建快捷启动方式
 打开终端，输入命令 `sudo gedit /usr/share/applications/Matlab.desktop` ,新建一个名为`Matlab.desktop`的文件。输入以下内容:
-```vim
+```shell
 [Desktop Entry]
 Type=Application
 Name=Matlab
@@ -3242,7 +3242,7 @@ sudo ln -s /usr/local/Polyspace/R2019b/bin/matlab matlab
 
 #### 创建快捷启动方式
 打开终端，输入命令 `sudo gedit /usr/share/applications/matlab.desktop` ,新建一个名为`matlab.desktop`的文件。输入以下内容:
-```vim
+```shell
 [Desktop Entry]
 Type=Application
 Name=Matlab
