@@ -1605,7 +1605,7 @@ Plugin 'tpope/vim-fugitive'
 " Plugin '插件名称' 实际上是 Plugin 'vim-scripts/插件仓库名' 只是此处的用户名可以省略
 Plugin 'L9'
 " 由Git支持但不再github上的插件仓库 Plugin 'git clone 后面的地址'
-Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t'
 " 本地的Git仓库(例如自己的插件) Plugin 'file:///+本地插件仓库绝对路径'
 "Plugin 'file:///home/andy/path/to/plugin'
 " 插件在仓库的子目录中.
