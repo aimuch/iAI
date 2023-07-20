@@ -230,6 +230,7 @@
      - [安装**colorls**](./src/linux_env_set.md#安装colorls)
      - [安装**fzf**](./src/linux_env_set.md#安装fzf)
      - [安装**navi**](./src/linux_env_set.md#安装navi)
+   - [**atuin**历史命令工具](./src/linux_env_set.md#atuin历史命令工具)
    - [**vim**配置](./src/linux_env_set.md#vim配置)
      - [YouCompleteMe实现vim自动补全](./src/linux_env_set.md#youcompleteme实现vim自动补全)
      - [TabNine实现vim自动补全](./src/linux_env_set.md#tabnine实现vim自动补全)

@@ -42,6 +42,7 @@
     - [安装**colorls**](#安装colorls)
     - [安装**fzf**](#安装fzf)
     - [安装**navi**](#安装navi)
+  - [**atuin**历史命令工具](atuin历史命令工具)
   - [**vim**配置](#vim配置)
     - [**YouCompleteMe**实现vim自动补全](#youcompleteme实现vim自动补全)
     - [**TabNine**实现vim自动补全](#tabnine实现vim自动补全)
@@ -1541,6 +1542,26 @@ cargo install navi
   ```
 
 ---
+## atuin历史命令工具
+atuin官网地址 https://atuin.sh/， GitHub地址: https://github.com/ellie/atuin   
+### 安装方法
+```shell
+bash <(curl https://raw.githubusercontent.com/ellie/atuin/main/install.sh)
+```
+### 需要同步命令
+适用于多台机器之间同步命令    
+```shell
+atuin register -u <USERNAME> -e <EMAIL>
+atuin import auto
+atuin sync
+```
+
+### 不需要同步命令   
+```shell
+atuin import auto
+```
+
+
 ## vim配置
 ### YouCompleteMe实现vim自动补全
 
