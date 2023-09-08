@@ -1733,7 +1733,7 @@ vim ~/.zshrc # 打开环境变量文件
 export LD_LIBRARY_PATH=~/TensorRT/lib:$LD_LIBRARY_PATH
 export CUDA_INSTALL_DIR=/usr/local/cuda
 export CUDNN_INSTALL_DIR=/usr/local/cuda
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:~/TensorRT/include
+export CPATH=$CPATH:~/TensorRT/include
 ```
 ```shell
 # bash
