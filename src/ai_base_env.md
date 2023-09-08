@@ -12,7 +12,7 @@
       - [设置grub引导菜单的分辨率](#设置grub引导菜单的分辨率)
       - [设置grub Menu显示](#设置grub-menu显示)
     - [CPU无集成显卡](#cpu无集成显卡)
-    - [远程切换双系统](#远程切换双系统)
+    - [远程切换双系统](#远程切换双系统)  
 2. [安装**NVIDIA驱动**](#安装nvidia驱动)
     - [安装NVIDIA驱动所需的依赖包](#安装nvidia驱动所需的依赖包)
     - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)
@@ -1727,7 +1727,7 @@ vim ~/.bashrc # 打开环境变量文件
 # zsh
 vim ~/.zshrc # 打开环境变量文件
 ```
-将下面三个变量写入**环境变量文件**中并保存:
+将下面变量写入**环境变量文件**中并保存:
 ```shell
 # TensorRT
 export LD_LIBRARY_PATH=~/TensorRT/lib:$LD_LIBRARY_PATH
@@ -1742,6 +1742,12 @@ source ~/.bashrc   # 使刚刚修改的环境变量文件生效
 # zsh
 source ~/.zshrc
 ```
+
+系统级配置:   
+```shell  
+echo "~/TensorRT/lib" | sudo tee /etc/ld.so.conf.d/tensorrt.conf
+```
+
 
 <!-- #### 2. 安装Python的TensorRT包 -->
 #### <span id="tensorrt2">2. 安装Python的TensorRT包</span>
