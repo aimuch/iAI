@@ -1744,7 +1744,7 @@ source ~/.zshrc
 
 <!-- #### 2. 安装Python的TensorRT包 -->
 #### <span id="tensorrt2">2. 安装Python的TensorRT包</span>
-进到解压后的`TensorRT`的**Python**文件下：
+进到解压后的`TensorRT`的**Python**文件下：  
 **2.1 非虚拟环境下**
 ```bash
 cd ~/TensorRT/python/
