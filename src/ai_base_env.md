@@ -1733,6 +1733,7 @@ vim ~/.zshrc # 打开环境变量文件
 export LD_LIBRARY_PATH=~/TensorRT/lib:$LD_LIBRARY_PATH
 export CUDA_INSTALL_DIR=/usr/local/cuda
 export CUDNN_INSTALL_DIR=/usr/local/cuda
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:~/TensorRT/include
 ```
 ```shell
 # bash
@@ -1744,8 +1745,9 @@ source ~/.zshrc
 
 <!-- #### 2. 安装Python的TensorRT包 -->
 #### <span id="tensorrt2">2. 安装Python的TensorRT包</span>
-进到解压后的`TensorRT`的**Python**文件下：  
-**2.1 非虚拟环境下**
+进到解压后的`TensorRT`的**Python**文件下：    
+
+**2.1 非虚拟环境下**   
 ```bash
 cd ~/TensorRT/python/
 
@@ -1766,7 +1768,7 @@ pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl --user
 pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl --user
 ```
 
-**2.2 虚拟环境下**
+**2.2 虚拟环境下**   
 ```bash
 source  activate venv
 cd TensorRT/python/
@@ -1781,10 +1783,11 @@ pip install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 **如安装失败请参考[安装过程中遇到的问题以及解决方法](#安装过程中遇到的问题以及解决方法)。**
 
 <!-- #### 3. 安装uff     -->
-#### <span id="tensorrt3">3. 安装uff</span>
+#### <span id="tensorrt3">3. 安装uff</span>   
+
 转到**uff**目录下安装`uff`文件夹下安装：
 
-**3.1 非虚拟环境下**
+**3.1 非虚拟环境下**   
 ```bash
 cd ~/TensorRT/uff/
 
@@ -1818,7 +1821,8 @@ pip install uff-XXX-py2.py3-none-any.whl
 ```
 
 #### <span id="tensorrt4">4. 安装graphsurgeon</span>
-转到**graphsurgeon**目录下安装`graphsurgeon`文件夹下安装：
+转到**graphsurgeon**目录下安装`graphsurgeon`文件夹下安装：   
+
 **4.1 非虚拟环境下**
 ```shell
 cd TensorRT/graphsurgeon/
@@ -1839,7 +1843,7 @@ pip2 install graphsurgeon-X.X.X-py2.py3-none-any.whl --user
 pip3 install graphsurgeon-X.X.X-py2.py3-none-any.whl --user
 ```
 
-**4.2 虚拟环境下**
+**4.2 虚拟环境下**   
 ```bash
 source activate venv
 cd TensorRT/graphsurgeon/
@@ -1884,7 +1888,8 @@ cd /TensorRT/bin  #（转到bin目录下面，make后的可执行文件在此目
 
 <!-- #### 6. TensorRT安装过程中遇到的问题以及解决方法 -->
 #### <span id="tensorrt6">6. TensorRT安装过程中遇到的问题以及解决方法</span>
-5.1 在安装`Python`的`TensorRT`包时可能出现的错误：
+
+6.1 在安装`Python`的`TensorRT`包时可能出现的错误：
 ```bash
 In file included from src/cpp/cuda.cpp:1:0:
 src/cpp/cuda.hpp:14:18: fatal error: cuda.h: No such file or directory
@@ -1915,13 +1920,14 @@ pip2 install tensorrt-XXX-cp27-cp27mu-linux_x86_64.whl
 pip3 install tensorrt-XXX-cp35-cp35m-linux_x86_64.whl
 exit
 ```
-5.2 `Python`导入`tensorrt`或者`tensorflow`的时候提示`ImportError: numpy.core.multiarray failed to import`
+
+6.2 `Python`导入`tensorrt`或者`tensorflow`的时候提示`ImportError: numpy.core.multiarray failed to import`
 解决方法:
 ```shell
 pip install -U numpy
 ```
 
-5.3 在调用`TensorRT`的时候提示`ImportError: Please make sure you have pycuda installed`
+6.3 在调用`TensorRT`的时候提示`ImportError: Please make sure you have pycuda installed`
 ![TensorRT error1](../img/tensorrt_error1.png)
 原因是，显卡内存不够:
 ![TensorRT error2](../img/tensorrt_error2.png)
