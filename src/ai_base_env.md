@@ -13,7 +13,7 @@
       - [设置grub Menu显示](#设置grub-menu显示)
     - [CPU无集成显卡](#cpu无集成显卡)
     - [远程切换双系统](#远程切换双系统)  
-2. [安装**NVIDIA驱动**](#安装nvidia驱动)
+2. [安装**NVIDIA驱动**](#安装nvidia驱动)  
     - [安装NVIDIA驱动所需的依赖包](#安装nvidia驱动所需的依赖包)
     - [禁用Ubuntu自带的显卡驱动](#禁用ubuntu自带的显卡驱动)
     - [Ubuntu16TLS安装NVIDIA驱动](#ubuntu16tls安装nvidia驱动)
@@ -841,11 +841,11 @@ vim ~/.bashrc
 在该文件最后加入以下两行并保存：
 ```shell
 # CUDA
-export CUDA_HOME=/usr/local/cuda #cuda -> cuda11.6
-export PATH=$CUDA_HOME/bin:$PATH
-export CPATH=$CUDA_HOME/include:$CPATH #include -> targets/x86_64-linux/include
-export LIBRARY_PATH=$CUDA_HOME/lib64:$LIBRARY_PATH #lib64 -> targets/x86_64-linux/lib
-export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$CUDA_HOME/extras/CUPTI/lib64:$LD_LIBRARY_PATH #lib64 -> targets/x86_64-linux/lib
+export CUDA_ROOT_PATH=/usr/local/cuda #cuda -> cuda11.6
+export PATH=$CUDA_ROOT_PATH/bin:$PATH
+export CPATH=$CUDA_ROOT_PATH/include:$CPATH #include -> targets/x86_64-linux/include
+export LIBRARY_PATH=$CUDA_ROOT_PATH/lib64:$LIBRARY_PATH #lib64 -> targets/x86_64-linux/lib
+export LD_LIBRARY_PATH=$CUDA_ROOT_PATH/lib64:$CUDA_ROOT_PATH/extras/CUPTI/lib64:$LD_LIBRARY_PATH #lib64 -> targets/x86_64-linux/lib
 ```
 `/usr/local/cuda/` 其实是 `/usr/local/cuda-10.1` 或者 `/usr/local/cuda-9.0` 的软连接，后面讲的[切换CUDA版本](#CUDA多版本问题)其实就是修改这个软连接，将其指向需要的CUDA版本即可.
 
