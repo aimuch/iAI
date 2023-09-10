@@ -799,13 +799,15 @@ nvidia-settings
     sudo sh ./cuda_10.1.105_418.39_linux.run
     ```
 
-    输入`accept`进入安装界面:
+    输入`accept`进入安装界面:    
     ![CUDA 10.1](../img/cuda10.1_1.png)
-    **不要安装`CUDA`自带的`NVIDIA`驱动**，将光标移动到**Driver**选项上，按下**空格键**取消选择安装`NVIDIA`驱动，移动光标再到`Install`上然后按回车。
+    **不要安装`CUDA`自带的`NVIDIA`驱动**，将光标移动到**Driver**选项上，按下**空格键**取消选择安装`NVIDIA`驱动，移动光标再到`Install`上然后按回车。    
     ![CUDA 1O.1](../img/cuda10.1_2.png)
-    若已经安装旧版本的CUDA版本，会出现以下提示，输入yes继续安装即可:
-    ![CUDA 10.1 inatall](../img/cuda10.1_install1.png)
-    安装成功后提示:
+    若已经安装旧版本的CUDA版本，会出现以下提示，输入yes继续安装即可:    
+
+    ![CUDA 10.1 inatall](../img/cuda10.1_install1.png)    
+    安装成功后提示:    
+
     ![CUDA success](../img/cuda10.1-finished.png)
     ```shell
     ===========
@@ -829,7 +831,8 @@ nvidia-settings
 
     Logfile is /var/log/cuda-installer.log
     ```
-    安装成功以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-10.1`文件夹，还生成一个相应`软连接`文件夹`cuda`或者将之前cuda9.0生成的**cuda软连接**重新指向cuda10.1文件夹:
+    安装成功以后在`/usr/local/`目录下查看，可以看到不但生成对应版本的`cuda-10.1`文件夹，还生成一个相应`软连接`文件夹`cuda`或者将之前cuda9.0生成的**cuda软连接**重新指向cuda10.1文件夹:    
+
     ![CUDA 10.1 Sucessful](../img/cuda10.1-success.png)
 
 
@@ -847,7 +850,14 @@ export CPATH=$CUDA_ROOT_PATH/include:$CPATH #include -> targets/x86_64-linux/inc
 export LIBRARY_PATH=$CUDA_ROOT_PATH/lib64:$LIBRARY_PATH #lib64 -> targets/x86_64-linux/lib
 export LD_LIBRARY_PATH=$CUDA_ROOT_PATH/lib64:$CUDA_ROOT_PATH/extras/CUPTI/lib64:$LD_LIBRARY_PATH #lib64 -> targets/x86_64-linux/lib
 ```
-`/usr/local/cuda/` 其实是 `/usr/local/cuda-10.1` 或者 `/usr/local/cuda-9.0` 的软连接，后面讲的[切换CUDA版本](#CUDA多版本问题)其实就是修改这个软连接，将其指向需要的CUDA版本即可.
+- `/usr/local/cuda/` 其实是 `/usr/local/cuda-10.2` 或者 `/usr/local/cuda-11.6` 的软连接，后面讲的[切换CUDA版本](#CUDA多版本问题)其实就是修改这个软连接，将其指向需要的CUDA版本即可.
+- 查看`/usr/local/cuda/`链接到哪里:
+  ```shell
+  cd /usr/local
+  ll
+  # ls -al
+  ```
+  ![cuda](../img/cuda_all.png)    
 
 
 **使该配置生效：**
@@ -860,10 +870,12 @@ cd /usr/local/cuda/samples/1_Utilities/deviceQuery
 sudo make
 ./deviceQuery
 ```
-- **CUDA 9.0 PASS**:
+- **CUDA 9.0 PASS**:    
+
     ![CUDA 9.0 PASS](../img/cuda9-pass.png)
 
-- **CUDA 10.1 PASS**:
+- **CUDA 10.1 PASS**:    
+
     ![CUDA 10.1 PASS](../img/cuda10.1-pass.png)
 
 
@@ -872,10 +884,12 @@ sudo make
 cat /usr/local/cuda/version.txt
 ```
 <!-- ![cuda](../img/cuda.png)     -->
-- CUDA 9.0
+- CUDA 9.0   
+
     ![CUDA 9.0](../img/cuda9.0-version.png)
 
-- CUDA 10.1
+- CUDA 10.1    
+
     ![CUDA 10.1](../img/cuda-version.png)
 
 ### 卸载CUDA的方法
@@ -900,7 +914,8 @@ sudo rm -rf cuda-10.1
 ### 安装CUDA过程中遇到的问题
 `CUDA 10.1`提示安装失败:
 ![CUDA Error](../img/cuda-error.png)
-查看` vim /var/log/cuda-installer.log`显示:
+查看` vim /var/log/cuda-installer.log`显示:    
+
 ![Error Detail](../img/cuda-error1.png)
 `ERROR: You appear to be running an X server; please exit X `，是在安装`CUDA`的时候选择的安装`CUDA`自带的`NVIDIA`显卡驱动导致的，解决方法是:
 (1) 在安装`CUDA`的时候不要选择安装`CUDA`自带的`NVIDIA`驱动；
@@ -944,7 +959,7 @@ sudo chmod a+x *
 
 
 ### 分布安装
-下面以安装**cuDNN v7.5.0**为例安装，其他版本类似，只需要将版本号改一下即可:
+下面以安装**cuDNN v7.5.0**为例安装，其他版本类似，只需要将版本号改一下即可:    
 ![cuDNN Download](../img/cudnn.png)
 
 解压`cudnn-10.1-linux-x64-v7.5.0.56.tgz`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹:
@@ -1026,7 +1041,8 @@ so try looking to see if a warning log message was printed above.
 在实验的时候有些算法跟当前生效(安装)的`CUDA`和`cuDNN`版本不一致，所以需要同时安装多个版本，这里就是解决同时管理多个`CUDA`版本问题。
 
 1. 首先按照上述介绍的[安装CUDA](#安装cuda)和对应版本的[安装cuDNN](#安装cudnn)，安装实验环境依赖的版本；
-2. 默认`/usr/local/cuda`是**软连接**到**最新安装的`CUDA`文件夹**上的:
+2. 默认`/usr/local/cuda`是**软连接**到**最新安装的`CUDA`文件夹**上的:   
+
     ![cuda2](../img/../img/cuda10.1-success.png)
 3. 删除已经软连接的`/usr/local/cuda`，将需要的`CUDA-X.0安装文件夹`软连接到`/usr/local/cuda`上, 例如需要`CUDA 9.0`这个版本:
     ```shell
@@ -1034,12 +1050,14 @@ so try looking to see if a warning log message was printed above.
     sudo rm cuda
     sudo ln -s /usr/local/cuda-9.0 /usr/local/cuda
     ```
+    
     ![cuda3](../img/cuda9-cuda10.1.png)
 4. 由于在安装`CUDA`的时候已经将`cuda`加入了环境变量，所以不用再加入了。
 5. 查看`CUDA`版本
     ```shell
     cat /usr/local/cuda/version.txt
     ```
+    
     ![cuda](../img/cuda9.0-version.png)
 ---
 ## Windows CUDA多版本问题
@@ -1056,10 +1074,13 @@ tensorflow最大的问题就是版本问题，各个版本之间差异比较明�
 1、多版本的CUDA以及cudnn安装
 
 由于里显得CUDA会默认捆绑NVIDIA驱动程序，所以在安装的时候不要默认安装，一定要自定义安装，只选择安装CUDA即可，其他的那些就不要安装了，我的电脑上安装的版本如下：
+
 ![Cuda multi version](../img/CUDA_win_multi_version.png)
+
 我们一般安装CUDA的时候就使用默认路径，安装到C盘即可，这样方便管理。
 
 然后在NVIDIA官网上面下载CUDA对应的cudnn版本，解压之后将cudnn对应的三个文件拷贝到CUDA对应的文件夹之下，这个时候我们的环境变量应该如下所示：
+
 ![Cuda multi version](../img/CUDA_win_path.png)
 
 现在多个版本的CUDA就安装完成了。
@@ -2200,8 +2221,9 @@ sudo apt-get -y install build-essential cmake git libgtk2.0-dev pkg-config pytho
 vim ~/.bashrc
 
 # CUDA
-export PATH=/usr/local/cuda/bin:$PATH  # cuda -> /usr/local/cuda-9.0
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export CUDA_ROOT_PATH=/usr/local/cuda # cuda -> cuda11.6
+export PATH=$CUDA_ROOT_PATH/bin:$PATH  # cuda -> /usr/local/cuda-9.0
+export LD_LIBRARY_PATH=$CUDA_ROOT_PATH/lib64:$LD_LIBRARY_PATH
 ```
 
 #### 3. 安装`OpenCV`，方法同: [安装OpenCV](#安装opencv)

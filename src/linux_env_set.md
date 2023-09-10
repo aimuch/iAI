@@ -88,7 +88,7 @@
 - [Sublime Text](https://www.sublimetext.com/)
 - [Beyond Compare](https://www.scootersoftware.com/download.php)
 - [Wireshark](https://www.wireshark.org/)
-- [kolourpaint](http://www.kolourpaint.org/)
+- [kolourpaint](http://www.kolourpaint.org/)    
     ![kolourpaint](../img/kolourpaint.png)
     ```shell
     sudo apt-get install kolourpaint4
@@ -600,13 +600,13 @@ If you're using an older distribution of Linux, installing your first package wi
 **监视GPU资源利用情况：**
 ```shell
 watch -n 1 nvidia-smi #每隔一秒刷新一下GPU资源情况
-```
+```    
 ![png](../img/nvidia-smi.png)
 **或者**
 ```shell
 nvtop
 ```
-`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。
+`nvtop`需要源码安装，[Github地址](https://github.com/Syllo/nvtop)。    
 ![png](../img/nvtop.png)
 
 **监视CPU资源利用情况**
@@ -838,7 +838,7 @@ Traceback (most recent call last):
   File "/home/andy/.local/lib/python3.5/site-packages/pip/_vendor/pkg_resources/__init__.py", line 2589, in version
     raise ValueError(tmpl % self.PKG_INFO, self)
 ValueError: ("Missing 'Version:' header and/or METADATA file", Unknown [unknown version] (/home/andy/.local/lib/python3.5/site-packages))
-```
+```    
 ![pip error](../img/pip-error.png)
 
 **解决方法**
@@ -918,7 +918,7 @@ pip3 install -U pyqt5
     sudo dpkg -i sogoupinyin_2.2.0.0108_amd64.deb
    ```
 4. System Setting -> Language Support -> Keyboard input method system:`fcitx`
-5. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。
+5. 状态栏->输入法->打开Fcitx配置窗口，点击`+`去掉`Only Show Current Language`前面对号，然后搜`sogou`添加好，重启电脑即可。    
 ![BundleInstall](../img/sougou.png)
 5. 有可能重启后会出现两个输入法图标，解决方法：
    ```shell
@@ -1410,9 +1410,9 @@ The install script creates required default configs and adds the following line 
 
 2. **安装字体**并设置`Terminal`的显示字体否则`icon`显示不全，推荐 `powerline nerd-font`中的`Mononoki`字体。可以查看 [Nerd Font](https://github.com/ryanoasis/nerd-fonts) 来获得更多安装详细介绍。
 
-    *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*
-    ![colorls1](../img/colorls1.png)
-    ![colorls2](../img/colorls2.png)
+    *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Test Appearance > Custom font > mononoki Nerd Font Regular`.*    
+    ![colorls1](../img/colorls1.png)   
+    ![colorls2](../img/colorls2.png)   
 
 3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with：
     ```shell
@@ -1960,10 +1960,10 @@ set scrolloff=3
 ```
 ---
 ## Tmux配置与使用
-**先上配置好的效果图**:
-![tmux1](../img/tmux1.gif)
-![tmux2](../img/tmux2.gif)
-![tmux3](../img/tmux3.gif)
+**先上配置好的效果图**:    
+![tmux1](../img/tmux1.gif)    
+![tmux2](../img/tmux2.gif)    
+![tmux3](../img/tmux3.gif)    
 
 ### Tmux安装
 ```shell
@@ -2002,11 +2002,11 @@ sudo apt-get install tmux
   **更详细配置介绍[请看](tmux/tmux_conf.md)**
 
 - 官方推荐安装[`Source Code Pro`](tmux/source-code-pro-2.030R-ro-1.050R-it.zip)字体，官方[GitHub地址](https://github.com/adobe-fonts/source-code-pro/releases)或者[Powerline](https://github.com/powerline/fonts)中提供的`Source Code Pro`字体，解压后文件夹`source-code-pro/TTF/`下直接安装即可。但是安装了`Source Code Pro`字体后[安装colorls](#安装colorls)显示会有问题，所以为了兼容性**推荐 `powerline nerd-font`字体 —— `mononoki Nerd Font Regular`**。具体可以查看 [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) 来获得更多安装详细介绍。
-  *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Text Appearance > Custom font > mononoki Nerd Font Regular`.*
+  *Note for `ubuntu` users - Please enable the **Nerd Font** at `Terminal > Preferences > Profiles > Edit > General > Text Appearance > Custom font > mononoki Nerd Font Regular`.*    
 
-  ![colorls1](../img/colorls1.png)
-  ![colorls2](../img/colorls2.png)
-  ![tmux7](../img/tmux7.png)
+  ![colorls1](../img/colorls1.png)    
+  ![colorls2](../img/colorls2.png)    
+  ![tmux7](../img/tmux7.png)    
 
 
 - 安装[Powerline symbols](https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf).
@@ -2017,8 +2017,8 @@ sudo apt-get install tmux
 
   #然后`Ctrl+b`再按`:`进入`tmux`命令行模式
   source ~/.tmux.conf
-  ```
-  ![tmux6](../img/tmux6.png)
+  ```    
+  ![tmux6](../img/tmux6.png)    
 
 ### Tmux使用手册
 
@@ -2522,7 +2522,7 @@ nohup /home/andy/frp/frpc -c /home/andy/frp/frpc.ini &
 
 ### Startup Applications
 
-`Ubuntu`中在 `Application` 中打开 `Startup Applications` :
+`Ubuntu`中在 `Application` 中打开 `Startup Applications` :   
 
 ![Startup Applications](../img/startupapplications1.png)
 
@@ -2584,7 +2584,7 @@ else
     wprintw(win, "F%zu", i + 1);
 }
 ```
-**重新编译安装后的效果：**
+**重新编译安装后的效果：**    
 ![png](../img/nvtop_new.png)
 
 **注意**：https://github.com/Syllo/nvtop/commit/b126abb63f38d50e8fbb961ad0aedc11b51b3911 之后修复这个问题。
@@ -2605,7 +2605,7 @@ cd htop
 然后输入以下命令显示CPU资源利用情况:
 ```shell
 htop
-```
+```    
 ![png](../img/htop.png)
 
 ### 3. glances　　　
@@ -2652,7 +2652,7 @@ System Settings -> Keyboard -> Shortcuts -> Custom Shortcuts:
 ```shell
 gnome-screenshot -a
 ```
-保存后在该快捷键的右侧点击，然后按下需要设置的快捷键即可.
+保存后在该快捷键的右侧点击，然后按下需要设置的快捷键即可.     
 ![Shortcut](../img/shortcut1.png)
 
 
@@ -2677,14 +2677,14 @@ sudo apt-get update
 sudo apt-get install flatabulous-theme ultra-flat-icons
 ```
 
-通过 `Unity Tweak Tool` 设置主题:
-![Theme 1](../img/theme1.png)
+通过 `Unity Tweak Tool` 设置主题:    
+![Theme 1](../img/theme1.png)    
 
-![Theme 2](../img/theme2.png)
+![Theme 2](../img/theme2.png)    
 
-![Theme 3](../img/theme3.png)
+![Theme 3](../img/theme3.png)    
 
-![Theme 4](../img/theme4.png)
+![Theme 4](../img/theme4.png)    
 
 **参考资料**
 > [How To Install Numix Theme And Icons In Ubuntu 14.04 & 16.04.](https://itsfoss.com/install-numix-ubuntu/)
