@@ -1469,7 +1469,8 @@ sudo ldconfig
 
 安装完成后通过查看 `opencv` 版本验证是否安装成功：
 ```bash
-pkg-config --modversion opencv
+pkg-config --modversion opencv # opencv3
+pkg-config --modversion opencv4 # opencv4
 ```
 **若运行以上命令提示一下错误**：
 ![编译报错](../img/opencv-error2.png)
@@ -1499,7 +1500,8 @@ sudo ldconfig
 ```
 若遇到以下问题[Package opencv was not found in the pkg-config search path](https://stackoverflow.com/questions/15320267/package-opencv-was-not-found-in-the-pkg-config-search-path):
 ```shell
-$ pkg-config --modversion opencv
+pkg-config --modversion opencv # opencv3
+pkg-config --modversion opencv4 # opencv4
 ```
 ```bash
 Package opencv was not found in the pkg-config search path.
