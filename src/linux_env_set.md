@@ -1686,7 +1686,7 @@ BundleInstall
 Plugin前面有`'>'`表示该插件正在安装，`YouCompleteMe`插件安装的时间比较长，耐心等待，不要退出，最后会提示有一个错误，这是正常的，因为`YouCompleteMe`需要手工编译出库文件，就像上图中的'！'，忽略它。
 **注**：若要卸载插件，只需将`.vimrc`中 "Bundle '插件' "这条语句删掉，然后在vim 命令行模式中执行：`BundleClean`即可。
 
-3  编译`YouCompleteMe`
+3  编译`YouCompleteMe`    
 
 (1) 进入YouCompleteMe文件夹下
 ```shell
@@ -1694,7 +1694,7 @@ cd  ~/.vim/bundle/YouCompleteMe/
 ```
 ![YouCompleteMe文件夹内容](../img/vim3.png)
 
-(2) 编译
+(2) 编译   
 ```shell
 ./install.py  --clang-completer --go-completer --ts-completer
 ```
@@ -1714,15 +1714,15 @@ cd  ~/.vim/bundle/YouCompleteMe/
 > [golang github issue: runtime error on `go get` go1.11 #27269](https://github.com/golang/go/issues/27269)
 
 
+4  修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件   
 
-4  修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件
-(1) 找到配置文件`.ycm_extra_conf.py`在`~/.vim/bundle/YouCompleteMe/third_party/ycmd/`下面:
+(1) 找到配置文件`.ycm_extra_conf.py`在`~/.vim/bundle/YouCompleteMe/third_party/ycmd/`下面:   
 ```shell
 cd ~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 ```
 `ls -a` 即可看到。
 
-(2) [可选] 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:
+(2) [可选] 自行在`YouCompleteMe/`中创建`cpp/ycm`目录，将 `.ycm_extra_conf.py`拷贝进去:   
 ```shell
 cd ~/.vim/bundle/YouCompleteMe
 mkdir cpp
@@ -1730,7 +1730,7 @@ mkdir cpp/ycm
 cp ~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py ~/.vim/bundle/YouCompleteMe/cpp/ycm/
 ```
 
-(3) 修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件, 将下面的内容添加到里面:
+(3) 修改`~/.vim_runtime/my_configs.vim` (*旧版是在 `.vimrc` 的文件起始处*)配置文件, 将下面的内容添加到里面:   
 ```vim
 " >>>>>> YouCompleteMe
 " 寻找全局配置文件
@@ -1773,10 +1773,10 @@ let g:ycm_warning_symbol='>*'
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 ```
 
-5 保存退出 ,打开一个C/C++源程序，体验其自动补全效果。
+5 保存退出 ,打开一个C/C++源程序，体验其自动补全效果。   
 ![vim提示](../img/vim4.png)
 
-6 配合上面安装的`syntastic`还可以语法检测
+6 配合上面安装的`syntastic`还可以语法检测   
 ![vim语法检测](../img/vim5.png)
 
 `'>>'`指出有语法错误，但是检测速度太慢，没什么大用。自我感觉这个语法自动检测很烦，可以禁用它：
@@ -1784,12 +1784,12 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 ![syntastic](../img/vim6.png)
 将如上图中的`第141行`的参数改为`0`就可以了。
 
-7 `YcmDiags`插件可以显示错误或警告信息，可以设置`F9`为打开窗口的快捷键，在`.vimrc`中添加语句：
+7 `YcmDiags`插件可以显示错误或警告信息，可以设置`F9`为打开窗口的快捷键，在`.vimrc`中添加语句：   
 ![YcmDiags](../img/vim7.png)
 显示效果：
 ![YcmDiags效果](../img/vim8.png)
 
-8 添加头文件
+8 添加头文件   
 目前在`include`中，无法补全`stdio.h`等头文件，我们需要将`/usr/include`添加进去。路径添加到 `~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py` 或者`~/.vim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py`文件中的`flags` 数组中，每增加一个路径，前面要写`'-isystem'`。
 ![添加头文件](../img/vim9.png)
 以后需要boost库等其他的补全，也需要将相应的路径添加进去。
@@ -1976,18 +1976,18 @@ set scrolloff=3
 " <<<<<< add by ANDY
 ```
 ---
-## Tmux配置与使用
+## Tmux配置与使用  
 **先上配置好的效果图**:    
 ![tmux1](../img/tmux1.gif)    
 ![tmux2](../img/tmux2.gif)    
 ![tmux3](../img/tmux3.gif)    
 
-### Tmux安装
+### Tmux安装  
 ```shell
 sudo apt-get install tmux
 ```
 
-### Tmux配置
+### Tmux配置  
 安装`.tmux`配置文件，官方github地址: https://github.com/gpakosz/.tmux
 
 - **`.tmux`安装要求**:
