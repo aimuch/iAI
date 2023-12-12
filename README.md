@@ -8,7 +8,9 @@
 ```vim
 硬件： Intel 12900K / ROG MAXIMUS Z690 HERO / NVIDIA RTX 3090 / DDR5 32G 5600 / SSD 7T*1 + 1T*4 / HDD 16T*2
 系统： Ubuntu-18.04-64bit - Ubuntu-22.04-64bit / Windows 11 Professional
-软件： CUDA9.0 - CUDA11.6/cuDNN/TensorRT/OpenCV/caffe/YOLO/Protobuf/Matlab/VIM
+软件： CUDA9.0 - CUDA12.1/cuDNN/TensorRT/OpenCV/caffe/Protobuf/Matlab/VIM/Tmux/zsh
+框架： Pytorch/OpenmmLab
+算法： 目标检测/语义分割/多任务/BEV
 ```
 
 ---
