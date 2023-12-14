@@ -1466,6 +1466,20 @@ sudo gedit /etc/ld.so.conf.d/opencv.conf
 ```bash
 sudo ldconfig
 ```
+修改环境变量`.bashrc`或者`.zshrc`添加opencv的头文件路径:    
+*以opencv4为例*
+```bash
+ # opencv4
+ export CPATH=/usr/local/include/opencv4:$CPATH
+```
+### CMakeLists.txt
+```cmake
+# ...
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS}) # 若环境变量里有export CPATH=/usr/local/include/opencv4:$CPATH，这这一行可以省略
+# ...
+target_link_libraries([程序名] ${OpenCV_LIBS})
+```
 
 安装完成后通过查看 `opencv` 版本验证是否安装成功：
 ```bash
@@ -1575,6 +1589,7 @@ After you do so, `pkg-config --cflags opencv` and `pkg-config --libs opencv` sho
     export PKG_CONFIG_PATH
     ```
     运行`source ~/.zshrc`使其生效。
+
 
 
 ### 卸载OpenCV
