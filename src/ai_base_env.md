@@ -1224,7 +1224,7 @@ vim ~/.bashrc
 其实这里涉及到`linux可执行程序搜索路径`的问题，上述`PATH="/home/andy/anaconda3/bin:$PATH"`将`/home/andy/anaconda3/bin`放在了原始的`$PATH`前面，这样系统在执行的时候首先检查要可执行文件是否在`/home/andy/anaconda3/bin`中，然后再从`$PATH`中搜索，理解了这个关系，上述代码可以改为，这样改了以后将不需要[重建Anaconda软连接](#重建anaconda软连接)这一步操作了:
 ```bash
 # added by Anaconda3 5.3.1 installer
-export PATH="$PATH：/home/andy/anaconda3/bin"
+export PATH=$PATH:/home/andy/anaconda3/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH：~/anaconda3/lib
 export CPLUS_INCLUDE_PATH=~/anaconda3/include/python3.6m
 ```
@@ -1772,6 +1772,7 @@ export LD_LIBRARY_PATH=~/TensorRT/lib:$LD_LIBRARY_PATH
 export CUDA_INSTALL_DIR=/usr/local/cuda
 export CUDNN_INSTALL_DIR=/usr/local/cuda
 export CPATH=$CPATH:~/TensorRT/include
+export PATH=$PATH:~/TensorRT/bin
 ```
 ```shell
 # bash
