@@ -72,6 +72,8 @@
        - [TensorRT生成**Engine**](src/ai_base_env.md#tensorrt生成engine)
          - [**Caffe**模型用TensorRT生成Engine](src/ai_base_env.md#caffe模型用tensorrt生成engine)
          - [**TensorFlow**模型用TensorRT生成**Engine**](src/ai_base_env.md#tensorflow模型用tensorrt生成engine)
+           - [ONNX模型用TensorRT生成Engine](src/ai_base_env.md#onnx模型用tensorrt生成engine)
+           - [Caffe模型用TensorRT生成Engine](src/ai_base_env.md#caffe模型用tensorrt生成engine)
            - [将TensorFlow模型生成**UFF**文件](src/ai_base_env.md#将tensorflow模型生成uff文件)
            - [将**UFF**文件转为**Engine**](src/ai_base_env.md#将uff文件转为engine)
            - [调用**Engine**进行推理](src/ai_base_env.md#调用engine进行推理)

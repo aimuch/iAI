@@ -57,6 +57,8 @@
     - [TensorRT生成**Engine**](#tensorrt生成engine)
       - [**Caffe**模型用TensorRT生成**Engine**](#caffe模型用tensorrt生成engine)
       - [**TensorFlow**模型用TensorRT生成**Engine**](#tensorflow模型用tensorrt生成engine)
+        - [ONNX模型用TensorRT生成Engine](#onnx模型用tensorrt生成engine)
+        - [Caffe模型用TensorRT生成Engine](#caffe模型用tensorrt生成engine)
         - [将TensorFlow模型生成UFF文件](#将tensorflow模型生成uff文件)
         - [将UFF文件转为Engine](#将uff文件转为engine)
         - [调用Engine进行推理](#调用engine进行推理)
@@ -1978,11 +1980,21 @@ pip install -U numpy
 ![TensorRT error2](../img/tensorrt_error2.png)
 只要关闭占用大现存的程序重新运行程序即可。
 
-### TensorRT生成Engine
-*TensorRT版本: 3.0.4*
+### TensorRT生成Engine  
+TensorRT生成Engine有两种方式：   
+- `giexec` TensorRT低版本   
+- `trtexec` TensorRT高版本   
+
+#### ONNX模型用TensorRT生成Engine
+```shell
+~/TensorRT/bin/trtexec \
+--onnx=path_to_onnx/onnxModelName.onnx \
+--saveEngine=path_to_output_engine/outputEngineName.engine
+```
+
 #### Caffe模型用TensorRT生成Engine
 ```shell
-~/TensorRT/bin/giexec \
+~/TensorRT/bin/trtexec \
 --deploy=path_to_prototxt/intputdeploy.prototxt \
 --output=prob \
 --model=path_to_caffemodel/caffeModelName.caffemodel \
