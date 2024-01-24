@@ -19,6 +19,7 @@
     - [Ubuntu16TLS安装NVIDIA驱动](#ubuntu16tls安装nvidia驱动)
     - [Ubuntu18TLS安装NVIDIA驱动](#ubuntu18tls安装nvidia驱动)
     - [Ubuntu20TLS安装NVIDIA驱动](#ubuntu20tls安装nvidia驱动)
+    - [Ubuntu22TLS安装NVIDIA驱动](#ubuntu22tls安装nvidia驱动)
     - [配置NVIDIA环境变量](#配置nvidia环境变量)
     - [查看NVIDIA驱动版本](#查看nvidia驱动版本)
     - [解决Linux双系统安装卡在启动Logo](#解决linux双系统安装卡在启动logo)
@@ -339,7 +340,6 @@ sudo update-initramfs -u
 lsmod | grep nouveau
 ```
 
-
 ### 安装NVIDIA官方显卡驱动
 
 **NOTE：显卡驱动不要追求过新，够用即可.**
@@ -623,7 +623,7 @@ sudo apt-get --purge remove nvidia-*
 sudo sh NVIDIA-Linux-x86_64-440.82.run -uninstall
 ```
 
-在相应路径下安装NVIDIA驱动：
+在相应路径下安装NVIDIA驱动：    
 ```shell
 $ sudo chmod a+x NVIDIA-Linux-x86_64-440.82.run
 $ sudo sh NVIDIA-Linux-x86_64-440.82.run --no-x-check
@@ -738,8 +738,45 @@ sudo reboot #重启
 nvidia-smi
 nvidia-settings
 ```
+## Ubuntu22TLS安装NVIDIA驱动
+### 安装NVIDIA驱动
+1. 打开终端。
+2. 更新系统包列表：`sudo apt update`
+3. 安装建议的驱动：`sudo ubuntu-drivers autoinstall`
+4. 重启计算机。
 
+这个命令会自动检测你的 NVIDIA 显卡型号，并安装适合的驱动程序。
+如果想手动选择驱动版本，可以先运行 `ubuntu-drivers list` 查看可用驱动，然后使用 `sudo apt install <驱动包名>` 命令安装指定版本。
 
+### nvidia-smi 命令无法使用   
+出现 `Failed to initialize NVML: Driver/library version mismatch` 错误通常意味着 NVIDIA 驱动与内核模块版本不匹配。解决这个问题，通常需要重新安装或更新 NVIDIA 驱动。请按照以下步骤操作：
+1. **重启电脑**：有时候重启可以解决驱动加载问题。
+
+2. **移除旧驱动**：
+   - 打开终端。
+   - 运行 `sudo apt-get purge nvidia*` 来移除所有 NVIDIA 相关的包。
+
+3. **禁用Nouveau驱动**（Nouveau是开源的NVIDIA驱动）：
+   - 创建一个新的 blacklist 文件：`sudo nano /etc/modprobe.d/blacklist-nouveau.conf`
+   - 添加以下内容：
+     ```
+     blacklist nouveau
+     options nouveau modeset=0
+     ```
+   - 保存并关闭文件。
+   - 运行 `sudo update-initramfs -u` 更新 initramfs。
+
+4. **重启电脑**。
+
+5. **重新安装NVIDIA驱动**：
+   - 打开终端。
+   - 更新包列表：`sudo apt update`
+   - 安装驱动：`sudo ubuntu-drivers autoinstall`
+   - 或者，你可以指定版本安装：`sudo apt install nvidia-driver-<版本号>`
+
+6. **再次重启电脑**。
+
+如果问题依旧存在，可能需要考虑是否与当前内核版本不兼容。在这种情况下，尝试更换一个不同的内核版本或者更新到最新版的Ubuntu可能有帮助。
 
 ---
 ## 安装CUDA
