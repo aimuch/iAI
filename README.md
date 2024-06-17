@@ -110,6 +110,7 @@
      - [Loss Function种类](src/ai/loss-function.md#loss-function种类)
    - [**神经网络参数量(weights)和计算量(FLOPs)**](src/ai/weights.md)
    - [**特征尺寸(Feature Map)和感受野(Receptive Field)计算**](src/ai/receptive_field.md)
+   - [**大模型**](src/ai/llms.md)
 3. [**🖥 AI Framework**](src/ai_framework.md#ai-framework)
 
    - [AI 常用的结构框架](src/ai_framework.md#ai框架数据结构)
