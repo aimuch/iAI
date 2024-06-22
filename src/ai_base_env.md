@@ -975,13 +975,22 @@ sudo service lightdm start
 ## 安装cuDNN
 
 ### 下载安装cuDNN
-`cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`格式的文件**, 不推荐下载安装`.deb`格式，若误装了`.deb`格式的cuDNN请用以下命令进行卸载:
+`cuDNN`要根据`CUDA`选择相应平台版本，在`Ubuntu16.04`下(`Ubuntu`其他版本类似)到[cuDNN官网](https://developer.nvidia.com/rdp/cudnn-archive)**推荐下载安装`.tgz`或者`.tar.xz`格式的文件**, 不推荐下载安装`.deb`格式，若误装了`.deb`格式的cuDNN请用以下命令进行卸载:
 ```shell
 dpkg -l |grep -i libcudnn* # 查看.deb安装的cudnn
 sudo apt-get purge libcudnn*
 ```
-### 一步安装
-*该方法不适用于CUDA11*
+cuDNN文件树结构如下:    
+```shell
+cudnn-linux-[cuda版本]-archive.tar.xz
+├── include
+├── lib # > cuda11
+├── (lib64) # <= cuda10
+└── LICENSE
+```
+
+### 一键安装
+*该方法不适用于CUDA11及以上，因为后续的版本cuDNN解压出来的文件夹跟压缩包同名，并不是以cuda命名*
 该方法安装的前提是`/usr/local/cuda`已经连接到正确的`CUDA`版本上。
 
 将`cudnn-xxx.tgz`复制到`/usr/local/`目录下，用`sudo tar -xvf cudnn-xxx.tgz`进行解压，然后删除`sudo rm cudnn-xxx.tgz`即可， 由于`cudnn-xxx.tgz`解压后的目录就是`cuda`文件夹，所以将会自动放在`cuda`软连接下面对应的文件夹里。
@@ -990,6 +999,7 @@ sudo cp cudnn-xxx.tgz /usr/local
 sudo chmod a+x cudnn-xxx.tgz
 sudo tar -xvf cudnn-xxx.tgz
 sudo rm /usr/local/cudnn-xxx.tgz
+
 cd /usr/local/cuda/lib64
 sudo chmod a+x *
 cd /usr/local/cuda/include
@@ -997,33 +1007,60 @@ sudo chmod a+x *
 ```
 
 
-### 分布安装
+### 分步安装
 下面以安装**cuDNN v7.5.0**为例安装，其他版本类似，只需要将版本号改一下即可:    
 ![cuDNN Download](../img/cudnn.png)
-
-解压`cudnn-10.1-linux-x64-v7.5.0.56.tgz`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹:
-![cuDNN folder](../img/cuDNN-folder.png)
+解压cuDNN压缩包：
+1) 旧版cuDNN解压出来的文件夹名是cuda:    
+  解压`cudnn-10.1-linux-x64-v7.5.0.56.tgz`到当前文件夹，得到一个`cuda`文件夹，该文件夹下有`include`和 `lib64`两个文件夹:
+    ```shell
+    cudnn
+    ├── include
+    ├── lib64
+    └── LICENSE
+    ```
+2) 新版cuDNN解压出来的文件夹名是与压缩包名相同:    
+  解压`cudnn-linux-x86_64-8.9.6.50_cuda12-archive.tar.xz`到当前文件夹，得到一个`cudnn-linux-x86_64-8.9.6.50_cuda12-archive`文件夹，该文件夹下有`include`和 `lib`两个文件夹:    
+    ```shell
+    cudnn-linux-x86_64-8.9.6.50_cuda12-archive
+    ├── include
+    ├── lib
+    └── LICENSE
+    ```
+新版旧版的区别就是: 1)解压出来的文件名跟压缩包同名了; 2)`lib64`文件夹改成了`lib`文件夹。    
 
 **若安装了多个`CUDA`版本，要特别注意`/usr/local/cuda`软连接到了哪个版本的`CUDA`。**
+1. **安装cuDNN头文件**   
+  命令行进入其中的`include`文件夹路径下，然后进行以下操作：    
+    ```shell
+    cd ~/Downloads/cuda/include/ # 旧版
+    cd ~/Downloads/cudnn-linux-cuda-xxx/include/ #新版, xxx是对应的cuda版本
+    sudo cp -av * /usr/local/cuda/include/ #cp加上-a会复制软连接
+    ```
 
-命令行进入其中的`include`文件夹路径下，然后进行以下操作：
-```shell
-cd ~/Downloads/cuda/include/
-sudo cp -av cudnn.h /usr/local/cuda/include/ #cp加上-a会复制软连接
-```
-然后命令行进入`cuda/lib64`文件夹路径下(其实`cuda/lib64`文件夹下通过`Beyond Compare`查看，`libcudnn.so`、`libcudnn.so.7`和`libcudnn.so.7.5.0`是同一个文件的不同扩展名)，运行以下命令：
-```shell
-cd ~/Downloads/cuda/lib64/  # CUDA <= 10
-cd ~/Downloads/cuda/lib/    # CUDA >= 11
-sudo cp -av lib* /usr/local/cuda/lib64/ #复制动态链接库, cp加上-a会复制软连接关系就不需要手动连接了
-sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+2. **安装cuDNN动态链接库**   
+  然后命令行进入动态链接库文件夹路径下:    
+    *其实文件夹下的`libcudnn.so`和`libcudnn.so.x`是软连接到`libcudnn.so.x.x.x`上的, 其他的动态库类似：*
+    ```shell
+    libcudnn.so -> libcudnn.so.8
+    libcudnn.so.8 -> libcudnn.so.8.9.6
+    libcudnn.so.8.9.6
+    ```
+    安装动态库命令:    
+    ```shell
+    #cd ~/Downloads/cuda/lib64/  # 旧版cuDNN,大概cuda10及以下
+    cd ~/Downloads/cuda/lib/    # 新版cuDNN，大概cuda11及以上
+    sudo cp -av lib* /usr/local/cuda/lib64/ #复制动态链接库, cp加上-a会复制软连接关系就不需要手动连接了
 
-## 因为上述cp加上了-a(不加会在cp的时候将原来的软连接文件进行复制)会复制软连接关系, 所以就不需要下面手动建立软连接到方式了
-# cd /usr/local/cuda/lib64/
-# sudo rm -rf libcudnn.so libcudnn.so.7  #删除原有动态文件
-# sudo ln -s libcudnn.so.7.5.0 libcudnn.so.7  #生成软链接
-# sudo ln -s libcudnn.so.7 libcudnn.so  #生成软链接
-```
+    # 修改安装后的文件权限
+    sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+    ## 因为上述cp加上了-a(不加会在cp的时候将原来的软连接文件进行复制)会复制软连接关系, 所以就不需要下面手动建立软连接到方式了
+    # cd /usr/local/cuda/lib64/
+    # sudo rm -rf libcudnn.so libcudnn.so.8  #删除原有动态文件
+    # sudo ln -s libcudnn.so.8.9.6 libcudnn.so.8  #生成软链接
+    # sudo ln -s libcudnn.so.8 libcudnn.so  #生成软链接
+    ```
 
 ![cudnn1](../img/cudnn1.png)
 
@@ -1089,7 +1126,6 @@ so try looking to see if a warning log message was printed above.
     sudo rm cuda
     sudo ln -s /usr/local/cuda-9.0 /usr/local/cuda
     ```
-    
     ![cuda3](../img/cuda9-cuda10.1.png)
 4. 由于在安装`CUDA`的时候已经将`cuda`加入了环境变量，所以不用再加入了。
 5. 查看`CUDA`版本
