@@ -10,7 +10,7 @@
 系统： Ubuntu-18.04-64bit - Ubuntu-22.04-64bit / Windows 11 Professional
 软件： CUDA9.0 - CUDA12.1/cuDNN/TensorRT/OpenCV/caffe/Protobuf/Matlab/VIM/Tmux/zsh
 框架： Pytorch/OpenmmLab
-算法： 目标检测/语义分割/多任务/BEV/大模型
+算法： 目标检测/语义分割/多任务/BEV/大模型/LLM
 ```
 
 ---
